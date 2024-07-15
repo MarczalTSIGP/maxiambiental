@@ -1,0 +1,60 @@
+x-app: &app
+  build:
+    context: .
+    dockerfile: Dockerfile
+  volumes:
+    - .:/var/www/maxiambiental
+    - bundle_path:/bundle
+    - /dev/shm:/dev/shm
+  tmpfs:
+    - /tmp
+  depends_on:
+    - db
+  networks:
+    - maxi-network
+  stdin_open: true
+  tty: true
+
+services:
+  web:
+    <<: *app
+    command: >
+      bash -c "
+        rm -f tmp/pids/server.pid && cron &&
+        bundle exec rails s -p 3000 -b '0.0.0.0'
+        " # Removing server.pid is technically a cleanup script
+    ports:
+      - 3000:3000
+    environment:
+      RAILS_ENV: development
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - maxi-network
+
+  tests:
+    <<: *app
+    environment:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres@db
+    shm_size: "2gb" #set shared memory
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
+    driver: local
+  bundle_path:
+
+networks:
+  maxi-network:
+    driver: bridge
