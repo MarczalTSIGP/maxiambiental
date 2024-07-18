@@ -1,7 +1,9 @@
+require 'support/simplecov'
+require 'support/bullet'
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
-require 'support/bullet'
 
 module ActiveSupport
   class TestCase
@@ -12,5 +14,13 @@ module ActiveSupport
     include BulletHelper
 
     # Add more helper methods to be used by all tests here...
+    
+    parallelize_setup do |worker|
+      SimpleCov.command_name "#{SimpleCov.command_name}-#{worker}" if ENV['COVERAGE']
+    end
+
+    parallelize_teardown do |_worker|
+      SimpleCov.result if ENV['COVERAGE']
+    end
   end
 end
