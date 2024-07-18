@@ -1,0 +1,36 @@
+name: Tests
+
+on:
+  workflow_call:
+
+jobs:
+  linters:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:3.3.4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Cache bundle gems
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Install bundle gems
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Code quality - robocop
+        run: |
+          bundle exec rubocop --parallel
+
+      - name: Code quality - brakeman
+        run: |
+          bundle exec brakeman --ignore-config config/brakeman.ignore

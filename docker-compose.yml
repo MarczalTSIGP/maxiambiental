@@ -46,9 +46,25 @@ services:
     environment:
       RAILS_ENV: test
       DATABASE_URL: postgres://postgres@db
+      SELENIUM_HOST: chrome-server
+      SELENIUM_PORT: 4444
+      TEST_APP_HOST: tests
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
     shm_size: "2gb" #set shared memory
     depends_on:
       - db
+      - chrome-server
+
+  chrome-server:
+    image: selenium/standalone-chrome:latest
+    volumes:
+      - ./test/samples:/var/www/maxiambiental/test/samples
+      - /dev/shm:/dev/shm
+    ports:
+      - 4444:4444
+      - 5900:5900
+    networks:
+      - maxi-network
 
 volumes:
   pgdata:
