@@ -40,3 +40,5 @@
 /config/credentials/development.key
 
 /.vscode/*
+
+/config/credentials/test.key

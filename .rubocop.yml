@@ -1,0 +1,41 @@
+require:
+  - rubocop-minitest
+  - rubocop-rails
+  - rubocop-capybara
+  - rubocop-factory_bot
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
+  # to ignore them, so only the ones explicitly set in this file are enabled.
+  # DisabledByDefault: true
+  Exclude:
+    - "vendor/**/*"
+    - "bin/*"
+    - "db/schema.rb"
+    - "config/puma.rb"
+    - "config/initializers/backtrace_silencers.rb"
+    - "config/initializers/content_security_policy.rb"
+    - "config/environments/production.rb"
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  AllowedMethods: ["context"]
+  Exclude:
+    - "config/environments/development.rb"
+    - "config/routes.rb"
