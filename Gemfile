@@ -49,9 +49,9 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'bullet', group: 'development'
   gem 'debug', platforms: [:mri, :windows]
   gem 'factory_bot_rails'
-  gem 'bullet', group: 'development'
 end
 
 group :development do
@@ -63,11 +63,12 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'brakeman', require: false
   gem 'rubocop', require: false
   gem 'rubocop-capybara', require: false
+  gem 'rubocop-factory_bot', require: false
   gem 'rubocop-minitest', require: false
   gem 'rubocop-rails', require: false
-  gem 'brakeman', require: false
 end
 
 group :test do

@@ -17,7 +17,7 @@ def app_host
 end
 
 Capybara.register_driver :chrome do |app|
-  host = "http://#{ENV.fetch('SELENIUM_HOST',nil)}"
+  host = "http://#{ENV.fetch('SELENIUM_HOST', nil)}"
   port = ENV.fetch('SELENIUM_PORT', nil)
 
   Capybara::Selenium::Driver.new(app,

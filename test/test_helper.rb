@@ -14,7 +14,7 @@ module ActiveSupport
     include BulletHelper
 
     # Add more helper methods to be used by all tests here...
-    
+
     parallelize_setup do |worker|
       SimpleCov.command_name "#{SimpleCov.command_name}-#{worker}" if ENV['COVERAGE']
     end
