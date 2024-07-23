@@ -73,6 +73,10 @@ function linters {
   brakeman
 }
 
+function edit:credentials {
+  docker compose run --rm -e EDITOR=vim web rails credentials:edit --environment "${1:-development}"
+}
+
 # -----------------------------------------------------------------------------
 # Test functions
 # -----------------------------------------------------------------------------
