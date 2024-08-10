@@ -1,0 +1,117 @@
+# Name of your application. Used to uniquely configure containers.
+service: maxiambiental
+
+# Name of the container image.
+image: dmarczal/maxiambiental
+
+# Deploy to these servers.
+servers:
+  web:
+    hosts:
+      - 68.183.53.225
+    labels:
+      traefik.http.routers.maxiambiental.rule: Host(`staging.maxiambiental.com`)
+      traefik.http.routers.maxiambiental.entrypoints: websecure
+      traefik.http.routers.maxiambiental.rule: Host(`staging.maxiambiental.com`)
+      traefik.http.routers.maxiambiental.tls: true
+      traefik.http.routers.maxiambiental.tls.certresolver: letsencrypt
+    options:
+      network: "private"
+
+# Credentials for your image host.
+registry:
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+# Inject ENV variables into containers (secrets come from .env).
+# Remember to run `kamal env push` after making changes!
+env:
+  clear:
+    RAILS_ENV: production
+    RACK_ENV: production
+    RAILS_LOG_TO_STDOUT: true
+    RAILS_SERVE_STATIC_FILES: true
+  secret:
+    - RAILS_MASTER_KEY
+    - POSTGRES_USER
+    - POSTGRES_PASSWORD
+
+# Use a different ssh user than root
+ssh:
+  user: deployer
+
+# Configure builder setup.
+builder:
+  dockerfile: Dockerfile.staging
+  remote:
+    arch: amd64
+
+# Use accessory services (secrets come from .env).
+accessories:
+  db:
+    image: postgres:16.0
+    host: 68.183.53.225
+    env:
+      clear:
+        POSTGRES_USER: "maxiambiental"
+        POSTGRES_DB: 'maxiambiental_production'
+      secret:
+        - POSTGRES_PASSWORD
+        - POSTGRES_USER
+    files:
+      - config/deploy.db.sql:/docker-entrypoint-initdb.d/setup.sql
+    directories:
+      - data:/var/lib/postgresql/data
+    options:
+      network: "private"
+
+traefik:
+  options:
+    publish:
+      - "443:443"
+    volume:
+      - "/letsencrypt/acme.json:/letsencrypt/acme.json"
+    network: "private"
+  args:
+    entryPoints.web.address: ":80"
+    entryPoints.websecure.address: ":443"
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
+    certificatesResolvers.letsencrypt.acme.email: "admin@maxiambiental.com"
+    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
+
+# Configure a custom healthcheck (default is /up on port 3000)
+healthcheck:
+  path: /up
+  port: 3000
+
+# Bridge fingerprinted assets, like JS and CSS, between versions to avoid
+# hitting 404 on in-flight requests. Combines all files from new and old
+# version inside the asset_path.
+#
+# If your app is using the Sprockets gem, ensure it sets `config.assets.manifest`.
+# See https://github.com/basecamp/kamal/issues/626 for details
+#
+# asset_path: /rails/public/assets
+
+# Configure rolling deploys by setting a wait time between batches of restarts.
+# boot:
+#   limit: 10 # Can also specify as a percentage of total hosts, such as "25%"
+#   wait: 2
+
+# Configure the role used to determine the primary_host. This host takes
+# deploy locks, runs health checks during the deploy, and follow logs, etc.
+#
+# Caution: there's no support for role renaming yet, so be careful to cleanup
+#          the previous role on the deployed hosts.
+# primary_role: web
+
+# Controls if we abort when see a role with no hosts. Disabling this may be
+# useful for more complex deploy configurations.
+#
+# allow_empty_roles: false
