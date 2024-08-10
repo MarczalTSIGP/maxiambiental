@@ -37,10 +37,11 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-/config/credentials/development.key
-
 /.vscode/*
 
-/config/credentials/test.key
-
 /coverage/*
+
+# Ignore credentials files
+/config/credentials/development.key
+/config/credentials/test.key
+/config/credentials/production.key
