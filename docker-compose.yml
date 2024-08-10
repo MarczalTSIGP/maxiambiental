@@ -1,7 +1,7 @@
 x-app: &app
   build:
     context: .
-    dockerfile: Dockerfile
+    dockerfile: Dockerfile.development
   volumes:
     - .:/var/www/maxiambiental
     - bundle_path:/bundle
