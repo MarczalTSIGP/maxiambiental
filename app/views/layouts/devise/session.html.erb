@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <title>
+    <%= yield("teste") %>
+  </title>
+
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Entrar</h2>
+
+        <%= yield %>
+
+    <div class="mt-4 text-center">
+  <%= button_to "/auth/google_oauth2", method: :post, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline inline-flex items-center" do %>
+    Continuar com o Google
+  <% end %>
+</div>
+
+
+    <div class="mt-6 text-center">
+      Não tem uma conta? <%= link_to "Cadastre-se", new_user_registration_path, class: "font-bold text-blue-500 hover:text-blue-800" %>
+    </div>
+  </div>
+</div>
+  
+</body>
+</html>
