@@ -1,0 +1,12 @@
+<footer class="bg-white py-8">
+  <div class="<%= container_class %>">
+    <p class="text-gray-500 text-lg mb-2 md:mb-0">© 2024 Maxiambiental.</p>
+    <div class="flex space-x-8">
+      <%= link_to "Política de Privacidade", "#", class: "text-gray-500 hover:underline text-lg" %>
+      <%= link_to "Termos de Uso", "#", class: "text-gray-500 hover:underline text-lg" %>
+      <div class="flex space-x-4">
+        <%= render 'layouts/devise/partials/social_links' %>
+      </div>
+    </div>
+  </div>
+</footer>
