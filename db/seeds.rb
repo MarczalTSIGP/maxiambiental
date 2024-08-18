@@ -11,8 +11,13 @@
 admin_email = "admin@example.com"
 admin_password = "password123"
 
-admin = User.find_or_create_by!(email: admin_email) do |user|
+user = User.find_or_create_by!(email: admin_email) do |user|
   user.password = admin_password
   user.password_confirmation = admin_password
-  # user.master = true # If you have a 'master' attribute for admin status
+  user.role = 1
+  user.active = true
+end
+
+Admin.find_or_create_by!(user: user) do |admin|
+  admin.master = true
 end
