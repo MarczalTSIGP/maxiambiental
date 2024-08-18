@@ -81,4 +81,14 @@ Rails.application.configure do
     Bullet.bullet_logger = true
     Bullet.raise = true # raise an error if n+1 query occurs
   end
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => '9d1cc937f165a4',
+    :password => 'd3734b8f3c0dd5',
+    :address => 'sandbox.smtp.mailtrap.io',
+    :host => 'sandbox.smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :login
+  }
 end
