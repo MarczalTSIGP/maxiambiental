@@ -57,6 +57,7 @@ group :development, :test do
   gem 'debug', platforms: [:mri, :windows]
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'mailtrap'
 end
 
 group :development do
