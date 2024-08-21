@@ -1,12 +1,8 @@
 <% provide(:head_title, t('devise.sessions.sign_in')) %>
-<% provide(:title, t('devise.sessions.new.user.title')) %>
 
-<%= form_with(model: resource, url: session_path(resource_name), local: true) do |f| %>
-  
+<%= form_with(model: resource, url: session_path(resource_name), local: true, class: "space-y-4 md:space-y-6") do |f| %>
     <%= f.email_field :email, placeholder: "Email", class: input_class %>
-
     <%= f.password_field :password, placeholder: "Senha" , class: input_class %>
 
-    <%= f.submit "Entrar", class: button_class("bg-green-700 text-white mt-5") %>
-
+    <%= f.submit "Entrar", class: button_class("bg-green-700 text-white") %>
 <% end %>

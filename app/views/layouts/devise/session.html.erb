@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-    <title><%= yield("teste") %></title>
+    <title><%= yield(:head_title) %></title>
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= csrf_meta_tags %>
@@ -14,17 +14,13 @@
 
     <div class="<%= auth_container_class %>">
       <div class="<%= auth_box_class %>">
-        <h1 class="<%= h1_class("text-green-700 text-center mb-10") %>">Entrar</h1>
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">  
+          <h1 class="<%= h1_class("text-green-700 text-center") %>"><%= yield(:head_title) %></h1>
 
-        <%= yield %>
-        <%= render 'layouts/devise/partials/google_button' %>
-
-        <div class="mt-10 text-center">
-          <%= link_to "Esqueceu a senha?", "#", class: "inline-flex align-bottom text-black mb-1" %>
-          <div class="text-gray-500">
-            Não tem uma conta? 
-            <%= link_to "Cadastre-se", new_user_registration_path, class: "font-bold text-green-700 hover:underline" %>
-          </div>
+          <%= yield %>
+          <%= render 'layouts/devise/partials/google_button' %>
+        
+          <%= render 'layouts/devise/partials/actions' %>
         </div>
       </div>  <!-- box -->
     </div>  <!-- container -->
