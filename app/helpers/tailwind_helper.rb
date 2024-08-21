@@ -5,22 +5,22 @@ module TailwindHelper
     end
 
     def auth_container_class(additional_classes = "")
-        default_class = 'flex flex-col items-center justify-center min-h-screen bg-white'
+        default_class = 'flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'
         "#{default_class} #{additional_classes}"
     end
 
     def auth_box_class(additional_classes = "")
-        default_class = 'bg-white shadow-lg rounded px-16 py-20 mb-4 w-full max-w-lg'
+        default_class = 'w-full bg-white rounded shadow-lg md:mt-0 sm:max-w-md xl:p-0 mb-4 max-w-lg'
         "#{default_class} #{additional_classes}"
     end
 
     def h1_class(additional_classes = "")
-        default_class = 'text-3xl font-bold'
+        default_class = 'text-xl font-bold leading-tight tracking-tight md:text-2xl'
         "#{default_class} #{additional_classes}"
     end
 
     def input_class(additional_classes = "")
-        default_class = 'shadow border border-gray-300 rounded-md w-full py-3 px-4 mt-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-green-700 focus:ring-green-700'
+        default_class = 'shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-green-700 focus:ring-green-700'
         "#{default_class} #{additional_classes}"
     end
 
