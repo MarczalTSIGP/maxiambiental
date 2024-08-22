@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Redefinir sua senha</title>
+      <style>
+         body {
+           background-color: #f8f8f8;
+           font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+         }
+
+         .container {
+           max-width: 600px;
+           margin: 0 auto;
+           padding: 20px;
+         }
+
+         .content {
+           background-color: #ffffff;
+           padding: 20px;
+         }
+
+         .header {
+           border-bottom: 7px solid #9ec42b;
+           padding-bottom: 20px;
+           text-align: center;
+         }
+
+         .header img {
+           max-width: 110px;
+           height: auto;
+         }
+
+         .body {
+           padding: 30px 0 70px;
+           text-align: center;
+         }
+
+         .body h1 {
+           color: #000000;
+           line-height: 32px;
+         }
+
+         .body p {
+           margin: 10px 0;
+         }
+
+         .button {
+           background-color: #9ec42b;
+           border: none;
+           border-radius: 100px;
+           color: #ffffff;
+           cursor: pointer;
+           display: inline-block;
+           font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+           font-size: 13px;
+           font-weight: bold;
+           padding: 15px 25px;
+           text-align: center;
+           text-decoration: none;
+         }
+
+         .footer {
+           padding-top: 20px;
+           text-align: center;
+         }
+
+         .social-icons {
+           list-style: none;
+           margin: 0;
+           padding: 0;
+         }
+
+         .social-icons li {
+           display: inline-block;
+           margin: 0 4px;
+         }
+
+         .social-icons a {
+           background-color: white;
+           border-radius: 6px;
+           display: block;
+           height: 30px;
+           width: 30px;
+         }
+
+         .social-icons img {
+           border-radius: 6px;
+           display: block;
+         }
+
+         .footer p {
+           font-size: 11px;
+           line-height: 22px;
+           margin: 10px 0;
+         }
+
+         .footer a {
+           color: #9ec42b;
+           text-decoration: none;
+         }
+
+         /* Responsividade básica */
+         @media (max-width: 480px) {
+           .container {
+             padding: 10px;
+           }
+
+           .content {
+             padding: 10px;
+           }
+
+           .body {
+             padding: 20px 0 50px;
+           }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="content">
+            <header class="header">
+               <img src="https://maxiambiental.com/images/logo_folha.png" alt="Logo da empresa">
+            </header>
+            <div class="body">
+               <%= yield %>
+            </div>
+            <footer class="footer">
+               <ul class="social-icons">
+                  <li><a href="[[SHORT_PERMALINK]]" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg" alt="Facebook"></a></li>
+                  <li><a href="[[SHORT_PERMALINK]]" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg" alt="Twitter"></a></li>
+                  <li><a href="[[SHORT_PERMALINK]]" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="LinkedIn"></a></li>
+               </ul>
+               <p>
+                  <a href="#">Page 1</a> | <a href="#">Page 2</a> | <a href="#">Page 3</a>
+               </p>
+               <p>
+                  Click <a href="[[UNSUB_LINK_EN]]">here</a> to unsubscribe.
+                  <br>
+                  <span style="font-size:10px">Created by <a href="https://www.mailjet.com/?utm_source=saas_email_templates&amp;utm_medium=logo_footer_email&amp;utm_campaign=password_reset">Mailjet</a></span>
+               </p>
+            </footer>
+         </div>
+      </div>
+   </body>
+</html>

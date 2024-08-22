@@ -1,6 +1,6 @@
 class DeviseMailer < Devise::Mailer
-  helper :application # Adiciona helpers da aplicação, se necessário
+  helper :application
   default template_path: 'devise/mailer'
-  layout 'mailer' # Especifica o layout que deve ser usado
+  layout 'devise/mailer'
 end
   
