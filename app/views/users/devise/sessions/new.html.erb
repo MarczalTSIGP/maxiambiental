@@ -1,8 +1,10 @@
 <% provide(:head_title, t('devise.sessions.sign_in')) %>
 
-<%= form_with(model: resource, url: session_path(resource_name), local: true, class: "space-y-4 md:space-y-6") do |f| %>
-    <%= f.email_field :email, placeholder: "Email", class: input_class %>
-    <%= f.password_field :password, placeholder: "Senha" , class: input_class %>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4 md:space-y-6" }) do |f| %>
+  <%= f.error_notification %>
 
-    <%= f.submit "Entrar", class: button_class("bg-green-700 text-white") %>
+  <%= f.input :email, placeholder: "Email", input_html: { class: input_class }, error: true %>
+  <%= f.input :password, placeholder: "Senha", input_html: { class: input_class }, error: true %>
+
+  <%= f.button :submit, "Entrar", class: button_class("bg-green-700 text-white") %>
 <% end %>
