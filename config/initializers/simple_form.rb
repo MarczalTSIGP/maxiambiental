@@ -122,7 +122,7 @@ SimpleForm.setup do |config|
   # config.input_field_valid_class = 'is-valid'
   # config.input_field_error_class = 'is-invalid'
 
-  config.wrappers :tailwind, class: "mb-4", error_class: "text-red-500 text-sm" do |b|
+  config.wrappers :tailwind, class: 'mb-4', error_class: 'text-red-500 text-sm' do |b|
     b.use :html5
     b.use :placeholder
 
@@ -132,8 +132,8 @@ SimpleForm.setup do |config|
                       focus:outline-none focus:shadow-outline focus:border-green-700 focus:ring-green-700'
     end
 
-    b.use :error, wrap_with: { tag: :span, class: "m-1 text-sm text-red-700" }
-    b.use :hint, wrap_with: { tag: :p, class: "m-1 text-sm text-gray-500" }
+    b.use :error, wrap_with: { tag: :span, class: 'm-1 text-sm text-red-700' }
+    b.use :hint, wrap_with: { tag: :p, class: 'm-1 text-sm text-gray-500' }
   end
 
   config.button_class = 'w-full text-black py-2 px-4 rounded-md border focus:outline-none focus:shadow-outline

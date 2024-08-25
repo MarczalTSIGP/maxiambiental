@@ -61,6 +61,7 @@
       padding: 15px 25px;
       text-align: center;
       text-decoration: none;
+      margin-top: 10px;
     }
 
     .footer {
@@ -123,7 +124,7 @@
   <div class="container">
     <div class="content">
       <header class="header">
-        <img src="https://maxiambiental.com/images/logo_folha.png" alt="Logo da empresa">
+        <%= image_tag('maxiambiental-logo.svg', alt: 'Logo', class: 'h-14') %>
       </header>
 
       <div class="body">
@@ -141,7 +142,6 @@
           <a href="#">Page 1</a> | <a href="#">Page 2</a> | <a href="#">Page 3</a>
         </p>
         <p>
-          Click <a href="[[UNSUB_LINK_EN]]">here</a> to unsubscribe.
           <br>
           <span style="font-size:10px">Created by <a href="https://www.mailjet.com/?utm_source=saas_email_templates&amp;utm_medium=logo_footer_email&amp;utm_campaign=password_reset">Mailjet</a></span>
         </p>
