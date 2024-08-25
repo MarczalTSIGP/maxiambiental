@@ -6,7 +6,7 @@
   <%= f.input :email, placeholder: t('simple_form.labels.email'), error: true %>
   <%= f.input :password, placeholder: t('simple_form.labels.password'), error: true %>
 
-  <%= f.button :submit, t('devise.sessions.sign_in'), class: "bg-green-700 text-white cursor-pointer" %>
+  <%= f.button :submit, t('devise.sessions.sign_in') %>
 <% end %>
 
 <%= render 'layouts/devise/partials/google_button' %>
