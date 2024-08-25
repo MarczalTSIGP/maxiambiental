@@ -3,8 +3,8 @@
 <%= render(Alert::AlertComponent.new(type: :error, message: flash[:alert])) if flash[:alert].present? %>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4 md:space-y-6" }) do |f| %>
-  <%= f.input :email, placeholder: "Email", input_html: { class: input_class }, error: true %>
-  <%= f.input :password, placeholder: "Senha", input_html: { class: input_class }, error: true %>
+  <%= f.input :email, placeholder: t('simple_form.labels.email'), error: true %>
+  <%= f.input :password, placeholder: t('simple_form.labels.password'), error: true %>
 
-  <%= f.button :submit, "Entrar", class: button_class("bg-green-700 text-white") %>
+  <%= f.button :submit, t('devise.sessions.sign_in'), class: "bg-green-700 text-white cursor-pointer" %>
 <% end %>
