@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Uncomment this and change the path if necessary to include your own
 # components.
@@ -14,7 +15,7 @@ SimpleForm.setup do |config|
   # stack. The options given below are used to wrap the
   # whole input.
   config.wrappers :default, class: :input,
-    hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
+                            hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
     # given input by passing: `f.input EXTENSION_NAME => false`.
@@ -173,20 +174,21 @@ SimpleForm.setup do |config|
   # Defines validation classes to the input_field. By default it's nil.
   # config.input_field_valid_class = 'is-valid'
   # config.input_field_error_class = 'is-invalid'
-  
-  config.wrappers :tailwind, class: "mb-4", error_class: "text-red-500" do |b|
+
+  config.wrappers :tailwind, class: 'mb-4', error_class: 'text-red-500' do |b|
     b.use :html5
     b.use :placeholder
-    
+
     b.wrapper :input_wrapper, tag: :div do |ba|
-      ba.use :input, class: "shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-green-700 focus:ring-green-700"
+      ba.use :input,
+             class: 'shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-green-700 focus:ring-green-700'
     end
-    
-    b.use :error, wrap_with: { tag: :p, class: "mt-2 text-sm text-red-600" }
-    b.use :hint, wrap_with: { tag: :p, class: "mt-2 text-sm text-gray-500" }
+
+    b.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
+    b.use :hint, wrap_with: { tag: :p, class: 'mt-2 text-sm text-gray-500' }
   end
-  
-  config.button_class = "w-full text-black py-2 px-4 rounded-md border focus:outline-none focus:shadow-outline inline-flex items-center justify-center"
+
+  config.button_class = 'w-full text-black py-2 px-4 rounded-md border focus:outline-none focus:shadow-outline inline-flex items-center justify-center'
 
   config.default_wrapper = :tailwind
 end
