@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:head_title) %></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= render 'layouts/devise/partials/header' %>
+
+    <div class="<%= auth_container_class %>">
+      <div class="<%= auth_box_class %>">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">  
+          <h1 class="<%= h1_class("text-green-700 text-center") %>"><%= yield(:head_title) %></h1>
+
+          <%= yield %>
+        
+          <%= render 'layouts/devise/partials/actions' %>
+        </div>
+      </div>  <!-- box -->
+    </div>  <!-- container -->
+
+    <%= render 'layouts/devise/partials/footer' %>
+  </body>
+</html>

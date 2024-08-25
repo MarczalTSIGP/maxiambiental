@@ -1,0 +1,13 @@
+<% if controller_name == 'sessions' && action_name == 'new' %>
+    <div class="text-center">
+        <%= link_to t('forgot_your_password'), new_admin_password_path, class: "inline-flex align-bottom text-black mb-1" %>
+        <p class="text-sm font-light dark:text-gray-500">
+            <%= t('do_not_have_an_account') %> <%= link_to t('sign_up'), new_admin_registration_path, class: "font-medium text-green-700 hover:underline" %>
+        </p>
+    </div>
+<% elsif controller_name == 'registrations' && action_name == 'new' %>
+    <div class="text-center text-gray-500">
+        <%= t('already_have_an_account') %>
+        <%= link_to t('sign_in'), new_admin_session_path, class: "font-bold text-green-700 hover:underline" %>
+    </div>
+<% end %>
