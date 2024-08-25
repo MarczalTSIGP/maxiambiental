@@ -9,6 +9,7 @@ pt-BR:
       default_message: "Por favor, revise os problemas abaixo:"
     labels:
       password: "Senha"
+      password_confirmation: "Confirmação da senha"
       email: "E-mail"
     hints:
       username: "Nome de usuário para entrar."
