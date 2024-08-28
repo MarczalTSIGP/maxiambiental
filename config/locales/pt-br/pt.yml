@@ -36,6 +36,7 @@ pt:
   email: "E-mail"
   password: "Senha"
   remember_me: "Lembrar de mim"
+  send: "Enviar"
 
   errors:
     messages:
