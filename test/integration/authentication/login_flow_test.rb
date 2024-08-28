@@ -35,7 +35,7 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
 
-    assert_select 'p', t('devise.failure.invalid', authentication_keys: 'Email')
+    assert_select 'p', t('devise.failure.invalid', authentication_keys: 'E-mail')
   end
 
   test 'admin login with empty credentials' do
@@ -47,6 +47,6 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
 
-    assert_select 'p', t('devise.failure.invalid', authentication_keys: 'Email')
+    assert_select 'p', t('devise.failure.invalid', authentication_keys: 'E-mail')
   end
 end

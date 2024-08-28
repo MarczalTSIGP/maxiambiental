@@ -127,9 +127,8 @@ SimpleForm.setup do |config|
     b.use :placeholder
 
     b.wrapper :input_wrapper, tag: :div do |ba|
-      ba.use :input,
-             class: 'shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight
-                      focus:outline-none focus:shadow-outline focus:border-green-700 focus:ring-green-700'
+      ba.use :input, class: "shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight
+                               focus:outline-none focus:shadow-outline focus:border-green-700 focus:ring-green-700"
     end
 
     b.use :error, wrap_with: { tag: :span, class: 'm-1 text-sm text-red-700' }
@@ -137,7 +136,7 @@ SimpleForm.setup do |config|
   end
 
   config.button_class = 'w-full text-black py-2 px-4 rounded-md border focus:outline-none focus:shadow-outline
-                          inline-flex items-center justify-center bg-green-700 text-white cursor-pointer'
+                           inline-flex items-center justify-center bg-green-700 text-white cursor-pointer'
 
   config.default_wrapper = :tailwind
 end

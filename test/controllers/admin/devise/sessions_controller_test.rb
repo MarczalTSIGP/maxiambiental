@@ -24,7 +24,7 @@ class Admin::Devise::SessionsControllerTest < ActionDispatch::IntegrationTest
     post admin_session_path, params: { admin: { email: @admin.email, password: 'invalid' } }
 
     assert_response :unprocessable_entity
-    assert_equal t('devise.failure.invalid', authentication_keys: 'Email'), flash[:alert]
+    assert_equal t('devise.failure.invalid', authentication_keys: 'E-mail'), flash[:alert]
   end
 
   test 'should logout user' do
