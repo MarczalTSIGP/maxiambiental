@@ -7,6 +7,9 @@ class AddColumnsToAdmins < ActiveRecord::Migration[7.1]
       t.string :avatar
       t.boolean :active, default: true, null: false
 
+      t.string :provider
+      t.string :uid
+
       t.index :name
     end
   end

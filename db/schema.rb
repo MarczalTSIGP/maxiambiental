@@ -32,6 +32,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_24_135136) do
     t.text "bio"
     t.string "avatar"
     t.boolean "active", default: true, null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["name"], name: "index_admins_on_name"
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true

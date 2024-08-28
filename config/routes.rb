@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
     registrations: 'admin/devise/registrations',
     sessions: 'admin/devise/sessions',
-    passwords: 'admin/devise/passwords'
+    passwords: 'admin/devise/passwords',
+    omniauth_callbacks: 'admin/omniauth/omniauth_callbacks'
   }
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
