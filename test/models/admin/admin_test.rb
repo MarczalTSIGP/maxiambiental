@@ -11,6 +11,11 @@ class AdminTest < ActiveSupport::TestCase
       avatar: 'avatar_url',
       active: true
     )
+
+    @auth = {
+      uid: '123456789',
+      email: 'user@example.com'
+    }
   end
 
   test 'should be valid' do
@@ -42,9 +47,30 @@ class AdminTest < ActiveSupport::TestCase
     assert_not new_admin.master
   end
 
+  # TODO: Check where putting these tests.
+  # Tests google auth
+
   test 'active should default to true' do
     new_admin = Admin.new(email: 'new_admin@example.com', password: 'password')
 
     assert new_admin.active
+  end
+
+  test "should create a new admin if it doesn't exist" do
+    assert_difference 'Admin.count', 1 do
+      Admin.from_google(@auth)
+    end
+  end
+
+  test "should not create a new admin if it already exists" do
+    Admin.create!(email: 'user@example.com', uid: '123456789', provider: 'google', password: 'password')
+    assert_no_difference 'Admin.count' do
+      Admin.from_google(@auth)
+    end
+  end
+
+  test "should generate a random password" do
+    admin = Admin.from_google(@auth)
+    assert_not_nil admin.password
   end
 end
