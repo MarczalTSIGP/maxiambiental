@@ -86,8 +86,8 @@ Rails.application.configure do
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: 'fc32580abeaf1a',
-    password: '90b4931ec375bd',
+    user_name: Rails.application.credentials&.mailtrap&.username,
+    password: Rails.application.credentials&.mailtrap&.password,
     address: 'sandbox.smtp.mailtrap.io',
     host: 'sandbox.smtp.mailtrap.io',
     port: '2525',
