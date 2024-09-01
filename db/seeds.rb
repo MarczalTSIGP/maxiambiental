@@ -8,4 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Admin.create_with(password: '123456').find_or_create_by!(email: 'admin@maxiambiental.com')
+Admin.create_with(password: '123456', name: 'Maxi Ambiental Adm').find_or_create_by!(email: 'admin@maxiambiental.com')
