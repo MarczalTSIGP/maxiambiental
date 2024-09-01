@@ -122,22 +122,25 @@ SimpleForm.setup do |config|
   # config.input_field_valid_class = 'is-valid'
   # config.input_field_error_class = 'is-invalid'
 
-  config.wrappers :tailwind, class: 'mb-4', error_class: 'text-red-500' do |b|
+  config.wrappers :tailwind, tag: 'div', class: 'mb-4 space-y-4 md:space-y-6', error_class: 'text-red-500' do |b|
     b.use :html5
     b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
 
-    b.wrapper :input_wrapper, tag: :div do |ba|
+    b.wrapper :input_wrapper, tag: 'div' do |ba|
       ba.use :input,
-             class: 'shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight
-                      focus:outline-none focus:shadow-outline focus:border-green-700 focus:ring-green-700'
-    end
+             class: 'shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700'
 
-    b.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
-    b.use :hint, wrap_with: { tag: :p, class: 'mt-2 text-sm text-gray-500' }
+      ba.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
+      ba.use :hint, wrap_with: { tag: :p, class: 'mt-2 text-sm text-gray-500' }
+    end
   end
 
-  config.button_class = 'w-full text-black py-2 px-4 rounded-md border focus:outline-none focus:shadow-outline
-                          inline-flex items-center justify-center'
+  config.button_class = 'w-full text-white py-2 px-4 rounded-md bg-green-700 hover:bg-green-800 cursor-pointer'
 
   config.default_wrapper = :tailwind
 end

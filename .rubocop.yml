@@ -19,6 +19,7 @@ AllCops:
     - "config/initializers/backtrace_silencers.rb"
     - "config/initializers/content_security_policy.rb"
     - "config/environments/production.rb"
+    - "config/initializers/simple_form.rb"
 
 Style/Documentation:
   Enabled: false
