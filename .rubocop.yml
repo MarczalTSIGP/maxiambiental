@@ -41,3 +41,7 @@ Metrics/BlockLength:
   Exclude:
     - "config/environments/development.rb"
     - "config/routes.rb"
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/admin/devise/sessions_controller.rb
