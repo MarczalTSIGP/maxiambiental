@@ -7,7 +7,6 @@ class AdminTest < ActiveSupport::TestCase
       password: 'password',
       name: 'Admin Name',
       master: true,
-      bio: 'This is a bio.',
       avatar: 'avatar_url',
       active: true
     )

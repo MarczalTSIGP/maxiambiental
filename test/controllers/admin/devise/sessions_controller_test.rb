@@ -16,7 +16,7 @@ class Admin::Devise::SessionsControllerTest < ActionDispatch::IntegrationTest
   test 'should login user' do
     post admin_session_path, params: { admin: { email: @admin.email, password: @admin.password } }
 
-    assert_redirected_to root_path
+    assert_redirected_to admin_dashboard_admin_root_path
     assert_equal t('devise.sessions.signed_in'), flash[:notice]
   end
 

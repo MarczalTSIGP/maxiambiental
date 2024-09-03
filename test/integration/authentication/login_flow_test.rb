@@ -18,12 +18,12 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
   test 'admin login with valid credentials' do
     post admin_session_path, params: { admin: { email: @admin.email, password: 'password' } }
 
-    assert_redirected_to root_path
+    assert_redirected_to admin_dashboard_admin_root_path
 
     follow_redirect!
 
     assert_response :success
-    assert_select 'h1', 'Maxiambiental, a melhor escolha para sua empresa.'
+    assert_select 'span', @admin.email
   end
 
   test 'admin login with invalid credentials' do
@@ -35,7 +35,7 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
 
-    assert_select 'p', t('devise.failure.invalid', authentication_keys: 'Email')
+    assert_select 'div', t('devise.failure.invalid', authentication_keys: 'Email')
   end
 
   test 'admin login with empty credentials' do
@@ -47,6 +47,6 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
 
-    assert_select 'p', t('devise.failure.invalid', authentication_keys: 'Email')
+    assert_select 'div', t('devise.failure.invalid', authentication_keys: 'Email')
   end
 end

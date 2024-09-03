@@ -1,35 +1,19 @@
 <nav class="fixed w-full bg-white h-20 border-gray-200 dark:bg-gray-900" data-controller="dropdown" data-action="click@window->dropdown#close">
-  <div class="flex flex-wrap items-center justify-between px-8 py-4">
-    <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: 'h-14'), root_path %>
+    <button data-controller="sidebar" data-action="click->sidebar#toggle" type="button" class="absolute inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+        <span class="sr-only">Open sidebar</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+        </svg>
+    </button>
+  <div class="flex flex-wrap items-center justify-end px-8 py-4">
 
     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" data-action="click->dropdown#toggle">
             <span class="sr-only">Open user menu</span>
-            <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+            <img class="w-8 h-8 rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="user photo">
         </button>
 
-        <!-- Dropdown menu -->
-
-        <div data-dropdown-target="menu" class="absolute right-8 top-14 z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-            <div class="px-4 py-3">
-                <span class="block text-sm text-gray-900 dark:text-white"><%= @current_admin.name %></span>
-                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><%= @current_admin.email %></span>
-            </div>
-            <ul class="py-2" aria-labelledby="user-menu-button">
-                <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Settings</a>
-                </li>
-                <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Earnings</a>
-                </li>
-                <li>
-                    <%= link_to "Sign out", destroy_admin_session_path, data: { turbo_method: :delete } , class: "block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200" %>
-                </li>
-            </ul>
-        </div>
+        <%= render 'admin/dashboard/partials/dropdown' %>        
     </div>
   </div>
 </nav>

@@ -1,5 +1,5 @@
 class Admin::Devise::SessionsController < Devise::SessionsController
-  prepend_before_action :require_no_authentication , only: [:new, :create]
+  prepend_before_action :require_no_authentication, only: [:new, :create]
 
   layout 'layouts/admin/devise/session'
 
