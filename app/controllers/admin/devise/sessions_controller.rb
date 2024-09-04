@@ -4,6 +4,6 @@ class Admin::Devise::SessionsController < Devise::SessionsController
   layout 'layouts/admin/devise/session'
 
   def after_sign_in_path_for(_resource)
-    admin_dashboard_admin_root_path
+    admin_root_path
   end
 end

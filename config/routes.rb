@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   namespace :admin do
-    namespace :dashboard do
-      get '/', to: 'dashboard#index', as: :admin_root
-    end
+    root 'dashboard#index'
   end
 end
