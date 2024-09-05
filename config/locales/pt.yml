@@ -31,3 +31,5 @@ pt:
   sign_up: "Cadastre-se"
   forgot_password: "Esqueceu sua senha?"
   do_not_have_account: "Não tem uma conta?"
+  email: "E-mail"
+  password: "Senha"
