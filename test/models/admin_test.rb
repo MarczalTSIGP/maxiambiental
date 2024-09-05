@@ -6,16 +6,18 @@ class AdminTest < ActiveSupport::TestCase
   end
 
   test 'should be valid' do
-    assert @admin.valid?
+    assert_predicate @admin, :valid?
   end
 
   test 'master should default to false' do
     new_admin = Admin.new(email: 'new_admin@example.com', password: 'password')
+
     assert_not new_admin.master
   end
 
   test 'active should default to true' do
     new_admin = Admin.new(email: 'new_admin@example.com', password: 'password')
+
     assert new_admin.active
   end
 
