@@ -18,7 +18,7 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
   test 'admin login with valid credentials' do
     post admin_session_path, params: { admin: { email: @admin.email, password: 'password' } }
 
-    assert_redirected_to admin_dashboard_admin_root_path
+    assert_redirected_to admin_root_path
 
     follow_redirect!
 
