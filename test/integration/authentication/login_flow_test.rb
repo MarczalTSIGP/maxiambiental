@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class LoginFlowTest < ActionDispatch::IntegrationTest
-  include ActionView::Helpers::TranslationHelper
-
   setup do
     @admin = FactoryBot.create(:admin)
   end
@@ -12,7 +10,7 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :success
 
-    assert_select 'h1', 'Entrar'
+    assert_select 'h1', t('views.sign_in.index.sign_in')
   end
 
   test 'admin login with valid credentials' do

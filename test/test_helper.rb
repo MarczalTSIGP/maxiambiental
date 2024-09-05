@@ -10,6 +10,7 @@ module ActiveSupport
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 
+    include ActionView::Helpers::TranslationHelper
     include Devise::Test::IntegrationHelpers
     include FactoryBot::Syntax::Methods
     include BulletHelper
