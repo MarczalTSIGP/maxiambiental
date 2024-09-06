@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AdminTest < ActiveSupport::TestCase
   def setup
-    @admin = FactoryBot.build(:admin)
+    @admin = build(:admin)
   end
 
   test 'should be valid' do
@@ -21,9 +21,8 @@ class AdminTest < ActiveSupport::TestCase
     assert new_admin.active
   end
 
-  # context 'validations' do
-  #   should validate_presence_of(:email)
-  #   should validate_uniqueness_of(:email)
-  #   should validate_presence_of(:password)
-  # end
+  context 'validations' do
+    should validate_presence_of(:email)
+    should validate_presence_of(:password)
+  end
 end
