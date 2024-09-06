@@ -1,1 +1,25 @@
 pt-BR:
+<<<<<<< HEAD
+=======
+  authentication:
+    sign_in:
+      title: 'Entrar'
+      sign_up: "Cadastre-se"
+      forgot_password: "Esqueceu sua senha?"
+      do_not_have_account: "Não tem uma conta?"
+    reset_password:
+      title: "Redefinir Senha"
+  common:
+    buttons:
+      sign_in: "Entrar"
+      sign_up: "Cadastre-se"
+      send: "Enviar"
+    messages:
+      forgot_password: "Esqueceu sua senha?"
+      do_not_have_account: "Não tem uma conta?"
+      remember_password: "Lembra sua senha?"
+    links:
+      forgot_password: "Esqueceu sua senha?"
+      do_not_have_account: "Não tem uma conta?"
+      sign_in_here: "Entre aqui"
+>>>>>>> da9102f (Refactored send reset password email page)
