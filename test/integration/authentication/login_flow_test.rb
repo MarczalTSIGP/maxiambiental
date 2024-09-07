@@ -5,15 +5,15 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
     @admin = FactoryBot.create(:admin)
   end
 
-  test 'admin login page' do
+  test 'should display admin login page' do
     get new_admin_session_path
 
     assert_response :success
 
-    assert_select 'h1', t('views.sign_in.index.sign_in')
+    assert_select 'h1', t('devise.sessions.sign_in')
   end
 
-  test 'admin login with valid credentials' do
+  test 'should login admin with valid credentials' do
     post admin_session_path, params: { admin: { email: @admin.email, password: 'password' } }
 
     assert_redirected_to admin_root_path
@@ -24,7 +24,7 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
     assert_select 'span', @admin.email
   end
 
-  test 'admin login with invalid credentials' do
+  test 'should not login admin with invalid credentials' do
     get new_admin_session_path
 
     assert_response :success
@@ -33,10 +33,10 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
 
-    assert_select 'div', t('devise.failure.invalid', authentication_keys: 'Email')
+    assert_select '[data-alert-target="alert"]', t('devise.failure.invalid', authentication_keys: 'E-mail')
   end
 
-  test 'admin login with empty credentials' do
+  test 'should not login admin with empty credentials' do
     get new_admin_session_path
 
     assert_response :success
@@ -45,6 +45,6 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
 
-    assert_select 'div', t('devise.failure.invalid', authentication_keys: 'Email')
+    assert_select '[data-alert-target="alert"]', t('devise.failure.invalid', authentication_keys: 'E-mail')
   end
 end

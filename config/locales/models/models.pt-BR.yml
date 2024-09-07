@@ -1,8 +1,9 @@
 pt-BR:
-  models:
-    user: 'Usuário'
-  attributes:
-    user:
-      name: 'Nome'
-      email: 'E-mail'
-      password: 'Senha'
+  activerecord:
+    models:
+      admin: 'Administrador'
+    attributes:
+      admin:
+        name: 'Nome'
+        email: 'E-mail'
+        password: 'Senha'

@@ -1,10 +1,10 @@
 <% provide(:head_title, t('devise.sessions.sign_in')) %>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4 md:space-y-6" }) do |f| %>
-  <%= f.input :email, placeholder: t('simple_form.labels.email'), error: true %>
-  <%= f.input :password, placeholder: t('simple_form.labels.password'), error: true %>
+   <%= f.input :email, placeholder: t('simple_form.labels.email'), error: true %>
+   <%= f.input :password, placeholder: t('simple_form.labels.password'), error: true %>
 
-  <%= link_to t('forgot_password'), "#", class: "flex justify-end text-sm font-light text-gray-600" %>
+   <%= link_to t('devise.sessions.forgot_password'), "#", class: "flex justify-end text-sm font-light text-gray-600" %>
 
-  <%= f.button :submit, t('devise.sessions.sign_in') %>
+   <%= f.button :submit, t('devise.sessions.sign_in') %>
 <% end %>

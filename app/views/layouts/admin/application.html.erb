@@ -12,6 +12,11 @@
    </head>
 
    <body>
+      <div data-controller="sidebar">
+         <%= render(Admin::Header::HeaderComponent.new(current_admin: current_admin)) %>
+         <%= render(Admin::Sidebar::SidebarComponent.new) %>
+      </div>
+
       <main>
          <%= yield %>
       </main>

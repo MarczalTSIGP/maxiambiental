@@ -45,3 +45,7 @@ Metrics/BlockLength:
 Rails/LexicallyScopedActionFilter:
   Exclude:
     - app/controllers/admin/devise/sessions_controller.rb
+
+Rails/ApplicationController:
+  Exclude:
+    - app/controllers/admin/base_controller.rb

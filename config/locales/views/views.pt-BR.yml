@@ -1,8 +1,1 @@
 pt-BR:
-  views:
-    sign_in:
-      index:
-        sign_in: 'Entrar'
-        sign_up: "Cadastre-se"
-        forgot_password: "Esqueceu sua senha?"
-        do_not_have_account: "Não tem uma conta?"

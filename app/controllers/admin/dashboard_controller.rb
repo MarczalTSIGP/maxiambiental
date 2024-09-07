@@ -1,5 +1,3 @@
-class Admin::DashboardController < ApplicationController
-  prepend_before_action :authenticate_admin!
-
+class Admin::DashboardController < Admin::BaseController
   def index; end
 end
