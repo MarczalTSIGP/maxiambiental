@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
   root 'home#index'
+
+  devise_for :admins, controllers: { sessions: 'admin/devise/sessions' }
+
+  authenticate :admin do
+    namespace :admin do
+      root 'dashboard#index'
+    end
+  end
 end

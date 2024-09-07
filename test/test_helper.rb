@@ -10,6 +10,8 @@ module ActiveSupport
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 
+    include ActionView::Helpers::TranslationHelper
+    include Devise::Test::IntegrationHelpers
     include FactoryBot::Syntax::Methods
     include BulletHelper
 
@@ -21,6 +23,13 @@ module ActiveSupport
 
     parallelize_teardown do |_worker|
       SimpleCov.result if ENV['COVERAGE']
+    end
+  end
+
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :minitest
+      with.library :rails
     end
   end
 end

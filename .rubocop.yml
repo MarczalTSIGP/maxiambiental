@@ -14,10 +14,12 @@ AllCops:
     - "vendor/**/*"
     - "bin/*"
     - "db/schema.rb"
+    - "db/migrate/*"
     - "config/puma.rb"
     - "config/initializers/backtrace_silencers.rb"
     - "config/initializers/content_security_policy.rb"
     - "config/environments/production.rb"
+    - "config/initializers/simple_form.rb"
 
 Style/Documentation:
   Enabled: false
@@ -39,3 +41,11 @@ Metrics/BlockLength:
   Exclude:
     - "config/environments/development.rb"
     - "config/routes.rb"
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/admin/devise/sessions_controller.rb
+
+Rails/ApplicationController:
+  Exclude:
+    - app/controllers/admin/base_controller.rb

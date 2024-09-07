@@ -41,6 +41,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -79,4 +81,6 @@ Rails.application.configure do
     Bullet.bullet_logger = true
     Bullet.raise = true # raise an error if n+1 query occurs
   end
+
+  config.web_console.allowed_ips = ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
 end

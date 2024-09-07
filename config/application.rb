@@ -23,5 +23,9 @@ module Maxiambiental
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.i18n.enforce_available_locales = false
+    config.i18n.available_locales = ['pt-BR']
+    config.i18n.default_locale = :'pt-BR'
   end
 end
