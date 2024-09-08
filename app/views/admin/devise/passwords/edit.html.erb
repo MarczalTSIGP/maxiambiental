@@ -5,8 +5,8 @@
   <%= hidden_field_tag :_method, 'put' %>
   <%= f.hidden_field :reset_password_token %>
   
-  <%= f.input :password, placeholder: t('simple_form.labels.password') %>
-  <%= f.input :password_confirmation, placeholder: t('simple_form.labels.password_confirmation') %>
+  <%= f.input :password, placeholder: t('simple_form.labels.password'), error: true %>
+  <%= f.input :password_confirmation, placeholder: t('simple_form.labels.password_confirmation'), error: true %>
 
   <%= f.button :submit, t('authentication.reset_password.title') %>
 <% end %>

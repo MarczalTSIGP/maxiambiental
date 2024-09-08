@@ -1,25 +1,23 @@
 require 'application_system_test_case'
 
 class ResetPasswordsTest < ApplicationSystemTestCase
-  include Devise::Test::IntegrationHelpers
+  setup do
+    @admin = FactoryBot.create(:admin)
+  end
 
-  # def setup
-  #   @admin = Admin.create!(
-  #     email: "admin@example.com",
-  #     password: "password",
-  #     password_confirmation: "password"
-  #   )
-  # end
+  test 'reset password' do
+    visit new_admin_session_path
 
-  # test "admin can request a password reset" do
-  #   visit new_admin_password_path
+    click_on I18n.t('devise.sessions.forgot_password')
 
-  #   fill_in "Email", with: @admin.email
-  #   click_on "Send me reset password instructions"
+    assert_current_path new_admin_password_path
 
-  #   assert_text "You will receive an email with instructions on how to reset your password in a few minutes."
-  #   assert_not_nil @admin.reload.reset_password_token
-  # end
+    fill_in label('email'), with: @admin.email
+    click_on I18n.t('buttons.send')
+
+    assert_text I18n.t('devise.passwords.send_instructions')
+    assert_not_nil @admin.reload.reset_password_token
+  end
 
   # test "admin can reset password with valid token" do
   #   @admin.send_reset_password_instructions
@@ -28,18 +26,57 @@ class ResetPasswordsTest < ApplicationSystemTestCase
 
   #   visit edit_admin_password_path(reset_password_token: token)
 
-  #   fill_in "New password", with: "newpassword"
-  #   fill_in "Confirm new password", with: "newpassword"
-  #   click_on "Change my password"
+  #   fill_in label("password"), with: "newpassword"
+  #   fill_in label("password_confirmation"), with: "newpassword"
+  #   click_on I18n.t('authentication.reset_password.title')
 
-  #   assert_text "Your password has been changed successfully. You are now signed in."
-
+  #   assert_current_path admin_root_path
   #   sign_out @admin
-  #   visit new_admin_session_path
-  #   fill_in "Email", with: @admin.email
-  #   fill_in "Password", with: "newpassword"
-  #   click_on "Log in"
-
-  #   assert_text "Signed in successfully."
   # end
+
+  # test "cannot reset password with invalid email" do
+  #   visit new_admin_session_path
+
+  #   click_on I18n.t('devise.sessions.forgot_password')
+
+  #   assert_current_path new_admin_password_path
+
+  #   fill_in label('email'), with: "invalid@example.com"
+  #   click_on I18n.t('buttons.send')
+
+  #   assert_text I18n.t('devise.errors.messages.not_found', attribute: 'E-mail')
+  #   assert_nil @admin.reload.reset_password_token
+  # end
+
+  # test "cannot reset password with invalid token" do
+  #   visit edit_admin_password_path(reset_password_token: "invalidtoken")
+
+  #   fill_in label("password"), with: "newpassword"
+  #   fill_in label("password_confirmation"), with: "newpassword"
+  #   click_on I18n.t('authentication.reset_password.title')
+
+  #   assert_text I18n.t('devise.passwords.token_invalid')
+  #   assert_current_path edit_admin_password_path(reset_password_token: "invalidtoken")
+  # end
+
+  # test "cannot reset password with mismatched passwords" do
+  #   @admin.send_reset_password_instructions
+
+  #   token = @admin.reload.reset_password_token
+
+  #   visit edit_admin_password_path(reset_password_token: token)
+
+  #   fill_in label("password"), with: "newpassword"
+  #   fill_in label("password_confirmation"), with: "differentpassword"
+  #   click_on I18n.t('authentication.reset_password.title')
+
+  #   assert_text I18n.t('errors.messages.confirmation', attribute: 'Password')
+  #   assert_current_path edit_admin_password_path(reset_password_token: token)
+  # end
+
+  private
+
+  def label(attribute)
+    Admin.human_attribute_name attribute
+  end
 end
