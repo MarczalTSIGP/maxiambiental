@@ -3,7 +3,7 @@
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "space-y-4 md:space-y-6" }) do |f| %>
    <%= f.input :email, placeholder: t('simple_form.labels.email'), error: true %>
 
-   <%= f.button :submit, t('common.buttons.send') %>
+   <%= f.button :submit, t('buttons.send') %>
 <% end %>
 
 <%= render 'admin/devise/passwords/partials/links' %>

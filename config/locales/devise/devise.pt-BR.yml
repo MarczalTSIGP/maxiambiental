@@ -51,7 +51,8 @@ pt-BR:
       already_signed_out: "Logout realizado com sucesso."
       sign_in: "Entrar"
       sign_out: "Sair"
-      forgot_password: "Esquece sua senha?"
+      forgot_password: "Esqueceu sua senha?"
+      remember_your_password: "Lembrou sua senha?"
     unlocks:
       send_instructions: "Você receberá um email com instruções sobre como desbloquear sua conta em alguns minutos."
       send_paranoid_instructions: "Se sua conta existir, você receberá um email com instruções sobre como desbloqueá-la em alguns minutos."
@@ -63,6 +64,7 @@ pt-BR:
       expired: "expirou, por favor, solicite um novo"
       not_found: "não encontrado"
       not_locked: "não estava bloqueado"
+      blank: "%{attribute} nao pode ficar em branco"
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"
