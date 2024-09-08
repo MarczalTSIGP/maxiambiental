@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Redefinir sua senha</title>
+      <title><%= t('authentication.reset_password.title') %></title>
       <style>
          body {
            background-color: #f8f8f8;
@@ -61,6 +61,7 @@
            padding: 15px 25px;
            text-align: center;
            text-decoration: none;
+           margin-top: 50px;
          }
 
          .footer {
@@ -103,7 +104,6 @@
            text-decoration: none;
          }
 
-         /* Responsividade básica */
          @media (max-width: 480px) {
            .container {
              padding: 10px;
@@ -123,24 +123,21 @@
       <div class="container">
          <div class="content">
             <header class="header">
-               <img src="https://maxiambiental.com/images/logo_folha.png" alt="Logo da empresa">
+               <%= image_tag 'maxiambiental-logo.svg' %>
             </header>
             <div class="body">
                <%= yield %>
             </div>
             <footer class="footer">
                <ul class="social-icons">
-                  <li><a href="[[SHORT_PERMALINK]]" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg" alt="Facebook"></a></li>
-                  <li><a href="[[SHORT_PERMALINK]]" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg" alt="Twitter"></a></li>
-                  <li><a href="[[SHORT_PERMALINK]]" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="LinkedIn"></a></li>
+                  <li><%= link_to image_tag("facebook-logo.svg", alt: "Facebook"), "https://www.facebook.com/maxiambientaltreinamentos", target: "_blank" %></li>
+                  <li><%= link_to image_tag("twitter-logo.svg", alt: "Twitter"), "http://twitter.com/Maxiambiental", target: "_blank" %></li>
+                  <li><%= link_to image_tag("linkedin-logo.svg", alt: "LinkedIn"), "[[SHORT_PERMALINK]]", target: "_blank" %></li>
                </ul>
                <p>
-                  <a href="#">Page 1</a> | <a href="#">Page 2</a> | <a href="#">Page 3</a>
-               </p>
-               <p>
-                  Click <a href="[[UNSUB_LINK_EN]]">here</a> to unsubscribe.
+                  Clique <a href="[[UNSUB_LINK_EN]]">aqui</a> para cancelar a inscrição.
                   <br>
-                  <span style="font-size:10px">Created by <a href="https://www.mailjet.com/?utm_source=saas_email_templates&amp;utm_medium=logo_footer_email&amp;utm_campaign=password_reset">Mailjet</a></span>
+                  <span style="font-size:10px">Visite a <%= link_to 'Maxiambiental', "https://www.maxiambiental.com.br" %></span>
                </p>
             </footer>
          </div>
