@@ -1,0 +1,28 @@
+<div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
+   <%= button_tag id: 'dropdownAvatarNameButton', 
+               data: { action: 'click->dropdown#toggle' }, 
+               class: 'flex items-center text-sm pe-1 font-medium text-green-900 rounded-full hover:text-green-700 md:me-0', 
+               type: 'button' do %>
+
+      <span class="sr-only">Open user menu</span>
+
+      <%= image_tag(helpers.current_admin.avatar || 'default-profile.png', 
+                class: 'w-8 h-8 me-2 rounded-full', 
+                alt: 'user photo') %>
+
+      <%= helpers.current_admin.name || 'User' %>
+
+      <%= tag.svg(class: 'w-2.5 h-2.5 ms-3', 
+              xmlns: 'http://www.w3.org/2000/svg', 
+              fill: 'none', 
+              viewBox: '0 0 10 6', 
+              'aria-hidden': 'true') do %>
+         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+      <% end %>
+
+   <% end %>
+
+</div>
+
+<%= render 'layouts/admin/partials/dropdown' %>

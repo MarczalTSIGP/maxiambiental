@@ -6,13 +6,7 @@
 
    <ul class="py-2" aria-labelledby="user-menu-button">
       <li>
-         <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Dashboard</a>
-      </li>
-      <li>
-         <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Settings</a>
-      </li>
-      <li>
-         <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Earnings</a>
+         <%= link_to 'Perfil', admin_profile_path, class: "block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200" %>
       </li>
       <li>
          <%= link_to t('devise.sessions.sign_out'), destroy_admin_session_path, data: { turbo_method: :delete } , class: "block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200" %>
