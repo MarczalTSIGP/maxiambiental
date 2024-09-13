@@ -51,8 +51,16 @@ pt-BR:
       already_signed_out: "Logout realizado com sucesso."
       sign_in: "Entrar"
       sign_out: "Sair"
-      forgot_password: "Esqueceu sua senha?"
       remember_your_password: "Lembrou sua senha?"
+      forgot_password: 
+        title: "Esqueceu sua senha?"
+        instructions: "Digite seu endereço de email para receber um link de redefinição de senha."
+        button: "Envie-me o link de redefinição"
+      reset_password:
+        title: "Esqueceu sua senha?"
+        message: "Não se preocupe, vamos criar uma nova."
+        instructions: "Digite sua nova senha"
+        button: "Redefinir senha"
     unlocks:
       send_instructions: "Você receberá um email com instruções sobre como desbloquear sua conta em alguns minutos."
       send_paranoid_instructions: "Se sua conta existir, você receberá um email com instruções sobre como desbloqueá-la em alguns minutos."

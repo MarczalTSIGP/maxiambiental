@@ -19,5 +19,7 @@ pt-BR:
     prompts:
       age: "Selecione sua idade"
     placeholders:
-      email: "Digite seu e-mail"
-      password: "Digite sua senha"
+      admin: 
+        email: "Digite seu e-mail"
+        password: "Digite sua senha"
+        password_confirmation: "Confirme sua senha"

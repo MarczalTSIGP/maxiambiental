@@ -1,7 +1,4 @@
 pt-BR:
-  authentication:
-    reset_password:
-      title: "Redefinir senha"
   buttons:
     cancel: "Cancelar"
     confirm: "Confirmar"

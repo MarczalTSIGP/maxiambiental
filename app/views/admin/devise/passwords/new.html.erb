@@ -1,9 +1,9 @@
-<% provide(:head_title, t('authentication.reset_password.title')) %>
+<% provide(:head_title, t('devise.sessions.forgot_password.title')) %>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "space-y-4 md:space-y-6" }) do |f| %>
-   <%= f.input :email, placeholder: t('simple_form.labels.email'), error: true %>
+   <%= f.input :email %>
 
-   <%= f.button :submit, t('buttons.send') %>
+   <%= f.button :submit, t('devise.sessions.forgot_password.button') %>
 <% end %>
 
 <%= render 'admin/devise/passwords/partials/links' %>

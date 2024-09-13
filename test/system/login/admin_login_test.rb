@@ -8,8 +8,8 @@ class AdminLoginTest < ApplicationSystemTestCase
   test 'admin can log in' do
     visit new_admin_session_path
 
-    fill_in label('email'), with: @admin.email
-    fill_in label('password'), with: 'password'
+    fill_in :admin_email, with: @admin.email
+    fill_in :admin_password, with: 'password'
     click_on I18n.t('devise.sessions.sign_in')
 
     assert_current_path admin_root_path
@@ -18,17 +18,20 @@ class AdminLoginTest < ApplicationSystemTestCase
   test 'admin cannot log in with invalid credentials' do
     visit new_admin_session_path
 
-    fill_in label('email'), with: @admin.email
-    fill_in label('password'), with: 'wrongpassword'
+    fill_in :admin_email, with: @admin.email
+    fill_in :admin_password, with: 'wrongpassword'
     click_on I18n.t('devise.sessions.sign_in')
 
-    assert_text t('devise.failure.invalid', authentication_keys: 'E-mail')
+    assert_alert t('devise.failure.invalid', authentication_keys: 'E-mail')
+
     assert_current_path new_admin_session_path
   end
 
-  private
+  test 'admin can navigate to forgot password page' do
+    visit new_admin_session_path
 
-  def label(attribute)
-    Admin.human_attribute_name attribute
+    click_on I18n.t('devise.sessions.forgot_password.title')
+
+    assert_current_path new_admin_password_path
   end
 end

@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title><%= t('authentication.reset_password.title') %></title>
+      <title><%= t('devise.sessions.reset_password.title') %></title>
       <style>
          body {
            background-color: #f8f8f8;
@@ -30,7 +30,7 @@
          }
 
          .header img {
-           max-width: 110px;
+           max-width: 220px;
            height: auto;
          }
 
@@ -137,7 +137,7 @@
                <p>
                   Clique <a href="[[UNSUB_LINK_EN]]">aqui</a> para cancelar a inscrição.
                   <br>
-                  <span style="font-size:10px">Visite a <%= link_to 'Maxiambiental', "https://www.maxiambiental.com.br" %></span>
+                  <span style="font-size:10px"><%= link_to 'Maxiambiental Treinamentos', "https://www.maxiambiental.com" %></span>
                </p>
             </footer>
          </div>

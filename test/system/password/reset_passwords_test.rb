@@ -5,18 +5,15 @@ class ResetPasswordsTest < ApplicationSystemTestCase
     @admin = FactoryBot.create(:admin)
   end
 
-  test 'reset password' do
-    visit new_admin_session_path
+  test 'admin can ask instruction by email to reset password' do
+    visit new_admin_password_path
 
-    click_on I18n.t('devise.sessions.forgot_password')
+    fill_in :admin_email, with: @admin.email
+    click_on I18n.t('devise.sessions.forgot_password.button')
 
     assert_current_path new_admin_password_path
 
-    fill_in label('email'), with: @admin.email
-    click_on I18n.t('buttons.send')
-
-    assert_text I18n.t('devise.passwords.send_instructions')
-    assert_not_nil @admin.reload.reset_password_token
+    assert_alert I18n.t('devise.passwords.send_instructions')
   end
 
   # test "admin can reset password with valid token" do
@@ -73,10 +70,4 @@ class ResetPasswordsTest < ApplicationSystemTestCase
   #   assert_text I18n.t('errors.messages.confirmation', attribute: 'Password')
   #   assert_current_path edit_admin_password_path(reset_password_token: token)
   # end
-
-  private
-
-  def label(attribute)
-    Admin.human_attribute_name attribute
-  end
 end

@@ -8,3 +8,4 @@ pt-BR:
         email: 'E-mail'
         password: 'Senha'
         password_confirmation: 'Confirmação da senha'
+        reset_password_token: 'Chave de redefinição de senha'

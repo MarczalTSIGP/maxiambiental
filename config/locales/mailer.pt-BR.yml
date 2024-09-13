@@ -1,4 +1,0 @@
-pt-BR:
-  reset_password:
-    subject: "Redefinir senha"
-    message: "Não se preocupe, vamos criar uma nova."

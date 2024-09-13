@@ -81,7 +81,7 @@ function edit:credentials {
 # Test functions
 # -----------------------------------------------------------------------------
 function test {
-  _dc_ tests rails test "${@}"
+  docker compose exec tests rails test "${@}"
 }
 
 function test:all {
@@ -92,9 +92,9 @@ function test:coverage {
   docker compose exec -e COVERAGE=true tests rails test:all "${@}"
 }
 
-# Access remmina VNC: 
-# url: localhost:5900 
-# password: secret 
+# Access remmina VNC:
+# url: localhost:5900
+# password: secret
 function test:browser {
   docker compose exec -e LAUNCH_BROWSER=TRUE tests bundle exec rails test:system "${@}"
 }
@@ -125,7 +125,7 @@ function help {
   compgen -A function | grep -v "^_" | cat -n
 
   printf "\nExtended help:\n  Each task has comments for general usage\n"
-} 
+}
 
 # This idea is heavily inspired by: https://github.com/adriancooney/Taskfile
 TIMEFORMAT=$'\nTask completed in %3lR'
