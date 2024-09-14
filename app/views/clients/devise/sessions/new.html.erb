@@ -1,0 +1,16 @@
+<% provide(:head_title, t('devise.sessions.sign_in')) %>
+
+<%= simple_form_for @client, url: client_session_path, html: { class: "space-y-4 md:space-y-6" } do |f| %>
+
+   <%= f.input :email, placeholder: 'E-mail', error: true %>
+   <%= f.input :password, placeholder: 'Senha', error: true %>
+
+   <%= f.button :submit, 'Entrar' %>
+
+   <%= render 'shared/google_auth' %>
+
+   <div class='flex flex-col justify-center text-center'>
+      <%= link_to t('devise.sessions.forgot_password'), "#", class: "text-sm font-light text-gray-600" %>
+      <%= render 'clients/devise/partials/registration_link' %>
+   </div>
+<% end %>
