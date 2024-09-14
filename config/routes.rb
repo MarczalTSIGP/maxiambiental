@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   authenticate :admin do
     namespace :admin do
       root 'dashboard#index'
+      get 'profile' => 'profiles#index', as: :profile
       resource :profile, only: [:edit, :update] do
         delete :avatar, on: :collection, as: :delete_avatar
       end
