@@ -5,4 +5,8 @@ module ApplicationHelper
       alert: 'bg-orange-100 border-orange-600 text-orange-600',
       notice: 'bg-blue-100 border-blue-600 text-blue-600' }[flash_type.to_sym] || "alert-#{flash_type}"
   end
+
+  def translate_label(attribute, action)
+    t("labels.#{action}", attribute: t("attributes.#{attribute}"))
+  end
 end

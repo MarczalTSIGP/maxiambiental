@@ -1,3 +1,9 @@
 pt-BR:
   buttons:
     save: "Salvar"
+    delete: "Excluir"
+  labels:
+    edit: "Editar %{attribute}"
+  profile:
+    page_description: "Edite suas informações pessoais para garantir uma experiência personalizada e eficiente em nossos treinamentos."
+    delete_picture: "Excluir Imagem"

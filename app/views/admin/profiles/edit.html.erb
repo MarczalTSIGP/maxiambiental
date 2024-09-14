@@ -1,29 +1,17 @@
-<% provide(:page_title, 'Editar Informações Pessoais') %>
-<% provide(:page_description, 'Mantenha suas informações pessoais atualizadas para garantir uma experiência personalizada e eficiente em nossos treinamentos.') %>
+<% provide(:page_title, translate_label(:informations, :edit)) %>
+<% provide(:page_description, t('profile.page_description')) %>
 
-<div class="grid grid-cols-1 gap-4 m-auto p-4 lg:grid-cols-2 lg:p-4">
+<div class="lg:mx-8 grid grid-cols-1 gap-4 m-auto p-4 lg:grid-cols-2 lg:p-4">
 
-   <div class="w-full px-6 pb-8 mt-8 rounded-lg space-y-4 md:space-y-6">
+   <div class="w-full pb-8 mt-8 rounded-lg space-y-4 md:space-y-6">
 
-      <h5 class="text-xl font-bold">Editar Foto</h5>
-      <%= render 'admin/profiles/partials/profile_image' %>
+      <%= render 'admin/profiles/partials/form_image' %>
 
    </div>
 
-   <div class="w-full px-6 pb-8 mt-8 rounded-lg space-y-4 md:space-y-6">
+   <div class="w-full pb-8 mt-8 rounded-lg space-y-4 md:space-y-6">
 
-      <h5 class="text-xl font-bold">Editar Informações</h5>
-      <%= simple_form_for @admin, url: admin_profile_path, method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
-         <div class="items-center mt-8 sm:mt-14 text-green-700">
-
-            <%= f.input :name, label: "Your first name", placeholder: "Your first name", required: true %>
-
-            <%= f.input :email, label: "Your email", placeholder: "your.email@mail.com", required: true %>
-
-            <%= f.button :submit, "Save" %>
-
-         </div>
-      <% end %>
+      <%= render 'admin/profiles/partials/form_admin_info' %>
 
    </div>
 </div>
