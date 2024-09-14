@@ -7,9 +7,9 @@
 
       <span class="sr-only">Open user menu</span>
 
-      <%= image_tag(helpers.current_admin.avatar || 'default-profile.png', 
+      <%= image_tag helpers.current_admin.avatar.attached? ? url_for(helpers.current_admin.avatar) : 'default-profile.png', 
                 class: 'w-8 h-8 me-2 rounded-full', 
-                alt: 'user photo') %>
+                alt: 'user photo' %>
 
       <%= helpers.current_admin.name || 'User' %>
 
