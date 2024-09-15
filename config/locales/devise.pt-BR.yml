@@ -36,6 +36,7 @@ pt-BR:
       send_paranoid_instructions: "Se seu endereço de email existir em nosso banco de dados, você receberá um link para recuperação de senha em seu endereço de email em alguns minutos."
       updated: "Sua senha foi alterada com sucesso. Você está logado agora."
       updated_not_active: "Sua senha foi alterada com sucesso."
+      token_invalid: 'Chave de redefinição de senha não é válido'
     registrations:
       destroyed: "Até logo! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve."
       signed_up: "Bem-vindo! Você se registrou com sucesso."
@@ -67,6 +68,7 @@ pt-BR:
       unlocked: "Sua conta foi desbloqueada com sucesso. Por favor, faça login para continuar."
   errors:
     messages:
+      confirmation: "A confirmação não é igual a %{attribute}"
       already_confirmed: "já foi confirmado, por favor, tente fazer login"
       confirmation_period_expired: "precisa ser confirmado dentro de %{period}, por favor, solicite um novo"
       expired: "expirou, por favor, solicite um novo"
@@ -76,6 +78,4 @@ pt-BR:
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"
-  attributes:
-    email: "E-mail"
-    password: "Senha"
+

@@ -1,11 +1,9 @@
 pt-BR:
-  activerecord:
-    models:
-      admin: 'Administrador'
-    attributes:
-      admin:
-        name: 'Nome'
-        email: 'E-mail'
-        password: 'Senha'
-        password_confirmation: 'Confirmação da senha'
-        reset_password_token: 'Chave de redefinição de senha'
+  models:
+    admin: 'Administrador'
+  attributes:
+    name: 'Nome'
+    email: 'E-mail'
+    password: 'Senha'
+    password_confirmation: 'Confirmação da senha'
+    reset_password_token: 'Chave de redefinição de senha'
