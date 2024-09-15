@@ -7,11 +7,11 @@
 
       <span class="sr-only">Open user menu</span>
 
-      <%= image_tag helpers.current_admin.avatar.attached? ? url_for(helpers.current_admin.avatar) : 'default-profile.png', 
+      <%= image_tag @user.avatar.attached? ? url_for(@user.avatar) : 'default-profile.png', 
                 class: 'object-cover w-8 h-8 me-2 rounded-full', 
                 alt: 'user photo' %>
 
-      <%= helpers.current_admin.name || 'User' %>
+      <%= @user.name || 'User' %>
 
       <%= tag.svg(class: 'w-2.5 h-2.5 ms-3', 
               xmlns: 'http://www.w3.org/2000/svg', 

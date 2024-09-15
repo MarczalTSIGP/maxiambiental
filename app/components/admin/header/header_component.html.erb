@@ -5,7 +5,7 @@
 
       <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: "h-14 hidden sm:block"), admin_root_path %>
 
-      <%= render(AvatarDropdown::AvatarDropdownComponent.new) %>
+      <%= render(AvatarDropdown::AvatarDropdownComponent.new user: helpers.current_admin) %>
 
    </div>
 </nav>

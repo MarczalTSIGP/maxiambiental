@@ -4,4 +4,6 @@ class Client < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :lockable, :confirmable, :timeoutable, :trackable
+
+  has_one_attached :avatar
 end
