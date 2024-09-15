@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_14_230741) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_15_010812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,7 +64,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_14_230741) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.boolean "master", default: false, null: false
-    t.string "avatar"
     t.boolean "active", default: true, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["name"], name: "index_admins_on_name"
@@ -91,7 +90,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_14_230741) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "bio"
+    t.boolean "active", default: true, null: false
     t.index ["email"], name: "index_clients_on_email", unique: true
+    t.index ["name"], name: "index_clients_on_name"
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 

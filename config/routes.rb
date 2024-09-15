@@ -18,4 +18,14 @@ Rails.application.routes.draw do
   devise_for :clients, controllers: { 
     sessions: 'clients/devise/sessions',
     registrations: 'clients/devise/registrations'}
+
+  authenticate :client do
+    namespace :clients do
+      root 'home#index'
+      get 'profile' => 'profiles#index', as: :profile
+      resource :profile, only: [:edit, :update] do
+        delete :avatar, on: :collection, as: :delete_avatar
+      end
+    end
+  end
 end
