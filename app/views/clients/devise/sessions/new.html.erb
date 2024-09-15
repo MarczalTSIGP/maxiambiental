@@ -11,6 +11,7 @@
 
    <div class='flex flex-col justify-center text-center'>
       <%= link_to t('devise.sessions.forgot_password'), "#", class: "text-sm font-light text-gray-600" %>
-      <%= render 'clients/devise/partials/registration_link' %>
+      <%= render 'clients/devise/partials/actions_link', 
+                     message: 'Não tem uma conta?', link_text: 'Cadastre-se', link_path: new_client_registration_path %>
    </div>
 <% end %>

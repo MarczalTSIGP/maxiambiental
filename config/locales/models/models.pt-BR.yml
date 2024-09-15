@@ -7,3 +7,7 @@ pt-BR:
     password: 'Senha'
     avatar: 'Imagem'
     informations: 'Informações'
+  errors:
+    messages:
+      blank: '%{attribute} não pode ficar em branco'
+      confirmation: '%{attribute} não confere com a confirmação' 

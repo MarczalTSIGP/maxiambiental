@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :clients, controllers: { sessions: 'clients/devise/sessions' }
+  devise_for :clients, controllers: { 
+    sessions: 'clients/devise/sessions',
+    registrations: 'clients/devise/registrations'}
 end
