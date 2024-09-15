@@ -11,3 +11,4 @@ pt-BR:
     messages:
       blank: '%{attribute} não pode ficar em branco'
       confirmation: '%{attribute} não confere com a confirmação' 
+      taken: '%{attribute} já cadastrado'
