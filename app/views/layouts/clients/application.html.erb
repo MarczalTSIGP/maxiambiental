@@ -13,7 +13,13 @@
 
    <body>
       <div data-controller="sidebar">
-         <%= render Client::Header::HeaderComponent.new %>
+         <%= render Client::Header::HeaderComponent.new navigation_links: [
+            { name: 'Cursos', path: '#'},
+            { name: 'Galeria de fotos', path: '#'},
+            { name: 'Serviços', path: '#'},
+            { name: 'Sobre Nós', path: '#'},
+            { name: 'Fale Conosco', path: '#'}
+         ] %>
       </div>
 
       <main>
