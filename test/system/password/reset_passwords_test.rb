@@ -63,7 +63,7 @@ class ResetPasswordsTest < ApplicationSystemTestCase
     fill_in :admin_password_confirmation, with: 'differentpassword'
     click_on t('devise.sessions.reset_password.button')
 
-    assert_selector 'p', text: t('errors.messages.confirmation', attribute: t('attributes.password'))
+    assert_selector 'p', text: t('errors.messages.confirmation', attribute: Admin.human_attribute_name(:password))
     assert_current_path edit_admin_password_path(reset_password_token: token)
   end
 end
