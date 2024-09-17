@@ -1,0 +1,10 @@
+pt-BR:
+  buttons:
+    cancel: "Cancelar"
+    confirm: "Confirmar"
+    create: "Criar"
+    destroy: "Excluir"
+    edit: "Editar"
+    register: "Cadastrar"
+    save: "Salvar"
+    send: "Enviar"

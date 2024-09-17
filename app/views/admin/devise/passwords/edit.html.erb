@@ -1,0 +1,15 @@
+<% provide(:head_title, t('devise.sessions.reset_password.instructions')) %>
+
+<%= simple_form_for resource, as: resource_name, url: password_path(resource_name),
+                    html: { class: "space-y-4 md:space-y-6", method: :put } do |f| %>
+
+   <%= f.hidden_field :reset_password_token %>
+   <%= f.full_error :reset_password_token %>
+
+   <%= f.input :password %>
+   <%= f.input :password_confirmation %>
+
+   <%= f.button :submit, t('devise.sessions.reset_password.button') %>
+<% end %>
+
+<%= render 'admin/devise/passwords/partials/links' %>

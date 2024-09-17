@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class Admin::Devise::SessionsControllerTest < ActionDispatch::IntegrationTest
-  include ActionView::Helpers::TranslationHelper
-
   setup do
     @admin = FactoryBot.create(:admin)
   end

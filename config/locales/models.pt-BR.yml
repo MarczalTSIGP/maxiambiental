@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      admin: 'Administrador'
+    attributes:
+      defaults: &defaults
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        name: 'Nome'
+        email: 'E-mail'
+        password: 'Senha'
+        password_confirmation: 'Confirmação da senha'
+        reset_password_token: 'Chave de redefinição de senha'
+      admin:
+        <<: *defaults
+        
