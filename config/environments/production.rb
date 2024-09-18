@@ -72,7 +72,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "maxiambiental_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: ENV.fetch('APP_HOST', 'maxiambiental.com'), port: 80 }
+  config.action_mailer.default_url_options = { host: ENV.fetch('APP_HOST', 'maxiambiental.com') }
   config.action_mailer.asset_host = "https://#{ENV.fetch('APP_HOST', 'maxiambiental.com')}"
 
   # Ignore bad email addresses and do not raise email delivery errors.
