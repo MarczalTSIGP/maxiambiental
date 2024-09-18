@@ -37,6 +37,7 @@ env:
     - RAILS_MASTER_KEY
     - POSTGRES_USER
     - POSTGRES_PASSWORD
+    - APP_HOST
 
 # Use a different ssh user than root
 ssh:
