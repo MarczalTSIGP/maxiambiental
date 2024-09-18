@@ -5,12 +5,12 @@ Rails.application.configure do
 
   mailer = Rails.application.credentials.mailer
   config.action_mailer.smtp_settings = {
-    domain: mailer.domain,
-    address: mailer.address,
-    host: mailer.host,
-    port: mailer.port,
-    user_name: mailer.user_name,
-    password: mailer.password,
+    domain: mailer&.domain,
+    address: mailer&.address,
+    host: mailer&.host,
+    port: mailer&.port,
+    user_name: mailer&.user_name,
+    password: mailer&.password,
     authentication: :login
   }
 end
