@@ -1,0 +1,47 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - 'staging'
+
+jobs:
+  deploy:
+    name: 'Deployment to Staging'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+    
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.4
+          bundler-cache: true
+
+      - name: Install Kamal
+        run: gem install kamal
+    
+    #   - name: Install SSH
+    #     run: apt-get update && apt-get install -y openssh-client
+
+      - name: Set up SSH key
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          ssh-keyscan ${{ vars.REMOTE_HOST }} >> ~/.ssh/known_hosts || echo "failed"
+          chmod 600 ~/.ssh/id_ed25519
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Deploy
+        env:
+          DOCKER_BUILDKIT: 1
+          RAILS_ENV: production
+          KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }} 
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          git config --global --add safe.directory /__w/maxiambiental/maxiambiental
+          kamal deploy
