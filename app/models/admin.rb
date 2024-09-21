@@ -8,4 +8,6 @@ class Admin < ApplicationRecord
             presence: true,
             length: { maximum: 255 },
             uniqueness: { case_sensitive: true }
+
+  has_one_attached :avatar
 end
