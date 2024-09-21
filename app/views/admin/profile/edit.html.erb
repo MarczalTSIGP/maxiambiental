@@ -1,13 +1,17 @@
-<div class="lg:mx-8 grid grid-cols-1 gap-4 m-auto p-4 lg:grid-cols-2 lg:p-4">
+<%= render PageTitle::PageTitleComponent.new title: 'Editar perfil', description: 'Mantenha suas informações atualizadas.'%>
+
+<div class="lg:mx-8 grid grid-cols-1 gap-4 m-auto p-4 lg:grid-cols-2 lg:p-4 border-dark-3 border-b">
 
    <div class="w-full pb-8 mt-8 rounded-lg space-y-4 md:space-y-6">
 
-      <%= render 'admin/profile/partials/form_image' %>
+      <h1>Informações Pessoais</h1>
+      <p>Altere as informações básicas do seu perfil</p>
 
    </div>
 
    <div class="w-full pb-8 mt-8 rounded-lg space-y-4 md:space-y-6">
 
+      <%= render 'admin/profile/partials/form_image' %>
       <%= render 'admin/profile/partials/form_admin_info' %>
 
    </div>

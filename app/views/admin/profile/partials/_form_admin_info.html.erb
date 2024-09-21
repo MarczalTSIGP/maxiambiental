@@ -1,7 +1,7 @@
 <%= simple_form_for @admin, url: admin_profile_path, method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
 
-   <%= f.input :name, placeholder: t('attributes.name'), error: true %>
-   <%= f.input :email, placeholder: t('attributes.email'), error: true %>
+   <%= f.input :name %>
+   <%= f.input :email %>
 
    <%= f.button :submit, t('buttons.save') %>
 <% end %>
