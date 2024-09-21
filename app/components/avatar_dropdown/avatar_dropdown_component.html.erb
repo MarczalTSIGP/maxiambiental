@@ -7,7 +7,7 @@
 
       <span class="sr-only">Open user menu</span>
 
-      <%= image_tag 'default-profile.png', 
+      <%= image_tag @user.avatar.attached? ? url_for(@user.avatar) : 'default-profile.png', 
                 class: 'object-cover w-8 h-8 me-2 rounded-full', 
                 alt: 'user photo' %>
 
@@ -27,7 +27,7 @@
 
    <ul class="py-2" aria-labelledby="user-menu-button">
       <li>
-         <%= link_to 'Perfil', 'admin_profile_path', class: "block px-4 py-2 text-sm text-gray-700 hover:bg-green-600 text-white" %>
+         <%= link_to 'Perfil', admin_profile_index_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-green-600 text-white" %>
       </li>
       <li>
          <%= link_to t('devise.sessions.sign_out'), destroy_admin_session_path, data: { turbo_method: :delete } , class: "block px-4 py-2 text-sm text-gray-700 hover:bg-green-600 text-white" %>
