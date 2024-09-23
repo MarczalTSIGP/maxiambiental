@@ -1,11 +1,20 @@
 class Admin::ProfileController < Admin::BaseController
-  before_action :set_admin, only: [:edit, :update]
+  before_action :set_admin, only: [:edit, :update, :update_avatar, :delete_avatar]
 
   def edit; end
 
   def update
-    if @admin.update(admin_params)
+    if @admin.update_with_password(admin_params)
+      bypass_sign_in(@admin)
       redirect_to admin_profile_path, notice: 'Perfil atualizado com sucesso.'
+    else
+      render :edit
+    end
+  end
+
+  def update_avatar
+    if @admin.update(admin_params)
+      redirect_to edit_admin_profile_path, notice: 'Avatar atualizado com sucesso.'
     else
       render :edit
     end
@@ -23,6 +32,6 @@ class Admin::ProfileController < Admin::BaseController
   end
 
   def admin_params
-    params.require(:admin).permit(:name, :email, :avatar)
+    params.require(:admin).permit(:name, :email, :avatar, :current_password, :password, :password_confirmation)
   end
 end

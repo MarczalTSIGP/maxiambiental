@@ -7,7 +7,7 @@
 
       <span class="sr-only">Open user menu</span>
 
-      <%= image_tag @user.avatar.attached? ? url_for(@user.avatar) : 'default-profile.png', 
+      <%= image_tag @user.avatar_url, 
                 class: 'object-cover w-8 h-8 me-2 rounded-full', 
                 alt: 'user photo' %>
 
