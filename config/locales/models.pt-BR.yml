@@ -9,6 +9,7 @@ pt-BR:
         name: 'Nome'
         email: 'E-mail'
         password: 'Senha'
+        current_password: 'Senha atual'
         password_confirmation: 'Confirmação da senha'
         reset_password_token: 'Chave de redefinição de senha'
       admin:

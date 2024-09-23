@@ -1,6 +1,4 @@
 class Admin < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :recoverable, :trackable,
          :rememberable, :validatable, :lockable, :timeoutable
 
@@ -12,4 +10,12 @@ class Admin < ApplicationRecord
   validates :name, presence: true
 
   has_one_attached :avatar
+
+  def avatar_url
+    if avatar.attached?
+      Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true)
+    else
+      '/images/default-avatar.png'
+    end
+  end
 end
