@@ -74,7 +74,7 @@ pt-BR:
       expired: "expirou, por favor, solicite um novo"
       not_found: "%{attribute} não encontrado"
       not_locked: "não estava bloqueado"
-      blank: "%{attribute} nao pode ficar em branco"
+      blank: "%{attribute} não pode ficar em branco"
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"

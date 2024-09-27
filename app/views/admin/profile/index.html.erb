@@ -11,33 +11,14 @@
             <h3 class="font-manrope font-bold text-4xl text-gray-900 mb-1"><%= current_admin.name %></h3>
             <p class="font-normal text-base leading-7 text-gray-500">Guarapuava, Paraná</p>
          </div>
-         <button
-                class="rounded-full py-3.5 px-5 bg-gray-100 flex items-center group transition-all duration-500 hover:bg-indigo-100">
-            <!-- Heroicon for key -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700 transition-all duration-500 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7v8m-4 0l5-5-5-5" />
-            </svg>
+         <button class="rounded-full py-3.5 px-5 bg-gray-100 flex items-center group transition-all duration-500 hover:bg-indigo-100">
+            <%= icon('fa-solid', 'user-tie', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
             <span class="px-2 font-medium text-base leading-7 text-gray-700 transition-all duration-500 group-hover:text-indigo-600">Administrador</span>
          </button>
       </div>
       <div class="flex flex-col lg:flex-row max-lg:gap-5 items-center justify-between py-0.5">
          <div class="flex items-center gap-4">
             <%= link_to 'Editar Perfil', edit_admin_profile_path(current_admin.id), class: 'w-full text-white py-2 px-4 rounded-md bg-green-700 hover:bg-green-800 cursor-pointer' %>
-         </div>
-         <div class="flex flex-col md:flex-row items-center gap-6 ">
-            <p class="flex items-center gap-2 font-medium text-lg leading-8 text-gray-400">Skills
-               <!-- Heroicon for skills -->
-               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-               </svg>
-            </p>
-            <ul class="flex items-center max-sm:justify-center max-sm:flex-wrap gap-2.5">
-               <li class="py-3.5 px-7 rounded-full bg-orange-50 font-semibold text-base leading-7 text-gray-700">HTML</li>
-               <li class="py-3.5 px-7 rounded-full bg-orange-50 font-semibold text-base leading-7 text-gray-700">CSS</li>
-               <li class="py-3.5 px-7 rounded-full bg-orange-50 font-semibold text-base leading-7 text-gray-700">Dart</li>
-               <li class="py-3.5 px-7 rounded-full bg-orange-50 font-semibold text-base leading-7 text-gray-700">C++</li>
-               <li class="py-3.5 px-7 rounded-full bg-orange-50 font-semibold text-base leading-7 text-gray-700">UI Design</li>
-            </ul>
          </div>
       </div>
    </div>
