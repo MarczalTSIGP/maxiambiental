@@ -8,7 +8,7 @@ class Admin::ProfileController < Admin::BaseController
       bypass_sign_in(@admin)
       redirect_to admin_profile_path, notice: 'Perfil atualizado com sucesso.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -16,7 +16,7 @@ class Admin::ProfileController < Admin::BaseController
     if @admin.update(admin_params)
       redirect_to edit_admin_profile_path, notice: 'Avatar atualizado com sucesso.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
