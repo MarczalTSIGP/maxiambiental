@@ -6,7 +6,7 @@ class Admin::ProfileController < Admin::BaseController
   def update
     if @admin.update_with_password(admin_params)
       bypass_sign_in(@admin)
-      redirect_to admin_profile_path, notice: 'Perfil atualizado com sucesso.'
+      redirect_to admin_profile_path, notice: t('flash_messages.profile_updated')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -14,7 +14,7 @@ class Admin::ProfileController < Admin::BaseController
 
   def update_avatar
     if @admin.update(admin_params)
-      redirect_to edit_admin_profile_path, notice: 'Avatar atualizado com sucesso.'
+      redirect_to edit_admin_profile_path, notice: t('flash_messages.avatar_updated')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class Admin::ProfileController < Admin::BaseController
 
   def delete_avatar
     @admin.avatar.purge
-    redirect_to edit_admin_profile_path, notice: 'Avatar removido com sucesso.'
+    redirect_to edit_admin_profile_path, notice: t('flash_messages.avatar_deleted')
   end
 
   private

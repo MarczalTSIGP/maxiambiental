@@ -75,6 +75,7 @@ pt-BR:
       not_found: "%{attribute} não encontrado"
       not_locked: "não estava bloqueado"
       blank: "%{attribute} não pode ficar em branco"
+      invalid: "%{attribute} não é válido"
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"

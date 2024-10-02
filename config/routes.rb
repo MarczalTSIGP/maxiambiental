@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
 
-  devise_for :admins, controllers: {sessions: 'admin/devise/sessions', passwords: 'admin/devise/passwords'}
+  devise_for :admins, controllers: { sessions: 'admin/devise/sessions', passwords: 'admin/devise/passwords' }
 
   authenticate :admin do
     namespace :admin do

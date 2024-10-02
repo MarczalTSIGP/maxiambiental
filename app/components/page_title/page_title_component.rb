@@ -2,6 +2,7 @@
 
 class PageTitle::PageTitleComponent < ViewComponent::Base
   def initialize(title:, description:, with_buttons: false)
+    super
     @title = title
     @description = description
     @with_buttons = with_buttons
