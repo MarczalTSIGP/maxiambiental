@@ -10,13 +10,13 @@
          <%= f.input :avatar, as: :file, label: false, input_html: { class: 'hidden', id: 'admin_avatar_upload', data: { avatar_preview_target: "input", action: "change->avatar-preview#preview" } } %>
 
          <label for="admin_avatar_upload" class="absolute top-0 w-40 h-40 rounded-full hover:bg-black hover:bg-opacity-30 flex items-center justify-center text-white border-l cursor-pointer">
-            Editar imagem
+            <%= t('buttons.edit_avatar') %>
          </label>
       </div>
 
       <div class="flex flex-col space-y-5 sm:ml-8">
          <%= button_to t('buttons.delete'), delete_avatar_admin_profile_path, data: { turbo_method: :delete }, class: 'bg-white border text-black py-2 px-5 rounded-lg hover:bg-red-700 hover:text-white' %>
-         <%= f.button :submit, t('buttons.save'), class: 'bg-green-700 text-white py-2 px-5 rounded-lg' %>
+         <%= f.button :submit, t('buttons.change_avatar'), class: 'bg-green-700 text-white py-2 px-5 rounded-lg' %>
       </div>
 
    </div>

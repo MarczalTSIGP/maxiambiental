@@ -2,6 +2,7 @@
 
 class AvatarDropdown::AvatarDropdownComponent < ViewComponent::Base
   def initialize(user:)
+    super
     @user = user
   end
 end
