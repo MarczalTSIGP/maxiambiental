@@ -8,3 +8,18 @@ pt-BR:
     register: "Cadastrar"
     save: "Salvar"
     send: "Enviar"
+    change_password: "Alterar senha"
+    change_avatar: "Alterar imagem"
+    edit_avatar: "Alterar imagem"
+  flash_messages:
+    profile_updated: "Seu perfil foi atualizado com sucesso."
+    avatar_updated: "Seu avatar foi atualizado com sucesso."
+    avatar_deleted: "Seu avatar foi excluído com sucesso."
+  profile:
+    edit_title: "Editar perfil"
+    edit_description: "Mantenha suas informações atualizadas."
+    edit_profile: "Informações Pessoais"
+    edit_profile_description: "Altere as informações básicas do seu perfil."
+    edit_password: "Informações de Senha"
+    edit_password_description: "Altere a sua senha de acesso."
+    edit_image: "Alterar imagem"

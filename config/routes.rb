@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   authenticate :admin do
     namespace :admin do
       root 'dashboard#index'
+      resources :profile, only: [:index, :edit, :update] do
+        member do
+          delete 'delete_avatar'
+          patch 'update_avatar'
+        end
+      end
     end
   end
 end
