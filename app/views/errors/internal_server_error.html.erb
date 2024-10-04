@@ -1,0 +1,13 @@
+<div class="w-full h-screen flex flex-col lg:flex-row items-center justify-center space-y-16 lg:space-y-0 space-x-8 2xl:space-x-0">
+
+   <div class="w-full lg:w-1/2 flex flex-col items-center justify-center lg:px-2 xl:px-0 text-center">
+      <p class="text-7xl md:text-8xl lg:text-9xl font-bold tracking-wider text-gray-300">500</p>
+      <p class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider text-gray-300 mt-2"> <%= t('errors.internal_server_error.title') %> </p>
+      <p class="text-lg md:text-xl lg:text-2xl text-gray-500 my-12"> <%= t('errors.internal_server_error.message') %> </p>
+   </div>
+
+   <div class="w-full lg:w-1/2 lg:h-full flex md:items-center lg:flex-wrap justify-center p-4">
+      <%= image_tag '404_error.svg', alt: t('errors.internal_server_error.title') %>
+   </div>
+
+</div>
