@@ -1,18 +1,36 @@
-<section class="bg-white dark:bg-gray-900">
-  <div class="container px-6 py-10 mx-auto">
-    <div class="lg:-mx-6 lg:flex lg:items-center">
-      <img class="object-cover object-center lg:w-1/2 lg:mx-6 w-full h-96 rounded-lg lg:h-[36rem]" src="https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="">
-      <div class="mt-8 lg:w-1/2 lg:px-6 lg:mt-0">
-        <p class="text-5xl font-semibold text-blue-500 ">“</p>
-        <h1 class="text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl lg:w-96">
-          Maxiambiental, a melhor escolha para sua empresa.
-        </h1>
-        <p class="max-w-lg mt-6 text-gray-500 dark:text-gray-400 ">
-          “Participar dos cursos da Maxiambiental Treinamentos foi uma experiência transformadora para mim e para minha equipe. Os instrutores são extremamente qualificados e conseguem transmitir os conteúdos de forma clara e prática, tornando o aprendizado muito mais eficiente. As abordagens práticas e os exemplos reais utilizados durante os treinamentos nos prepararam de maneira excelente para enfrentar os desafios do nosso dia a dia no trabalho. Além disso, a estrutura e o suporte oferecidos pela Maxiambiental são impecáveis, garantindo um ambiente de aprendizagem confortável e motivador. Recomendo fortemente a Maxiambiental Treinamentos para qualquer profissional ou empresa que busca excelência e atualização contínua em suas práticas ambientais.”
-        </p>
-        <h3 class="mt-6 text-lg font-medium text-blue-500">Mia Brown</h3>
-        <p class="text-gray-600 dark:text-gray-300">Perita Ambiental</p>
+<header class="fixed top-0 z-20 flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-3">
+   <nav class="max-w-[85rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
+      <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: 'h-14 mx-auto'), root_path %>
+      <div class="sm:order-3 flex items-center gap-x-2">
+         <button type="button" class="sm:hidden hs-collapse-toggle relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" id="hs-navbar-alignment-collapse" aria-expanded="false" aria-controls="hs-navbar-alignment" aria-label="Toggle navigation" data-hs-collapse="#hs-navbar-alignment">
+            <svg class="hs-collapse-open:hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+            <svg class="hs-collapse-open:block hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            <span class="sr-only">Toggle</span>
+         </button>
+         <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+            Button
+         </button>
       </div>
-    </div>
-  </div>
-</section>
+      <div id="hs-navbar-alignment" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2" aria-labelledby="hs-navbar-alignment-collapse">
+         <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:mt-0 sm:ps-5">
+            <a class="font-medium text-blue-500 focus:outline-none" href="#" aria-current="page">Landing</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="#">Account</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="#">Work</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="#">Blog</a>
+         </div>
+      </div>
+   </nav>
+</header>
+
+<div class="relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden">
+   <div class="absolute inset-0">
+      <%= image_tag 'hero_section.png', alt: 'Background Image', class: "object-cover object-center w-full h-full" %>
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+   </div>
+
+   <div class="relative z-0 flex flex-col justify-center lg:items-start h-full text-center lg:p-16">
+      <h1 class="text-5xl font-bold leading-tight mb-4">Maxiambiental Treinamentos</h1>
+      <p class="text-lg text-gray-300 mb-8">Transformando Conhecimento Ambiental em Ação</p>
+      <a href="#" class="bg-yellow-400 text-gray-900 hover:bg-yellow-300 py-2 px-6 rounded-full text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">Nossos Cursos</a>
+   </div>
+</div>
