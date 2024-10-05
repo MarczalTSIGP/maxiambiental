@@ -13,12 +13,12 @@ export default class extends Controller {
   }
 
   toggle() {
-    this.sidebarTarget.classList.toggle("-translate-x-full");
+    this.sidebarTarget.classList.toggle("hidden");
   }
 
   closeOnOutsideClick(event) {
     if (!this.sidebarTarget.contains(event.target) && !event.target.closest("[data-action='click->sidebar#toggle']")) {
-      this.sidebarTarget.classList.add("-translate-x-full");
+      this.sidebarTarget.classList.add("hidden");
     }
   }
 }
