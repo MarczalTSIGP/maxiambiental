@@ -1,0 +1,9 @@
+<%= image_tag 'welcome_reset_password_instructions.png', alt: "Welcome image", width: "300" %>
+
+<h1>Bem-vindo <%= @resource.email %>!</h1>
+
+<p>Você pode confirmar o email da sua conta clicando no botão abaixo:</p>
+
+<p><%= link_to 'Confirmar meu email', confirmation_url(@resource, confirmation_token: @token), class: "button" %></p>
+
+<p>Se você não solicitou, por favor ignore este email.</p>
