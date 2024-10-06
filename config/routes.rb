@@ -18,4 +18,10 @@ Rails.application.routes.draw do
     passwords: 'clients/devise/passwords',
     confirmations: 'clients/devise/confirmations'
   }
+
+  authenticate :client do
+    namespace :clients do
+      resources :profile, only: [:index, :edit, :update]
+    end
+  end
 end
