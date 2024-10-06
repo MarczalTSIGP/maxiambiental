@@ -1,20 +1,6 @@
-<h2>Resend confirmation instructions</h2>
+<% provide(:head_title, 'Novo link de redefinição') %>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                input_html: { autocomplete: "email" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
+<%= simple_form_for @client, url: client_confirmation_path, html: { class: "space-y-4 md:space-y-6" } do |f| %>
+   <%= f.input :email, value: (@client.pending_reconfirmation? ? @client.unconfirmed_email : @client.email) %>
+   <%=f.button :submit, "Reenvie-me o link de redefinição" %>
 <% end %>
-
-<%= render "clients/devises/shared/links" %>

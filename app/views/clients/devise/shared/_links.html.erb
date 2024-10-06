@@ -14,6 +14,10 @@
    <%= link_to 'Esqueceu sua senha?', new_client_password_path, class: "font-semibold text-green-600 hover:text-green-500" %>
 <% end %>
 
+<%- if action == 'remember_password' %>
+   <%= link_to 'Lembrou sua senha?', new_client_session_path, class: "font-semibold text-green-600 hover:text-green-500" %>
+<% end %>
+
 <%- if action == 'confirmation' %>
    <%= link_to "Não recebeu as intruções para confirmação?", new_client_confirmation_path, class: "font-semibold text-green-600 hover:text-green-500" %>
 <% end %>

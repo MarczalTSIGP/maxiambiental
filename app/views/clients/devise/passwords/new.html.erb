@@ -2,5 +2,10 @@
 
 <%= simple_form_for @client, url: client_password_path, html: { class: "space-y-4 md:space-y-6" } do |f| %>
    <%= f.input :email %>
+
+   <div class="flex items-center justify-end">
+      <%= render 'clients/devise/shared/links', action: 'remember_password' %>
+   </div>
+
    <%= f.button :submit, t('devise.sessions.forgot_password.button') %>
 <% end %>

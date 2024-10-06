@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   end
 
   devise_for :clients, controllers: 
-  { 
+  {
     sessions: 'clients/devise/sessions', 
     registrations: 'clients/devise/registrations',
-    passwords: 'clients/devise/passwords'
+    passwords: 'clients/devise/passwords',
+    confirmations: 'clients/devise/confirmations'
   }
 end
