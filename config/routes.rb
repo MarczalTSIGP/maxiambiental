@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     sessions: 'clients/devise/sessions', 
     registrations: 'clients/devise/registrations',
     passwords: 'clients/devise/passwords',
-    confirmations: 'clients/devise/confirmations'
+    confirmations: 'clients/devise/confirmations',
+    omniauth_callbacks: 'clients/devise/omniauth_callbacks'
   }
 
   authenticate :client do

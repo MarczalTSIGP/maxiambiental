@@ -7,7 +7,7 @@
 
    <%= f.button :submit, t('devise.sessions.sign_up') %>
 
-   <%= render 'clients/devise/shared/google_auth' %>
-
-   <%= render 'clients/devise/shared/links', action: 'sign_in' %>
 <% end %>
+
+<%= render 'clients/devise/shared/google_auth' %>
+<%= render 'clients/devise/shared/links', action: 'sign_in' %>
