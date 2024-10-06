@@ -1,19 +1,19 @@
-<%- if path == 'new_client_session_path' %>
+<%- if action == 'sign_in' %>
    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-      Já tem uma conta? <%= link_to 'Entrar', new_client_session_path, class: "font-medium text-primary-600 hover:underline dark:text-primary-500" %>
+      Já tem uma conta? <%= link_to 'Entrar', new_client_session_path, class: "font-medium text-green-600 hover:underline" %>
    </p>
 <% end %>
 
-<%- if path == 'new_client_registration_path' %>
+<%- if action == 'sign_up' %>
    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-      Não tem uma conta? <%= link_to 'Cadastre-se', new_client_registration_path, class: "font-medium text-primary-600 hover:underline dark:text-primary-500" %>
+      Não tem uma conta? <%= link_to 'Cadastre-se', new_client_registration_path, class: "font-medium text-green-600 hover:underline" %>
    </p>
 <% end %>
 
-<%- if path == 'new_client_password_path' %>
+<%- if action == 'forgot_password' %>
    <%= link_to 'Esqueceu sua senha?', new_client_password_path, class: "font-semibold text-green-600 hover:text-green-500" %>
 <% end %>
 
-<%- if path == 'new_client_confirmation_path' %>
+<%- if action == 'confirmation' %>
    <%= link_to "Não recebeu as intruções para confirmação?", new_client_confirmation_path, class: "font-semibold text-green-600 hover:text-green-500" %>
 <% end %>
