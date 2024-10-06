@@ -1,0 +1,19 @@
+<%- if path == 'new_client_session_path' %>
+   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+      Já tem uma conta? <%= link_to 'Entrar', new_client_session_path, class: "font-medium text-primary-600 hover:underline dark:text-primary-500" %>
+   </p>
+<% end %>
+
+<%- if path == 'new_client_registration_path' %>
+   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+      Não tem uma conta? <%= link_to 'Cadastre-se', new_client_registration_path, class: "font-medium text-primary-600 hover:underline dark:text-primary-500" %>
+   </p>
+<% end %>
+
+<%- if path == 'new_client_password_path' %>
+   <%= link_to 'Esqueceu sua senha?', new_client_password_path, class: "font-semibold text-green-600 hover:text-green-500" %>
+<% end %>
+
+<%- if path == 'new_client_confirmation_path' %>
+   <%= link_to "Não recebeu as intruções para confirmação?", new_client_confirmation_path, class: "font-semibold text-green-600 hover:text-green-500" %>
+<% end %>

@@ -11,6 +11,7 @@ pt-BR:
       password: "Senha"
       password_confirmation: "Confirmação da senha"
       email: "E-mail"
+      remember_me: "Lembrar de mim"
     hints:
       username: "Nome de usuário para entrar."
       password: "Sem caracteres especiais, por favor."
@@ -19,7 +20,12 @@ pt-BR:
     prompts:
       age: "Selecione sua idade"
     placeholders:
-      admin: 
+      defaults: &defaults
         email: "Digite seu e-mail"
         password: "Digite sua senha"
         password_confirmation: "Confirme sua senha"
+        remember_me: "Lembrar de mim"
+      admin: 
+        <<: *defaults
+      client:
+        <<: *defaults

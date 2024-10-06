@@ -19,7 +19,7 @@ SimpleForm.setup do |config|
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
   #   nested: label > input
-  config.boolean_style = :nested
+  config.boolean_style = :inline
 
   # Default class for buttons
   config.button_class = 'btn'
@@ -134,6 +134,21 @@ SimpleForm.setup do |config|
     b.wrapper :input_wrapper, tag: 'div' do |ba|
       ba.use :input,
              class: 'shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700'
+
+      ba.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
+      ba.use :hint, wrap_with: { tag: :p, class: 'mt-2 text-sm text-gray-500' }
+    end
+  end
+
+  config.wrappers :tailwind_checkbox, tag: 'div', class: 'flex items-center justify-end', error_class: 'text-red-500' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'ml-2 text-md text-gray-500 dark:text-gray-300 order-1'
+    b.optional :readonly
+
+    b.wrapper :input_wrapper, tag: 'div' do |ba|
+      ba.use :input,
+             class: 'w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 order-2'
 
       ba.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
       ba.use :hint, wrap_with: { tag: :p, class: 'mt-2 text-sm text-gray-500' }
