@@ -12,16 +12,18 @@
    </head>
 
    <body>
+
       <div data-controller="sidebar">
-         <%= render(Admin::Header::HeaderComponent.new(current_admin: current_admin)) %>
-         <%= render(Admin::Sidebar::SidebarComponent.new) %>
+         <%= render 'layouts/admin/partials/header' %>
+         <%= render 'layouts/admin/partials/sidebar' %>
       </div>
 
       <main>
-         <%= render 'shared/flash_messages' %>
 
          <div class="px-4 py-24 sm:ml-64">
             <div class="p-4">
+
+               <%= rc :flash_message %>
 
                <%= yield %>
 

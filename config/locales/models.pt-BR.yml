@@ -12,8 +12,6 @@ pt-BR:
         current_password: 'Senha atual'
         password_confirmation: 'Confirmação da senha'
         reset_password_token: 'Chave de redefinição de senha'
-        new_password: 'Nova senha'
-        new_password_confirmation: 'Confirmação da nova senha'
       admin:
         <<: *defaults
         

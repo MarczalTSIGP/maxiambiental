@@ -1,8 +1,0 @@
-<%= simple_form_for @admin, url: admin_profile_path, method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
-
-   <%= f.input :name %>
-   <%= f.input :email %>
-   <%= f.input :current_password, placeholder: t('activerecord.attributes.admin.current_password') %>
-
-   <%= f.button :submit, t('buttons.save') %>
-<% end %>
