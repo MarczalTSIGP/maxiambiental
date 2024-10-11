@@ -20,7 +20,7 @@ class Admin::ProfileController < Admin::BaseController
 
     if @admin.update_with_password(admin_pwd_params)
       bypass_sign_in(@admin)
-      redirect_to admin_edit_password_path, notice: t('flash_messages.profile_updated')
+      redirect_to admin_edit_password_path, notice: t('flash_messages.password_updated')
     else
       render :edit_password, status: :unprocessable_entity
     end
