@@ -6,11 +6,11 @@ export default class extends Controller {
 
   connect() {
     document.addEventListener("click", this.closeOnOutsideClick.bind(this));
-  }
+    }
 
   disconnect() {
     document.removeEventListener("click", this.closeOnOutsideClick.bind(this));
-  }
+    }
 
   toggle() {
     this.sidebarTarget.classList.toggle("-translate-x-full");

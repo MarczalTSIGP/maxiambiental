@@ -23,3 +23,7 @@ pt-BR:
         email: "Digite seu e-mail"
         password: "Digite sua senha"
         password_confirmation: "Confirme sua senha"
+        current_password: "Senha atual"
+        new_password: "Nova senha"
+        new_password_confirmation: "Confirme sua nova senha"
+
