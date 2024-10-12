@@ -8,3 +8,12 @@ pt-BR:
     register: "Cadastrar"
     save: "Salvar"
     send: "Enviar"
+  errors:
+    not_found:
+      title: "Página não encontrada"
+      message: "Desculpe, a página que você está procurando não existe."
+      action: "Voltar para a página inicial"
+    internal_server_error:
+      title: "Erro Interno no Servidor"
+      message: "Algo deu errado no servidor. Estamos trabalhando para corrigir."
+      action: "Tente novamente mais tarde"
