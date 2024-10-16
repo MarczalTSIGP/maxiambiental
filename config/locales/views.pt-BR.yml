@@ -23,7 +23,7 @@ pt-BR:
     edit_profile: "Informações Pessoais"
     edit_profile_description: "Altere as informações básicas do seu perfil."
     edit_password: "Informações de Senha"
-    edit_password_description: "Altere a sua senha de acesso."
+    edit_password_description: "Altere a sua senha de acesso para garantir maior segurança em sua conta."
     edit_image: "Alterar imagem"
   errors:
     not_found:

@@ -1,8 +1,12 @@
-<%= simple_form_for @admin, namespace: :update_data, url: admin_update_profile_path, method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
+<div class="w-full pb-8 mt-8 rounded-lg space-y-4 md:space-y-6">
 
-   <%= f.input :name %>
-   <%= f.input :email %>
-   <%= f.input :current_password %>
+   <%= simple_form_for @admin, namespace: :update_data, url: admin_update_profile_path, method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
 
-   <%= f.button :submit, t('buttons.save') %>
-<% end %>
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :current_password %>
+
+      <%= f.button :submit, t('buttons.save') %>
+   <% end %>
+
+</div>
