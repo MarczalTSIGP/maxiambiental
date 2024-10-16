@@ -11,6 +11,7 @@ pt-BR:
     change_password: "Alterar senha"
     change_avatar: "Alterar imagem"
     edit_avatar: "Alterar imagem"
+    click_to_edit_avatar: "Clique para alterar seu avatar"
   flash_messages:
     profile_updated: "Seu perfil foi atualizado com sucesso."
     avatar_updated: "Seu avatar foi atualizado com sucesso."
