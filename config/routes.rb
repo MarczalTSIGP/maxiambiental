@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     namespace :admin do
       root 'dashboard#index'
 
-      get 'profile', to: 'profile#index', as: :profile
       get 'profile/edit', to: 'profile#edit', as: :edit_profile
       get 'profile/edit/password', to: 'profile#edit_password', as: :edit_password
 

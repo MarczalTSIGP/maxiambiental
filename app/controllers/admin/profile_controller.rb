@@ -1,6 +1,8 @@
 class Admin::ProfileController < Admin::BaseController
   before_action :set_admin
 
+  layout 'layouts/admin/profile/profile'
+
   def edit; end
 
   def update
