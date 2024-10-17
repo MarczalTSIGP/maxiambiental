@@ -38,4 +38,23 @@ class Admin::ProfileControllerTest < ActionDispatch::IntegrationTest
 
     assert_not @admin.avatar.attached?
   end
+
+  test 'should update password with valid parameters' do
+    patch admin_update_password_path(@admin), 
+          params: { admin: { current_password: 'password', password: 'new_password', password_confirmation: 'new_password' } }
+
+    assert_redirected_to admin_edit_password_path
+    assert_equal t('flash_messages.password_updated'), flash[:notice]
+    @admin.reload
+
+    assert @admin.valid_password?('new_password')
+    refute @admin.valid_password?('password')
+  end
+
+  test 'should not update password with invalid parameters' do
+    patch admin_update_password_path(@admin), 
+          params: { admin: { current_password: 'wrong_password', password: 'new_password', password_confirmation: 'new_password' } }
+
+    assert_response :unprocessable_entity
+  end
 end
