@@ -13,7 +13,7 @@ class AdminProfileTest < ApplicationSystemTestCase
   #     fill_in 'admin_name', with: "New name"
   #     fill_in 'admin_email', with: "newemail@example.com"
   #     fill_in 'admin_current_password', with: @admin.password
-      
+
   #     click_on t('buttons.save')
   #   end
 
