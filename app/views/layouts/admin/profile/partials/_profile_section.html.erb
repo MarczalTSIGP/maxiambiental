@@ -5,7 +5,7 @@
    <div class="w-full max-w-7xl mx-auto px-6 md:px-8">
       <div class="flex items-center justify-center sm:justify-start relative z-10 mb-5">
 
-         <%= render 'layouts/admin/profile/form_image' %>
+         <%= render 'layouts/admin/profile/partials/form_image' %>
 
       </div>
 
@@ -15,14 +15,14 @@
             <p class="font-normal text-base leading-7 text-gray-500">Guarapuava, Paraná</p>
          </div>
 
-         <button class="rounded-full py-3.5 px-5 bg-gray-100 flex items-center group transition-all duration-500 hover:bg-indigo-100">
+         <button class="rounded-full py-3.5 px-5 bg-gray-100 flex items-center group transition-all duration-500 hover:bg-green-100">
             <%= icon('fa-solid', 'user-tie', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
-            <span class="px-2 font-medium text-base leading-7 text-gray-700 transition-all duration-500 group-hover:text-indigo-600">Administrador</span>
+            <span class="px-2 font-medium text-base leading-7 text-gray-700 transition-all duration-500 group-hover:text-green-600">Administrador</span>
          </button>
 
       </div>
 
-      <%= render 'admin/profile/partials/tabs' %>
+      <%= render 'layouts/admin/profile/partials/tabs' %>
 
       <%= yield %>
 

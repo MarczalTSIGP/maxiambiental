@@ -28,7 +28,7 @@
       </label>
 
       <%= f.input :avatar, as: :file, label: false, 
-                   input_html: { class: 'hidden', id: 'admin_avatar_upload', 
+                   input_html: { class: 'hidden', id: 'admin_avatar_upload', accept: 'image/png, image/jpeg', 
                                  data: { avatar_preview_target: "input", action: "change->avatar-preview#preview" } } %>
    </div>
 <% end %>
