@@ -12,6 +12,9 @@ pt-BR:
     change_avatar: "Alterar imagem"
     edit_avatar: "Alterar imagem"
     click_to_edit_avatar: "Clique para alterar seu avatar"
+  links:
+    discover_more: "Saiba mais"
+    explore_our_courses: "Conheça nossos treinamentos"
   flash_messages:
     profile_updated: "Seu perfil foi atualizado com sucesso."
     avatar_updated: "Seu avatar foi atualizado com sucesso."
@@ -34,3 +37,6 @@ pt-BR:
       title: "Erro Interno no Servidor"
       message: "Algo deu errado no servidor. Estamos trabalhando para corrigir."
       action: "Tente novamente mais tarde"
+  home:
+    title: "Maxiambiental Treinamentos"
+    subtitle: "Transformando Conhecimento Ambiental em Ação"
