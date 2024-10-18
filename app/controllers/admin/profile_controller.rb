@@ -1,8 +1,6 @@
 class Admin::ProfileController < Admin::BaseController
   before_action :set_admin
 
-  layout 'layouts/admin/profile/profile'
-
   def edit; end
 
   def update
@@ -30,7 +28,7 @@ class Admin::ProfileController < Admin::BaseController
 
   def update_avatar
     if @admin.update(admin_params)
-      redirect_to admin_edit_profile_path, notice: t('flash_messages.avatar_updated')
+      redirect_to admin_edit_profile_path
     else
       render :edit, status: :unprocessable_entity
     end
