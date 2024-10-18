@@ -44,7 +44,9 @@ class AdminProfileTest < ApplicationSystemTestCase
       click_on I18n.t('buttons.save')
     end
 
-    assert_alert I18n.t('flash_messages.profile_updated')
+    within('div#form-box') do
+      assert_alert I18n.t('flash_messages.profile_updated')
+    end
 
     within('form[id^="update_data_edit_admin_"]') do
       assert_field :update_data_admin_name, with: 'New name'
@@ -101,7 +103,9 @@ class AdminProfileTest < ApplicationSystemTestCase
       click_on I18n.t('buttons.change_password')
     end
 
-    assert_alert I18n.t('flash_messages.password_updated')
+    within('div#form-box') do
+      assert_alert I18n.t('flash_messages.password_updated')
+    end
   end
 
   private
