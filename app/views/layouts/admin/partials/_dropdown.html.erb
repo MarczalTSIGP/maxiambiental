@@ -1,21 +1,34 @@
-<div data-dropdown-target="menu" class="absolute right-8 top-14 z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+<div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
+   <%= button_tag id: 'dropdownAvatarNameButton', 
+               data: { action: 'click->dropdown#toggle' }, 
+               class: 'flex items-center text-sm pe-1 font-medium text-green-900 rounded-full hover:text-green-700 md:me-0', 
+               type: 'button' do %>
+
+      <span class="sr-only">Open user menu</span>
+
+      <%= image_tag(user.avatar_url, alt: user.name, class: 'object-cover w-8 h-8 me-2 rounded-full') %>
+
+      <%= user.name %>
+
+      <%= icon('fa-solid', 'chevron-down', class: "w-2.5 h-4 ms-3") %>
+   <% end %>
+
+</div>
+
+<div data-dropdown-target="menu" class="absolute right-8 top-14 z-50 hidden my-4 text-base list-none bg-green-800 divide-y divide-green-600 rounded-lg shadow">
+
    <div class="px-4 py-3">
-      <span class="block text-sm text-gray-900 dark:text-white"><%= current_admin.name %></span>
-      <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><%= current_admin.email %></span>
+      <span class="block text-sm text-white"><%= user.name %></span>
+      <span class="block text-sm truncate text-green-400"><%= user.email %></span>
    </div>
 
    <ul class="py-2" aria-labelledby="user-menu-button">
       <li>
-         <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Dashboard</a>
+         <%= link_to 'Perfil', admin_edit_profile_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-green-600 text-white" %>
       </li>
       <li>
-         <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Settings</a>
-      </li>
-      <li>
-         <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Earnings</a>
-      </li>
-      <li>
-         <%= link_to t('devise.sessions.sign_out'), destroy_admin_session_path, data: { turbo_method: :delete } , class: "block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200" %>
+         <%= link_to t('devise.sessions.sign_out'), destroy_admin_session_path, data: { turbo_method: :delete } , class: "block px-4 py-2 text-sm text-gray-700 hover:bg-green-600 text-white" %>
       </li>
    </ul>
 </div>

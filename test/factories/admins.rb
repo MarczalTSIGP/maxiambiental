@@ -4,7 +4,6 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { 'password' }
     master { false }
-    avatar { Faker::Avatar.image }
     active { true }
   end
 end

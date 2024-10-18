@@ -1,0 +1,55 @@
+<aside data-sidebar-target="sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-0 transition-transform -translate-x-full sm:translate-x-0 sm:pt-20">
+   <div class="h-full px-3 py-4 overflow-y-auto bg-white shadow-md">
+      <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: "h-14 mb-4 block md:hidden lg:hidden"), admin_root_path %>
+      <ul class="space-y-2 font-medium">
+         <li>
+            <%= link_to admin_root_path, class: 'flex items-center p-2 text-green-700 rounded-lg hover:bg-green-100 group' do %>
+               <%= icon('fa-solid', 'chart-line', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
+               <span class="ms-3">Dashboard</span>
+            <% end %>
+         </li>
+
+         <li>
+            <%= link_to '#', class: 'flex items-center p-2 text-green-700 rounded-lg hover:bg-green-100 group' do %>
+               <%= icon('fa-solid', 'graduation-cap', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
+               <span class="flex-1 ms-3 whitespace-nowrap">Cursos</span>
+            <% end %>
+         </li>
+
+         <li>
+            <%= link_to '#', class: 'flex items-center p-2 text-green-700 rounded-lg hover:bg-green-100 group' do %>
+               <%= icon('fa-solid', 'school', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
+               <span class="flex-1 ms-3 whitespace-nowrap">Turmas</span>
+            <% end %>
+         </li>
+
+         <li>
+            <%= link_to '#', class: 'flex items-center p-2 text-green-700 rounded-lg hover:bg-green-100 group' do %>
+               <%= icon('fa-solid', 'user-tie', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
+               <span class="flex-1 ms-3 whitespace-nowrap">Instrutores</span>
+            <% end %>
+         </li>
+
+         <li>
+            <%= link_to '#', class: 'flex items-center p-2 text-green-700 rounded-lg hover:bg-green-100 group' do %>
+               <%= icon('fa-solid', 'user-graduate', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
+               <span class="flex-1 ms-3 whitespace-nowrap">Estudantes</span>
+            <% end %>
+         </li>
+
+         <li>
+            <%= link_to '#', class: 'flex items-center p-2 text-green-700 rounded-lg hover:bg-green-100 group' do %>
+               <%= icon('fa-solid', 'message', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
+               <span class="flex-1 ms-3 whitespace-nowrap">Mensagens</span>
+            <% end %>
+         </li>
+
+         <li>
+            <%= link_to '#', class: 'flex items-center p-2 text-green-700 rounded-lg hover:bg-green-100 group' do %>
+               <%= icon('fa-solid', 'gear', class: "w-5 h-5 text-green-500 transition duration-75 dark:text-green-700") %>
+               <span class="flex-1 ms-3 whitespace-nowrap">Configurações</span>
+            <% end %>
+         </li>
+      </ul>
+   </div>
+</aside>

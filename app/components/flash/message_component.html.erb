@@ -1,0 +1,13 @@
+<% messages.each do |type, message| %>
+   <div data-controller="alert">
+      <div data-alert-target="alert" role="alert" class="<%= alert_css_classes(type) %>">
+
+         <p class="mr-8"><%= message.html_safe %></p>
+
+         <button class="flex items-center justify-center absolute w-8 h-8 top-3 right-1.5" 
+                 type="button" data-action="click->alert#close">
+            <%= icon('fa-solid', 'xmark', class: "w-5 h-5") %>
+         </button>
+      </div>
+   </div>
+<% end %>
