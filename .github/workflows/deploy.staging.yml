@@ -34,6 +34,20 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           chmod 644 ~/.ssh/known_hosts
 
+      - name: Create kamal secrets file
+        run: |
+          echo "
+            KAMAL_REGISTRY_USERNAME=${{ secrets.KAMAL_REGISTRY_USERNAME }}
+            KAMAL_REGISTRY_PASSWORD=${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+
+            RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
+
+            POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+            POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+
+            APP_HOST=${{ vars.APP_HOST }}
+          " > .kamal/secrets
+
       - name: Deploy
         env:
           DOCKER_BUILDKIT: 1
