@@ -12,7 +12,7 @@ class Admin < ApplicationRecord
   has_one_attached :avatar
 
   def avatar_url
-    return '/assets/default-avatar.png' unless avatar.attached?
+    return ActionController::Base.helpers.asset_path('default-avatar.png') unless avatar.attached?
 
     Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true)
   end
