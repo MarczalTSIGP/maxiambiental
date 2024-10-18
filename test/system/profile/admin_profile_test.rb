@@ -10,12 +10,21 @@ class AdminProfileTest < ApplicationSystemTestCase
     visit admin_edit_profile_path
 
     assert_selector "img[src*='/assets/default-avatar.png']"
+    assert_selector 'h3', text: @admin.name
+    assert_selector 'h2', text: I18n.t('profile.edit_profile')
+  end
+
+  test 'admin can view page information' do
+    visit admin_edit_profile_path
 
     assert_selector 'a', text: I18n.t('profile.edit_profile')
     assert_selector 'a', text: I18n.t('profile.edit_password')
 
-    assert_selector 'h2', text: I18n.t('profile.edit_profile')
     assert_selector 'p', text: I18n.t('profile.edit_profile_description')
+  end
+
+  test 'admin can view basic profile information' do
+    visit admin_edit_profile_path
 
     within('form[id^="update_data_edit_admin_"]') do
       assert_field :update_data_admin_name
@@ -47,7 +56,7 @@ class AdminProfileTest < ApplicationSystemTestCase
     visit admin_edit_profile_path
 
     within('form[id^="edit_admin_"]') do
-      find('button[data-action="click->avatar-preview#toggleEdit"]').click
+      click_on 'Edit'
 
       assert_selector 'button[data-avatar-preview-target="check"]', visible: true
 
@@ -57,7 +66,7 @@ class AdminProfileTest < ApplicationSystemTestCase
 
       attach_file :admin_avatar_upload, avatar_path, make_visible: true
 
-      find('button[type="submit"]').click
+      click_on 'Save'
     end
 
     assert_alert I18n.t('flash_messages.avatar_updated')
@@ -67,7 +76,7 @@ class AdminProfileTest < ApplicationSystemTestCase
     visit admin_edit_profile_path
 
     within('form[id^="edit_admin_"]') do
-      find('button[data-action="click->avatar-preview#toggleEdit"]').click
+      click_on 'Edit'
 
       assert_selector 'a[data-avatar-preview-target="trash"]', visible: false
 
