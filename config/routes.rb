@@ -29,5 +29,6 @@ Rails.application.routes.draw do
                sessions: 'clients/devise/sessions',
                passwords: 'clients/devise/passwords',
                unlocks: 'clients/devise/unlocks',
+               omniauth_callbacks: 'clients/devise/omniauth_callbacks'
              }
 end
