@@ -1,27 +1,12 @@
-<h2>Change your password</h2>
+<% provide(:head_title, t('devise.sessions.reset_password.instructions')) %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @client, url: client_password_path, html: { class: 'space-y-4 md:space-y-6', method: :put } do |f| %>
 
-  <%= f.input :reset_password_token, as: :hidden %>
-  <%= f.full_error :reset_password_token %>
+   <%= f.hidden_field :reset_password_token %>
+   <%= f.full_error :reset_password_token %>
 
-  <div class="form-inputs">
-    <%= f.input :password,
-                label: "New password",
-                required: true,
-                autofocus: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                label: "Confirm your new password",
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+   <%= f.input :password %>
+   <%= f.input :password_confirmation %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
-  </div>
+   <%= f.button :submit, t('devise.sessions.reset_password.button') %>
 <% end %>
-
-<%= render "clients/devises/shared/links" %>

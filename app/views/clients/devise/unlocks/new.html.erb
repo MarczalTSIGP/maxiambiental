@@ -1,19 +1,8 @@
-<h2>Resend unlock instructions</h2>
+<% provide(:head_title, t('devise.unlocks.title')) %>
 
-<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :unlock_token %>
+<%= simple_form_for @client, url: client_unlock_path, html: { method: 'post', class: 'space-y-4 md:space-y-6' } do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-  </div>
+   <%= f.input :email, input_html: { autocomplete: "email" } %>
+   <%= f.button :submit, t('devise.unlocks.resend_instructions') %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Resend unlock instructions" %>
-  </div>
 <% end %>
-
-<%= render "clients/devises/shared/links" %>

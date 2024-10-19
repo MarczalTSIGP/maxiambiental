@@ -64,9 +64,11 @@ pt-BR:
         instructions: "Digite sua nova senha"
         button: "Redefinir senha"
     unlocks:
+      title: "Conta bloqueada?"
       send_instructions: "Você receberá um email com instruções sobre como desbloquear sua conta em alguns minutos."
       send_paranoid_instructions: "Se sua conta existir, você receberá um email com instruções sobre como desbloqueá-la em alguns minutos."
       unlocked: "Sua conta foi desbloqueada com sucesso. Por favor, faça login para continuar."
+      resend_instructions: "Envie-me novas instruções de desbloqueio"
   errors:
     messages:
       confirmation: "A confirmação não é igual a %{attribute}"
