@@ -11,3 +11,10 @@
 <% end %>
 
 <%= render "clients/devise/shared/google" %>
+
+<div class="text-sm">
+
+   <span class="font-light text-gray-500"> <%= t('simple_form.labels.already_have_an_account') %> </span>
+   <%= link_to t('links.sign_in'), new_client_session_path, class: "font-medium text-green-600 hover:underline" %>
+
+</div>
