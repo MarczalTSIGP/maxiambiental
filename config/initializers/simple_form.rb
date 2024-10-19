@@ -140,6 +140,18 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :checkbox, tag: 'div', class: 'flex items-center justify-end', error_class: 'text-red-500' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'ml-2 text-md text-gray-500 dark:text-gray-300 order-1'
+    b.optional :readonly
+
+    b.wrapper :input_wrapper, tag: 'div' do |ba|
+      ba.use :input,
+             class: 'w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 order-2'
+    end
+  end
+
   config.button_class = 'w-full text-white py-2 px-4 rounded-md bg-green-700 hover:bg-green-800 cursor-pointer'
 
   config.default_wrapper = :tailwind

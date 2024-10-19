@@ -1,20 +1,24 @@
-<h2>Log in</h2>
+<% provide(:head_title, t('devise.sessions.sign_in')) %>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+<%= simple_form_for @client, url: client_session_path, html: { class: "space-y-4 md:space-y-6" } do |f| %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
+   <%= f.input :email %>
+   <%= f.input :password %>
+
+   <div class="flex items-center justify-between">
+      <%= f.input :remember_me, label: t('simple_form.labels.remember_me'), wrapper: :checkbox,as: :boolean if devise_mapping.rememberable? %>
+      <%= link_to t('links.forgot_password'), new_client_password_path, class: "font-semibold text-green-600 hover:text-green-500" %>
+   </div>
+
+   <%= f.button :submit, t('devise.sessions.sign_in') %>
+
 <% end %>
 
-<%= render "clients/devises/shared/links" %>
+<%= render 'clients/devise/shared/google' %>
+
+<div class="text-sm">
+
+   <span class="font-light text-gray-500"> <%= t('simple_form.labels.do_not_have_an_account') %> </span>
+   <%= link_to t('links.sign_up'), new_client_registration_path, class: "font-medium text-green-600 hover:underline" %>
+
+</div>

@@ -16,6 +16,10 @@ pt-BR:
   links:
     discover_more: "Saiba mais"
     explore_our_courses: "Conheça nossos treinamentos"
+    sign_up: "Cadastre-se"
+    sign_in: "Entre"
+    forgot_password: "Esqueceu sua senha?"
+    remembered_password: "Lembrou sua senha?"
   flash_messages:
     profile_updated: "Seu perfil foi atualizado com sucesso."
     avatar_updated: "Seu avatar foi atualizado com sucesso."

@@ -11,6 +11,8 @@ pt-BR:
       password: "Senha"
       password_confirmation: "Confirmação da senha"
       email: "E-mail"
+      remember_me: "Lembrar de mim"
+      do_not_have_an_account: "Não tem uma conta?"
     hints:
       username: "Nome de usuário para entrar."
       password: "Sem caracteres especiais, por favor."
