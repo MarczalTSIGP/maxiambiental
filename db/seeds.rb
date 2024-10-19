@@ -9,3 +9,5 @@
 #   end
 
 Admin.create_with(password: '123456', name: 'Maxiambiental').find_or_create_by!(email: 'admin@maxiambiental.com')
+
+Client.create_with(password: '123456').find_or_create_by!(email: 'client@maxiambiental.com')

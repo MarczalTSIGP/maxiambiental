@@ -19,10 +19,14 @@ pt-BR:
     mailer:
       confirmation_instructions:
         subject: "Instruções de confirmação"
+        welcome: "Bem-vindo %{email}! Você se registrou com sucesso."
+        instructions: "Por favor, confirme seu endereço de email clicando no link abaixo:"
       reset_password_instructions:
         subject: "Instruções para redefinir a senha"
       unlock_instructions:
         subject: "Instruções de desbloqueio"
+        attention: "Atenção! Sua conta foi bloqueada devido à quantidade de tentativas inválidas."
+        instructions: "Por favor, desbloqueie sua conta clicando no link abaixo:"
       email_changed:
         subject: "Email alterado"
       password_change:

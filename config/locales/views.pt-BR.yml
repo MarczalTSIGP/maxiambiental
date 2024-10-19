@@ -20,6 +20,8 @@ pt-BR:
     sign_in: "Entre"
     forgot_password: "Esqueceu sua senha?"
     remembered_password: "Lembrou sua senha?"
+    confirm_my_account: "Confirmar minha conta"
+    unlock_my_account: "Desbloquear minha conta"
   flash_messages:
     profile_updated: "Seu perfil foi atualizado com sucesso."
     avatar_updated: "Seu avatar foi atualizado com sucesso."
