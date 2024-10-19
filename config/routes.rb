@@ -25,4 +25,6 @@ Rails.application.routes.draw do
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
     end
   end
+
+  devise_for :clients, controllers: { registrations: 'clients/devise/registrations', sessions: 'clients/devise/sessions' }
 end
