@@ -8,7 +8,7 @@ class Client < ApplicationRecord
             presence: true,
             uniqueness: { case_sensitive: true }
 
-  validates :name, presence: true
+  validates :name, presence: true, on: :update
 
   has_one_attached :avatar
 

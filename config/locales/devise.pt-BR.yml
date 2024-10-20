@@ -86,4 +86,6 @@ pt-BR:
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"
+      too_short: "%{attribute} deve ter pelo menos %{count} caracteres"
+      too_long: "%{attribute} deve ter menos de %{count} caracteres"
 

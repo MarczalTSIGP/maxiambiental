@@ -5,7 +5,7 @@ class Clients::Devise::RegistrationsController < Devise::RegistrationsController
 
   layout 'layouts/clients/devise/sessions'
 
-  def after_sign_up_path_for(_resource)
-    clients_root_path
+  def after_inactive_sign_up_path_for(_resource)
+    new_client_session_path
   end
 end
