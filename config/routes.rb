@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root 'home#index'
-  
+
   match '404', via: :all, to: 'errors#not_found'
   match '500', via: :all, to: 'errors#internal_server_error'
-  
+
   get 'up' => 'rails/health#show', as: :rails_health_check
-  
+
   devise_for :admins, controllers: { sessions: 'admin/devise/sessions', passwords: 'admin/devise/passwords' }
 
   authenticate :admin do
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :clients, 
+  devise_for :clients,
              controllers: {
                registrations: 'clients/devise/registrations',
                sessions: 'clients/devise/sessions',
@@ -31,7 +31,6 @@ Rails.application.routes.draw do
                unlocks: 'clients/devise/unlocks',
                omniauth_callbacks: 'clients/devise/omniauth_callbacks'
              }
-
 
   authenticate :client do
     namespace :clients do

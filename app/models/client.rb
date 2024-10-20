@@ -11,10 +11,10 @@ class Client < ApplicationRecord
   validates :name, presence: true
 
   has_one_attached :avatar
-  
-  def self.from_google(u)
-    client = create_with(uid: u[:uid], provider: 'google',
-                         password: Devise.friendly_token[0, 20]).find_or_create_by!(email: u[:email])
+
+  def self.from_google(user)
+    client = create_with(uid: user[:uid], provider: 'google',
+                         password: Devise.friendly_token[0, 20]).find_or_create_by!(email: user[:email])
 
     client.skip_confirmation! if client.respond_to?(:skip_confirmation!)
 

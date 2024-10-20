@@ -18,7 +18,7 @@ class Clients::ProfileController < ApplicationController
 
   def update_password
     client_pwd_params = params.require(:client)
-                             .permit(:current_password, :password, :password_confirmation)
+                              .permit(:current_password, :password, :password_confirmation)
 
     if @client.update_with_password(client_pwd_params)
       bypass_sign_in(@client)

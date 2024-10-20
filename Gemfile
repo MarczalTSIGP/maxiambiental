@@ -50,7 +50,7 @@ gem 'bootsnap', require: false
 gem 'devise'
 gem 'font-awesome-sass', '~> 6.2.0'
 gem 'omniauth-google-oauth2'
-gem "omniauth-rails_csrf_protection"
+gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'simple_form'
 gem 'view_component'
