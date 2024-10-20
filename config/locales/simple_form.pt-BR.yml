@@ -23,6 +23,7 @@ pt-BR:
       age: "Selecione sua idade"
     placeholders:
       defaults: &defaults
+        name: "Digite seu nome"
         email: "Digite seu e-mail"
         password: "Digite sua senha"
         password_confirmation: "Confirme sua senha"

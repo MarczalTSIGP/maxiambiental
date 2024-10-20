@@ -31,4 +31,21 @@ Rails.application.routes.draw do
                unlocks: 'clients/devise/unlocks',
                omniauth_callbacks: 'clients/devise/omniauth_callbacks'
              }
+
+
+  authenticate :client do
+    namespace :clients do
+      # root 'dashboard#index'
+
+      get 'profile', to: 'profile#index', as: :profile
+      get 'profile/edit', to: 'profile#edit', as: :edit_profile
+      get 'profile/edit/password', to: 'profile#edit_password', as: :edit_password
+
+      patch 'profile/update', to: 'profile#update', as: :update_profile
+      patch 'profile/update_avatar', to: 'profile#update_avatar', as: :update_avatar
+      patch 'profile/update_password', to: 'profile#update_password', as: :update_password
+
+      delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
+    end
+  end
 end

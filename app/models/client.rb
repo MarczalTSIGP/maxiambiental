@@ -3,6 +3,14 @@ class Client < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable,
          :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
+
+  validates :email,
+            presence: true,
+            uniqueness: { case_sensitive: true }
+
+  validates :name, presence: true
+
+  has_one_attached :avatar
   
   def self.from_google(u)
     client = create_with(uid: u[:uid], provider: 'google',
@@ -11,5 +19,11 @@ class Client < ApplicationRecord
     client.skip_confirmation! if client.respond_to?(:skip_confirmation!)
 
     client
-  end 
+  end
+
+  def avatar_url
+    return ActionController::Base.helpers.asset_path('default-avatar.png') unless avatar.attached?
+
+    Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true)
+  end
 end
