@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="nav"
 export default class extends Controller {
-  static targets = ["logo"]
+  static targets = ["logo", "menu"]
 
   connect() {
     window.addEventListener('scroll', this.toggleBackground.bind(this))
@@ -24,5 +24,9 @@ export default class extends Controller {
 
       this.logoTarget.classList.add('hidden')
     }
+  }
+
+  toggleMenu() {
+    this.menuTarget.classList.toggle('hidden')
   }
 }

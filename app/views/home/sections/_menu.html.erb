@@ -1,0 +1,43 @@
+<div data-nav-target="menu" class="navbar-menu hidden md:hidden relative z-50">
+
+   <div class="fixed inset-0 bg-gray-800 opacity-25"></div>
+
+   <aside class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+
+      <div class="flex items-center mb-8">
+         <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: 'h-16'), root_path, class: "mr-auto text-3xl font-bold leading-none" %>
+         <button data-action="click->nav#toggleMenu"> 
+            <%= icon('fa-solid', 'xmark', class: "text-green-700") %>
+         </button>
+      </div>
+
+      <div>
+         <ul>
+            <li class="mb-1">
+               <%= link_to 'Cursos', '#', class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
+            </li>
+            <li class="mb-1">
+               <%= link_to 'Galeria de Fotos', '#', class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
+            </li>
+            <li class="mb-1">
+               <%= link_to 'Sobre Nós', '#', class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
+            </li>
+            <li class="mb-1">
+               <%= link_to 'Fale Conosco', '#', class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
+            </li>
+         </ul>
+      </div>
+
+      <div class="mt-auto">
+         <div class="pt-6">
+            <%= link_to 'Entrar', new_client_session_path, class: "block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold bg-gray-50 hover:bg-gray-100 rounded-xl" if !client_signed_in? %>
+            <%= link_to 'Cadastrar-se', new_client_registration_path, class: "block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-green-600 hover:bg-green-700 rounded-xl" if !client_signed_in? %>
+         </div>
+         <p class="my-4 text-xs text-center text-gray-400">
+            <span>Copyright © 2024</span>
+         </p>
+      </div>
+
+   </aside>
+
+</div>
