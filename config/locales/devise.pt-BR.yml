@@ -19,10 +19,14 @@ pt-BR:
     mailer:
       confirmation_instructions:
         subject: "Instruções de confirmação"
+        welcome: "Bem-vindo %{email}! Você se registrou com sucesso."
+        instructions: "Por favor, confirme seu endereço de email clicando no link abaixo:"
       reset_password_instructions:
         subject: "Instruções para redefinir a senha"
       unlock_instructions:
         subject: "Instruções de desbloqueio"
+        attention: "Atenção! Sua conta foi bloqueada devido à quantidade de tentativas inválidas."
+        instructions: "Por favor, desbloqueie sua conta clicando no link abaixo:"
       email_changed:
         subject: "Email alterado"
       password_change:
@@ -52,6 +56,7 @@ pt-BR:
       already_signed_out: "Logout realizado com sucesso."
       sign_in: "Entrar"
       sign_out: "Sair"
+      sign_up: "Cadastrar"
       remember_your_password: "Lembrou sua senha?"
       forgot_password: 
         title: "Esqueceu sua senha?"
@@ -63,9 +68,11 @@ pt-BR:
         instructions: "Digite sua nova senha"
         button: "Redefinir senha"
     unlocks:
+      title: "Conta bloqueada?"
       send_instructions: "Você receberá um email com instruções sobre como desbloquear sua conta em alguns minutos."
       send_paranoid_instructions: "Se sua conta existir, você receberá um email com instruções sobre como desbloqueá-la em alguns minutos."
       unlocked: "Sua conta foi desbloqueada com sucesso. Por favor, faça login para continuar."
+      resend_instructions: "Envie-me novas instruções de desbloqueio"
   errors:
     messages:
       confirmation: "A confirmação não é igual a %{attribute}"
@@ -79,4 +86,6 @@ pt-BR:
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"
+      too_short: "%{attribute} deve ter pelo menos %{count} caracteres"
+      too_long: "%{attribute} deve ter menos de %{count} caracteres"
 

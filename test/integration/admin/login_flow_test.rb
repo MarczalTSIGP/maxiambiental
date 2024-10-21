@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LoginFlowTest < ActionDispatch::IntegrationTest
+class Admin::LoginFlowTest < ActionDispatch::IntegrationTest
   setup do
     @admin = FactoryBot.create(:admin)
   end

@@ -314,4 +314,9 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.navigational_formats = ['*/*', :html, :turbo_stream]
+
+  google_oauth = Rails.application.credentials.google_oauth
+  config.omniauth :google_oauth2,
+                  google_oauth&.client_id,
+                  google_oauth&.client_secret
 end
