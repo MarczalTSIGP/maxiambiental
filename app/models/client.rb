@@ -16,7 +16,8 @@ class Client < ApplicationRecord
     client = create_with(
       uid: user[:uid],
       provider: 'google',
-      password: Devise.friendly_token[0, 20]
+      password: Devise.friendly_token[0, 20],
+      name: user[:name]
     ).find_or_create_by!(email: user[:email])
 
     client.skip_confirmation! if client.respond_to?(:skip_confirmation!)

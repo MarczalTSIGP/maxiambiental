@@ -23,26 +23,25 @@
       </div>
 
       <!-- tabs -->
-      <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+      <div data-controller="tabs" class="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
          <ul class="flex flex-wrap -mb-px">
             <li class="me-2">
                <%= link_to "Meu Perfil", clients_profile_path,
-                                               data: { "turbo-preserve-scroll" => true },
-                                               class: "inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 
-                                                      #{'text-green-600 border-green-600 hover:text-green-600 hover:border-green-300' if current_page?(clients_profile_path)}" %>
+                                               data: { "tabs-target": "link", "turbo-preserve-scroll" => true },
+                                               class: "inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" %>
             </li>
             <li class="me-2">
                <%= link_to t('profile.edit_profile'), clients_edit_profile_path,
-                                               data: { "turbo-preserve-scroll" => true },
-                                               class: "inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 
-                                                      #{'text-green-600 border-green-600 hover:text-green-600 hover:border-green-300' if current_page?(clients_edit_profile_path)}" %>
+                                               data: { "tabs-target": "link", "turbo-preserve-scroll" => true },
+                                               class: "inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" %>
             </li>
-            <li class="me-2">
-               <%= link_to t('profile.edit_password'), clients_edit_password_path,
-                                             data: { "turbo-preserve-scroll" => true }, 
-                                             class: "inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 
-                                                    #{'text-green-600 border-green-600 hover:text-green-600 hover:border-green-300' if current_page?(clients_edit_password_path)}" %>
-            </li>
+            <% if !current_client.uid? %>
+               <li class="me-2">
+                  <%= link_to t('profile.edit_password'), clients_edit_password_path,
+                                                data: { "tabs-target": "link", "turbo-preserve-scroll" => true }, 
+                                                class: "inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" %>
+               </li>
+            <% end %>
          </ul>
       </div>
 
