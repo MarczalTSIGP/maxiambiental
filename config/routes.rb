@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
 
+  get 'about_us', to: 'institutional#index', as: :instituional
+
   devise_for :admins, controllers: { sessions: 'admin/devise/sessions', passwords: 'admin/devise/passwords' }
 
   authenticate :admin do

@@ -1,8 +1,8 @@
 <%= rc 'flash/message' %>
 
 <%= simple_form_for @institutional_content, url: admin_update_institutional_path, method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
-    <%= f.input :title, label: "Título" %>
-    <%= f.input :content, as: :rich_text_area %>
+   <%= f.input :title, label: "Título" %>
+   <%= f.input :content, as: :rich_text_area %>
 
-    <%= f.button :submit, "Salvar" %>
+   <%= f.button :submit, "Salvar" %>
 <% end %>
