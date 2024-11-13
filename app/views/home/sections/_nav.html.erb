@@ -10,13 +10,13 @@
       <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: 'h-16 hidden', data: { nav_target: "logo" }), root_path %>
 
       <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
-         <li><%= link_to 'Cursos', "#", class: "text-sm text-green-700 font-semibold hover:text-green-500" %></li>
-         <li><%= link_to 'Galeria de Fotos', "#", class: "text-sm text-green-700 font-semibold hover:text-green-500" %></li>
-         <li><%= link_to 'Sobre Nós', "#", class: "text-sm text-green-700 font-semibold hover:text-green-500" %></li>
-         <li><%= link_to 'Fale Conosco', "#", class: "text-sm text-green-700 font-semibold hover:text-green-500" %></li>
+         <li><%= link_to 'Cursos', "#", class: "text-sm text-white font-semibold hover:text-green-500",  data: { nav_target: "links" } %></li>
+         <li><%= link_to 'Galeria de Fotos', "#", class: "text-sm text-white font-semibold hover:text-green-500",  data: { nav_target: "links" } %></li>
+         <li><%= link_to 'Sobre Nós', "#", class: "text-sm text-white font-semibold hover:text-green-500",  data: { nav_target: "links" } %></li>
+         <li><%= link_to 'Fale Conosco', "#", class: "text-sm text-white font-semibold hover:text-green-500",  data: { nav_target: "links" } %></li>
       </ul>
 
-      <%= link_to 'Entrar', new_client_session_path, class: "hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 text-sm text-green-700 hover:text-green-500 font-bold" if !client_signed_in? %>
+      <%= link_to 'Entrar', new_client_session_path, class: "hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 text-sm text-white font-bold",  data: { nav_target: "links" } if !client_signed_in? %>
       <%= link_to 'Cadastrar', new_client_registration_path, class: "hidden lg:inline-block py-2 px-6 bg-green-700 hover:bg-green-800 text-sm text-white font-bold rounded-md" if !client_signed_in? %>
 
       <%= render 'layouts/clients/partials/dropdown', user: current_client if client_signed_in? %>

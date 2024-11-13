@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="nav"
 export default class extends Controller {
-  static targets = ["logo", "menu"]
+  static targets = ["logo", "menu", "links"]
 
   connect() {
     window.addEventListener('scroll', this.toggleBackground.bind(this))
@@ -14,16 +14,26 @@ export default class extends Controller {
 
   toggleBackground() {
     if (window.scrollY > 50) {
-      this.element.classList.add('bg-white', 'shadow-md')
-      this.element.classList.remove('bg-transparent')
-
+      this.setNavClasses(['bg-white', 'shadow-md'], ['bg-transparent'])
+      this.setLinksColor('text-green-700', 'text-white')
       this.logoTarget.classList.remove('hidden')
     } else {
-      this.element.classList.add('bg-transparent')
-      this.element.classList.remove('bg-white', 'shadow-md')
-
+      this.setNavClasses(['bg-transparent'], ['bg-white', 'shadow-md'])
+      this.setLinksColor('text-white', 'text-green-700')
       this.logoTarget.classList.add('hidden')
     }
+  }
+
+  setNavClasses(addClasses, removeClasses) {
+    addClasses.forEach(className => this.element.classList.add(className))
+    removeClasses.forEach(className => this.element.classList.remove(className))
+  }
+
+  setLinksColor(addClass, removeClass) {
+    this.linksTargets.forEach(link => {
+      link.classList.add(addClass)
+      link.classList.remove(removeClass)
+    })
   }
 
   toggleMenu() {
