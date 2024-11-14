@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       get 'profile/edit/password', to: 'profile#edit_password', as: :edit_password
 
       patch 'profile/update', to: 'profile#update', as: :update_profile
+      patch 'profile/basic_update', to: 'profile#basic_update', as: :basic_update
       patch 'profile/update_avatar', to: 'profile#update_avatar', as: :update_avatar
       patch 'profile/update_password', to: 'profile#update_password', as: :update_password
 

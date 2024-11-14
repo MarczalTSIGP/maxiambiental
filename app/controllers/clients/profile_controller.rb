@@ -14,6 +14,17 @@ class Clients::ProfileController < ApplicationController
     end
   end
 
+  def basic_update
+    client_basic_params = params.require(:client).permit(:name, :bio)
+
+    if @client.update(client_basic_params)
+      bypass_sign_in(@client)
+      redirect_to clients_edit_profile_path, notice: t('flash_messages.profile_updated')
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def edit_password; end
 
   def update_password

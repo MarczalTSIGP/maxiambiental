@@ -29,4 +29,8 @@ class Client < ApplicationRecord
 
     Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true)
   end
+
+  def google_authenticated?
+    uid.present?
+  end
 end
