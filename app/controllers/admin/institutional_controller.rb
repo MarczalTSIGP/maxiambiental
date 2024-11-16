@@ -5,7 +5,7 @@ class Admin::InstitutionalController < Admin::BaseController
 
   def update
     if @institutional_content.update(institutional_content_params)
-      redirect_to admin_root_path, notice: 'Conteúdo atualizado com sucesso!'
+      redirect_to admin_instituional_path, notice: 'Conteúdo atualizado com sucesso!'
     else
       render :edit, alert: 'Erro ao atualizar conteúdo.'
     end

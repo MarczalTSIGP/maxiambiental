@@ -29,5 +29,7 @@ module Maxiambiental
     config.i18n.enforce_available_locales = false
     config.i18n.available_locales = ['pt-BR']
     config.i18n.default_locale = :'pt-BR'
+
+    config.active_storage.variant_processor = :mini_magick
   end
 end
