@@ -6,18 +6,9 @@ class Clients::ProfileController < ApplicationController
   def edit; end
 
   def update
-    if @client.update_with_password(client_params)
-      bypass_sign_in(@client)
-      redirect_to clients_edit_profile_path, notice: t('flash_messages.profile_updated')
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def basic_update
-    client_basic_params = params.require(:client).permit(:name, :bio)
-
-    if @client.update(client_basic_params)
+    update_method = @client.google_authenticated? ? :update : :update_with_password
+    
+    if @client.send(update_method, client_params)
       bypass_sign_in(@client)
       redirect_to clients_edit_profile_path, notice: t('flash_messages.profile_updated')
     else

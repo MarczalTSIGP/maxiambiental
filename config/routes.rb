@@ -34,14 +34,11 @@ Rails.application.routes.draw do
 
   authenticate :client do
     namespace :clients do
-      # root 'dashboard#index'
-
       get 'profile', to: 'profile#index', as: :profile
       get 'profile/edit', to: 'profile#edit', as: :edit_profile
       get 'profile/edit/password', to: 'profile#edit_password', as: :edit_password
 
       patch 'profile/update', to: 'profile#update', as: :update_profile
-      patch 'profile/basic_update', to: 'profile#basic_update', as: :basic_update
       patch 'profile/update_avatar', to: 'profile#update_avatar', as: :update_avatar
       patch 'profile/update_password', to: 'profile#update_password', as: :update_password
 

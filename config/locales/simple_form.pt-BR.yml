@@ -30,6 +30,7 @@ pt-BR:
         current_password: "Senha atual"
         new_password: "Nova senha"
         new_password_confirmation: "Confirme sua nova senha"
+        bio: "Fale sobre você"
       admin:
         <<: *defaults
       client:
