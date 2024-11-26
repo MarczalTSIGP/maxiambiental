@@ -7,7 +7,7 @@ class Clients::ProfileController < ApplicationController
 
   def update
     update_method = @client.google_authenticated? ? :update : :update_with_password
-    
+
     if @client.send(update_method, client_params)
       bypass_sign_in(@client)
       redirect_to clients_edit_profile_path, notice: t('flash_messages.profile_updated')
