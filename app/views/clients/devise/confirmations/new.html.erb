@@ -1,20 +1,13 @@
-<h2>Resend confirmation instructions</h2>
+<% provide(:head_title, t('devise.confirmations.resend')) %>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
+<%= simple_form_for @client, url: client_confirmation_path, html: { method: :post, class: "space-y-4 md:space-y-6" } do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                input_html: { autocomplete: "email" } %>
-  </div>
+   <%= f.input :email, value: @client.pending_reconfirmation? ? @client.unconfirmed_email : @client.email %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
+   <%= f.button :submit, t('devise.confirmations.button') %>
+
+   <div class="text-sm text-center">
+      <%= link_to t('devise.sessions.sign_in_with_my_account'), new_client_session_path, class: "font-semibold text-green-600 hover:text-green-500" %>
+   </div>
+
 <% end %>
-
-<%= render "clients/devises/shared/links" %>

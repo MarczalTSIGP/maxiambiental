@@ -6,6 +6,8 @@ pt-BR:
       confirmed: "Seu endereço de email foi confirmado com sucesso."
       send_instructions: "Você receberá um email com instruções sobre como confirmar seu endereço de email em alguns minutos."
       send_paranoid_instructions: "Se seu endereço de email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar seu endereço de email em alguns minutos."
+      resend: "Reenviar instruções de confirmação"
+      button: "Reenvie-me as instruções de confirmação"
     failure:
       already_authenticated: "Você já está logado."
       inactive: "Sua conta ainda não foi ativada."
@@ -53,11 +55,12 @@ pt-BR:
     sessions:
       signed_in: "Login realizado com sucesso."
       signed_out: "Logout realizado com sucesso."
-      already_signed_out: "Logout realizado com sucesso."
+      already_signed_out: "Sua sessão foi encerrada."
       sign_in: "Entrar"
       sign_out: "Sair"
       sign_up: "Cadastrar"
       remember_your_password: "Lembrou sua senha?"
+      sign_in_with_my_account: "Entrar com minha conta"
       forgot_password: 
         title: "Esqueceu sua senha?"
         instructions: "Digite seu endereço de email para receber um link de redefinição de senha."
@@ -76,7 +79,7 @@ pt-BR:
   errors:
     messages:
       confirmation: "A confirmação não é igual a %{attribute}"
-      already_confirmed: "já foi confirmado, por favor, tente fazer login"
+      already_confirmed: "%{attribute} já foi confirmado, por favor, tente fazer login"
       confirmation_period_expired: "precisa ser confirmado dentro de %{period}, por favor, solicite um novo"
       expired: "expirou, por favor, solicite um novo"
       not_found: "%{attribute} não encontrado"
