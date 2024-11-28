@@ -1,4 +1,4 @@
-<div data-nav-target="menu" class="navbar-menu hidden md:hidden relative z-50">
+<div data-navbar-visibility-target="menu" class="navbar-menu hidden relative z-50">
 
    <div class="fixed inset-0 bg-gray-800 opacity-25"></div>
 
@@ -6,25 +6,25 @@
 
       <div class="flex items-center mb-8">
          <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: 'h-16'), root_path, class: "mr-auto text-3xl font-bold leading-none" %>
-         <button data-action="click->nav#toggleMenu"> 
+         <button data-action="click->navbar-visibility#toggleMenu"> 
             <%= icon('fa-solid', 'xmark', class: "text-green-700") %>
          </button>
       </div>
 
       <div>
          <ul>
-            <li class="mb-1">
-               <%= link_to 'Cursos', '#', class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
-            </li>
-            <li class="mb-1">
-               <%= link_to 'Galeria de Fotos', '#', class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
-            </li>
-            <li class="mb-1">
-               <%= link_to 'Sobre Nós', '#', class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
-            </li>
-            <li class="mb-1">
-               <%= link_to 'Fale Conosco', '#', class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
-            </li>
+            <% links = [
+                { text: 'Cursos', url: "#" },
+                { text: 'Galeria de Fotos', url: "#" },
+                { text: 'Sobre Nós', url: "#" },
+                { text: 'Fale Conosco', url: "#" },
+            ] %>
+
+            <% links.each do |link| %>
+               <li class="mb-1">
+                  <%= link_to link[:text], link[:url], class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
+               </li>
+            <% end %>
          </ul>
       </div>
 

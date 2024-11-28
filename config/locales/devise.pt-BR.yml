@@ -55,7 +55,7 @@ pt-BR:
     sessions:
       signed_in: "Login realizado com sucesso."
       signed_out: "Logout realizado com sucesso."
-      already_signed_out: "Sua sessão foi encerrada."
+      already_signed_out: "Logout realizado com sucesso."
       sign_in: "Entrar"
       sign_out: "Sair"
       sign_up: "Cadastrar"

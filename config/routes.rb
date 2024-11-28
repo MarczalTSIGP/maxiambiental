@@ -30,7 +30,7 @@ Rails.application.routes.draw do
                passwords: 'clients/devise/passwords',
                unlocks: 'clients/devise/unlocks',
                omniauth_callbacks: 'clients/devise/omniauth_callbacks',
-               confirmations: 'clients/devise/confirmations',
+               confirmations: 'clients/devise/confirmations'
              }
 
   authenticate :client do

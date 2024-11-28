@@ -16,19 +16,19 @@
 
 </div>
 
-<div data-dropdown-target="menu" class="absolute right-8 top-14 z-50 hidden my-4 text-base list-none bg-green-800 divide-y divide-green-600 rounded-lg shadow">
+<div data-dropdown-target="menu" class="absolute right-8 top-14 z-50 hidden my-4 text-base list-none bg-green-600 divide-y divide-green-800 rounded-lg shadow">
 
    <div class="px-4 py-3">
       <span class="block text-sm text-white"><%= user.name %></span>
-      <span class="block text-sm truncate text-green-400"><%= user.email %></span>
+      <span class="block text-sm truncate text-green-800"><%= user.email %></span>
    </div>
 
    <ul class="py-2" aria-labelledby="user-menu-button">
       <li>
-         <%= link_to 'Perfil', clients_profile_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-green-600 text-white" %>
+         <%= link_to 'Perfil', clients_profile_path, class: "block px-4 py-2 text-sm hover:bg-green-700 text-white" %>
       </li>
       <li>
-         <%= link_to t('devise.sessions.sign_out'), destroy_client_session_path, data: { turbo_method: :delete } , class: "block px-4 py-2 text-sm text-gray-700 hover:bg-green-600 text-white" %>
+         <%= link_to t('devise.sessions.sign_out'), destroy_client_session_path, data: { turbo_method: :delete } , class: "block px-4 py-2 text-sm hover:bg-green-700 text-white" %>
       </li>
    </ul>
 </div>
