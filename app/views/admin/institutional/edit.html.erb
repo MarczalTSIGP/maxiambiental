@@ -1,6 +1,12 @@
-<%= simple_form_for @institutional_content, url: admin_update_institutional_path, method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
-   <%= f.input :title, label: "Título" %>
+<%= rc 'page\content_title', title: t('institutional.edit_title'), 
+                             description: t('institutional.edit_description') %>
+
+<%= simple_form_for @institutional_content, 
+                    url: admin_update_institutional_path, 
+                    method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
+
+   <%= f.input :title %>
    <%= f.input :content, as: :rich_text_area %>
 
-   <%= f.button :submit, "Salvar" %>
+   <%= f.button :submit, t('buttons.save') %>
 <% end %>

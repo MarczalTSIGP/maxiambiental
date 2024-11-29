@@ -9,3 +9,28 @@
 #   end
 
 Admin.create_with(password: '123456', name: 'Maxiambiental').find_or_create_by!(email: 'admin@maxiambiental.com')
+
+
+# institutional = InstitutionalContent.create!(
+#   title: 'Nossa História',
+#   content: ActionText::RichText.create!(
+#     body: <<-HTML
+#       <h2>Sobre Nossa Instituição</h2>
+#       <p>Fundada em 2010, nossa instituição tem como missão...</p>
+#       <p>Nosso compromisso é com a excelência e inovação.</p>
+#     HTML
+#   )
+# )
+
+# # Anexe a imagem dos assets
+# image_path = Rails.root.join('app', 'assets', 'images', 'default_institutional.png')
+
+# if File.exist?(image_path)
+#   institutional.image.attach(
+#     io: File.open(image_path),
+#     filename: 'default_institutional.png',
+#     content_type: 'image/jpeg'
+#   )
+# else
+#   puts "Imagem não encontrada em #{image_path}"
+# end
