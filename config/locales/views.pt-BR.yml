@@ -22,6 +22,7 @@ pt-BR:
     remembered_password: "Lembrou sua senha?"
     confirm_my_account: "Confirmar minha conta"
     unlock_my_account: "Desbloquear minha conta"
+    profile: "Perfil"
   flash_messages:
     profile_updated: "Seu perfil foi atualizado com sucesso."
     avatar_updated: "Seu avatar foi atualizado com sucesso."
