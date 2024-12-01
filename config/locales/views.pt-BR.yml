@@ -23,6 +23,10 @@ pt-BR:
     confirm_my_account: "Confirmar minha conta"
     unlock_my_account: "Desbloquear minha conta"
     profile: "Perfil"
+    courses: "Cursos"
+    photos_gallery: "Galeria de fotos"
+    about_us: "Sobre nós"
+    contact_us: "Fale conosco"
   flash_messages:
     profile_updated: "Seu perfil foi atualizado com sucesso."
     avatar_updated: "Seu avatar foi atualizado com sucesso."

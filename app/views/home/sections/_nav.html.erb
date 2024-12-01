@@ -1,7 +1,7 @@
 <div data-controller="dropdown" data-action="click@window->dropdown#close">
   <nav data-controller="navbar-visibility" class="fixed top-0 w-full px-4 py-4 h-16 flex justify-between items-center bg-transparent z-10 transition duration-300">
 
-    <button type="button" data-action="click->navbar-visibility#toggleMenu" class="md:hidden hs-collapse-toggle relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-green-200 bg-white text-green-800 shadow-sm hover:bg-green-50 focus:outline-none focus:bg-green-50">
+    <button type="button" data-action="click->navbar-visibility#toggleMenu" class="lg:hidden hs-collapse-toggle relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-green-200 bg-white text-green-800 shadow-sm hover:bg-green-50 focus:outline-none focus:bg-green-50">
       <%= icon('fa-solid', 'bars') %>
       <span class="sr-only">Toggle</span>
     </button>
@@ -10,10 +10,10 @@
 
     <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
       <% links = [
-        { text: 'Cursos', url: "#" },
-        { text: 'Galeria de Fotos', url: "#" },
-        { text: 'Sobre Nós', url: "#" },
-        { text: 'Fale Conosco', url: "#" },
+        { text: t('links.courses'), url: "#" },
+        { text: t('links.photos_gallery'), url: "#" },
+        { text: t('links.about_us'), url: "#" },
+        { text: t('links.contact_us'), url: "#" },
       ] %>
 
       <% links.each do |link| %>

@@ -2,11 +2,12 @@
 
 <%= simple_form_for @client, url: client_registration_path, html: { class: "space-y-4 md:space-y-6" } do |f| %>
 
-   <%= f.input :email %>
-   <%= f.input :password %>
-   <%= f.input :password_confirmation %>
+  <%= f.input :email %>
+  <%= f.input :name %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
 
-   <%= f.button :submit, t('devise.sessions.sign_up') %>
+  <%= f.button :submit, t('devise.sessions.sign_up') %>
 
 <% end %>
 
@@ -14,7 +15,7 @@
 
 <div class="text-sm">
 
-   <span class="font-light text-gray-500"> <%= t('simple_form.labels.already_have_an_account') %> </span>
-   <%= link_to t('links.sign_in'), new_client_session_path, class: "font-medium text-green-600 hover:underline" %>
+  <span class="font-light text-gray-500"> <%= t('simple_form.labels.already_have_an_account') %> </span>
+  <%= link_to t('links.sign_in'), new_client_session_path, class: "font-medium text-green-600 hover:underline" %>
 
 </div>

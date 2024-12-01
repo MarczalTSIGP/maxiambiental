@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title><%= yield(:head_title) %></title>
-      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-      <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
+<head>
+  <title><%= yield(:head_title) %></title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-      <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-      <%= javascript_importmap_tags %>
-   </head>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-   <body>
-      <%= render 'layouts/admin/devise/partials/header' %>
+<body>
+<%= render 'layouts/clients/devise/partials/header' %>
 
-      <div class="flex flex-col items-center justify-center h-screen mx-auto px-6">
+<div class="flex flex-col items-center justify-center h-full mx-auto px-6 py-6">
 
-         <div class="w-full bg-white rounded shadow-lg md:mt-0 sm:max-w-md xl:p-0 mb-4 max-w-lg">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+  <div class="w-full bg-white rounded shadow-lg md:mt-0 sm:max-w-md xl:p-0 mb-4 max-w-lg">
+    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
 
-               <h1 class="text-xl p-4 font-bold md:text-2xl text-green-700 text-center">
-                  <%= yield :head_title %>
-               </h1>
+      <h1 class="text-xl p-4 font-bold md:text-2xl text-green-700 text-center">
+        <%= yield :head_title %>
+      </h1>
 
-               <%= rc 'flash/message' %>
+      <%= rc 'flash/message' %>
 
-               <%= yield %>
-            </div>
-         </div>
-      </div>
+      <%= yield %>
+    </div>
+  </div>
+</div>
 
-      <%= render 'layouts/admin/devise/partials/footer' %>
-   </body>
+<%= render 'layouts/clients/devise/partials/footer' %>
+</body>
 </html>
