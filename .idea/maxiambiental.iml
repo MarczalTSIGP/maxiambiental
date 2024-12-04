@@ -87,10 +87,7 @@
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.1, Remote: ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.7.2, Remote: ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.2.0, Remote: ruby-3.3.4-p94) [gem]" level="application" />
-<<<<<<< HEAD
     <orderEntry type="library" scope="PROVIDED" name="net-http (v0.4.1, Remote: ruby-3.3.4-p94) [gem]" level="application" />
-=======
->>>>>>> 0d593bc (Added instructors migration and model)
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.4.16, Remote: ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, Remote: ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, Remote: ruby-3.3.4-p94) [gem]" level="application" />
