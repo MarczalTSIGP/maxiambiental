@@ -6,6 +6,8 @@ pt-BR:
       confirmed: "Seu endereço de email foi confirmado com sucesso."
       send_instructions: "Você receberá um email com instruções sobre como confirmar seu endereço de email em alguns minutos."
       send_paranoid_instructions: "Se seu endereço de email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar seu endereço de email em alguns minutos."
+      resend: "Reenviar instruções de confirmação"
+      button: "Reenvie-me as instruções de confirmação"
     failure:
       already_authenticated: "Você já está logado."
       inactive: "Sua conta ainda não foi ativada."
@@ -19,10 +21,14 @@ pt-BR:
     mailer:
       confirmation_instructions:
         subject: "Instruções de confirmação"
+        welcome: "Bem-vindo %{email}! Você se registrou com sucesso."
+        instructions: "Por favor, confirme seu endereço de email clicando no link abaixo:"
       reset_password_instructions:
         subject: "Instruções para redefinir a senha"
       unlock_instructions:
         subject: "Instruções de desbloqueio"
+        attention: "Atenção! Sua conta foi bloqueada devido à quantidade de tentativas inválidas."
+        instructions: "Por favor, desbloqueie sua conta clicando no link abaixo:"
       email_changed:
         subject: "Email alterado"
       password_change:
@@ -52,7 +58,9 @@ pt-BR:
       already_signed_out: "Logout realizado com sucesso."
       sign_in: "Entrar"
       sign_out: "Sair"
+      sign_up: "Cadastrar"
       remember_your_password: "Lembrou sua senha?"
+      sign_in_with_my_account: "Entrar com minha conta"
       forgot_password: 
         title: "Esqueceu sua senha?"
         instructions: "Digite seu endereço de email para receber um link de redefinição de senha."
@@ -63,13 +71,15 @@ pt-BR:
         instructions: "Digite sua nova senha"
         button: "Redefinir senha"
     unlocks:
+      title: "Conta bloqueada?"
       send_instructions: "Você receberá um email com instruções sobre como desbloquear sua conta em alguns minutos."
       send_paranoid_instructions: "Se sua conta existir, você receberá um email com instruções sobre como desbloqueá-la em alguns minutos."
       unlocked: "Sua conta foi desbloqueada com sucesso. Por favor, faça login para continuar."
+      resend_instructions: "Envie-me novas instruções de desbloqueio"
   errors:
     messages:
       confirmation: "A confirmação não é igual a %{attribute}"
-      already_confirmed: "já foi confirmado, por favor, tente fazer login"
+      already_confirmed: "%{attribute} já foi confirmado, por favor, tente fazer login"
       confirmation_period_expired: "precisa ser confirmado dentro de %{period}, por favor, solicite um novo"
       expired: "expirou, por favor, solicite um novo"
       not_found: "%{attribute} não encontrado"
@@ -79,4 +89,6 @@ pt-BR:
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"
+      too_short: "%{attribute} deve ter pelo menos %{count} caracteres"
+      too_long: "%{attribute} deve ter menos de %{count} caracteres"
 

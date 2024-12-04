@@ -12,6 +12,21 @@ pt-BR:
     change_avatar: "Alterar imagem"
     edit_avatar: "Alterar imagem"
     click_to_edit_avatar: "Clique para alterar seu avatar"
+    continue_with_google: "Continuar com o Google"
+  links:
+    discover_more: "Saiba mais"
+    explore_our_courses: "Conheça nossos treinamentos"
+    sign_up: "Cadastre-se"
+    sign_in: "Entre"
+    forgot_password: "Esqueceu sua senha?"
+    remembered_password: "Lembrou sua senha?"
+    confirm_my_account: "Confirmar minha conta"
+    unlock_my_account: "Desbloquear minha conta"
+    profile: "Perfil"
+    courses: "Cursos"
+    photos_gallery: "Galeria de fotos"
+    about_us: "Sobre nós"
+    contact_us: "Fale conosco"
   flash_messages:
     profile_updated: "Seu perfil foi atualizado com sucesso."
     avatar_updated: "Seu avatar foi atualizado com sucesso."
@@ -34,3 +49,6 @@ pt-BR:
       title: "Erro Interno no Servidor"
       message: "Algo deu errado no servidor. Estamos trabalhando para corrigir."
       action: "Tente novamente mais tarde"
+  home:
+    title: "Maxiambiental Treinamentos"
+    subtitle: "Transformando Conhecimento Ambiental em Ação"

@@ -1,0 +1,35 @@
+<div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
+   <%= button_tag id: 'dropdownAvatarNameButton',
+                  data: { action: 'click->dropdown#toggle' },
+                  class: 'flex items-center text-sm pe-1 font-medium rounded-full md:me-0',
+                  type: 'button' do %>
+
+      <%= image_tag(user.avatar_url, alt: user.name, class: 'object-cover w-8 h-8 me-2 rounded-full') %>
+
+      <p data-navbar-visibility-target="links" class="<%= controller_name == 'home' ? 'text-white' : 'text-green-700' %>">
+         <%= user.name %>
+         <%= icon('fa-solid', 'chevron-down', class: "w-2.5 h-4 ms-3") %>
+      </p>
+   <% end %>
+
+</div>
+
+<div data-dropdown-target="menu" class="absolute right-8 top-14 z-50 hidden my-4 text-base list-none bg-gray-50 border border-gray-200 rounded-lg shadow-xl divide-y divide-gray-200">
+
+   <div class="px-4 py-3">
+      <span class="block text-sm text-green-800"><%= user.name %></span>
+      <span class="block text-sm truncate text-gray-500"><%= user.email %></span>
+   </div>
+
+   <ul class="py-2" aria-labelledby="user-menu-button">
+      <li>
+         <%= link_to t('links.profile'), clients_profile_path,
+                     class: "block px-4 py-2 text-sm hover:bg-green-200 text-green-800" %>
+      </li>
+      <li>
+         <%= link_to t('devise.sessions.sign_out'), destroy_client_session_path,
+                     data: { turbo_method: :delete }, class: "block px-4 py-2 text-sm hover:bg-red-100 text-red-700" %>
+      </li>
+   </ul>
+</div>

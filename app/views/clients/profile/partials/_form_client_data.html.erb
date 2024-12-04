@@ -1,0 +1,17 @@
+<div id="form-box" class="w-full pb-8 mt-8 rounded-lg space-y-4 md:space-y-6">
+
+   <%= rc 'flash/message' %>
+
+   <%= simple_form_for @client, namespace: :update_data, 
+                                url: clients_update_profile_path, 
+                                method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
+
+      <%= f.input :email, disabled: @client.google_authenticated? %>
+      <%= f.input :name %>
+      <%= f.input :bio, as: :text %>
+      <%= f.input :current_password if !@client.google_authenticated? %>
+
+      <%= f.button :submit, t('buttons.save') %>
+   <% end %>
+
+</div>

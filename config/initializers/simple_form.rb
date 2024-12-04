@@ -133,10 +133,24 @@ SimpleForm.setup do |config|
 
     b.wrapper :input_wrapper, tag: 'div' do |ba|
       ba.use :input,
-             class: 'shadow border border-gray-300 rounded-md w-full p-2.5 text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700'
+             class: 'shadow border border-gray-300 rounded-md w-full p-2.5 
+                            text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700 
+                            disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-400 disabled:text-gray-600'
 
       ba.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
       ba.use :hint, wrap_with: { tag: :p, class: 'mt-2 text-sm text-gray-500' }
+    end
+  end
+
+  config.wrappers :checkbox, tag: 'div', class: 'flex items-center justify-end', error_class: 'text-red-500' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'ml-2 text-md text-gray-500 dark:text-gray-300 order-1'
+    b.optional :readonly
+
+    b.wrapper :input_wrapper, tag: 'div' do |ba|
+      ba.use :input,
+             class: 'w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 order-2'
     end
   end
 

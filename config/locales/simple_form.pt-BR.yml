@@ -11,6 +11,9 @@ pt-BR:
       password: "Senha"
       password_confirmation: "Confirmação da senha"
       email: "E-mail"
+      remember_me: "Lembrar de mim"
+      do_not_have_an_account: "Não tem uma conta?"
+      already_have_an_account: "Ja tem uma conta?"
     hints:
       username: "Nome de usuário para entrar."
       password: "Sem caracteres especiais, por favor."
@@ -19,11 +22,17 @@ pt-BR:
     prompts:
       age: "Selecione sua idade"
     placeholders:
-      admin: 
+      defaults: &defaults
+        name: "Digite seu nome"
         email: "Digite seu e-mail"
         password: "Digite sua senha"
         password_confirmation: "Confirme sua senha"
         current_password: "Senha atual"
         new_password: "Nova senha"
         new_password_confirmation: "Confirme sua nova senha"
+        bio: "Fale sobre você"
+      admin:
+        <<: *defaults
+      client:
+        <<: *defaults
 

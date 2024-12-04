@@ -1,0 +1,12 @@
+<% provide(:head_title, t('devise.sessions.reset_password.instructions')) %>
+
+<%= simple_form_for @client, url: client_password_path, html: { class: 'space-y-4 md:space-y-6', method: :put } do |f| %>
+
+   <%= f.hidden_field :reset_password_token %>
+   <%= f.full_error :reset_password_token %>
+
+   <%= f.input :password %>
+   <%= f.input :password_confirmation %>
+
+   <%= f.button :submit, t('devise.sessions.reset_password.button') %>
+<% end %>

@@ -1,0 +1,9 @@
+<%= image_tag 'welcome_reset_password_instructions.png', alt: "Welcome image", width: "300" %>
+
+<h1>
+   <%= t('devise.mailer.confirmation_instructions.welcome', email: @resource.email)%>
+</h1>
+
+<p><%= t('devise.mailer.confirmation_instructions.instructions')%></p>
+
+<%= link_to t('links.confirm_my_account'), confirmation_url(@resource, confirmation_token: @token), class: "button" %>
