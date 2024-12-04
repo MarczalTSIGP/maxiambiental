@@ -1,0 +1,39 @@
+<%= rc 'page/content_title',
+       title: 'Gerenciar Instrutores',
+       description: 'Gerenciar instrutores da maxiambiental.',
+       with_buttons: true,
+       bt_label: "Novo Instrutor",
+       bt_path: new_admin_instructor_path %>
+
+<div class="flex flex-col">
+   <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+         <div class="border rounded-lg overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+               <thead class="bg-gray-50">
+               <tr>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nome</th>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Email</th>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Telefone</th>
+                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase"></th>
+               </tr>
+               </thead>
+               <tbody class="divide-y divide-gray-200">
+
+                  <% @instructors.each do |instructor| %>
+                     <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"><%= instructor.name %></td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><%= instructor.email %></td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><%= instructor.phone %></td>
+                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                           <%= link_to 'Editar', edit_admin_instructor_path(instructor.id), class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" %>
+                        </td>
+                     </tr>
+                  <% end %>
+
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>

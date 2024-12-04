@@ -1,8 +1,6 @@
 <%= rc 'page/content_title',
        title: 'Novo Instrutor',
-       description: 'Preencha as informações do novo instrutor.',
-       with_buttons: true,
-       bt_label: "Novo Instrutor" %>
+       description: 'Preencha as informações do novo instrutor.' %>
 
 <%= simple_form_for @instructor, url: admin_instructors_path, html: { class: "space-y-4 md:space-y-6" } do |f| %>
    <%= f.input :email %>
