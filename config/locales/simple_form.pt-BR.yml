@@ -31,8 +31,12 @@ pt-BR:
         new_password: "Nova senha"
         new_password_confirmation: "Confirme sua nova senha"
         bio: "Fale sobre você"
+        resume: "Currículo"
+        phone: "Celular"
       admin:
         <<: *defaults
       client:
+        <<: *defaults
+      instructor:
         <<: *defaults
 

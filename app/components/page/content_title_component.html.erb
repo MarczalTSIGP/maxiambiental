@@ -15,8 +15,8 @@
             </div>
 
             <% if @with_buttons %>
-               <%= link_to @bt_path, class: "text-white mb-6 bg-green-700 hover:bg-green-800 whitespace-nowrap font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center" do %>
-                  <%= icon('fa-solid', 'plus', class: "w-4 h-4 mr-2 flex-shrink-0") %>
+               <%= link_to @bt_path, class: "btn-primary mb-6 whitespace-nowrap inline-flex items-center" do %>
+                  <%= icon('fa-solid', 'plus', class: "w-4 h-4 mr-2 fill-current") %>
                   <span class="leading-none mb-1"><%= @bt_label %></span>
                <% end %>
          <% end %>
