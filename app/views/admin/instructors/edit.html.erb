@@ -1,0 +1,15 @@
+<%= rc 'page/content_title',
+       title: 'Editar Instrutor',
+       description: 'Preencha as novas informações do instrutor.' %>
+
+<%= simple_form_for @instructor, url: admin_instructor_path,
+                    method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
+
+   <%= f.input :email %>
+   <%= f.input :name %>
+   <%= f.input :phone %>
+   <%= f.input :resume %>
+
+   <%= f.button :submit, t('buttons.save') %>
+
+<% end %>
