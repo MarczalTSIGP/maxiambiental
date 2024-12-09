@@ -1,8 +1,8 @@
 <%= rc 'page/content_title',
-       title: 'Gerenciar Instrutores',
-       description: 'Gerenciar instrutores da maxiambiental.',
+       title: t('instructor.title'),
+       description: t('instructor.description'),
        with_buttons: true,
-       bt_label: "Novo Instrutor",
+       bt_label: t('instructor.new'),
        bt_path: new_admin_instructor_path %>
 
 <div class="flex flex-col">
@@ -15,10 +15,22 @@
                <thead class="bg-gray-50">
 
                <tr>
-                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Instrutor</th>
-                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Email</th>
-                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Status</th>
-                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Telefone</th>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                     <%= t('activerecord.models.instructor') %>
+                  </th>
+
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                     <%= t('activerecord.attributes.defaults.phone') %>
+                  </th>
+
+                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
+                     Status
+                  </th>
+
+                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
+                     <%= t('activerecord.attributes.defaults.resume') %>
+                  </th>
+
                   <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase"></th>
                </tr>
 
@@ -30,7 +42,7 @@
                      <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                            <div class="flex items-center">
-                              <div class="relative">
+                              <div class="relative w-8">
                                  <%= image_tag 'default-avatar.png', class: "h-8 w-8 rounded-full object-cover"%>
                               </div>
                               <div class="ml-4">
@@ -40,13 +52,17 @@
                            </div>
                         </td>
 
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><%= instructor.email %></td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><%= instructor.phone %></td>
 
                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-800">
-                           <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Ativo</span>
+                           <span class="<%= instructor.active ? 'badge-active' : 'badge-inactive' %>">
+                              <%= instructor.active ? 'Ativo' : 'Inativo' %>
+                           </span>
                         </td>
 
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-800"><%= instructor.phone %></td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-800">
+                           <%= link_to 'Visualizar currículo', admin_instructor_path(instructor.id), class: 'font-medium text-green-700 hover:underline' %>
+                        </td>
 
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                            <%= link_to 'Editar', edit_admin_instructor_path(instructor.id), class: "btn-outline hover:bg-green-700 hover:border-transparent" %>

@@ -1,14 +1,24 @@
 <%= rc 'page/content_title',
-       title: 'Editar Instrutor',
-       description: 'Preencha as novas informações do instrutor.' %>
+       title: t('instructor.edit'),
+       description: t('instructor.edit:description') %>
 
 <%= simple_form_for @instructor, url: admin_instructor_path,
-                    method: :patch, class: "grid gap-6 max-w-2xl mx-auto mt-0" do |f| %>
+                    method: :patch, html: { class: "space-y-4 md:space-y-6" } do |f| %>
 
    <%= f.input :email %>
    <%= f.input :name %>
-   <%= f.input :phone %>
-   <%= f.input :resume %>
+   <%= f.input :phone, input_html: { data: { controller: "phone-mask", action: "input->phone-mask#apply" }} %>
+
+   <div>
+      <div id="editor" class="border border-gray-300"></div>
+      <%= f.input :resume, as: :hidden, input_html: { id: "hidden-content" } %>
+   </div>
+
+   <label class="inline-flex items-center cursor-pointer">
+      <span class="mr-3 text-sm font-medium text-gray-900">Status:</span>
+      <%= f.check_box :active, class: 'peer sr-only' %>
+      <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-700"></div>
+   </label>
 
    <%= f.button :submit, t('buttons.save') %>
 

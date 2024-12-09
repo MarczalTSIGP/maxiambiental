@@ -52,3 +52,10 @@ pt-BR:
   home:
     title: "Maxiambiental Treinamentos"
     subtitle: "Transformando Conhecimento Ambiental em Ação"
+  instructor:
+    title: "Gerenciar Instrutores"
+    description: "Gerencie todos os instrutores cadastrados na Maxiambiental."
+    new: "Novo Instrutor"
+    new_description: "Preencha as informações do novo instrutor."
+    edit: "Editar Instrutor"
+    edit:description: "Preencha as novas informações do instrutor."

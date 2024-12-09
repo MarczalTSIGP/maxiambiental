@@ -14,4 +14,49 @@
  *= require_self
  */
 
- @import "font-awesome";
+@import "font-awesome";
+
+/*
+* Quill editor styles
+* --------------------------------------------------------------------
+*/
+
+.ql-editor img {
+ max-width: 100%;
+}
+
+img.float-left {
+ float: left;
+ margin-right: 10px;
+}
+
+img.float-right {
+ float: right;
+ margin-left: 10px;
+}
+
+.ql-resize-small::before {
+ content: "S";
+}
+
+.ql-resize-medium::before {
+ content: "M";
+}
+
+.ql-resize-large::before {
+ content: "L";
+}
+
+.ql-editor img {
+ display: inline-block;
+ max-width: 100%;
+ height: auto;
+}
+
+.ql-editor img[style*="float: left"] {
+ margin-right: 10px;
+}
+
+.ql-editor img[style*="float: right"] {
+ margin-left: 10px;
+}
