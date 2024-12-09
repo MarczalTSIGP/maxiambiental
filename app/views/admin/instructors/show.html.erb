@@ -1,0 +1,26 @@
+<%= rc 'page/content_title',
+       title: 'Currículo',
+       description: 'Visualiza as informações profissionais do instrutor.' %>
+
+<div class="container mx-auto py-1">
+   <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="p-4 sm:p-6">
+
+      <div class="flex items-center justify-between">
+         <div>
+            <h2 class="text-2xl font-semibold"><%= @instructor.name %></h2>
+            <p class="text-sm text-gray-600">Instrutor Ambiental</p>
+         </div>
+         <div>
+            <p class="text-sm text-gray-600">Telefone: <%= @instructor.phone %></p>
+            <p class="text-sm text-gray-600">Email: <%= @instructor.email %></a></p>
+         </div>
+      </div>
+
+      <hr class="my-4">
+
+      <%= sanitize(@instructor.resume) %>
+
+      </div>
+   </div>
+</div>

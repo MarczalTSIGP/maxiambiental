@@ -1,11 +1,13 @@
 class Admin::InstructorsController < ApplicationController
-  before_action :set_instructor, only: [:edit, :update]
+  before_action :set_instructor, only: [:show, :edit, :update]
 
   layout 'admin/application'
 
   def index
     @instructors = Instructor.all
   end
+  
+  def show; end
 
   def new
     @instructor = Instructor.new
