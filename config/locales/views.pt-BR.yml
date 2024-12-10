@@ -32,6 +32,8 @@ pt-BR:
     avatar_updated: "Seu avatar foi atualizado com sucesso."
     avatar_deleted: "Seu avatar foi excluído com sucesso."
     password_updated: "Sua senha foi atualizada com sucesso."
+    created: "%{model} criado com sucesso."
+    updated: "%{model} atualizado com sucesso."
   profile:
     edit_title: "Editar perfil"
     edit_description: "Mantenha suas informações atualizadas."

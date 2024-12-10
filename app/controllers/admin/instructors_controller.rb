@@ -19,7 +19,8 @@ class Admin::InstructorsController < ApplicationController
     @instructor = Instructor.new(instructor_params)
 
     if @instructor.save
-      redirect_to admin_instructors_path, notice: 'Instructor was successfully created.'
+      redirect_to admin_instructors_path,
+                  notice: t('flash_messages.created', model: Instructor.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +28,8 @@ class Admin::InstructorsController < ApplicationController
 
   def update
     if @instructor.update(instructor_params)
-      redirect_to admin_instructors_path, notice: 'Instructor was successfully updated.'
+      redirect_to admin_instructors_path,
+                  notice: t('flash_messages.updated', model: Instructor.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end
