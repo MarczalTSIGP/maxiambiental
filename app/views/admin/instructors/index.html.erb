@@ -5,76 +5,64 @@
        bt_label: t('instructor.new'),
        bt_path: new_admin_instructor_path %>
 
-<div class="flex flex-col">
-   <div class="-m-1.5 overflow-x-auto">
-      <div class="p-1.5 min-w-full inline-block align-middle">
-         <div class="border rounded-lg overflow-hidden">
+<%= render layout: 'admin/instructors/partials/table_container' do %>
+   <table class="min-w-full divide-y divide-gray-200">
 
-            <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+         <tr>
+            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+               <%= t('activerecord.models.instructor') %>
+            </th>
 
-               <thead class="bg-gray-50">
+            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+               <%= t('activerecord.attributes.defaults.phone') %>
+            </th>
 
-               <tr>
-                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                     <%= t('activerecord.models.instructor') %>
-                  </th>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
+               Status
+            </th>
 
-                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                     <%= t('activerecord.attributes.defaults.phone') %>
-                  </th>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
+               <%= t('activerecord.attributes.defaults.resume') %>
+            </th>
 
-                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
-                     Status
-                  </th>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase"></th>
+         </tr>
+      </thead>
 
-                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
-                     <%= t('activerecord.attributes.defaults.resume') %>
-                  </th>
+      <tbody class="divide-y divide-gray-200">
+         <% @instructors.each do |instructor| %>
+            <tr>
+               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                  <div class="flex items-center">
+                     <div class="relative w-8">
+                        <%= image_tag 'default-avatar.png', class: "h-8 w-8 rounded-full object-cover"%>
+                     </div>
+                     <div class="ml-4">
+                        <h2 class="font-semibold"><%= instructor.name %></h2>
+                        <p class="text-gray-600 text-sm"><%= instructor.email %></p>
+                     </div>
+                  </div>
+               </td>
 
-                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase"></th>
-               </tr>
+               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><%= instructor.phone %></td>
 
-               </thead>
+               <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-800">
+                  <span class="<%= instructor.active ? 'badge-active' : 'badge-inactive' %>">
+                     <%= instructor.active ? 'Ativo' : 'Inativo' %>
+                  </span>
+               </td>
 
-               <tbody class="divide-y divide-gray-200">
+               <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-800">
+                  <%= link_to 'Visualizar currículo', admin_instructor_path(instructor.id), class: 'font-medium text-green-700 hover:underline' %>
+               </td>
 
-                  <% @instructors.each do |instructor| %>
-                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                           <div class="flex items-center">
-                              <div class="relative w-8">
-                                 <%= image_tag 'default-avatar.png', class: "h-8 w-8 rounded-full object-cover"%>
-                              </div>
-                              <div class="ml-4">
-                                 <h2 class="font-semibold"><%= instructor.name %></h2>
-                                 <p class="text-gray-600 text-sm"><%= instructor.email %></p>
-                              </div>
-                           </div>
-                        </td>
+               <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                  <%= link_to 'Editar', edit_admin_instructor_path(instructor.id), class: "btn-outline hover:bg-green-700 hover:border-transparent" %>
+               </td>
+            </tr>
+         <% end %>
+      </tbody>
 
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><%= instructor.phone %></td>
-
-                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-800">
-                           <span class="<%= instructor.active ? 'badge-active' : 'badge-inactive' %>">
-                              <%= instructor.active ? 'Ativo' : 'Inativo' %>
-                           </span>
-                        </td>
-
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-800">
-                           <%= link_to 'Visualizar currículo', admin_instructor_path(instructor.id), class: 'font-medium text-green-700 hover:underline' %>
-                        </td>
-
-                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                           <%= link_to 'Editar', edit_admin_instructor_path(instructor.id), class: "btn-outline hover:bg-green-700 hover:border-transparent" %>
-                        </td>
-                     </tr>
-                  <% end %>
-
-               </tbody>
-
-            </table>
-
-         </div>
-      </div>
-   </div>
-</div>
+   </table>
+<% end %>

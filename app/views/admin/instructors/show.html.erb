@@ -1,26 +1,51 @@
-<%= rc 'page/content_title',
-       title: 'Currículo',
-       description: 'Visualiza as informações profissionais do instrutor.' %>
-
-<div class="container mx-auto py-1">
-   <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="p-4 sm:p-6">
-
-      <div class="flex items-center justify-between">
-         <div>
-            <h2 class="text-2xl font-semibold"><%= @instructor.name %></h2>
-            <p class="text-sm text-gray-600">Instrutor Ambiental</p>
-         </div>
-         <div>
-            <p class="text-sm text-gray-600">Telefone: <%= @instructor.phone %></p>
-            <p class="text-sm text-gray-600">Email: <%= @instructor.email %></a></p>
-         </div>
-      </div>
-
-      <hr class="my-4">
-
-      <%= sanitize(@instructor.resume) %>
-
-      </div>
+<div class="flex rounded-t-lg bg-green-700 sm:px-2 w-full">
+   <div class="h-40 w-40 overflow-hidden sm:rounded-full sm:relative sm:p-0 top-10 left-5 p-3">
+         <%= image_tag 'default-avatar.png', alt: "cover-image" %>
    </div>
+
+   <div class="w-2/3 sm:text-center pl-5 mt-10 text-white text-start">
+         <p class="font-poppins font-bold text-heading sm:text-4xl text-2xl">
+            <%= @instructor.name %>
+         </p>
+         <p class="text-heading">Instrutor</p>
+   </div>
+</div>
+
+
+<div class="p-5">
+
+   <div class="flex flex-col sm:flex-row sm:mt-10">
+
+      <div class="flex flex-col sm:w-1/3">
+         <div class="py-3 sm:order-none order-3">
+            <h2 class="text-lg font-poppins font-bold text-top-color">Contato</h2>
+            <div class="border-2 w-20 border-top-color my-3"></div>
+
+            <div>
+                  <div class="flex items-center my-1">
+                     <%= icon('fa-solid', 'envelope', class: "w-5 h-5 text-green-700 transition duration-75") %>
+                     <div class="ml-2 truncate"><%= @instructor.email %></div>
+                  </div>
+                  <div class="flex items-center my-1">
+                     <%= icon('fa-solid', 'phone', class: "w-5 h-5 text-green-700 transition duration-75") %>
+                     <div><%= @instructor.phone %></div>
+                  </div>
+            </div>
+         </div>
+      </div>
+
+
+      <div class="prose">
+         <%= sanitize(@instructor.resume,
+             attributes: {
+               'all' => ['class', 'style', 'data-list'],
+               'h1' => ['class'],
+               'p' => ['class'],
+               'span' => ['class', 'contenteditable'],
+               'li' => ['data-list']
+            }
+         ) %>
+      </div>               
+   </div>
+
 </div>
