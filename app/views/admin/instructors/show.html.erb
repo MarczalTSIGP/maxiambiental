@@ -34,18 +34,8 @@
          </div>
       </div>
 
-
-      <div class="prose">
-         <%= sanitize(@instructor.resume,
-             attributes: {
-               'all' => ['class', 'style', 'data-list'],
-               'h1' => ['class'],
-               'p' => ['class'],
-               'span' => ['class', 'contenteditable'],
-               'li' => ['data-list']
-            }
-         ) %>
-      </div>               
+      <div data-controller="quill" data-quill-content="<%= @instructor.resume %>" class="w-full sm:w-2/3"></div>
+    
    </div>
 
 </div>

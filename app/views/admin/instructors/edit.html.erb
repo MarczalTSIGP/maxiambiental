@@ -9,9 +9,9 @@
    <%= f.input :name %>
    <%= f.input :phone, input_html: { data: { controller: "phone-mask", action: "input->phone-mask#apply" }} %>
 
-   <div>
-      <div id="editor" class="border border-gray-300"></div>
-      <%= f.input :resume, as: :hidden, input_html: { id: "hidden-content" } %>
+   <div data-controller="quill-form">
+      <%= f.hidden_field :resume, id: 'post_quill_content' %>
+      <div id="quill_editor"></div>
    </div>
 
    <label class="inline-flex items-center cursor-pointer">
