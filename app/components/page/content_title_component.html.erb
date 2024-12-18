@@ -15,11 +15,11 @@
             </div>
 
             <% if @with_buttons %>
-               <%= link_to @bt_path, class: "btn-primary mb-6 whitespace-nowrap inline-flex items-center" do %>
-                  <%= icon('fa-solid', 'plus', class: "w-4 h-4 mr-2 fill-current") %>
-                  <span class="leading-none mb-1"><%= @bt_label %></span>
+               <%= link_to @bt_path, class: "btn-primary mb-6 whitespace-nowrap inline-flex items-center justify-center gap-2" do %>
+                  <%= icon('fa-solid', 'plus', class: "w-4 h-4 flex-shrink-0 self-center leading-none") %>
+                  <span class="text-sm leading-none"><%= @bt_label %></span>
                <% end %>
-         <% end %>
+            <% end %>
 
          </div>
 

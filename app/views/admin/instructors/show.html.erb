@@ -1,27 +1,20 @@
-<div class="flex rounded-t-lg bg-green-700 sm:px-2 w-full">
-   <div class="h-40 w-40 overflow-hidden sm:rounded-full sm:relative sm:p-0 top-10 left-5 p-3">
-         <%= image_tag 'default-avatar.png', alt: "cover-image" %>
-   </div>
+<div class="container mx-auto">
+   <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
 
-   <div class="w-2/3 sm:text-center pl-5 mt-10 text-white text-start">
-         <p class="font-poppins font-bold text-heading sm:text-4xl text-2xl">
-            <%= @instructor.name %>
-         </p>
-         <p class="text-heading">Instrutor</p>
-   </div>
-</div>
+      <div class="col-span-4 sm:col-span-3">
+         <div class="bg-white shadow rounded-lg p-6">
 
+            <div class="flex flex-col items-center">
+               <%= image_tag 'default-avatar.png', class: "w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0", alt: "cover-image" %>
+               <h1 class="text-xl font-bold"><%= @instructor.name %></h1>
+               <p class="text-gray-700">Instrutor</p>
+            </div>
 
-<div class="p-5">
+            <hr class="my-6 border-t border-gray-300">
 
-   <div class="flex flex-col sm:flex-row sm:mt-10">
-
-      <div class="flex flex-col sm:w-1/3">
-         <div class="py-3 sm:order-none order-3">
-            <h2 class="text-lg font-poppins font-bold text-top-color">Contato</h2>
-            <div class="border-2 w-20 border-top-color my-3"></div>
-
-            <div>
+            <div class="flex flex-col">
+               <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">Contato</span>
+               <div>
                   <div class="flex items-center my-1">
                      <%= icon('fa-solid', 'envelope', class: "w-5 h-5 text-green-700 transition duration-75") %>
                      <div class="ml-2 truncate"><%= @instructor.email %></div>
@@ -30,12 +23,16 @@
                      <%= icon('fa-solid', 'phone', class: "w-5 h-5 text-green-700 transition duration-75") %>
                      <div><%= @instructor.phone %></div>
                   </div>
+               </div>
             </div>
+            
          </div>
       </div>
 
-      <div data-controller="quill" data-quill-content="<%= @instructor.resume %>" class="w-full sm:w-2/3"></div>
-    
+      <div class="col-span-4 sm:col-span-9">
+         <div class="bg-white shadow rounded-lg p-6">
+            <div data-controller="quill" data-quill-content="<%= @instructor.resume %>" class="prose w-full ql"></div>
+         </div>
+      </div>
    </div>
-
 </div>

@@ -14,6 +14,7 @@ pt-BR:
       remember_me: "Lembrar de mim"
       do_not_have_an_account: "Não tem uma conta?"
       already_have_an_account: "Ja tem uma conta?"
+      avatar: "Foto"
     hints:
       username: "Nome de usuário para entrar."
       password: "Sem caracteres especiais, por favor."
@@ -33,6 +34,7 @@ pt-BR:
         bio: "Fale sobre você"
         resume: "Currículo"
         phone: "Celular"
+        avatar: "Foto"
       admin:
         <<: *defaults
       client:

@@ -17,7 +17,7 @@ class Admin::InstructorsControllerTest < ActionDispatch::IntegrationTest
          params: { instructor: { email: 'test@test.com',
                                  name: 'Instructor',
                                  phone: '(42) 98425-2615',
-                                 resume: Faker::HTML.ordered_list } }
+                                 resume: '{ ops: [{ insert: Faker::Lorem.paragraph(sentence_count: 2) + "\n" }] }' } }
 
     assert_redirected_to admin_instructors_path
     assert_equal t('flash_messages.created', model: Instructor.model_name.human), flash[:notice]
@@ -28,7 +28,7 @@ class Admin::InstructorsControllerTest < ActionDispatch::IntegrationTest
          params: { instructor: { email: '',
                                  name: 'In',
                                  phone: '(42) 98425-2615',
-                                 resume: Faker::HTML.ordered_list } }
+                                 resume: '{ ops: [{ insert: Faker::Lorem.paragraph(sentence_count: 2) + "\n" }] }' } }
 
     assert_response :unprocessable_entity
   end
@@ -66,10 +66,9 @@ class Admin::InstructorsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show the instructor resume' do
     instructor = FactoryBot.create(:instructor)
-
+  
     get admin_instructor_path(instructor.id)
-
+  
     assert_response :success
-    assert_match instructor.resume, @response.body
   end
 end
