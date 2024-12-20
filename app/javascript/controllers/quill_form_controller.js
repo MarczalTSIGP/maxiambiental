@@ -5,9 +5,13 @@ import "quill-image-uploader";
 
 export default class QuillFormController extends Controller {
   connect() {
+    this.removedImages = new Set();
+
     this.loadQuillStyles();
     this.initializeQuillEditor();
     this.setupContentSync();
+
+    this.element.addEventListener("submit", this.beforeSubmit.bind(this));
   }
 
   loadQuillStyles() {
@@ -89,12 +93,13 @@ export default class QuillFormController extends Controller {
       this.contentElement.value = JSON.stringify(this.quill.getContents());
 
       const newImages = new Set(
-        Array.from(this.quill.root.querySelectorAll("img")).map((img) => img.src)
+          Array.from(this.quill.root.querySelectorAll("img")).map((img) => img.src)
       );
 
+      // Identificar imagens removidas
       this.currentImages.forEach((url) => {
         if (!newImages.has(url)) {
-          this.deleteImage(url);
+          this.removedImages.add(url); // Adiciona à lista de removidos
         }
       });
 
@@ -133,21 +138,13 @@ export default class QuillFormController extends Controller {
     }
   }
 
-  deleteImage(imageUrl) {
-    fetch("/uploads/destroy", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ url: imageUrl }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Falha ao deletar a imagem");
-        }
-      })
-      .catch((error) => {
-        console.error("Erro ao deletar a imagem:", error);
-      });
-  }  
+  beforeSubmit(event) {
+    const removedImagesInput = document.querySelector("#removed_images");
+    if (removedImagesInput) {
+      removedImagesInput.value = JSON.stringify(Array.from(this.removedImages));
+      console.log("Imagens removidas:", Array.from(this.removedImages));
+    } else {
+      console.error("Campo #removed_images não encontrado.");
+    }
+  }
 }
