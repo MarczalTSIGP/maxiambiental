@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import "preserve_scroll";
+
+import "trix"
+import "@rails/actiontext"

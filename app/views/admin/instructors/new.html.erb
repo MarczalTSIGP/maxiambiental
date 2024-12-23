@@ -7,10 +7,7 @@
    <%= f.input :name %>
    <%= f.input :phone, input_html: { data: { controller: "phone-mask", action: "input->phone-mask#apply" }} %>
 
-   <div data-controller="quill-form">
-      <%= f.hidden_field :resume, id: 'post_quill_content' %>
-      <div id="quill_editor"></div>
-   </div>
+   <%= f.input :resume, as: :rich_text_area, input_html: { data: { controller: "trix_toolbar" } } %>
 
    <%= f.button :submit, t('buttons.create') %>
 <% end %>
