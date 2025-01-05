@@ -1,34 +1,36 @@
 <div class="container mx-auto">
    <div class="grid grid-cols-4 md:grid-cols-12 gap-6 px-4">
 
+      <!-- Instructor profile -->
       <div class="col-span-12 lg:col-span-4">
          <div class="bg-white shadow rounded-lg p-6">
 
             <div class="flex flex-col items-center">
-               <%= image_tag 'default-avatar.png', class: "w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0", alt: "cover-image" %>
+               <%= image_tag 'default-avatar.png', class: "w-32 h-32 bg-gray-300 rounded-full mb-4", alt: "cover-image" %>
                <h1 class="text-xl font-bold"><%= @instructor.name %></h1>
                <p class="text-gray-700">Instrutor</p>
             </div>
 
             <hr class="my-6 border-t border-gray-300">
 
-            <div class="flex flex-col">
-               <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">Contato</span>
-               <div>
-                  <div class="flex items-center my-1">
-                     <%= icon('fa-solid', 'envelope', class: "w-5 h-5 text-green-700 transition duration-75") %>
-                     <div class="ml-2 truncate"><%= @instructor.email %></div>
+            <div>
+               <h2 class="text-gray-700 uppercase font-bold tracking-wide mb-2">Contato</h2>
+               <div class="space-y-2">
+                  <div class="flex items-center">
+                     <%= icon('fa-solid', 'envelope', class: "w-5 h-5 text-green-700") %>
+                     <span class="ml-2 truncate"><%= @instructor.email %></span>
                   </div>
-                  <div class="flex items-center my-1">
-                     <%= icon('fa-solid', 'phone', class: "w-5 h-5 text-green-700 transition duration-75") %>
-                     <div><%= @instructor.phone %></div>
+                  <div class="flex items-center">
+                     <%= icon('fa-solid', 'phone', class: "w-5 h-5 text-green-700") %>
+                     <span class="ml-2"><%= @instructor.phone %></span>
                   </div>
                </div>
             </div>
-            
+
          </div>
       </div>
 
+      <!-- Instructor resume -->
       <div class="col-span-12 lg:col-span-8">
          <div class="bg-white shadow rounded-lg p-6 prose">
             <%= @instructor.resume %>

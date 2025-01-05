@@ -1,6 +1,5 @@
 <% if @title.present? %>
    <section class="bg-white">
-
       <div class="mb-6">
 
          <div class="border-stroke border-dark-3 items-center justify-between border-b md:flex">
@@ -14,9 +13,9 @@
                </p>
             </div>
 
-            <% if @with_buttons %>
+            <% if @bt_label.present? %>
                <%= link_to @bt_path, class: "btn-primary mb-6 whitespace-nowrap inline-flex items-center justify-center gap-2" do %>
-                  <%= icon('fa-solid', 'plus', class: "w-4 h-4 flex-shrink-0 self-center leading-none") %>
+                  <%= icon('fa-solid', 'plus') %>
                   <span class="text-sm leading-none"><%= @bt_label %></span>
                <% end %>
             <% end %>
@@ -24,6 +23,5 @@
          </div>
 
       </div>
-
    </section>
 <% end %>

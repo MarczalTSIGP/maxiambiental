@@ -2,11 +2,20 @@
        title: t('instructor.new'),
        description: t('instructor.new_description') %>
 
-<%= simple_form_for @instructor, url: admin_instructors_path, html: { class: "space-y-4 md:space-y-6" } do |f| %>
+<%= simple_form_for @instructor, 
+                    url: admin_instructors_path, 
+                    html: { class: "space-y-4 md:space-y-6" } do |f| %>
+
    <%= f.input :email %>
+
    <%= f.input :name %>
 
-   <%= f.input :phone, input_html: { data: { controller: "phone-mask", action: "input->phone-mask#apply" }} %>
+   <%= f.input :phone, 
+               label: t('activerecord.attributes.instructor.phone'),
+               input_html: { 
+                  class: "form-control", 
+                  data: { controller: "phone-mask", action: "input->phone-mask#apply" } 
+               } %>
 
    <%= f.input :resume, as: :rich_text_area %>
 
