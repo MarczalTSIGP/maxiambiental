@@ -115,7 +115,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_23_123218) do
     t.string "email", null: false
     t.string "phone", null: false
     t.boolean "active", default: true, null: false
-    t.text "resume", null: false
+    t.text "resume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_instructors_on_email", unique: true

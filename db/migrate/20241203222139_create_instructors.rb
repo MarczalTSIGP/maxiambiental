@@ -5,7 +5,7 @@ class CreateInstructors < ActiveRecord::Migration[7.1]
       t.string :email, null: false
       t.string :phone, null: false
       t.boolean :active, default: true, null: false
-      t.text :resume, null: false
+      t.text :resume
 
       t.timestamps
     end

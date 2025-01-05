@@ -10,6 +10,8 @@ class Instructor < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 3 }
 
+  validates :resume, presence: true
+
   has_one_attached :avatar
   has_rich_text :resume
 end

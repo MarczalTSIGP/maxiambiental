@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   root 'home#index'
-  
-  post 'uploads', to: 'uploads#create'
-  delete 'uploads/destroy', to: 'uploads#destroy'
 
   match '404', via: :all, to: 'errors#not_found'
   match '500', via: :all, to: 'errors#internal_server_error'

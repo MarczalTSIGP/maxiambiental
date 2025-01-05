@@ -66,3 +66,11 @@ trix-editor code {
   border-radius: 3px;
   font-family: "Courier New", Courier, monospace;
 }
+
+.prose ul {
+  list-style-type: circle;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}

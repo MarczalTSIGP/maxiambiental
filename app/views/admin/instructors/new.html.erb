@@ -5,9 +5,10 @@
 <%= simple_form_for @instructor, url: admin_instructors_path, html: { class: "space-y-4 md:space-y-6" } do |f| %>
    <%= f.input :email %>
    <%= f.input :name %>
+
    <%= f.input :phone, input_html: { data: { controller: "phone-mask", action: "input->phone-mask#apply" }} %>
 
-   <%= f.input :resume, as: :rich_text_area, input_html: { data: { controller: "trix_toolbar" } } %>
+   <%= f.input :resume, as: :rich_text_area %>
 
    <%= f.button :submit, t('buttons.create') %>
 <% end %>
