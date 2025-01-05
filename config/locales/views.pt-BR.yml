@@ -27,6 +27,11 @@ pt-BR:
     photos_gallery: "Galeria de fotos"
     about_us: "Sobre nós"
     contact_us: "Fale conosco"
+    classes: "Turmas"
+    instructors: "Instrutores"
+    students: "Estudantes"
+    settings: "Configurações"
+    messages: "Mensagens"
   flash_messages:
     profile_updated: "Seu perfil foi atualizado com sucesso."
     avatar_updated: "Seu avatar foi atualizado com sucesso."
