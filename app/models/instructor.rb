@@ -14,4 +14,10 @@ class Instructor < ApplicationRecord
 
   has_one_attached :avatar
   has_rich_text :resume
+
+  def avatar_url
+    return ActionController::Base.helpers.asset_path('default-avatar.png') unless avatar.attached?
+
+    Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true)
+  end
 end
