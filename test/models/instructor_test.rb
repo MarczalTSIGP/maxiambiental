@@ -1,9 +1,11 @@
 require "test_helper"
 
 class InstructorTest < ActiveSupport::TestCase
-  context 'validations' do
+  setup do
     FactoryBot.create(:instructor)
-    
+  end
+  
+  context 'validations' do    
     should validate_presence_of(:name)
     should validate_length_of(:name).is_at_least(3)
     
@@ -11,6 +13,8 @@ class InstructorTest < ActiveSupport::TestCase
     
     should validate_presence_of(:email)
     should validate_uniqueness_of(:email)
+
+    should validate_presence_of(:resume)
   end
 
   test 'should have one attached avatar' do
@@ -21,7 +25,8 @@ class InstructorTest < ActiveSupport::TestCase
   test 'phone format should be valid' do
     instructor = Instructor.new(name: 'Test', 
                                 email: 'test@example.com', 
-                                phone: '(11) 98765-4321')
+                                phone: '(11) 98765-4321',
+                                resume: Faker::HTML.paragraph)
 
     assert instructor.valid?, 'Phone format should be valid'
 
@@ -32,7 +37,8 @@ class InstructorTest < ActiveSupport::TestCase
   test 'email format should be valid' do
     instructor = Instructor.new(name: 'Test', 
                                 email: 'valid@example.com', 
-                                phone: '(11) 98765-4321')
+                                phone: '(11) 98765-4321',
+                                resume: Faker::HTML.paragraph)
 
     assert instructor.valid?, 'Email format should be valid'
 
