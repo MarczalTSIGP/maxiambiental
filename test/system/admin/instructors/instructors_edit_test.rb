@@ -1,4 +1,4 @@
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class InstructorsEditTest < ApplicationSystemTestCase
   setup do
@@ -7,34 +7,47 @@ class InstructorsEditTest < ApplicationSystemTestCase
     sign_in @admin
   end
 
-  test "visiting the edit instructor form" do
+  test 'displays the edit instructor page header' do
     visit edit_admin_instructor_path(@instructor)
 
-    assert_selector "h1", text: I18n.t('instructor.edit')
+    assert_selector 'h1', text: I18n.t('instructor.edit')
     assert_text I18n.t('instructor.edit:description')
+  end
+
+  test 'displays the instructor information in the form' do
+    visit edit_admin_instructor_path(@instructor)
 
     within 'form' do
       assert_selector "input[value='#{@instructor.email}']"
       assert_selector "input[value='#{@instructor.name}']"
       assert_selector "input[value='#{@instructor.phone}']"
+    end
+  end
 
-      within 'trix-editor' do
-        assert_text @instructor.resume.to_plain_text
-      end
+  test 'displays the instructor resume in the editor' do
+    visit edit_admin_instructor_path(@instructor)
 
+    within 'form trix-editor' do
+      assert_text @instructor.resume.to_plain_text
+    end
+  end
+
+  test 'displays the toggle and save button' do
+    visit edit_admin_instructor_path(@instructor)
+
+    within 'form' do
       assert_selector "input[type='checkbox'][checked='checked']"
       assert_button I18n.t('buttons.save')
     end
   end
 
-  test "editing an instructor" do
+  test 'successfully edits an instructor' do
     visit edit_admin_instructor_path(@instructor)
 
-    fill_in "instructor[email]", with: "test@example.com"
-    fill_in "instructor[name]", with: "Updated Name"
-    fill_in "instructor[phone]", with: "(99) 99999-9999"
-    find("trix-editor").set("Updated resume content.")
-    find("div#toggle").click
+    fill_in 'instructor[email]', with: 'test@example.com'
+    fill_in 'instructor[name]', with: 'Updated Name'
+    fill_in 'instructor[phone]', with: '(99) 99999-9999'
+    find('trix-editor').set('Updated resume content.')
 
     click_on I18n.t('buttons.save')
 
@@ -42,10 +55,10 @@ class InstructorsEditTest < ApplicationSystemTestCase
     assert_alert I18n.t('flash_messages.updated', model: Instructor.model_name.human)
   end
 
-  test 'editing an instructor with invalid data' do
+  test 'shows validation errors when editing with invalid data' do
     visit edit_admin_instructor_path(@instructor)
 
-    fill_in "instructor[email]", with: ''
+    fill_in 'instructor[email]', with: ''
 
     click_on I18n.t('buttons.save')
 

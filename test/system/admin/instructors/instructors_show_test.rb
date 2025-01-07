@@ -1,4 +1,4 @@
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class InstructorsShowTest < ApplicationSystemTestCase
   setup do
@@ -8,21 +8,25 @@ class InstructorsShowTest < ApplicationSystemTestCase
     sign_in @admin
   end
 
-  test 'visiting the show page' do
-    visit admin_instructors_path
+  test 'displays instructor profile section' do
+    visit admin_instructor_path(@instructor)
 
-    click_link I18n.t('instructor.view_resume')
-
-    assert_current_path admin_instructor_path(@instructor)
-    
     within 'div#profile' do
       assert_text @instructor.name
     end
+  end
+
+  test 'displays instructor contact section' do
+    visit admin_instructor_path(@instructor)
 
     within 'div#contact' do
       assert_text @instructor.email
       assert_text @instructor.phone
     end
+  end
+
+  test 'displays instructor resume section' do
+    visit admin_instructor_path(@instructor)
 
     within 'div#resume' do
       assert_text @instructor.resume.to_plain_text

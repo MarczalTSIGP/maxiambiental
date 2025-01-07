@@ -4,9 +4,9 @@ class Admin::InstructorsController < ApplicationController
   layout 'admin/application'
 
   def index
-    @instructors = Instructor.all.includes(:avatar_attachment)
+    @instructors = Instructor.includes(:avatar_attachment)
   end
-  
+
   def show; end
 
   def new

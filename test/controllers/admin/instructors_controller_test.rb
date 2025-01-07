@@ -66,9 +66,9 @@ class Admin::InstructorsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show the instructor resume' do
     instructor = FactoryBot.create(:instructor)
-  
+
     get admin_instructor_path(instructor.id)
-  
+
     assert_response :success
   end
 end

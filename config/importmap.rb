@@ -7,5 +7,5 @@ pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js'
 pin 'preserve_scroll', to: 'lib/preserve_scroll.js'
 
 pin_all_from 'app/javascript/controllers', under: 'controllers'
-pin "trix"
-pin "@rails/actiontext", to: "actiontext.esm.js"
+pin 'trix'
+pin '@rails/actiontext', to: 'actiontext.esm.js'
