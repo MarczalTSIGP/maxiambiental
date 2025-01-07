@@ -1,10 +1,10 @@
 class Admin::InstructorsController < ApplicationController
-  before_action :set_instructor, only: [:show, :edit, :update]
+  before_action :set_instructor, only: [:show, :edit, :update, :destroy, :update_avatar, :delete_avatar]
 
   layout 'admin/application'
 
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.all.includes(:avatar_attachment)
   end
   
   def show; end
@@ -35,6 +35,28 @@ class Admin::InstructorsController < ApplicationController
     end
   end
 
+  def update_avatar
+    avatar_params = params.require(:instructor).permit(:avatar)
+
+    if @instructor.update(avatar_params)
+      redirect_to admin_instructor_path(@instructor.id)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def delete_avatar
+    @instructor.avatar.purge
+    redirect_to admin_instructor_path(@instructor.id), notice: t('flash_messages.avatar_deleted')
+  end
+
+  def destroy
+    @instructor.destroy
+
+    redirect_to admin_instructors_path,
+                notice: t('flash_messages.destroyed', model: Instructor.model_name.human)
+  end
+
   private
 
   def set_instructor
@@ -42,6 +64,6 @@ class Admin::InstructorsController < ApplicationController
   end
 
   def instructor_params
-    params.require(:instructor).permit(:name, :email, :phone, :active, :resume, :avatar)
+    params.require(:instructor).permit(:name, :email, :phone, :active, :resume)
   end
 end

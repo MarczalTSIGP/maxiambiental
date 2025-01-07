@@ -4,7 +4,7 @@
        bt_label: t('instructor.new'),
        bt_path: new_admin_instructor_path %>
 
-<%= render layout: 'admin/instructors/partials/table_container' do %>
+<%= render 'admin/instructors/partials/table_container' do %>
    <table class="w-full divide-y divide-gray-200">
 
       <thead class="bg-gray-50">
@@ -42,19 +42,33 @@
                         </div>
                      </div>
                   </td>
+
                   <td class="px-6 py-4 text-sm text-gray-800">
                      <%= instructor.phone %>
                   </td>
+
                   <td class="px-6 py-4 text-center text-sm text-gray-800">
                      <span class="<%= instructor.active ? 'badge-active' : 'badge-inactive' %>">
                         <%= instructor.active ? 'Ativo' : 'Inativo' %>
                      </span>
                   </td>
+
                   <td class="px-6 py-4 text-center text-sm text-gray-800">
                      <%= link_to t('instructor.view_resume'), admin_instructor_path(instructor.id), class: 'font-medium text-green-700 hover:underline' %>
                   </td>
-                  <td class="px-6 py-4 text-right text-sm font-medium">
-                     <%= link_to 'Editar', edit_admin_instructor_path(instructor.id), class: "btn-outline" %>
+
+                  <td class="px-6 py-4 text-center text-sm font-medium">
+                     <div class="flex items-center gap-4">
+
+                        <%= link_to admin_instructor_path(instructor.id), data: { turbo_method: :delete } do %>
+                           <%= icon('fa-solid', 'trash', class: 'fa-lg text-red-700') %>
+                        <% end %>
+
+                        <%= link_to edit_admin_instructor_path(instructor.id) do %>
+                           <%= icon('fa-solid', 'pen', class: 'fa-lg text-green-700') %>
+                        <% end %>
+
+                     </div>
                   </td>
                </tr>
             <% end %>

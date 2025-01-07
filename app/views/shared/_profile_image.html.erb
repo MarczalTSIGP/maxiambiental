@@ -17,7 +17,7 @@
           <%= icon('fa-solid', 'check', class: "w-full rounded-full") %>
        <% end %>
  
-       <%= link_to admin_delete_avatar_path, data: { turbo_method: :delete, avatar_preview_target: "trash" }, title: 'Trash',
+       <%= link_to delete_path, data: { turbo_method: :delete, avatar_preview_target: "trash" }, title: 'Trash',
                                              class: 'absolute bottom-0 end-0 w-8 h-8 block p-1 px-2 rounded-full transform -translate-y-4 translate-x-16 ring-2 ring-gray-300 bg-white hidden' do %>
           <%= icon('fa-solid', 'trash', class: "text-red-700 w-full rounded-full") %>
        <% end %>

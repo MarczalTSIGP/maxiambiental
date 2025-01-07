@@ -40,6 +40,7 @@ pt-BR:
     password_updated: "Sua senha foi atualizada com sucesso."
     created: "%{model} criado com sucesso."
     updated: "%{model} atualizado com sucesso."
+    destroyed: "%{model} excluído com sucesso."
   tips:
     empty: "Nenhum registro encontrado."
     add_item: "Adicione um novo %{model}."
