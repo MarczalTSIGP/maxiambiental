@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_23_123218) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.boolean "master", default: false, null: false
+    t.string "avatar"
     t.boolean "active", default: true, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["name"], name: "index_admins_on_name"

@@ -1,23 +1,19 @@
-<%= rc 'page/content_title',
-       title: t('instructor.new'),
-       description: t('instructor.new_description') %>
+<%= rc 'page/content_title', title: t('.title'), description: t('.description') %>
 
-<%= simple_form_for @instructor, 
-                    url: admin_instructors_path, 
+<%= simple_form_for [:admin, @instructor], 
                     html: { class: "space-y-4 md:space-y-6" } do |f| %>
-
-   <%= f.input :email %>
 
    <%= f.input :name %>
 
-   <%= f.input :phone, 
-               label: t('activerecord.attributes.instructor.phone'),
+   <%= f.input :email %>
+
+   <%= f.input :phone,
                input_html: { 
                   class: "form-control", 
                   data: { controller: "phone-mask", action: "input->phone-mask#apply" } 
                } %>
 
-   <%= f.input :resume, as: :rich_text_area %>
+   <%= f.input :resume, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
 
    <%= f.button :submit, t('buttons.create') %>
 <% end %>
