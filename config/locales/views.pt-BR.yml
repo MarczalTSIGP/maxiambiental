@@ -14,6 +14,7 @@ pt-BR:
     click_to_edit_avatar: 'Clique para alterar seu avatar'
     continue_with_google: 'Continuar com o Google'
     add: 'Adicionar %{model}'
+
   links:
     discover_more: 'Saiba mais'
     explore_our_courses: 'Conheça nossos treinamentos'
@@ -33,6 +34,7 @@ pt-BR:
     students: 'Estudantes'
     settings: 'Configurações'
     messages: 'Mensagens'
+
   flash_messages:
     profile_updated: 'Seu perfil foi atualizado com sucesso.'
     avatar_updated: 'Seu avatar foi atualizado com sucesso.'
@@ -41,9 +43,11 @@ pt-BR:
     created: '%{model} criado com sucesso.'
     updated: '%{model} atualizado com sucesso.'
     destroyed: '%{model} excluído com sucesso.'
+
   tips:
     empty: 'Nenhum registro encontrado.'
     add_item: 'Adicione um novo %{model}.'
+
   profile:
     edit_title: 'Editar perfil'
     edit_description: 'Mantenha suas informações atualizadas.'
@@ -52,6 +56,7 @@ pt-BR:
     edit_password: 'Informações de Senha'
     edit_password_description: 'Altere a sua senha de acesso para garantir maior segurança em sua conta.'
     edit_image: 'Alterar imagem'
+
   errors:
     not_found:
       title: 'Página não encontrada'
@@ -61,17 +66,15 @@ pt-BR:
       title: 'Erro Interno no Servidor'
       message: 'Algo deu errado no servidor. Estamos trabalhando para corrigir.'
       action: 'Tente novamente mais tarde'
+
   home:
     title: 'Maxiambiental Treinamentos'
     subtitle: 'Transformando Conhecimento Ambiental em Ação'
-  instructor:
-    title: 'Gerenciar Instrutores'
-    description: 'Gerencie todos os instrutores cadastrados na Maxiambiental.'
-    new: 'Novo Instrutor'
-    new_description: 'Preencha as informações do novo instrutor.'
-    edit: 'Editar Instrutor'
-    edit:description: 'Preencha as novas informações do instrutor.'
-    view_resume: 'Visualizar currículo'
+
+  status:
+    instructor:
+      true: 'Ativo'
+      false: 'Inativo'
 
   admin:
     instructors:
@@ -82,3 +85,11 @@ pt-BR:
       edit:
         title: 'Editar Instrutor'
         description: 'Preencha as novas informações do instrutor.'
+      index:
+        title: 'Instrutores'
+        description: 'Gerencie todos os instrutores cadastrados na Maxiambiental.'
+        new: 'Novo Instrutor'
+      partials:
+        instructor:
+          resume: 'Visualizar Currículo'
+          confirm: 'Tem certeza que deseja excluir este instrutor?'
