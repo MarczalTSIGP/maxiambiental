@@ -1,9 +1,9 @@
 <div class="container mx-auto">
-   <div class="grid grid-cols-4 md:grid-cols-12 gap-6 px-4">
+   <div class="grid grid-cols-4 gap-6 px-4 md:grid-cols-12">
 
       <!-- Instructor profile -->
       <div class="col-span-12 lg:col-span-4">
-         <div class="bg-white shadow rounded-lg p-6">
+         <div class="p-6 bg-white border border-gray-300 rounded-lg shadow">
 
             <div class="flex flex-col items-center" id="profile">
 
@@ -11,7 +11,7 @@
                            user: @instructor, 
                            update_path: admin_update_instructor_avatar_path(@instructor), 
                            delete_path: admin_delete_instructor_avatar_path(@instructor) %>
-                           
+
                <h1 class="text-xl font-bold"><%= @instructor.name %></h1>
                <p class="text-gray-700">Instrutor</p>
             </div>
@@ -19,7 +19,7 @@
             <hr class="my-6 border-t border-gray-300">
 
             <div id="contact">
-               <h2 class="text-gray-700 uppercase font-bold tracking-wide mb-2">Contato</h2>
+               <h2 class="mb-2 font-bold tracking-wide text-gray-700 uppercase">Contato</h2>
                <div class="space-y-2">
                   <div class="flex items-center">
                      <%= icon('fa-solid', 'envelope', class: "w-5 h-5 text-green-700") %>
@@ -37,7 +37,7 @@
 
       <!-- Instructor resume -->
       <div class="col-span-12 lg:col-span-8" id="resume">
-         <div class="bg-white shadow rounded-lg p-6 prose">
+         <div class="p-6 prose bg-white border border-gray-300 rounded-lg shadow">
             <%= @instructor.resume %>
          </div>
       </div>
