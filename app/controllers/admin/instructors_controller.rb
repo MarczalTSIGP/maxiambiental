@@ -1,5 +1,5 @@
 class Admin::InstructorsController < ApplicationController
-  before_action :set_instructor, only: [:show, :edit, :update, :destroy, :update_avatar, :delete_avatar]
+  before_action :set_instructor, except: [:index, :new, :create]
 
   layout 'admin/application'
 
