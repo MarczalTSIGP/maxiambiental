@@ -16,7 +16,7 @@ class InstructorsNewTest < ApplicationSystemTestCase
       )
 
       assert_selector "trix-editor[input='instructor_resume_trix_input_instructor']"
-      assert_button I18n.t('buttons.create')
+      click_on I18n.t('helpers.submit.create', model: Instructor.model_name.human)
     end
   end
 
@@ -28,7 +28,7 @@ class InstructorsNewTest < ApplicationSystemTestCase
     fill_in 'instructor[phone]', with: '(42) 98765-4321'
     find('trix-editor').set('Experienced instructor in software development.')
 
-    click_on I18n.t('buttons.create')
+    click_on I18n.t('helpers.submit.create', model: Instructor.model_name.human)
 
     assert_current_path admin_instructors_path
     assert_alert I18n.t('flash_messages.created', model: Instructor.model_name.human)
@@ -42,9 +42,9 @@ class InstructorsNewTest < ApplicationSystemTestCase
     fill_in 'instructor[phone]', with: '(42) 98765-4321'
     find('trix-editor').set('Experienced instructor in software development.')
 
-    click_on I18n.t('buttons.create')
+    click_on I18n.t('helpers.submit.create', model: Instructor.model_name.human)
 
     assert_current_path new_admin_instructor_path
-    assert_validation_error I18n.t('errors.messages.invalid', attribute: 'E-mail')
+    assert_validation_error I18n.t('errors.messages.email', attribute: 'e-mail')
   end
 end

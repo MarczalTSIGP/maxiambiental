@@ -36,7 +36,7 @@ class Admin::InstructorsControllerTest < ActionDispatch::IntegrationTest
   test 'should update an instructor' do
     instructor = FactoryBot.create(:instructor)
 
-    patch admin_instructor_path(instructor.id),
+    patch admin_instructor_path(instructor),
           params: { instructor: { name: 'Instructor 2', phone: '(42) 98425-2615' } }
 
     assert_redirected_to admin_instructors_path
@@ -46,7 +46,7 @@ class Admin::InstructorsControllerTest < ActionDispatch::IntegrationTest
   test 'should not update an instructor with invalid attributes' do
     instructor = FactoryBot.create(:instructor)
 
-    patch admin_instructor_path(instructor.id),
+    patch admin_instructor_path(instructor),
           params: { instructor: { name: '', phone: '(42) 98425-26' } }
 
     assert_response :unprocessable_entity
@@ -67,7 +67,7 @@ class Admin::InstructorsControllerTest < ActionDispatch::IntegrationTest
   test 'should show the instructor resume' do
     instructor = FactoryBot.create(:instructor)
 
-    get admin_instructor_path(instructor.id)
+    get admin_instructor_path(instructor)
 
     assert_response :success
   end

@@ -1,4 +1,4 @@
-<div class="flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
+<div class="flex items-center space-x-3 md:order-2 rtl:space-x-reverse">
    <%= button_tag id: 'dropdownAvatarNameButton',
                   data: { action: 'click->dropdown#toggle' },
                   class: 'flex items-center text-sm pe-1 font-medium text-green-900 rounded-full hover:text-green-700',
@@ -12,12 +12,12 @@
 
 <div 
    data-dropdown-target="menu" 
-   class="absolute right-8 top-14 z-50 hidden my-4 bg-gray-50 border border-gray-200 rounded-lg shadow-xl divide-y divide-gray-200"
+   class="absolute z-50 hidden my-4 border border-gray-200 divide-y divide-gray-200 rounded-lg shadow-xl right-8 top-14 bg-gray-50"
 >
    <!-- User info -->
    <div class="px-4 py-3">
       <span class="block text-sm text-green-800"><%= user.name %></span>
-      <span class="block text-sm truncate text-gray-500"><%= user.email %></span>
+      <span class="block text-sm text-gray-500 truncate"><%= user.email %></span>
    </div>
 
    <!-- Menu links -->

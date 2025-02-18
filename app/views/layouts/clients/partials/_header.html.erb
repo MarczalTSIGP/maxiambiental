@@ -1,14 +1,14 @@
 <div data-controller="dropdown" data-action="click@window->dropdown#close">
    <nav 
       data-controller="nav" 
-      class="fixed top-0 w-full z-50 bg-white shadow-md px-4 py-4 h-16 flex justify-between items-center"
+      class="fixed top-0 z-50 flex items-center justify-between w-full h-16 px-4 py-4 bg-white shadow-md"
    >
       <!-- Menu button (mobile) -->
       <button 
          type="button" 
          data-action="click->nav#toggleMenu" 
-         class="md:hidden relative size-7 flex justify-center items-center rounded-lg border border-green-200 bg-white text-green-800 shadow-sm hover:bg-green-50 focus:outline-none focus:bg-green-50"
-      >
+         class="relative flex items-center justify-center text-green-800 bg-white border border-green-200 rounded-lg shadow-sm md:hidden size-7 hover:bg-green-50 focus:outline-none focus:bg-green-50"
+         >
          <%= icon('fa-solid', 'bars') %>
          <span class="sr-only">Toggle</span>
       </button>
@@ -18,7 +18,7 @@
 
       <!-- Main navigation -->
       <ul 
-         class="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 items-center space-x-6"
+         class="absolute items-center hidden space-x-6 transform -translate-x-1/2 -translate-y-1/2 lg:flex top-1/2 left-1/2"
       >
          <% links = [
             { text: t('links.courses'), url: "#" },

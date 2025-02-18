@@ -9,14 +9,14 @@ class InstructorsIndexTest < ApplicationSystemTestCase
   test 'displays the index page header and description' do
     visit admin_instructors_path
 
-    assert_selector 'h1', text: I18n.t('instructor.title')
-    assert_text I18n.t('instructor.description')
+    assert_selector 'h1', text: I18n.t('admin.instructors.index.title')
+    assert_text I18n.t('admin.instructors.index.description')
   end
 
   test 'displays the new instructor button' do
     visit admin_instructors_path
 
-    assert_selector 'a', text: I18n.t('instructor.new')
+    assert_selector 'a', text: I18n.t('admin.instructors.index.new')
   end
 
   test 'displays instructor information in the table' do
@@ -34,7 +34,7 @@ class InstructorsIndexTest < ApplicationSystemTestCase
   test 'shows empty state when no instructors exist' do
     visit admin_instructors_path
 
-    assert_text I18n.t('activerecord.models.instructor')
-    assert_selector 'a', text: I18n.t('instructor.new')
+    assert_text I18n.t('admin.instructors.index.title')
+    assert_selector 'a', text: I18n.t('admin.instructors.index.new')
   end
 end

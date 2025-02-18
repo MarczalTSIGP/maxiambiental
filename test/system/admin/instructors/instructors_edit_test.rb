@@ -10,8 +10,8 @@ class InstructorsEditTest < ApplicationSystemTestCase
   test 'displays the edit instructor page header' do
     visit edit_admin_instructor_path(@instructor)
 
-    assert_selector 'h1', text: I18n.t('instructor.edit')
-    assert_text I18n.t('instructor.edit:description')
+    assert_selector 'h1', text: I18n.t('admin.instructors.edit.title')
+    assert_text I18n.t('admin.instructors.edit.description')
   end
 
   test 'displays the instructor information in the form' do
@@ -37,7 +37,7 @@ class InstructorsEditTest < ApplicationSystemTestCase
 
     within 'form' do
       assert_selector "input[type='checkbox'][checked='checked']"
-      assert_button I18n.t('buttons.save')
+      click_on I18n.t('helpers.submit.update', model: Instructor.model_name.human)
     end
   end
 
@@ -49,7 +49,7 @@ class InstructorsEditTest < ApplicationSystemTestCase
     fill_in 'instructor[phone]', with: '(99) 99999-9999'
     find('trix-editor').set('Updated resume content.')
 
-    click_on I18n.t('buttons.save')
+    click_on I18n.t('helpers.submit.update', model: Instructor.model_name.human)
 
     assert_current_path admin_instructors_path
     assert_alert I18n.t('flash_messages.updated', model: Instructor.model_name.human)
@@ -60,7 +60,7 @@ class InstructorsEditTest < ApplicationSystemTestCase
 
     fill_in 'instructor[email]', with: ''
 
-    click_on I18n.t('buttons.save')
+    click_on I18n.t('helpers.submit.update', model: Instructor.model_name.human)
 
     assert_current_path edit_admin_instructor_path(@instructor)
     assert_validation_error I18n.t('errors.messages.blank', attribute: 'E-mail')

@@ -7,7 +7,7 @@ class ToggleSwitchInput < SimpleForm::Inputs::BooleanInput
     build_switch_content(merged_input_options)
   end
 
-  def label
+  def label(_wrapper_options)
     ''
   end
 

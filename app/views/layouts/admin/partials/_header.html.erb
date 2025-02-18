@@ -1,15 +1,15 @@
 <nav 
-   class="fixed top-0 left-0 w-full z-50 bg-white h-20 shadow-md" 
+   class="fixed top-0 left-0 z-50 w-full h-20 bg-white shadow-md" 
    data-controller="dropdown" 
    data-action="click@window->dropdown#close"
->
+   >
    <div class="flex items-center justify-between px-8 py-6 sm:py-4">
 
       <button 
          data-action="click->sidebar#toggle" 
          type="button" 
-         class="absolute inline-flex items-center ms-3 text-green-500 sm:hidden"
-      >
+         class="absolute inline-flex items-center text-green-500 ms-3 sm:hidden"
+         >
          <span class="sr-only">Open sidebar</span>
          <%= icon('fa-solid', 'bars', class: "fa-lg") %>
       </button>
