@@ -56,6 +56,7 @@ SimpleForm.setup do |config|
 
   # How the label text should be generated altogether with the required text.
   # config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
+  config.label_text = lambda { |label, required, explicit_label| "#{label}" }
 
   # You can define the class to use on all labels. Default is nil.
   # config.label_class = nil
@@ -132,6 +133,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.wrapper :input_wrapper, tag: 'div' do |ba|
+      ba.use :label, class: 'block text-green-700 text-sm font-bold mb-2'
       ba.use :input,
              class: 'shadow border border-gray-300 rounded-md w-full p-2.5 
                             text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700 

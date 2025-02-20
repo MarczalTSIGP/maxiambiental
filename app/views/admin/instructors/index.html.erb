@@ -1,27 +1,28 @@
 <%= rc 'page/content_title',
-       title: t('instructor.title'),
-       description: t('instructor.description'),
-       bt_label: t('instructor.new'),
+       title: t('.title'),
+       description: t('.description'),
+       bt_label: t('.new'),
        bt_path: new_admin_instructor_path %>
 
 <%= render 'admin/instructors/partials/table_container' do %>
+
    <table class="w-full divide-y divide-gray-200">
 
       <thead class="bg-gray-50">
          <tr>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+            <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
                <%= t('activerecord.models.instructor') %>
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+            <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
                <%= t('activerecord.attributes.defaults.phone') %>
             </th>
-            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
+            <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-gray-500 uppercase">
                Status
             </th>
-            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
+            <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-gray-500 uppercase">
                <%= t('activerecord.attributes.defaults.resume') %>
             </th>
-            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"></th>
+            <th scope="col" class="px-6 py-3 text-xs font-medium text-right text-gray-500 uppercase"></th>
          </tr>
       </thead>
 
@@ -31,47 +32,8 @@
                         model: t('activerecord.models.instructor'),
                         url: new_admin_instructor_path %>
          <% else %>
-            <% @instructors.each do |instructor| %>
-               <tr>
-                  <td class="px-6 py-4 text-sm text-gray-800">
-                     <div class="flex items-center">
-                        <%= image_tag instructor.avatar_url, class: "h-8 w-8 rounded-full object-cover"%>
-                        <div class="ml-4">
-                           <h2 class="font-semibold"><%= instructor.name %></h2>
-                           <p class="text-gray-600 text-sm"><%= instructor.email %></p>
-                        </div>
-                     </div>
-                  </td>
-
-                  <td class="px-6 py-4 text-sm text-gray-800">
-                     <%= instructor.phone %>
-                  </td>
-
-                  <td class="px-6 py-4 text-center text-sm text-gray-800">
-                     <span class="<%= instructor.active ? 'badge-active' : 'badge-inactive' %>">
-                        <%= instructor.active ? 'Ativo' : 'Inativo' %>
-                     </span>
-                  </td>
-
-                  <td class="px-6 py-4 text-center text-sm text-gray-800">
-                     <%= link_to t('instructor.view_resume'), admin_instructor_path(instructor.id), class: 'font-medium text-green-700 hover:underline' %>
-                  </td>
-
-                  <td class="px-6 py-4 text-center text-sm font-medium">
-                     <div class="flex items-center gap-4">
-
-                        <%= link_to admin_instructor_path(instructor.id), data: { turbo_method: :delete } do %>
-                           <%= icon('fa-solid', 'trash', class: 'fa-lg text-red-700') %>
-                        <% end %>
-
-                        <%= link_to edit_admin_instructor_path(instructor.id) do %>
-                           <%= icon('fa-solid', 'pen', class: 'fa-lg text-green-700') %>
-                        <% end %>
-
-                     </div>
-                  </td>
-               </tr>
-            <% end %>
+            <%= render partial: 'admin/instructors/partials/instructor',
+                       collection: @instructors, as: :instructor %>
          <% end %>
       </tbody>
 

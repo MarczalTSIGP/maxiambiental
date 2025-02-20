@@ -48,3 +48,6 @@
 
 # Ignore secrets file
 .kamal/secrets
+
+# Ignore JetBrains IDE configuration
+.idea/

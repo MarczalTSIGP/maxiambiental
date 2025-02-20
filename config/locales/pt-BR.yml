@@ -24,4 +24,7 @@
 # must be quoted to be interpreted as strings. For example:
 
 pt-BR:
-
+  errors:
+    messages:
+      email: 'não é um e-mail válido'
+      phone: 'não é um número de telefone válido'

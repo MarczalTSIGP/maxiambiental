@@ -1,23 +1,7 @@
 <%= rc 'page/content_title',
-       title: t('instructor.edit'),
-       description: t('instructor.edit:description') %>
+       title: t('.title'),
+       description: t('.description') %>
 
-<%= simple_form_for @instructor, 
-                    url: admin_instructor_path,
-                    method: :patch, 
-                    html: { class: "space-y-4 md:space-y-6", data: { controller: "quill-form" } } do |f| %>
-
-   <%= f.input :email %>
-   <%= f.input :name %>
-   <%= f.input :phone, input_html: { data: { controller: "phone-mask", action: "input->phone-mask#apply" }} %>
-   <%= f.input :resume, as: :rich_text_area %>
-
-   <label class="inline-flex items-center cursor-pointer">
-      <span class="mr-3 text-sm font-medium text-gray-900">Status:</span>
-      <%= f.check_box :active, class: 'peer sr-only' %>
-      <div id="toggle" class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-700"></div>
-   </label>
-
-   <%= f.button :submit, t('buttons.save') %>
-
+<%= render 'admin/instructors/partials/form' do |f| %>
+   <%= f.input :active, as: :toggle_switch %>
 <% end %>
