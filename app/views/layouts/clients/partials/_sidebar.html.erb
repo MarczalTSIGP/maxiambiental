@@ -1,39 +1,40 @@
-<div data-nav-target="menu" class="navbar-menu hidden relative z-50">
-
+<div data-nav-target="menu" class="relative z-50 hidden navbar-menu">
+   <!-- Background overlay -->
    <div class="fixed inset-0 bg-gray-800 opacity-25"></div>
 
-   <aside class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+   <!-- Side menu -->
+   <aside class="fixed top-0 bottom-0 left-0 flex flex-col w-5/6 max-w-sm px-6 py-6 overflow-y-auto bg-white border-r">
 
       <div class="flex items-center mb-8">
          <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: 'h-16'), root_path, class: "mr-auto text-3xl font-bold leading-none" %>
-         <button data-action="click->nav#toggleMenu">
-            <%= icon('fa-solid', 'xmark', class: "text-green-700") %>
+         <button data-action="click->nav#toggleMenu" class="text-green-700">
+            <%= icon('fa-solid', 'xmark') %>
          </button>
       </div>
 
+      <!-- Navigation links -->
       <div>
-         <ul>
+         <ul class="space-y-1">
             <% links = [
-              { text: t('links.courses'), url: "#" },
-              { text: t('links.photos_gallery'), url: "#" },
-              { text: t('links.about_us'), url: "#" },
-              { text: t('links.contact_us'), url: "#" },
+               { text: t('links.courses'), url: "#" },
+               { text: t('links.photos_gallery'), url: "#" },
+               { text: t('links.about_us'), url: "#" },
+               { text: t('links.contact_us'), url: "#" }
             ] %>
 
             <% links.each do |link| %>
-               <li class="mb-1">
+               <li>
                   <%= link_to link[:text], link[:url], class: "block p-4 text-sm font-semibold text-green-700 hover:bg-green-50 hover:text-green-600 rounded" %>
                </li>
             <% end %>
          </ul>
       </div>
 
+      <!-- Footer -->
       <div class="mt-auto">
          <p class="my-4 text-xs text-center text-gray-400">
-            <span>Copyright © 2024</span>
+            Copyright © 2025
          </p>
       </div>
-
    </aside>
-
 </div>

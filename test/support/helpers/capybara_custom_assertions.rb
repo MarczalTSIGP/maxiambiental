@@ -6,4 +6,12 @@ module CapybaraCustomAssertions
       assert_text expected_text
     end
   end
+
+  def assert_validation_error(expected_text)
+    selector = first(:css, 'p.text-red-600')
+
+    within(selector) do
+      assert_text expected_text
+    end
+  end
 end

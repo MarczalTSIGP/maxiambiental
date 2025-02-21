@@ -1,0 +1,18 @@
+<tr>
+   <td class="w-full py-12 mx-auto text-center" colspan="5">
+      <%= image_tag 'empty-state.svg', alt: 'Empty State', class: "w-32 h-32 mx-auto" %>
+
+      <p class="text-lg font-medium text-center text-gray-700">
+         <%= t('tips.empty') %>
+      </p>
+
+      <p class="text-center text-gray-500">
+         <%= t('tips.add_item', model: model) %>
+      </p>
+
+      <%= link_to url, class: "btn-outline mt-6 inline-flex items-center gap-2" do %>
+         <%= icon('fa-solid', 'circle-plus') %>
+         <%= t('buttons.add', model: model) %>
+      <% end %>
+   </td>
+</tr>

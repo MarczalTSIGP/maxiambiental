@@ -3,6 +3,7 @@ pt-BR:
     models:
       admin: 'Administrador'
       client: 'Cliente'
+      instructor: 'Instrutor'
     attributes:
       defaults: &defaults
         created_at: 'Criado em'
@@ -13,7 +14,12 @@ pt-BR:
         current_password: 'Senha atual'
         password_confirmation: 'Confirmação da senha'
         reset_password_token: 'Chave de redefinição de senha'
+        resume: 'Currículo'
+        phone: 'Celular'
+        active: 'Ativo'
       admin:
         <<: *defaults
       client:
+        <<: *defaults
+      instructor:
         <<: *defaults

@@ -20,6 +20,10 @@ Rails.application.routes.draw do
       patch 'profile/update_password', to: 'profile#update_password', as: :update_password
 
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
+
+      resources :instructors
+      patch 'instructors/:id/update_avatar', to: 'instructors#update_avatar', as: :update_instructor_avatar
+      delete 'instructors/:id/delete_avatar', to: 'instructors#delete_avatar', as: :delete_instructor_avatar
     end
   end
 

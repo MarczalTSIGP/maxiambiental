@@ -1,19 +1,30 @@
 <div data-controller="dropdown" data-action="click@window->dropdown#close">
-   <nav data-controller="nav" class="fixed top-0 w-full z-50 bg-white shadow-md px-4 py-4 h-16 flex justify-between items-center">
-
-      <button type="button" data-action="click->nav#toggleMenu" class="md:hidden hs-collapse-toggle relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-green-200 bg-white text-green-800 shadow-sm hover:bg-green-50 focus:outline-none focus:bg-green-50">
+   <nav 
+      data-controller="nav" 
+      class="fixed top-0 z-50 flex items-center justify-between w-full h-16 px-4 py-4 bg-white shadow-md"
+   >
+      <!-- Menu button (mobile) -->
+      <button 
+         type="button" 
+         data-action="click->nav#toggleMenu" 
+         class="relative flex items-center justify-center text-green-800 bg-white border border-green-200 rounded-lg shadow-sm md:hidden size-7 hover:bg-green-50 focus:outline-none focus:bg-green-50"
+         >
          <%= icon('fa-solid', 'bars') %>
          <span class="sr-only">Toggle</span>
       </button>
 
+      <!-- Logo -->
       <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: 'hidden md:block h-16'), root_path %>
 
-      <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
+      <!-- Main navigation -->
+      <ul 
+         class="absolute items-center hidden space-x-6 transform -translate-x-1/2 -translate-y-1/2 lg:flex top-1/2 left-1/2"
+      >
          <% links = [
-           { text: t('links.courses'), url: "#" },
-           { text: t('links.photos_gallery'), url: "#" },
-           { text: t('links.about_us'), url: "#" },
-           { text: t('links.contact_us'), url: "#" },
+            { text: t('links.courses'), url: "#" },
+            { text: t('links.photos_gallery'), url: "#" },
+            { text: t('links.about_us'), url: "#" },
+            { text: t('links.contact_us'), url: "#" }
          ] %>
 
          <% links.each do |link| %>
@@ -23,9 +34,10 @@
          <% end %>
       </ul>
 
+      <!-- Dropdown (usuário logado) -->
       <%= render 'layouts/clients/partials/dropdown', user: current_client if client_signed_in? %>
 
+      <!-- Sidebar -->
       <%= render 'layouts/clients/partials/sidebar' %>
    </nav>
-
 </div>
