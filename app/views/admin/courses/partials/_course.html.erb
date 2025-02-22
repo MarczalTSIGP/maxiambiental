@@ -1,0 +1,28 @@
+<tr>
+   <td class="px-6 py-4 text-sm text-gray-800">
+      <div class="flex items-center">
+         <%= image_tag course.image_url, class: "h-8 w-8 rounded-full object-cover"%>
+         <div class="ml-4">
+            <h2 class="font-semibold"><%= course.name %></h2>
+         </div>
+      </div>
+   </td>
+
+   <td class="px-6 py-4 text-sm text-gray-800">
+      <%= course.description %>
+   </td>
+
+   <td class="px-6 py-4 text-sm font-medium text-center">
+      <div class="flex items-center gap-4">
+
+         <%= link_to admin_course_path(course), data: { turbo_method: :delete, turbo_confirm: t('.confirm') } do %>
+            <%= icon('fa-solid', 'trash', class: 'fa-lg text-red-700') %>
+         <% end %>
+
+         <%= link_to edit_admin_course_path(course) do %>
+            <%= icon('fa-solid', 'pen', class: 'fa-lg text-green-700') %>
+         <% end %>
+
+      </div>
+   </td>
+</tr>

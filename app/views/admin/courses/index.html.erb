@@ -1,0 +1,35 @@
+<%= rc 'page/content_title',
+       title: t('.title'),
+       description: t('.description'),
+       bt_label: t('.new'),
+       bt_path: new_admin_course_path %>
+
+<%= render 'admin/courses/partials/table_container' do %>
+
+   <table class="w-full divide-y divide-gray-200">
+
+      <thead class="bg-gray-50">
+         <tr>
+            <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
+               <%= t('activerecord.models.course') %>
+            </th>
+            <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
+               <%= t('activerecord.attributes.defaults.description') %>
+            </th>
+            <th scope="col" class="px-6 py-3 text-xs font-medium text-right text-gray-500 uppercase"></th>
+         </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+         <% if @courses.empty? %>
+            <%= render 'shared/empty_state',
+                        model: t('activerecord.models.course'),
+                        url: new_admin_course_path %>
+         <% else %>
+            <%= render partial: 'admin/courses/partials/course',
+                       collection: @courses, as: :course %>
+         <% end %>
+      </tbody>
+
+   </table>
+<% end %>

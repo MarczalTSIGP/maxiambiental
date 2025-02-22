@@ -1,6 +1,10 @@
 class Admin::CoursesController < Admin::BaseController
   before_action :set_course, only: [:edit, :update]
 
+  def index
+    @courses = Course.includes(:image_attachment)
+  end
+
   def new
     @course = Course.new
   end
