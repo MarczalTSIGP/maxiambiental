@@ -1,4 +1,6 @@
 class Admin::CoursesController < Admin::BaseController
+  before_action :set_course, only: [:edit, :update]
+
   def new
     @course = Course.new
   end
@@ -16,7 +18,20 @@ class Admin::CoursesController < Admin::BaseController
     end
   end
 
+  def update
+    if @course.update(course_params)
+      redirect_to admin_courses_path,
+                  notice: t('flash_messages.updated', model: Course.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
+
+  def set_course
+    @course = Course.find(params[:id])
+  end
 
   def course_params
     params.require(:course).permit(:name, :description, :image)

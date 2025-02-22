@@ -3,7 +3,7 @@
 
    <%= f.input :name %>
 
-   <%= f.input :description %>
+   <%= f.input :description, as: :text, input_html: { class: 'h-40 overflow-y-auto' } %>
 
    <%= f.input :image, as: :image %>
 
