@@ -19,6 +19,7 @@ pt-BR:
         phone: "Celular"
         active: "Ativo"
         description: "Descrição"
+        image: "Imagem"
       admin:
         <<: *defaults
       client:

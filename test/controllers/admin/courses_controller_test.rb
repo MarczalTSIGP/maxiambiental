@@ -48,9 +48,7 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
 
     [:name, :description].each do |attribute|
-      error_message = I18n.t('errors.messages.blank', attribute: Course.human_attribute_name(attribute))
-
-      assert_includes response.body, error_message
+      assert_includes response.body, blank_error_for(attribute)
     end
   end
 
@@ -85,7 +83,7 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     course.reload
 
     assert_equal 'New Name', course.name
-    assert_equal 'Course was successfully updated.', flash[:notice]
+    assert_equal I18n.t('flash_messages.updated', model: Course.model_name.human), flash[:notice]
   end
 
   test 'should not update course with invalid params' do
@@ -97,7 +95,8 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     course.reload
 
     assert_equal 'Valid Name', course.name
-    assert_select 'div.alert', /error/
+
+    assert_includes response.body, blank_error_for(:name)
   end
 
   # Destroy Action
@@ -121,5 +120,11 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     get new_admin_course_path
 
     assert_redirected_to new_admin_session_path
+  end
+
+  private
+
+  def blank_error_for(attribute)
+    I18n.t('errors.messages.blank', attribute: Course.human_attribute_name(attribute))
   end
 end
