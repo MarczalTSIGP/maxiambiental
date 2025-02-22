@@ -2,7 +2,7 @@ class Admin::CoursesController < Admin::BaseController
   before_action :set_course, only: [:edit, :update, :destroy]
 
   def index
-    @courses = Course.includes(:image_attachment)
+    @courses = Course.with_attached_image
   end
 
   def new
