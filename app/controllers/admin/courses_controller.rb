@@ -1,5 +1,5 @@
 class Admin::CoursesController < Admin::BaseController
-  before_action :set_course, only: [:edit, :update]
+  before_action :set_course, only: [:edit, :update, :destroy]
 
   def index
     @courses = Course.includes(:image_attachment)
@@ -29,6 +29,13 @@ class Admin::CoursesController < Admin::BaseController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @course.destroy
+
+    redirect_to admin_courses_path,
+                notice: t('flash_messages.destroyed', model: Course.model_name.human)
   end
 
   private

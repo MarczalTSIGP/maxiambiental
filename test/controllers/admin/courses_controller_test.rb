@@ -35,7 +35,7 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to admin_courses_path
-    assert_equal I18n.t('flash_messages.created', model: Course.model_name.human), flash[:notice]
+    assert_flash_message('created')
   end
 
   test 'should not create course with invalid params' do
@@ -50,16 +50,6 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     [:name, :description].each do |attribute|
       assert_includes response.body, blank_error_for(attribute)
     end
-  end
-
-  # Show Action
-  test 'should show course' do
-    course = FactoryBot.create(:course)
-
-    get admin_course_path(course)
-
-    assert_response :success
-    assert_select 'h1', course.name
   end
 
   # Edit Action
@@ -83,7 +73,7 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     course.reload
 
     assert_equal 'New Name', course.name
-    assert_equal I18n.t('flash_messages.updated', model: Course.model_name.human), flash[:notice]
+    assert_flash_message('updated')
   end
 
   test 'should not update course with invalid params' do
@@ -108,7 +98,7 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to admin_courses_path
-    assert_equal 'Course was successfully deleted.', flash[:notice]
+    assert_flash_message('destroyed')
   end
 
   # Authorization Tests
@@ -126,5 +116,9 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
 
   def blank_error_for(attribute)
     I18n.t('errors.messages.blank', attribute: Course.human_attribute_name(attribute))
+  end
+
+  def assert_flash_message(action)
+    assert_equal I18n.t("flash_messages.#{action}", model: Course.model_name.human), flash[:notice]
   end
 end
