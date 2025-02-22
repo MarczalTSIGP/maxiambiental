@@ -1,95 +1,114 @@
 pt-BR:
   buttons:
-    cancel: 'Cancelar'
-    confirm: 'Confirmar'
-    create: 'Criar'
-    destroy: 'Excluir'
-    edit: 'Editar'
-    register: 'Cadastrar'
-    save: 'Salvar'
-    send: 'Enviar'
-    change_password: 'Alterar senha'
-    change_avatar: 'Alterar imagem'
-    edit_avatar: 'Alterar imagem'
-    click_to_edit_avatar: 'Clique para alterar seu avatar'
-    continue_with_google: 'Continuar com o Google'
-    add: 'Adicionar %{model}'
+    cancel: "Cancelar"
+    confirm: "Confirmar"
+    create: "Criar"
+    destroy: "Excluir"
+    edit: "Editar"
+    register: "Cadastrar"
+    save: "Salvar"
+    send: "Enviar"
+    change_password: "Alterar senha"
+    change_avatar: "Alterar imagem"
+    edit_avatar: "Alterar imagem"
+    click_to_edit_avatar: "Clique para alterar seu avatar"
+    continue_with_google: "Continuar com o Google"
+    add: "Adicionar %{model}"
 
   links:
-    discover_more: 'Saiba mais'
-    explore_our_courses: 'Conheça nossos treinamentos'
-    sign_up: 'Cadastre-se'
-    sign_in: 'Entre'
-    forgot_password: 'Esqueceu sua senha?'
-    remembered_password: 'Lembrou sua senha?'
-    confirm_my_account: 'Confirmar minha conta'
-    unlock_my_account: 'Desbloquear minha conta'
-    profile: 'Perfil'
-    courses: 'Cursos'
-    photos_gallery: 'Galeria de fotos'
-    about_us: 'Sobre nós'
-    contact_us: 'Fale conosco'
-    classes: 'Turmas'
-    instructors: 'Instrutores'
-    students: 'Estudantes'
-    settings: 'Configurações'
-    messages: 'Mensagens'
+    discover_more: "Saiba mais"
+    explore_our_courses: "Conheça nossos treinamentos"
+    sign_up: "Cadastre-se"
+    sign_in: "Entre"
+    forgot_password: "Esqueceu sua senha?"
+    remembered_password: "Lembrou sua senha?"
+    confirm_my_account: "Confirmar minha conta"
+    unlock_my_account: "Desbloquear minha conta"
+    profile: "Perfil"
+    courses: "Cursos"
+    photos_gallery: "Galeria de fotos"
+    about_us: "Sobre nós"
+    contact_us: "Fale conosco"
+    classes: "Turmas"
+    instructors: "Instrutores"
+    students: "Estudantes"
+    settings: "Configurações"
+    messages: "Mensagens"
 
   flash_messages:
-    profile_updated: 'Seu perfil foi atualizado com sucesso.'
-    avatar_updated: 'Seu avatar foi atualizado com sucesso.'
-    avatar_deleted: 'Seu avatar foi excluído com sucesso.'
-    password_updated: 'Sua senha foi atualizada com sucesso.'
-    created: '%{model} criado com sucesso.'
-    updated: '%{model} atualizado com sucesso.'
-    destroyed: '%{model} excluído com sucesso.'
+    profile_updated: "Seu perfil foi atualizado com sucesso."
+    avatar_updated: "Seu avatar foi atualizado com sucesso."
+    avatar_deleted: "Seu avatar foi excluído com sucesso."
+    password_updated: "Sua senha foi atualizada com sucesso."
+    created: "%{model} criado com sucesso."
+    updated: "%{model} atualizado com sucesso."
+    destroyed: "%{model} excluído com sucesso."
 
   tips:
-    empty: 'Nenhum registro encontrado.'
-    add_item: 'Adicione um novo %{model}.'
+    empty: "Nenhum registro encontrado."
+    add_item: "Adicione um novo %{model}."
 
   profile:
-    edit_title: 'Editar perfil'
-    edit_description: 'Mantenha suas informações atualizadas.'
-    edit_profile: 'Informações Pessoais'
-    edit_profile_description: 'Altere as informações básicas do seu perfil.'
-    edit_password: 'Informações de Senha'
-    edit_password_description: 'Altere a sua senha de acesso para garantir maior segurança em sua conta.'
-    edit_image: 'Alterar imagem'
+    edit_title: "Editar perfil"
+    edit_description: "Mantenha suas informações atualizadas."
+    edit_profile: "Informações Pessoais"
+    edit_profile_description: "Altere as informações básicas do seu perfil."
+    edit_password: "Informações de Senha"
+    edit_password_description: "Altere a sua senha de acesso para garantir maior segurança em sua conta."
+    edit_image: "Alterar imagem"
 
   errors:
     not_found:
-      title: 'Página não encontrada'
-      message: 'Desculpe, a página que você está procurando não existe.'
-      action: 'Voltar para a página inicial'
+      title: "Página não encontrada"
+      message: "Desculpe, a página que você está procurando não existe."
+      action: "Voltar para a página inicial"
     internal_server_error:
-      title: 'Erro Interno no Servidor'
-      message: 'Algo deu errado no servidor. Estamos trabalhando para corrigir.'
-      action: 'Tente novamente mais tarde'
+      title: "Erro Interno no Servidor"
+      message: "Algo deu errado no servidor. Estamos trabalhando para corrigir."
+      action: "Tente novamente mais tarde"
 
   home:
-    title: 'Maxiambiental Treinamentos'
-    subtitle: 'Transformando Conhecimento Ambiental em Ação'
+    title: "Maxiambiental Treinamentos"
+    subtitle: "Transformando Conhecimento Ambiental em Ação"
 
   status:
+    defaults: &defaults
+      true: "Ativo"
+      false: "Inativo"
     instructor:
-      true: 'Ativo'
-      false: 'Inativo'
+      <<: *defaults
+    course:
+      <<: *defaults
 
   admin:
     instructors:
       new:
-        title: 'Novo Instrutor'
-        description: 'Preencha as informações do novo instrutor.'
-        resume: 'Currículo'
+        title: "Novo Instrutor"
+        description: "Preencha as informações do novo instrutor."
+        resume: "Currículo"
       edit:
-        title: 'Editar Instrutor'
-        description: 'Preencha as novas informações do instrutor.'
+        title: "Editar Instrutor"
+        description: "Preencha as novas informações do instrutor."
       index:
-        title: 'Instrutores'
-        description: 'Gerencie todos os instrutores cadastrados na Maxiambiental.'
-        new: 'Novo Instrutor'
+        title: "Instrutores"
+        description: "Gerencie todos os instrutores cadastrados na Maxiambiental."
+        new: "Novo Instrutor"
       partials:
         instructor:
-          resume: 'Visualizar Currículo'
-          confirm: 'Tem certeza que deseja excluir este instrutor?'
+          resume: "Visualizar Currículo"
+          confirm: "Tem certeza que deseja excluir este instrutor?"
+
+    courses:
+      new:
+        title: "Novo Curso"
+        description: "Preencha as informações do novo curso."
+      edit:
+        title: "Editar Curso"
+        description: "Preencha as novas informações do curso."
+      index:
+        title: "Cursos"
+        description: "Gerencie todos os cursos cadastrados na Maxiambiental."
+        new: "Novo Curso"
+      partials:
+        course:
+          confirm: "Tem certeza que deseja excluir este curso?"
