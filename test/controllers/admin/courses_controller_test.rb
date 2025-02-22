@@ -35,18 +35,23 @@ class Admin::CoursesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to admin_courses_path
-    assert_equal 'Course was successfully created.', flash[:notice]
+    assert_equal I18n.t('flash_messages.created', model: Course.model_name.human), flash[:notice]
   end
 
   test 'should not create course with invalid params' do
-    invalid_attributes = { name: '' }
+    invalid_attributes = { name: '', description: '' }
 
     assert_no_difference('Course.count') do
       post admin_courses_path, params: { course: invalid_attributes }
     end
 
     assert_response :unprocessable_entity
-    assert_select 'div.alert', /error/
+
+    [:name, :description].each do |attribute|
+      error_message = I18n.t('errors.messages.blank', attribute: Course.human_attribute_name(attribute))
+
+      assert_includes response.body, error_message
+    end
   end
 
   # Show Action
