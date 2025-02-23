@@ -1,0 +1,11 @@
+<%= simple_form_for [:admin, @course], 
+                    html: { class: "space-y-4 md:space-y-6" } do |f| %>
+
+   <%= f.input :name %>
+
+   <%= f.input :description, as: :text, input_html: { class: 'h-40 overflow-y-auto' } %>
+
+   <%= f.input :image, as: :image %>
+
+   <%= f.button :submit %>
+<% end %>

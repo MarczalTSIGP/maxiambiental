@@ -21,7 +21,7 @@
          class="absolute items-center hidden space-x-6 transform -translate-x-1/2 -translate-y-1/2 lg:flex top-1/2 left-1/2"
       >
          <% links = [
-            { text: t('links.courses'), url: "#" },
+            { text: t('links.courses'), url: courses_path },
             { text: t('links.photos_gallery'), url: "#" },
             { text: t('links.about_us'), url: "#" },
             { text: t('links.contact_us'), url: "#" }
@@ -34,7 +34,16 @@
          <% end %>
       </ul>
 
-      <!-- Dropdown (usuário logado) -->
+      <% unless client_signed_in? %>
+         <%= link_to t('devise.sessions.sign_in'), new_client_session_path,
+                  class: "hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 text-sm text-green-700 font-bold",
+                  data: { navbar_visibility_target: "links" } %>
+
+         <%= link_to t('devise.sessions.sign_up'), new_client_registration_path,
+                  class: "hidden lg:inline-block py-2 px-6 bg-green-700 hover:bg-green-800 text-sm text-white font-bold rounded-md" %>
+      <% end %>
+
+      <!-- Dropdown -->
       <%= render 'layouts/clients/partials/dropdown', user: current_client if client_signed_in? %>
 
       <!-- Sidebar -->
