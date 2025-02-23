@@ -15,3 +15,16 @@
  */
 
 @import "font-awesome";
+
+.card-content-effect::before {
+  content: "";
+  position: absolute;
+  top: -47px;
+  right: -45px;
+  width: 100px;
+  height: 100px;
+  transform: rotate(-175deg);
+  border-radius: 50%;
+  box-shadow: inset 48px 48px #ffffff;
+  z-index: 0;
+}
