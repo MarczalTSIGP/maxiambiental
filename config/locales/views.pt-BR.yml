@@ -112,3 +112,8 @@ pt-BR:
       partials:
         course:
           confirm: "Tem certeza que deseja excluir este curso?"
+
+  courses:
+    index:
+      title: "Cursos"
+      description: "Explore nossos cursos e descubra as oportunidades de aprendizado que oferecemos para o seu desenvolvimento profissional."
