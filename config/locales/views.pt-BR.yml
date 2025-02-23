@@ -117,3 +117,6 @@ pt-BR:
     index:
       title: "Cursos"
       description: "Explore nossos cursos e descubra as oportunidades de aprendizado que oferecemos para o seu desenvolvimento profissional."
+    no_results:
+      no_courses_title: "Nenhum curso disponível"
+      no_courses_description: "Parece que ainda não temos cursos publicados nesta categoria. Volte em breve!"
