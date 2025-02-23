@@ -1,0 +1,84 @@
+require 'application_system_test_case'
+
+class CoursesTest < ApplicationSystemTestCase
+  setup do
+    @courses = FactoryBot.create_list(:course, 3)
+    @course = @courses.first
+  end
+
+  test 'display page header' do
+    visit courses_path
+
+    assert_selector '.container h1', text: I18n.t('courses.index.title')
+    assert_selector '.container p', text: I18n.t('courses.index.description')
+  end
+
+  test 'display courses grid with cards' do
+    visit courses_path
+
+    assert_selector '#courses-card'
+    within '#courses-card' do
+      assert_selector '.group', count: @courses.count
+    end
+  end
+
+  test 'course card basic content' do
+    visit courses_path
+
+    within "#course-#{@course.id}-card" do
+      assert_selector "img[alt='#{@course.name}']"
+      assert_selector 'img.object-cover'
+      assert_selector "#course-#{@course.id}-title", text: @course.name
+    end
+  end
+
+  test 'course card hover effects content visibility' do
+    visit courses_path
+
+    within "#course-#{@course.id}-card" do
+      find("#course-#{@course.id}-title").hover
+
+      assert_selector 'p.text-sm', text: @course.description
+      assert_selector 'a.btn-primary', text: t('buttons.details')
+    end
+  end
+
+  test 'course card hover visual transformations' do
+    visit courses_path
+
+    using_wait_time(5) do
+      card = find("#course-#{@course.id}-card")
+      card.hover
+
+      assert_equal 'matrix(1.05, 0, 0, 1.05, 0, 0)',
+                   card.find('img').native.style('transform')
+
+      assert_predicate card.find('[class*="translate-y-0"]'), :visible?
+    end
+  end
+
+  test 'course card hover style changes' do
+    visit courses_path
+
+    using_wait_time(5) do
+      card = find("#course-#{@course.id}-card")
+      card.hover
+
+      within card do
+        assert_selector 'p.text-green-700', style: { 'opacity' => '1' }
+        assert_selector 'a.btn-primary', style: { 'opacity' => '1' }
+      end
+    end
+  end
+
+  test 'empty state visual elements' do
+    Course.destroy_all
+    visit courses_path
+
+    within '#courses-card' do
+      assert_selector 'img[alt="No Results"]'
+      assert_selector 'h3', text: I18n.t('courses.no_results.no_courses_title')
+      assert_selector 'p', text: I18n.t('courses.no_results.no_courses_description')
+    end
+  end
+end
