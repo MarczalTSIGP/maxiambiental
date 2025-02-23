@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class CoursesTest < ApplicationSystemTestCase
+class Admin::CoursesTest < ApplicationSystemTestCase
   setup do
     @admin = create(:admin)
     @course = create(:course)
@@ -19,13 +19,13 @@ class CoursesTest < ApplicationSystemTestCase
     visit new_admin_course_path
 
     fill_in Course.human_attribute_name(:name), with: 'Ambiental Web'
-    fill_in Course.human_attribute_name(:description), with: 'An awesome course'
+    fill_in Course.human_attribute_name(:description), with: 'An awesome course about web development'
 
     click_on I18n.t('helpers.submit.create', model: Course.model_name.human)
 
     assert_current_path admin_courses_path
     assert_alert I18n.t('flash_messages.created', model: Course.model_name.human)
-    assert_text 'Ruby on Rails Avançado'
+    assert_text 'An awesome course about web development'
   end
 
   test 'preventing invalid course creation' do

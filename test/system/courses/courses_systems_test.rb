@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class CoursesTest < ApplicationSystemTestCase
+class CoursesSystemTest < ApplicationSystemTestCase
   setup do
     @courses = FactoryBot.create_list(:course, 3)
     @course = @courses.first
