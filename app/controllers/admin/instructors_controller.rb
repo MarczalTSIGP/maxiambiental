@@ -1,10 +1,10 @@
-class Admin::InstructorsController < ApplicationController
+class Admin::InstructorsController < Admin::BaseController
   before_action :set_instructor, except: [:index, :new, :create]
-
-  layout 'admin/application'
 
   def index
     @instructors = Instructor.includes(:avatar_attachment)
+                             .search(params[:term])
+                             .order(:name)
   end
 
   def show; end

@@ -24,6 +24,11 @@ Rails.application.routes.draw do
       resources :instructors
       patch 'instructors/:id/update_avatar', to: 'instructors#update_avatar', as: :update_instructor_avatar
       delete 'instructors/:id/delete_avatar', to: 'instructors#delete_avatar', as: :delete_instructor_avatar
+
+      get 'instructors/search/(:term)/(page/:page)',
+          constraints: { term: %r{[^/]+} },
+          to: 'instructors#index',
+          as: 'instructors_search'
     end
   end
 

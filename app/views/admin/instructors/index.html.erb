@@ -4,6 +4,8 @@
        bt_label: t('.new'),
        bt_path: new_admin_instructor_path %>
 
+<%= rc 'search/form', base_url: admin_instructors_search_path, clean_url: admin_instructors_path %>
+
 <%= render 'admin/instructors/partials/table_container' do %>
 
    <table class="w-full divide-y divide-gray-200">
