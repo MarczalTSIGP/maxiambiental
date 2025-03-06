@@ -16,7 +16,7 @@
       <div>
          <ul class="space-y-1">
             <% links = [
-               { text: t('links.courses'), url: "#" },
+               { text: t('links.courses'), url: courses_path },
                { text: t('links.photos_gallery'), url: "#" },
                { text: t('links.about_us'), url: "#" },
                { text: t('links.contact_us'), url: "#" }
@@ -32,6 +32,16 @@
 
       <!-- Footer -->
       <div class="mt-auto">
+         <% unless client_signed_in? %>
+            <div class="pt-6">
+               <%= link_to t('devise.sessions.sign_in'), new_client_session_path,
+                      class: "block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold bg-gray-50 hover:bg-gray-100 rounded-xl" %>
+
+               <%= link_to t('devise.sessions.sign_up'), new_client_registration_path,
+                      class: "block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-green-600 hover:bg-green-700 rounded-xl" %>
+            </div>
+         <% end %>
+
          <p class="my-4 text-xs text-center text-gray-400">
             Copyright © 2025
          </p>
