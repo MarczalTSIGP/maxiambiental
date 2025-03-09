@@ -25,7 +25,7 @@ class ImageInput < SimpleForm::Inputs::Base
 
   def input_components
     template.content_tag(:div, class: 'flex items-center sm:flex-col gap-4') do
-      input_label + file_name_display
+      input_label
     end
   end
 
@@ -40,18 +40,13 @@ class ImageInput < SimpleForm::Inputs::Base
                                                    data: { 'input-image-target' => 'labelText' })
   end
 
-  def file_name_display
-    template.content_tag(:span, 'Nenhum arquivo selecionado', class: 'text-sm text-gray-500',
-                                                              data: { 'input-image-target' => 'fileName' })
-  end
-
   def preview_image_tag
     template.content_tag(:div, class: 'shrink-0') do
       template.image_tag(
         preview_image_url,
         id: 'preview_img',
         data: { 'input-image-target' => 'preview' },
-        class: 'h-16 w-16 object-cover rounded-full border-solid border-black',
+        class: 'h-16 w-16 object-cover aspect-square rounded-md border-solid border-black',
         alt: object.try(:name).presence
       )
     end

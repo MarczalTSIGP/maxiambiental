@@ -1,12 +1,17 @@
 <tr id='<%= "course_#{course.id}" %>'>
    <td class="px-6 py-4 text-sm text-gray-800">
-      <h2 class="font-semibold"><%= course.name %></h2>
+      <div class="flex items-center">
+         <%= image_tag course.image_url, class: "h-8 w-8 aspect-square rounded-md object-cover"%>
+         <div class="ml-4">
+            <h2 class="font-semibold"><%= course.name %></h2>
+         </div>
+      </div>
    </td>
 
-   <td class="px-6 py-4 max-w-[50%]">
-      <div class="text-sm text-gray-800 line-clamp-2 break-words hover:line-clamp-none transition-all cursor-help">
-         <%= course.description %>
-      </div>
+   <td class="px-6 py-4 text-sm text-center text-gray-800">
+      <span class="<%= course.active ? 'badge-active' : 'badge-inactive' %>">
+         <%= t("status.course.#{course.active}") %>
+      </span>
    </td>
 
    <td class="px-6 py-4 text-sm font-medium text-center">

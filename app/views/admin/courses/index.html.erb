@@ -4,32 +4,12 @@
        bt_label: t('.new'),
        bt_path: new_admin_course_path %>
 
-<%= render 'admin/courses/partials/table_container' do %>
+<% attributes = [
+   { text: t('activerecord.models.course'), class: 'w-full text-left' },
+   { text: t('activerecord.attributes.defaults.status'), class: 'text-center' }, 
+   { text: '', class: 'text-right' }
+] %>
 
-   <table class="w-full divide-y divide-gray-200" id="courses_table">
-
-      <thead class="bg-gray-50">
-         <tr>
-            <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
-               <%= t('activerecord.models.course') %>
-            </th>
-            <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
-               <%= t('activerecord.attributes.defaults.description') %>
-            </th>
-            <th scope="col" class="px-6 py-3 text-xs font-medium text-right text-gray-500 uppercase"></th>
-         </tr>
-      </thead>
-
-      <tbody class="divide-y divide-gray-200">
-         <% if @courses.empty? %>
-            <%= render 'shared/empty_state',
-                        model: t('activerecord.models.course'),
-                        url: new_admin_course_path %>
-         <% else %>
-            <%= render partial: 'admin/courses/partials/course',
-                       collection: @courses, as: :course %>
-         <% end %>
-      </tbody>
-
-   </table>
-<% end %>
+<%= rc 'data/table', attributes: attributes, 
+                     collection: @courses,
+                     partial: 'admin/courses/partials/course' %>

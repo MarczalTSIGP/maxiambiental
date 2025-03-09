@@ -8,7 +8,7 @@ export default class extends Controller {
         const input = event.target;
         if (input.files && input.files[0]) {
             const file = input.files[0];
-            // Atualiza o elemento que mostra o nome do arquivo
+
             this.fileNameTarget.textContent = file.name;
 
             const reader = new FileReader();
