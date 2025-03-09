@@ -50,6 +50,7 @@ pt-BR:
     add_item: "Adicione um novo %{model}."
 
   profile:
+    my_profile: "Meu perfil"
     edit_title: "Editar perfil"
     edit_description: "Mantenha suas informações atualizadas."
     edit_profile: "Informações Pessoais"

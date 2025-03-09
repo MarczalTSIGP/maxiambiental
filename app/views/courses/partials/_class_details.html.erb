@@ -1,0 +1,9 @@
+<% tabs = [
+            { name: 'Sobre', path: "#about" },
+            { name: 'Programação', path: "#schedule" },
+            { name: 'Profissionais', path: "#professionals" },
+            { name: 'Pagamentos', path: "#payments" },
+          ] %>
+
+<%= rc 'navigation/tabs', tabs: tabs %>
+<%= render 'courses/partials/no_results' %>
