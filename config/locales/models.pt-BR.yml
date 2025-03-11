@@ -1,25 +1,25 @@
 pt-BR:
   activerecord:
     models:
-      admin: "Administrador"
-      client: "Cliente"
-      instructor: "Instrutor"
-      course: "Curso"
+      admin: 'Administrador'
+      client: 'Cliente'
+      instructor: 'Instrutor'
+      course: 'Curso'
     attributes:
       defaults: &defaults
-        created_at: "Criado em"
-        updated_at: "Atualizado em"
-        name: "Nome"
-        email: "E-mail"
-        password: "Senha"
-        current_password: "Senha atual"
-        password_confirmation: "Confirmação da senha"
-        reset_password_token: "Chave de redefinição de senha"
-        resume: "Currículo"
-        phone: "Celular"
-        active: "Ativo"
-        description: "Descrição"
-        image: "Imagem"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        name: 'Nome'
+        email: 'E-mail'
+        password: 'Senha'
+        current_password: 'Senha atual'
+        password_confirmation: 'Confirmação da senha'
+        reset_password_token: 'Chave de redefinição de senha'
+        resume: 'Currículo'
+        phone: 'Celular'
+        active: 'Ativo'
+        description: 'Descrição'
+        image: 'Imagem'
       admin:
         <<: *defaults
       client:

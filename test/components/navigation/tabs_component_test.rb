@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
-class Link::TabsComponentTest < ViewComponent::TestCase
+class Navigation::TabsComponentTest < ViewComponent::TestCase
   def test_component_renders_something_useful
     # assert_equal(
     #   %(<span>Hello, components!</span>),
