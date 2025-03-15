@@ -16,6 +16,7 @@ pt-BR:
     add: "Adicionar %{model}"
     details: 'Detalhes'
     subscribe: 'Inscrever-se'
+    schedule: 'Programação'
 
   links:
     discover_more: 'Saiba mais'
