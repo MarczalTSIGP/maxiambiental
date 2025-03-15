@@ -20,9 +20,7 @@
                      <%= render 'shared/empty_state', 
                                 model: t("activerecord.models.#{model}") %>
                   <% else %>
-                     <%= render partial: @partial,
-                                collection: @collection,
-                                as: model %>
+                     <%= render partial: @partial, collection: @collection, as: model %>
                   <% end %>
                </tbody>
 

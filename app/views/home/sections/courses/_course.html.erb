@@ -1,0 +1,13 @@
+<li class="flex-shrink-0 w-[calc(100vw-100px)] sm:w-80 md:w-96 snap-center block bg-white p-4 md:p-5 rounded-lg space-y-3 md:space-y-4 transition duration-200 mx-2">
+
+   <%= link_to image_tag(course.image_url, alt: course.name, class: "aspect-video object-cover rounded-lg"), 
+               course_path(course), class: "card-link" %>
+
+   <span class="badge bg-gray-500 text-white">Presencial</span>
+
+   <h2 class="text-base md:text-lg font-bold"><%= course.name %></h2>
+
+   <%= button_to icon('fa-solid', 'arrow-right'), 
+                 course_path(course), 
+                 class: "h-8 w-8 md:h-9 md:w-9 ml-1 mt-4 md:mt-8 text-green-700 rounded-full border-2 border-green-700 transform -rotate-45 hover:bg-green-700 hover:text-white" %>
+</li>

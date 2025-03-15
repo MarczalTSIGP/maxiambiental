@@ -14,11 +14,11 @@
  *= require_self
  */
 
-@import "font-awesome";
+@import 'font-awesome';
 
 /* Styles for course cards animation */
 .card-content-effect::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -47px;
   right: -45px;

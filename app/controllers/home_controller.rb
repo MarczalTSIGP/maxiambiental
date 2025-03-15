@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   layout 'layouts/home/application'
 
-  def index; end
+  def index
+    @courses = Course.includes(image_attachment: :blob).order(:name)
+  end
 end

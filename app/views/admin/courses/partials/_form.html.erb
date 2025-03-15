@@ -9,5 +9,8 @@
 
    <%= yield(f) %>
 
-   <%= f.button :submit %>
+   <div class="flex justify-between">
+      <%= link_to 'Cancelar', admin_courses_path, class: 'btn-outline' %>
+      <%= f.button :submit, class: 'w-fit' %>
+   </div>
 <% end %>

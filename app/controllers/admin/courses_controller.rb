@@ -2,7 +2,7 @@ class Admin::CoursesController < Admin::BaseController
   before_action :set_course, only: [:edit, :update, :destroy]
 
   def index
-    @courses = Course.order(:name)
+    @courses = Course.includes(image_attachment: :blob).order(:name)
   end
 
   def new

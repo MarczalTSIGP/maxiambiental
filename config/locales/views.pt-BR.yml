@@ -72,6 +72,9 @@ pt-BR:
   home:
     title: 'Maxiambiental Treinamentos'
     subtitle: 'Transformando Conhecimento Ambiental em Ação'
+    courses:
+      title: 'Inscrições Abertas para Novos Cursos'
+      subtitle: 'Descubra sua próxima oportunidade de aprendizagem'
 
   status:
     defaults: &defaults

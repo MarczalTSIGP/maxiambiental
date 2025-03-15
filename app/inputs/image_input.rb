@@ -53,7 +53,17 @@ class ImageInput < SimpleForm::Inputs::Base
   end
 
   def preview_image_url
-    object.send(attribute_name).present? ? object.send(attribute_name).url : default_image_url
+    if object.send(attribute_name).attached?
+      # Para Rails 6.1+ use desta forma
+      Rails.application.routes.url_helpers.rails_blob_url(
+        object.send(attribute_name).attachment,
+        only_path: true
+      )
+    else
+      default_image_url
+    end
+  rescue StandardError
+    default_image_url
   end
 
   def default_image_url
