@@ -15,6 +15,7 @@ pt-BR:
     continue_with_google: 'Continuar com o Google'
     add: "Adicionar %{model}"
     details: 'Detalhes'
+    subscribe: 'Inscrever-se'
 
   links:
     discover_more: 'Saiba mais'
@@ -72,6 +73,10 @@ pt-BR:
   home:
     title: 'Maxiambiental Treinamentos'
     subtitle: 'Transformando Conhecimento Ambiental em Ação'
+    newsletter:
+      title: 'Fique por dentro das nossas novidades'
+      placeholder: 'Insira seu email'
+      description: ' Fique por dentro das novidades em treinamentos ambientais e aprimore seus conhecimentos com a Maxiambiental.'
     courses:
       title: 'Inscrições Abertas para Novos Cursos'
       subtitle: 'Descubra sua próxima oportunidade de aprendizagem'

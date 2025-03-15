@@ -26,6 +26,10 @@
   .badge-inactive {
     @apply badge bg-red-600 text-white;
   }
+
+  .input {
+    @apply flex-auto rounded-md bg-white/5 px-3.5 py-2 text-white ring-1 ring-white/10 focus:ring-2 focus:ring-white sm:text-sm sm:leading-6;
+  }
 }
 
 @layer utilities {
