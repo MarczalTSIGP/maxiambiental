@@ -3,14 +3,14 @@
 
    <%= f.input :name %>
 
-   <%= f.input :description, as: :text, input_html: { class: 'h-40 overflow-y-auto' } %>
-
    <%= f.input :image, as: :image %>
+
+   <%= f.input :description, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
 
    <%= yield(f) %>
 
-   <div class="flex justify-between">
-      <%= link_to 'Cancelar', admin_courses_path, class: 'btn-outline' %>
-      <%= f.button :submit, class: 'w-fit' %>
+   <div class="flex justify-between mt-7">
+      <%= link_to t('buttons.cancel'), admin_courses_path, class: 'btn-outline' %>
+      <%= f.button :submit %>
    </div>
 <% end %>

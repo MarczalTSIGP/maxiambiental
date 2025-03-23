@@ -156,7 +156,14 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.button_class = 'w-full text-white py-2 px-4 rounded-md bg-green-700 hover:bg-green-800 cursor-pointer'
+  config.button_class = 'text-white py-2 px-4 rounded-md bg-green-700 hover:bg-green-800 cursor-pointer'
+
+  config.wrappers :form_button, tag: :button, class: "btn" do |b|
+    b.use :html_input
+    b.wrapper tag: :div, class: "flex justify-center" do
+      b.use :input, class: "w-full text-white py-2 px-4 rounded-md bg-green-700 hover:bg-green-800 cursor-pointer"
+    end
+  end
 
   config.default_wrapper = :tailwind
 end

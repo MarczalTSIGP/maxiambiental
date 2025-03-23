@@ -4,7 +4,7 @@
 
    <%= f.input :email, value: @client.pending_reconfirmation? ? @client.unconfirmed_email : @client.email %>
 
-   <%= f.button :submit, t('devise.confirmations.button') %>
+   <%= f.button :submit, t('devise.confirmations.button'), class: "w-full" %>
 
    <div class="text-sm text-center">
       <%= link_to t('devise.sessions.sign_in_with_my_account'), new_client_session_path, class: "font-semibold text-green-600 hover:text-green-500" %>

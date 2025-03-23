@@ -17,9 +17,11 @@
          <h1 class="text-3xl font-bold text-black text-center">
             <%= @course.name %>
          </h1>
-         <p class="text-gray-600 text-sm leading-relaxed">
-            <%= @course.description %>
-         </p>
+         <div class="text-gray-600 overflow-y-auto scrollbar-hide scroll-smooth max-h-60">
+            <div class="prose text-sm leading-snug [&_p]:my-1 pb-6 relative flex-1">
+               <%= @course.description %>
+            </div>
+         </div>
          <%= button_to 'Ficha de inscrição', '#', class: 'btn-primary w-full' %>
          <div class="space-y-1">
             <h2 class="text-md font-bold text-gray-800">

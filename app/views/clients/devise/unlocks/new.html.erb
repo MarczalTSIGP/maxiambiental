@@ -3,6 +3,6 @@
 <%= simple_form_for @client, url: client_unlock_path, html: { method: 'post', class: 'space-y-4 md:space-y-6' } do |f| %>
 
    <%= f.input :email, input_html: { autocomplete: "email" } %>
-   <%= f.button :submit, t('devise.unlocks.resend_instructions') %>
+   <%= f.button :submit, t('devise.unlocks.resend_instructions'), class: "w-full" %>
 
 <% end %>

@@ -3,9 +3,10 @@ class Course < ApplicationRecord
   validates :description, presence: true, length: { minimum: 20 }
 
   has_one_attached :image
+  has_rich_text :description
 
   def image_url
-    return ActionController::Base.helpers.asset_path('default-avatar.png') unless image.attached?
+    return ActionController::Base.helpers.asset_path('card-default.png') unless image.attached?
 
     Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true)
   end

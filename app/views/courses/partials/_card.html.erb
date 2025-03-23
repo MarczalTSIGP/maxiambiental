@@ -1,33 +1,18 @@
-<article id="course-<%= course.id %>-card" class="group relative h-96 w-full overflow-hidden rounded-xl bg-transparent shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+<div class="max-w-sm rounded overflow-hidden shadow-lg group relative">
+   <%= link_to course_path(course) do %>
 
-   <div class="relative h-full overflow-hidden">
-      <%= image_tag course.image_url, alt: course.name,
-                    class: 'h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105' %>
+      <div class="relative">
+         <%= image_tag course.image_url, alt: course.name, class: 'w-full' %>
 
-      <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-   </div>
-
-   <div class="absolute bottom-0 left-0 w-full h-80 translate-y-[65%] transform space-y-2 rounded-t-xl bg-white p-5 transition-transform duration-300 group-hover:translate-y-0">
-      <div class="card-content-effect"></div>
-
-      <div class="flex flex-col h-full">
-         <h3
-            id="course-<%= course.id %>-title"
-            class="text-lg font-bold text-green-700 truncate mb-3"
-         >
-            <%= course.name %>
-         </h3>
-
-         <div class="flex-1 overflow-hidden mb-4">
-            <p class="text-sm text-green-700 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:delay-200 h-full leading-relaxed">
+         <div class="absolute inset-0 bg-black bg-opacity-70 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col p-4 overflow-y-auto scrollbar-hide scroll-smooth">
+            <div class="prose prose-invert text-sm leading-snug [&_p]:my-1 pb-6 relative flex-1">
                <%= course.description %>
-            </p>
-         </div>
-
-         <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
-            <%= link_to t('buttons.schedule'), course_path(course), class: "btn-outline w-full sm:w-auto text-sm flex-grow text-center" %>
-            <%= link_to t('buttons.subscribe'), course_path(course), class: "btn-primary w-full sm:w-auto text-sm flex-grow text-center" %>
+            </div>
          </div>
       </div>
-   </div>
-</article>
+
+      <div class="px-6 py-4">
+         <div class="font-bold text-xl mb-2"><%= course.name %></div>
+      </div>
+   <% end %>
+</div>
