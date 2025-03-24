@@ -1,6 +1,6 @@
 class Course < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
-  validates :description, presence: true, length: { minimum: 20 }
+  validates :description, presence: true
 
   has_one_attached :image
   has_rich_text :description

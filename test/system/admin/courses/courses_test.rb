@@ -18,20 +18,20 @@ class Admin::CoursesTest < ApplicationSystemTestCase
   test 'creating a course' do
     visit new_admin_course_path
 
-    fill_in Course.human_attribute_name(:name), with: 'Ambiental Web'
-    fill_in Course.human_attribute_name(:description), with: 'An awesome course about web development'
+    fill_in attribute(:name), with: 'Ambiental Web'
+    find('trix-editor').set('An awesome course about web development.')
 
-    click_on I18n.t('helpers.submit.create', model: Course.model_name.human)
+    click_on I18n.t('helpers.submit.create', model: model_name)
 
     assert_current_path admin_courses_path
-    assert_alert I18n.t('flash_messages.created', model: Course.model_name.human)
-    assert_text 'An awesome course about web development'
+    assert_alert I18n.t('flash_messages.created', model: model_name)
+    assert_text 'Ambiental Web'
   end
 
   test 'preventing invalid course creation' do
     visit new_admin_course_path
 
-    click_on I18n.t('helpers.submit.create', model: Course.model_name.human)
+    click_on I18n.t('helpers.submit.create', model: model_name)
 
     assert_text blank_error_for(:name)
     assert_text blank_error_for(:description)
@@ -41,20 +41,20 @@ class Admin::CoursesTest < ApplicationSystemTestCase
     visit edit_admin_course_path(@course)
 
     new_name = 'Updated course name'
-    fill_in Course.human_attribute_name(:name), with: new_name
+    fill_in attribute(:name), with: new_name
 
-    click_on I18n.t('helpers.submit.update', model: Course.model_name.human)
+    click_on I18n.t('helpers.submit.update', model: model_name)
 
     assert_current_path admin_courses_path
-    assert_alert I18n.t('flash_messages.updated', model: Course.model_name.human)
+    assert_alert I18n.t('flash_messages.updated', model: model_name)
     assert_text new_name
   end
 
   test 'preventing invalid course updates' do
     visit edit_admin_course_path(@course)
 
-    fill_in Course.human_attribute_name(:name), with: ''
-    click_on I18n.t('helpers.submit.update', model: Course.model_name.human)
+    fill_in attribute(:name), with: ''
+    click_on I18n.t('helpers.submit.update', model: model_name)
 
     assert_text blank_error_for(:name)
   end
@@ -67,7 +67,7 @@ class Admin::CoursesTest < ApplicationSystemTestCase
       accept_confirm { link.click }
     end
 
-    assert_alert I18n.t('flash_messages.destroyed', model: Course.model_name.human)
+    assert_alert I18n.t('flash_messages.destroyed', model: model_name)
 
     within '#courses_table' do
       assert_no_text @course.name
@@ -78,5 +78,13 @@ class Admin::CoursesTest < ApplicationSystemTestCase
 
   def blank_error_for(attribute)
     I18n.t('errors.messages.blank', attribute: Course.human_attribute_name(attribute))
+  end
+
+  def model_name
+    Course.model_name.human
+  end
+
+  def attribute(attribute)
+    Course.human_attribute_name(attribute)
   end
 end

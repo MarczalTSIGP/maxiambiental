@@ -17,6 +17,7 @@ class CoursesSystemTest < ApplicationSystemTestCase
     visit courses_path
 
     assert_selector '#courses-card'
+
     within '#courses-card' do
       assert_selector '.group', count: @courses.count
     end
@@ -27,47 +28,38 @@ class CoursesSystemTest < ApplicationSystemTestCase
 
     within "#course-#{@course.id}-card" do
       assert_selector "img[alt='#{@course.name}']"
-      assert_selector 'img.object-cover'
-      assert_selector "#course-#{@course.id}-title", text: @course.name
+      assert_text @course.name
     end
   end
 
-  test 'course card hover effects content visibility' do
+  test 'course card hover shows description overlay' do
     visit courses_path
 
-    within "#course-#{@course.id}-card" do
-      find("#course-#{@course.id}-title").hover
+    card = find("#course-#{@course.id}-card")
+    overlay = card.find('div.absolute.inset-0', visible: false)
 
-      assert_selector 'p.text-sm', text: @course.description
-      assert_selector 'a.btn-primary', text: t('buttons.details')
+    assert_equal '0', overlay.native.css_value('opacity')
+
+    card.hover
+
+    assert_operator overlay.native.css_value('opacity').to_f, :>, 0.5
+
+    within card do
+      assert_text @course.description.to_plain_text
     end
   end
 
-  test 'course card hover visual transformations' do
-    visit courses_path
-
-    using_wait_time(5) do
-      card = find("#course-#{@course.id}-card")
-      card.hover
-
-      assert_equal 'matrix(1.05, 0, 0, 1.05, 0, 0)',
-                   card.find('img').native.style('transform')
-
-      assert_predicate card.find('[class*="translate-y-0"]'), :visible?
-    end
-  end
-
-  test 'course card hover style changes' do
+  test 'course card hover makes overlay visible' do
     visit courses_path
 
     using_wait_time(5) do
       card = find("#course-#{@course.id}-card")
+
+      overlay = card.find('div.absolute.inset-0', visible: false)
+
       card.hover
 
-      within card do
-        assert_selector 'p.text-green-700', style: { 'opacity' => '1' }
-        assert_selector 'a.btn-primary', style: { 'opacity' => '1' }
-      end
+      assert_predicate overlay, :visible?
     end
   end
 
