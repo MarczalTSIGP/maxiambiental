@@ -28,9 +28,11 @@
          class="card-list scrollbar-hide flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 md:gap-6 pb-4 scrollbar-hide">
 
          <% if @courses.present? %>
-            <%= render partial: 'home/sections/courses/course', collection: @courses, as: :course %>
+            <%= render partial: 'home/sections/partials/course', collection: @courses, as: :course %>
          <% else %>
-            <%= render partial: 'home/sections/courses/no_results' %>
+            <div class="flex items-center justify-center w-full">
+               <%= render partial: 'shared/no_results' %>
+            </div>
          <% end %>
 
       </ul>
