@@ -1,7 +1,7 @@
 <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
-   <ul class="flex flex-wrap -mb-px">
+   <ul class="flex flex-wrap -mb-px" id="tabs">
       <% @tabs.each do |tab| %>
-         <li class="me-2">
+         <li class="me-2" id="tab-<%= tab[:name] %>">
             <%= active_link_to tab[:name], tab[:path], 
                                   class: "inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-700 hover:border-gray-300",
                                   class_active: "text-green-700 border-green-700 hover:text-green-700 hover:border-green-300",

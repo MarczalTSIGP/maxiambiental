@@ -73,4 +73,34 @@ class CoursesSystemTest < ApplicationSystemTestCase
       assert_selector 'p', text: I18n.t('courses.no_results.no_courses_description')
     end
   end
+
+  test 'display course show page' do
+    visit course_path(@course)
+
+    assert_selector "img[alt='#{@course.name}']"
+    assert_selector 'h1', text: @course.name
+    assert_selector '.trix-content', text: @course.description.to_plain_text
+  end
+
+  test 'displays the links to more information about the course' do
+    visit course_path(@course)
+
+    assert_selector 'button', text: I18n.t('buttons.registration_form')
+
+    within '#tabs' do
+      expected_tabs = %w[schedule professionals payments about]
+
+      assert_tabs expected_tabs
+    end
+  end
+
+  private
+
+  def assert_tabs(expected_tabs)
+    expected_tabs.each do |tab|
+      translated_tab = I18n.t("links.#{tab}")
+
+      assert_selector "li#tab-#{translated_tab}", text: translated_tab
+    end
+  end
 end
