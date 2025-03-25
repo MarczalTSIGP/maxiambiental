@@ -1,9 +1,10 @@
 <% tabs = [
-            { name: 'Sobre', path: "#about" },
-            { name: 'Programação', path: "#schedule" },
-            { name: 'Profissionais', path: "#professionals" },
-            { name: 'Pagamentos', path: "#payments" },
+            { name: t('links.about'), path: "#about" },
+            { name: t('links.schedule'), path: "#schedule" },
+            { name: t('links.professionals'), path: "#professionals" },
+            { name: t('links.payments'), path: "#payments" },
           ] %>
 
 <%= rc 'navigation/tabs', tabs: tabs %>
-<%= render 'courses/partials/no_results' %>
+
+<%= render 'shared/no_results' %>

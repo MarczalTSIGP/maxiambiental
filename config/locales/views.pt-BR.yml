@@ -16,7 +16,7 @@ pt-BR:
     add: "Adicionar %{model}"
     details: 'Detalhes'
     subscribe: 'Inscrever-se'
-    schedule: 'Programação'
+    registration_form: 'Ficha de inscrição'
 
   links:
     discover_more: 'Saiba mais'
@@ -31,6 +31,9 @@ pt-BR:
     courses: 'Cursos'
     photos_gallery: 'Galeria de fotos'
     about_us: 'Sobre nós'
+    about: 'Sobre'
+    professionals: 'Profissionais'
+    payments: 'Pagamentos'
     contact_us: 'Fale conosco'
     classes: 'Turmas'
     instructors: 'Instrutores'
