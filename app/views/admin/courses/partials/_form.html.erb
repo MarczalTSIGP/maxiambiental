@@ -3,9 +3,9 @@
 
    <%= f.input :name %>
 
-   <%= f.input :image, as: :image %>
-
    <%= f.input :description, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
+
+   <%= f.input :image, as: :image %>
 
    <%= yield(f) %>
 
