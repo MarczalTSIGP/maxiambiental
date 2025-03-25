@@ -4,7 +4,6 @@ export default class extends Controller {
     static targets = ['logo', 'menu', 'links'];
 
     connect() {
-        // Executa a verificação inicial ao conectar
         this.toggleBackground();
         window.addEventListener('scroll', this.toggleBackground.bind(this));
     }
@@ -28,9 +27,7 @@ export default class extends Controller {
     }
 
     setNavClasses(addClasses, removeClasses) {
-        addClasses.forEach((className) =>
-            this.element.classList.add(className),
-        );
+        addClasses.forEach((className) => this.element.classList.add(className));
         removeClasses.forEach((className) =>
             this.element.classList.remove(className),
         );
