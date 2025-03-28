@@ -46,3 +46,7 @@ pt-BR:
         password: 'Digite a senha do instrutor'
         phone: 'Digite o telefone do instrutor'
         resume: 'Digite o currículo do instrutor'
+      course:
+        <<: *defaults
+        name: 'Digite o nome do curso'
+        description: 'Digite a descrição do curso'

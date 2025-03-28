@@ -13,11 +13,13 @@
 
    <body>
 
-      <%= render 'home/sections/nav' %>
+      <%= render 'layouts/clients/partials/header' %>
 
       <main>
          <%= yield %>
       </main>
+
+      <%= render 'layouts/clients/partials/footer' %>
 
    </body>
 </html>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'courses', to: 'courses#index', as: :courses
+  get 'courses/:id', to: 'courses#show', as: :course
 
   match '404', via: :all, to: 'errors#not_found'
   match '500', via: :all, to: 'errors#internal_server_error'
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
       resources :instructors
       patch 'instructors/:id/update_avatar', to: 'instructors#update_avatar', as: :update_instructor_avatar
       delete 'instructors/:id/delete_avatar', to: 'instructors#delete_avatar', as: :delete_instructor_avatar
+
+      resources :courses, except: :show
     end
   end
 

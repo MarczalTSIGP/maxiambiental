@@ -1,0 +1,42 @@
+<div class="container mx-auto px-4 py-10 mt-12">
+   <div class="grid md:grid-cols-2 gap-6 md:items-start items-center">
+
+      <div class="max-w-[500px] md:aspect-square mx-auto relative group overflow-hidden">
+         <%= image_tag @course.image_url, 
+             alt: @course.name, 
+             class: 'w-full h-full object-cover rounded-lg shadow-xl md:border border-gray-100' %>
+
+         <div class="md:hidden absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg">
+            <h1 class="text-3xl font-bold text-white absolute bottom-4 left-4 right-4">
+               <%= @course.name %>
+            </h1>
+         </div>
+      </div>
+
+      <div class="md:block hidden space-y-4 px-8">
+         <h1 class="text-3xl font-bold text-black text-center">
+            <%= @course.name %>
+         </h1>
+
+         <div class="text-gray-600 overflow-y-auto scrollbar-hide scroll-smooth max-h-60">
+            <p class="prose text-sm leading-snug [&_p]:my-1 pb-6 relative flex-1">
+               <%= @course.description %>
+            </p>
+         </div>
+
+         <%= button_to t('buttons.registration_form'), '#', class: 'btn-primary w-full' %>
+      </div>
+
+      <div class="md:hidden space-y-4">
+         <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <p class="text-gray-600 text-base leading-relaxed">
+               <%= @course.description %>
+            </p>
+         </div>
+      </div>
+   </div>
+
+   <div class="mx-auto mt-8">
+      <%= render 'courses/partials/class_details' %>
+   </div>
+</div>
