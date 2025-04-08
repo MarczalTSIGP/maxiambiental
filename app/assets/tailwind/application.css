@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/container-queries";
+@plugin "@tailwindcss/typography";
 
 @layer components {
   .btn-primary {
@@ -20,11 +22,11 @@
   }
 
   .badge-active {
-    @apply badge bg-green-600 text-white;
+    @apply inline-flex items-center gap-x-1.5 py-1 px-2 md:py-1.5 md:px-3 rounded-full text-xs font-medium bg-green-600 text-white;
   }
 
   .badge-inactive {
-    @apply badge bg-red-600 text-white;
+    @apply inline-flex items-center gap-x-1.5 py-1 px-2 md:py-1.5 md:px-3 rounded-full text-xs font-medium bg-red-600 text-white;
   }
 
   .input {
