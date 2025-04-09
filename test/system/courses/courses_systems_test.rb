@@ -32,34 +32,11 @@ class CoursesSystemTest < ApplicationSystemTestCase
     end
   end
 
-  test 'course card hover shows description overlay' do
+  test 'course card has hidden description' do
     visit courses_path
 
-    card = find("#course-#{@course.id}-card")
-    overlay = card.find('div.absolute.inset-0', visible: false)
-
-    assert_equal '0', overlay.native.css_value('opacity')
-
-    card.hover
-
-    assert_operator overlay.native.css_value('opacity').to_f, :>, 0.5
-
-    within card do
-      assert_text @course.description.to_plain_text
-    end
-  end
-
-  test 'course card hover makes overlay visible' do
-    visit courses_path
-
-    using_wait_time(5) do
-      card = find("#course-#{@course.id}-card")
-
-      overlay = card.find('div.absolute.inset-0', visible: false)
-
-      card.hover
-
-      assert_predicate overlay, :visible?
+    within("#course-#{@course.id}-card") do
+      assert_selector '.prose', text: @course.description.body.to_plain_text, visible: false
     end
   end
 
