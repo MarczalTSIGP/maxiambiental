@@ -4,7 +4,8 @@ class Admin::InstructorsController < ApplicationController
   layout 'admin/application'
 
   def index
-    @instructors = Instructor.includes(:avatar_attachment)
+    @instructors = Instructor.includes(avatar_attachment: :blob)
+                             .search(params[:term]).order(:name)
   end
 
   def show; end

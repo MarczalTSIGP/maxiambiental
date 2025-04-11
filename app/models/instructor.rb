@@ -1,4 +1,8 @@
 class Instructor < ApplicationRecord
+  include Searchable
+
+  searchable :email, name: { unaccent: true }
+
   validates :email,
             presence: true,
             uniqueness: true,
