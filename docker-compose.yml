@@ -6,8 +6,6 @@ x-app: &app
     - .:/var/www/maxiambiental
     - bundle_path:/bundle
     - /dev/shm:/dev/shm
-  tmpfs:
-    - /tmp
   depends_on:
     - db
   networks:
@@ -50,7 +48,7 @@ services:
       SELENIUM_PORT: 4444
       TEST_APP_HOST: tests
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
-    shm_size: "2gb" #set shared memory
+    shm_size: '2gb' #set shared memory
     depends_on:
       - db
       - chrome-server

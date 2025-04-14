@@ -136,7 +136,7 @@ SimpleForm.setup do |config|
       ba.use :label, class: 'block text-green-700 text-sm font-bold mb-2'
       ba.use :input,
              class: 'shadow border border-gray-300 rounded-md w-full p-2.5 
-                            text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700 
+                            text-gray-700 leading-tight focus:outline-hidden focus:border-green-700 focus:ring-green-700 
                             disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-400 disabled:text-gray-600'
 
       ba.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
