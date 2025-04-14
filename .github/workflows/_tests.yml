@@ -10,7 +10,7 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     container:
-      image: ruby:3.3.4
+      image: ruby:3.4.2
       options: --network-alias testHost
       volumes:
         - /var/www/maxiambiental/test/assets/images:/var/www/maxiambiental/test/assets/images
