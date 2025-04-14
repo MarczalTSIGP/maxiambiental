@@ -3,10 +3,10 @@
 require 'test_helper'
 
 class Data::TableComponentTest < ViewComponent::TestCase
-  def test_component_renders_something_useful
-    # assert_equal(
-    #   %(<span>Hello, components!</span>),
-    #   render_inline(Data::TableComponent.new(message: "Hello, components!")).css("span").to_html
-    # )
-  end
+  # def test_component_renders_something_useful
+  # assert_equal(
+  #   %(<span>Hello, components!</span>),
+  #   render_inline(Data::TableComponent.new(message: "Hello, components!")).css("span").to_html
+  # )
+  # end
 end

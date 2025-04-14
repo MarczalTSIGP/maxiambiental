@@ -1,5 +1,5 @@
 # Base Image
-FROM ruby:3.3.4
+FROM ruby:3.4.2
 
 # Encoding
 # C.UTF8 locale supports Computer English language
@@ -84,37 +84,8 @@ RUN apt-get update -qq && \
     cron         \
     sudo         \
     vim          \
+    watchman     \
     && rm -rf /var/lib/apt/lists/*
-
-# --------------------------
-# INSTALL NODEJS BY NVM and TAILWINDCSS CLI
-# This was necessary because tailwindcss standalone
-# does not work with docker image 
-# --------------------------
-ARG NODE_VERSION=22.14.0
-ARG NVM_DIR=/usr/local/nvm
-
-# https://github.com/creationix/nvm#install-script
-RUN mkdir $NVM_DIR && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
-
-# Add node and npm to path so the commands are available
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-
-# confirm installation
-RUN node -v
-RUN npm -v
-
-# Install global npm packages
-RUN npm install -g npm@11.2.0 && \
-    npm install -g @tailwindcss/cli
-
-# Set Tailwind CSS install directory
-ENV TAILWINDCSS_INSTALL_DIR=$NVM_DIR/versions/node/v$NODE_VERSION/bin
-
-# --------------------------
-# end of nodejs and tailwindcss installation
-# --------------------------
 
 ENV _USER devel
 ENV APP_NAME maxiambiental
@@ -146,12 +117,6 @@ RUN mkdir -p $APP \
 WORKDIR $APP
 
 # Install bundler and rails
-RUN gem update --system 3.6.6 \ 
+RUN gem update --system 3.6.6 \
     && gem install bundler -v 2.6.6 \
     && gem install rails -v 8.0.2
-    
-# Install TailwindCSS
-RUN npm install -D tailwindcss \
-    && npm install -D @tailwindcss/forms \
-    && npm install -D @tailwindcss/aspect-ratio \
-    && npm install -D  @tailwindcss/typography
