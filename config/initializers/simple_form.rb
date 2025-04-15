@@ -165,7 +165,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :search, tag: 'div', class: 'space-y-4 md:space-y-6' do |b|
+  config.wrappers :search, tag: 'div', class: 'w-full' do |b|
     b.use :html5
     b.use :placeholder
 
