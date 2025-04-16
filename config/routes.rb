@@ -33,6 +33,11 @@ Rails.application.routes.draw do
           as: 'instructors_search'
 
       resources :courses, except: :show
+
+      get 'courses/search/(:term)/(page/:page)',
+          constraints: { term: %r{[^/]+} },
+          to: 'courses#index',
+          as: 'courses_search'
     end
   end
 

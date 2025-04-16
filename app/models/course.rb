@@ -1,4 +1,8 @@
 class Course < ApplicationRecord
+  include Searchable
+
+  searchable name: { unaccent: true }
+
   validates :name, presence: true, length: { minimum: 3 }
   validates :description, presence: true
 
