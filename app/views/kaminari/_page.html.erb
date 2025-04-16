@@ -1,5 +1,5 @@
 <% if page.current? %>
-   <span class="inline-grid place-items-center border align-middle select-none font-sans font-medium text-center transition-all duration-300 ease-in text-sm min-w-[38px] min-h-[38px] rounded-md bg-green-700 border-transparent text-white hover:bg-green-700/80 shadow-none hover:shadow-none"><%= page %></span>
+   <span class="inline-grid place-items-center border align-middle select-none font-sans font-medium text-center transition-all duration-300 ease-in min-w-[30px] min-h-[30px] md:min-w-[38px] md:min-h-[38px] text-xs md:text-sm rounded-md bg-green-700 border-transparent text-white hover:bg-green-700/80 shadow-none hover:shadow-none"><%= page %></span>
 <% else %>
-   <%= link_to page, url, remote: remote, rel: page.rel, class: "inline-grid place-items-center border align-middle select-none font-sans font-medium text-center transition-all duration-300 ease-in text-sm min-w-[38px] min-h-[38px] rounded-md bg-transparent border-transparent text-green-700 hover:bg-green-800/5 hover:border-stone-800/5 shadow-none hover:shadow-none" %>
+   <%= link_to page, url, remote: remote, rel: page.rel, class: "inline-grid place-items-center border align-middle select-none font-sans font-medium text-center transition-all duration-300 ease-in min-w-[30px] min-h-[30px] md:min-w-[38px] md:min-h-[38px] text-xs md:text-sm rounded-md bg-transparent border-transparent text-green-700 hover:bg-green-800/5 hover:border-stone-800/5 shadow-none hover:shadow-none" %>
 <% end %>

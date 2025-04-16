@@ -1,5 +1,5 @@
 <%= paginator.render do -%>
-   <nav class="flex items-center md:justify-end justify-center gap-2.5 mt-5" role="navigation" aria-label="pager">
+   <nav class="flex items-center justify-between lg:justify-end gap-1 lg:gap-2.5 mt-5 overflow-x-auto whitespace-nowrap" role="navigation" aria-label="pager">
       <%= prev_page_tag %>
       <% each_page do |page| -%>
          <% if page.display_tag? -%>

@@ -8,13 +8,13 @@
       <button 
          data-action="click->sidebar#toggle" 
          type="button" 
-         class="absolute inline-flex items-center text-green-500 ms-3 sm:hidden"
+         class="absolute inline-flex items-center text-green-500 ms-3 lg:hidden"
          >
          <span class="sr-only">Open sidebar</span>
          <%= icon('fa-solid', 'bars', class: "fa-lg") %>
       </button>
 
-      <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: "h-14 hidden sm:block"), admin_root_path %>
+      <%= link_to image_tag('maxiambiental-logo.svg', alt: 'Logo', class: "h-14 hidden lg:block"), admin_root_path %>
 
       <!-- User dropdown -->
       <%= render 'layouts/admin/partials/dropdown', user: current_admin %>
