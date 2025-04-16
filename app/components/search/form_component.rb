@@ -1,8 +1,7 @@
 class Search::FormComponent < ViewComponent::Base
-  def initialize(base_url:, clean_url:)
+  def initialize(base_url:)
     super()
     @base_url = base_url
-    @clean_url = clean_url
   end
 
   private
@@ -25,8 +24,7 @@ class Search::FormComponent < ViewComponent::Base
     {
       controller: 'search',
       action: 'submit->search#search',
-      search_base_url_value: @base_url,
-      search_clean_url_value: @clean_url
+      search_base_url_value: @base_url
     }
   end
 end
