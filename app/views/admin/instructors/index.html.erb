@@ -7,15 +7,13 @@
 <%= rc 'search/form', base_url: admin_instructors_path %>
 
 <% attributes = [
-   { text: t('activerecord.models.instructor'), class: 'text-left' },
-   { text: t('activerecord.attributes.defaults.phone'), class: 'text-left' },
-   { text: t('activerecord.attributes.defaults.status'), class: 'text-center' },
-   { text: t('activerecord.attributes.defaults.resume'), class: 'text-center' },
+   { text: Instructor.model_name.human, class: 'text-left' },
+   { text: Instructor.human_attribute_name(:phone), class: 'text-left' },
+   { text: Instructor.human_attribute_name(:status), class: 'text-center' },
+   { text: Instructor.human_attribute_name(:resume), class: 'text-center' },
    { text: '', class: 'text-right' }
 ] %>
 
 <%= rc 'data/table', attributes: attributes, 
                      collection: @instructors, 
                      partial: 'admin/instructors/partials/instructor' %>
-
-<%= paginate @instructors %>
