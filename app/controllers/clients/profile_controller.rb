@@ -19,8 +19,8 @@ class Clients::ProfileController < ApplicationController
   def edit_password; end
 
   def update_password
-    client_pwd_params = params.require(:client)
-                              .permit(:current_password, :password, :password_confirmation)
+    client_pwd_params = params
+                        .expect(client: [:current_password, :password, :password_confirmation])
 
     if @client.update_with_password(client_pwd_params)
       bypass_sign_in(@client)
@@ -50,6 +50,6 @@ class Clients::ProfileController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name, :email, :bio, :avatar, :current_password)
+    params.expect(client: [:name, :email, :bio, :avatar, :current_password])
   end
 end

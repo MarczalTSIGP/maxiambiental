@@ -15,8 +15,8 @@ class Admin::ProfileController < Admin::BaseController
   def edit_password; end
 
   def update_password
-    admin_pwd_params = params.require(:admin)
-                             .permit(:current_password, :password, :password_confirmation)
+    admin_pwd_params = params
+                       .expect(admin: [:current_password, :password, :password_confirmation])
 
     if @admin.update_with_password(admin_pwd_params)
       bypass_sign_in(@admin)
@@ -46,6 +46,6 @@ class Admin::ProfileController < Admin::BaseController
   end
 
   def admin_params
-    params.require(:admin).permit(:name, :email, :avatar, :current_password)
+    params.expect(admin: [:name, :email, :avatar, :current_password])
   end
 end

@@ -48,6 +48,6 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def course_params
-    params.require(:course).permit(:name, :description, :image, :active)
+    params.expect(course: [:name, :description, :image, :active])
   end
 end
