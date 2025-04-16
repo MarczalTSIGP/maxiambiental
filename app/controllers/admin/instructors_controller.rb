@@ -7,7 +7,7 @@ class Admin::InstructorsController < ApplicationController
     @instructors = Instructor.includes([:avatar_attachment])
                              .search(params[:term])
                              .order(:name)
-                             .page(params[:page]).per(1)
+                             .page(params[:page])
   end
 
   def show; end
