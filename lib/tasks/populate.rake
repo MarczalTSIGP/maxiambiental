@@ -8,7 +8,8 @@ namespace :db do
 
     puts 'Running seeds'
 
-    ClientPopulate.populate(10)
+    ClientPopulate.populate(30)
+    InstructorPopulate.populate(20)
 
     Rake::Task['db:seed'].invoke
   end

@@ -33,5 +33,7 @@ module Maxiambiental
     config.active_storage.variant_processor = :mini_magick
 
     config.active_support.to_time_preserves_timezone = :zone
+
+    Faker::Config.locale = 'pt-BR'
   end
 end
