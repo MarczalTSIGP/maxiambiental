@@ -74,6 +74,18 @@ class Admin::CoursesTest < ApplicationSystemTestCase
     end
   end
 
+  test 'searching for a course' do
+    FactoryBot.create_list(:course, 3)
+
+    visit admin_courses_path
+
+    fill_in 'search[term]', with: @course.name
+    click_on 'search-button'
+
+    assert_selector 'table tbody tr', count: 1
+    assert_selector 'table tbody tr td', text: @course.name
+  end
+
   private
 
   def blank_error_for(attribute)

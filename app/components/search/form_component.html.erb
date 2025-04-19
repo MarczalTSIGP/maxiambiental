@@ -13,7 +13,7 @@
                   input_html: input_options %>
 
          <div class="col-span-1">
-            <%= f.button :button, type: "submit", data: { search_target: "button" } do %>
+            <%= f.button :button, type: "submit", id: "search-button", data: { search_target: "button" } do %>
                <%= icon('fa-solid', 'magnifying-glass') %>
             <% end %>
          </div>

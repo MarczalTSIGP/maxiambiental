@@ -4,8 +4,6 @@ module Searchable
   extend ActiveSupport::Concern
 
   module ClassMethods
-    attr_reader :search_fields
-
     def search_joins(term)
       join_keys.where_search(query_search_joins(query_search), term)
     end
@@ -37,7 +35,7 @@ module Searchable
     end
 
     def join_keys
-      left_joins(hash_joins.keys) if hash_joins
+      left_joins(hash_joins.keys).distinct if hash_joins
     end
 
     def query_unnacent_ilike(name, table = model_name.plural)
@@ -66,19 +64,20 @@ module Searchable
 
       query_ilike(field, table)
     end
+
+    def hash_joins
+      hash = @search_fields.last
+      hash[:relationships] if hash.is_a?(Hash) && hash.key?(:relationships)
+    end
   end
 
   included do
+    class_attribute :search_fields, instance_writer: false, default: []
+
     def self.search(term = nil)
       return all if term.blank?
-      return search_joins(term) if hash_joins
 
-      where_search(query_search, term)
-    end
-
-    def self.hash_joins
-      hash = @search_fields.last
-      hash[:relationships] if hash.is_a?(Hash) && hash.key?(:relationships)
+      hash_joins ? search_joins(term) : where_search(query_search, term)
     end
   end
 end
