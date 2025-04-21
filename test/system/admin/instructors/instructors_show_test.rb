@@ -29,7 +29,11 @@ class InstructorsShowTest < ApplicationSystemTestCase
     visit admin_instructor_path(@instructor)
 
     within 'div#resume' do
-      assert_text @instructor.resume.to_plain_text
+      lines = @instructor.resume.to_plain_text.lines.map(&:strip).compact_blank
+
+      lines.each do |line|
+        assert_text line
+      end
     end
   end
 

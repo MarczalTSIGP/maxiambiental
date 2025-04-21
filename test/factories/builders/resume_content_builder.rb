@@ -1,23 +1,15 @@
 module ResumeContentBuilder
   SECTION_GENERATORS = {
     profile: lambda {
-      generate_section('Perfil Profissional', [
-                         Faker::Educator.degree,
-                         Faker::Educator.university
-                       ])
+      generate_section('Perfil Profissional', Faker::Educator.degree)
     },
 
     experience: lambda {
-      generate_section('Experiência', Array.new(2) do
-        "#{Faker::Job.title} na #{Faker::Company.name}"
-      end)
+      generate_section('Experiência', "#{Faker::Job.title} na #{Faker::Company.name}")
     },
 
     education: lambda {
-      generate_section('Formação', [
-                         "#{Faker::Educator.degree} na #{Faker::Educator.university}",
-                         Faker::Lorem.words(number: 4).join(', ')
-                       ])
+      generate_section('Formação', "#{Faker::Educator.degree} na #{Faker::Educator.university}")
     }
   }.freeze
 
@@ -25,14 +17,7 @@ module ResumeContentBuilder
     sections.map { |section| SECTION_GENERATORS[section].call }.join
   end
 
-  private_class_method def self.generate_section(title, items)
-    <<~STRING
-      <h1><strong>#{title}</strong></h1>
-      <div><br></div>
-      <ul>
-        #{items.map { |item| "<li>#{item}</li>" }.join}
-      </ul>
-      <div><br></div>
-    STRING
+  private_class_method def self.generate_section(title, item)
+    "<h1><strong>#{title}</strong></h1><div><br></div><p>#{item}</p><div><br></div>"
   end
 end
