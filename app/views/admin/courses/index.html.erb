@@ -4,9 +4,11 @@
        bt_label: t('.new'),
        bt_path: new_admin_course_path %>
 
+<%= rc 'search/form', base_url: admin_courses_path %>
+
 <% attributes = [
-   { text: t('activerecord.models.course'), class: 'w-full text-left' },
-   { text: t('activerecord.attributes.defaults.status'), class: 'text-center' }, 
+   { text: Course.model_name.human, class: 'w-full text-left' },
+   { text: Course.human_attribute_name(:active), class: 'text-center' }, 
    { text: '', class: 'text-right' }
 ] %>
 

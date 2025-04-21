@@ -2,7 +2,10 @@ class Admin::CoursesController < Admin::BaseController
   before_action :set_course, only: [:edit, :update, :destroy]
 
   def index
-    @courses = Course.includes([:image_attachment]).order(:name)
+    @courses = Course.includes([:image_attachment])
+                     .search(params[:term])
+                     .order(:name)
+                     .page(params[:page])
   end
 
   def new
@@ -45,6 +48,6 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def course_params
-    params.require(:course).permit(:name, :description, :image, :active)
+    params.expect(course: [:name, :description, :image, :active])
   end
 end

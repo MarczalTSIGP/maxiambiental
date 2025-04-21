@@ -1,0 +1,23 @@
+<div class="w-full">
+
+   <%= simple_form_for :search,
+                    wrapper: :search,
+                    url: @base_url,
+                    method: :get,
+                    html: { data: form_options } do |f| %>
+
+      <div class="flex gap-2 mb-6">
+         <%= f.input :term,
+                  label: false,
+                  wrapper_html: { class: "col-span-11" },
+                  input_html: input_options %>
+
+         <div class="col-span-1">
+            <%= f.button :button, type: "submit", id: "search-button", data: { search_target: "button" } do %>
+               <%= icon('fa-solid', 'magnifying-glass') %>
+            <% end %>
+         </div>
+      </div>
+   <% end %>
+
+</div>

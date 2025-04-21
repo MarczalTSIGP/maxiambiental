@@ -1,3 +1,7 @@
+<div class="text-end text-sm text-gray-700 mb-2">
+   <%= page_entries_info @collection %>
+</div>
+
 <div class="flex flex-col">
    <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
@@ -18,7 +22,7 @@
                <tbody class="divide-y divide-gray-200">
                   <% if @collection.empty? %>
                      <%= render 'shared/empty_state', 
-                                model: t("activerecord.models.#{model}") %>
+                                model: @collection.model.model_name.human.downcase %>
                   <% else %>
                      <%= render partial: @partial, collection: @collection, as: model %>
                   <% end %>
@@ -30,3 +34,5 @@
       </div>
    </div>
 </div>
+
+<%= paginate @collection %>

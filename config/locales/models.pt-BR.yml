@@ -1,10 +1,18 @@
 pt-BR:
   activerecord:
     models:
-      admin: 'Administrador'
-      client: 'Cliente'
-      instructor: 'Instrutor'
-      course: 'Curso'
+      admin: 
+        one: 'Administrador'
+        other: 'Administradores'
+      client: 
+        one: 'Cliente'
+        other: 'Clientes'
+      instructor: 
+        one: 'Instrutor'
+        other: 'Instrutores'
+      course: 
+        one: 'Curso'
+        other: 'Cursos'
     attributes:
       defaults: &defaults
         created_at: 'Criado em'

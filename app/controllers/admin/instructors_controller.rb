@@ -4,7 +4,10 @@ class Admin::InstructorsController < ApplicationController
   layout 'admin/application'
 
   def index
-    @instructors = Instructor.includes(:avatar_attachment)
+    @instructors = Instructor.includes([:avatar_attachment])
+                             .search(params[:term])
+                             .order(:name)
+                             .page(params[:page])
   end
 
   def show; end
@@ -36,7 +39,7 @@ class Admin::InstructorsController < ApplicationController
   end
 
   def update_avatar
-    avatar_params = params.require(:instructor).permit(:avatar)
+    avatar_params = params.expect(instructor: [:avatar])
 
     if @instructor.update(avatar_params)
       redirect_to admin_instructor_path(@instructor.id)
@@ -64,6 +67,6 @@ class Admin::InstructorsController < ApplicationController
   end
 
   def instructor_params
-    params.require(:instructor).permit(:name, :email, :phone, :active, :resume)
+    params.expect(instructor: [:name, :email, :phone, :active, :resume])
   end
 end

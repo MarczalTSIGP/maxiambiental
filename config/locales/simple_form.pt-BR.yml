@@ -35,6 +35,7 @@ pt-BR:
         resume: 'Currículo'
         phone: 'Celular'
         avatar: 'Foto'
+        term: 'Pesquisar...'
       admin:
         <<: *defaults
       client:
