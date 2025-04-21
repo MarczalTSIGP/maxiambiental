@@ -5,7 +5,7 @@
 
    <span class="badge bg-gray-500 text-white mt-4">Presencial</span>
 
-   <h2 class="text-base md:text-lg font-bold"><%= course.name %></h2>
+   <h2 class="text-base md:text-lg font-bold line-clamp-2"><%= course.name %></h2>
 
    <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
       <%= link_to t('links.schedule'), course_path(course), class: "btn-outline w-full sm:w-auto text-sm flex-grow text-center" %>
