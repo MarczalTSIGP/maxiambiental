@@ -1,4 +1,4 @@
-Dir[Rails.root.join('lib/populators/*.rb')].each { |file| require file }
+Rails.root.glob('lib/populators/*.rb').each { |file| require file }
 
 namespace :db do
   desc 'Erase and fill database'
@@ -6,11 +6,11 @@ namespace :db do
     include Populators
     Rails.logger = Logger.new($stdout)
 
-    puts 'Running seeds'
+    puts 'Running populate'
 
     ClientPopulate.populate(30)
     InstructorPopulate.populate(20)
-    CoursesPopulate.populate(10)
+    CoursesPopulate.populate(9)
 
     Rake::Task['db:seed'].invoke
   end
