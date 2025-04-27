@@ -28,11 +28,7 @@ class InstructorsEditTest < ApplicationSystemTestCase
     visit edit_admin_instructor_path(@instructor)
 
     within 'form trix-editor' do
-      lines = @instructor.resume.to_plain_text.lines.map(&:strip).compact_blank
-
-      lines.each do |line|
-        assert_text line
-      end
+      assert_rich_text @instructor.resume
     end
   end
 
