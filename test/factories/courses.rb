@@ -8,11 +8,15 @@ FactoryBot.define do
     end
 
     after(:build) do |course|
-      course.image.attach(
-        io: Rails.root.join("test/factories/files/images/courses/#{course.name.parameterize}.png").open,
-        filename: 'course.png',
-        content_type: 'image/png'
-      )
+      image_path = Rails.root.join("test/factories/files/images/courses/#{course.name.parameterize}.png")
+
+      if image_path.exist?
+        course.image.attach(
+          io: image_path.open,
+          filename: "#{course.name.parameterize}.png",
+          content_type: 'image/png'
+        )
+      end
     end
   end
 end

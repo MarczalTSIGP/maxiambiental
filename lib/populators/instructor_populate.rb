@@ -1,52 +1,48 @@
 class InstructorPopulate < Populators::BasePopulate
-  @male_counter = 2
-  @female_counter = 1
+  GENDERS = [:male, :female].freeze
 
-  class << self
-    attr_accessor :male_counter, :female_counter
+  def initialize
+    super
+    @gender_rotator = GENDERS.cycle
+    @image_cache = load_images
   end
 
   def create
-    male
-    female
+    gender = @gender_rotator.next
+    instructor = create_instructor(gender)
+    attach_avatar(instructor, gender)
   end
 
   private
 
-  def male
-    instructor = FactoryBot.create(:instructor, name: Faker::Name.male_first_name)
-    attach_avatar(instructor, 'male')
-  end
-
-  def female
-    instructor = FactoryBot.create(:instructor, name: Faker::Name.female_first_name)
-    attach_avatar(instructor, 'female')
-  end
-
-  def next_number(gender)
-    if gender == 'male'
-      number = self.class.male_counter
-      self.class.male_counter += 2
-    else
-      number = self.class.female_counter
-      self.class.female_counter += 2
-    end
-    number
-  end
-
-  def build_attachment(instructor, image_path)
-    instructor.avatar.attach(
-      io: File.open(image_path),
-      filename: "avatar_#{instructor.id}.jpeg",
-      content_type: 'image/jpeg'
+  def create_instructor(gender)
+    FactoryBot.create(
+      :instructor,
+      name: gender == :male ? Faker::Name.male_first_name : Faker::Name.female_first_name
     )
   end
 
+  def load_images
+    GENDERS.index_with do |gender|
+      Rails.root.glob("test/factories/files/images/users/#{gender}/*.jpeg").sort
+    end
+  end
+
+  def next_image(gender)
+    return if @image_cache[gender].empty?
+
+    @image_cache[gender].rotate!.last
+  end
+
   def attach_avatar(instructor, gender)
-    number = next_number(gender)
-    image_path = Rails.root.join("test/factories/files/images/users/#{gender}/#{number}.jpeg")
-    build_attachment(instructor, image_path)
+    if (image_path = next_image(gender))
+      instructor.avatar.attach(
+        io: File.open(image_path),
+        filename: "#{gender}_#{File.basename(image_path)}",
+        content_type: 'image/jpeg'
+      )
+    end
   rescue Errno::ENOENT
-    Rails.logger.error "Arquivo não encontrado: #{image_path}. Pulando..."
+    Rails.logger.error "Image not found for #{gender}"
   end
 end
