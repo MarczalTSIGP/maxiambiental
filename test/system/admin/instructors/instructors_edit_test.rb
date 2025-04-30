@@ -28,7 +28,7 @@ class InstructorsEditTest < ApplicationSystemTestCase
     visit edit_admin_instructor_path(@instructor)
 
     within 'form trix-editor' do
-      assert_text @instructor.resume.to_plain_text
+      assert_rich_text @instructor.resume
     end
   end
 
