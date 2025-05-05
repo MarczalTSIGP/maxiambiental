@@ -141,6 +141,13 @@ pt-BR:
       partials:
         course:
           confirm: 'Tem certeza que deseja excluir este curso?'
+    clients:
+      index:
+        title: 'Clientes'
+        description: 'Gerencie todos os clientes cadastrados na Maxiambiental.'
+      partials:
+        client:
+          confirm: 'Tem certeza que deseja excluir este cliente?'
 
   courses:
     index:

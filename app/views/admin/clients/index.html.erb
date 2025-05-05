@@ -1,0 +1,15 @@
+<%= rc 'page/content_title',
+       title: t('.title'),
+       description: t('.description') %>
+
+<%= rc 'search/form', base_url: admin_clients_path %>
+
+<% attributes = [
+   { text: Client.model_name.human, class: 'text-left w-full' },
+   { text: Client.human_attribute_name(:status), class: 'text-center' },
+   { text: '', class: 'text-right' }
+] %>
+
+<%= rc 'data/table', attributes: attributes, 
+                     collection: @clients,
+                     partial: 'admin/clients/partials/client' %>
