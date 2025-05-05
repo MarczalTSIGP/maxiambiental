@@ -1,4 +1,8 @@
 class Client < ApplicationRecord
+  include Searchable
+
+  searchable :email, name: { unaccent: true }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable,
