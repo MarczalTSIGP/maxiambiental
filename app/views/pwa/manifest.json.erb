@@ -1,0 +1,35 @@
+{
+  "name": "<%= t('pwa.name') %>",
+  "short_name": "<%= t('pwa.short_name') %>",
+  "icons": [
+    {
+      "src": "<%= image_path('icons/logo-192x192.png') %>",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "<%= image_path('icons/logo-512x512.png') %>",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "description": "<%= t('pwa.description') %>",
+  "categories": ["business", "productivity"],
+  "theme_color": "#008236",
+  "background_color": "#fff",
+  "screenshots": [
+    {
+      "src": "<%= image_url("pwa/screenshots/mobile.png") %>",
+      "sizes": "720x1280",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "<%= image_url("pwa/screenshots/web.png") %>",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
+    }
+  ]
+}

@@ -24,6 +24,10 @@
 # must be quoted to be interpreted as strings. For example:
 
 pt-BR:
+  pwa:
+    name: 'Maxiambiental Treinamentos'
+    short_name: 'Maxiambiental'
+    description: 'Capacitação para profissionais e estudantes em áreas ambientais, com cursos práticos e atualizados.'
   errors:
     messages:
       email: 'não é um e-mail válido'
