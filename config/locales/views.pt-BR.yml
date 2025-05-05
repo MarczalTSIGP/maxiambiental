@@ -108,6 +108,8 @@ pt-BR:
       <<: *defaults
     course:
       <<: *defaults
+    client:
+      <<: *defaults
 
   admin:
     instructors:
