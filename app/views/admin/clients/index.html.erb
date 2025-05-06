@@ -1,6 +1,10 @@
+<% provide(:title, t(".title")) %>
+
 <%= rc 'page/content_title',
        title: t('.title'),
-       description: t('.description') %>
+       description: t('.description'),
+       bt_label: t('.new'),
+       bt_path: new_admin_client_path %>
 
 <%= rc 'search/form', base_url: admin_clients_path %>
 

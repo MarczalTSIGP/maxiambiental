@@ -1,5 +1,5 @@
 class Admin::ClientsController < Admin::BaseController
-  before_action :set_client, only: [:destroy]
+  before_action :set_client, only: [:edit, :update, :destroy]
 
   def index
     @clients = Client.includes([:avatar_attachment])
@@ -12,16 +12,26 @@ class Admin::ClientsController < Admin::BaseController
     @client = Client.new
   end
 
+  def edit; end
+
   def create
     @client = Client.new(client_params)
     @client.set_random_password
 
     if @client.save
-      send_account_creation_email(@client)
       redirect_to admin_clients_path,
                   notice: t('flash_messages.created', model: Client.model_name.human)
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @client.update(client_params)
+      redirect_to admin_clients_path,
+                  notice: t('flash_messages.updated', model: Client.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +45,7 @@ class Admin::ClientsController < Admin::BaseController
   private
 
   def client_params
-    params.expect(client: [:name, :email])
+    params.expect(client: [:name, :email, :active])
   end
 
   def set_client

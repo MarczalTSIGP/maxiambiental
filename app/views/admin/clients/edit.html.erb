@@ -1,0 +1,7 @@
+<%= provide(:title, t('.title')) %>
+
+<%= rc 'page/content_title', title: t('.title'), description: t('.description') %>
+
+<%= render 'admin/clients/partials/form' do |f| %>
+   <%= f.input :active, as: :toggle_switch %>
+<% end %>
