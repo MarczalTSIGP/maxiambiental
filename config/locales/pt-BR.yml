@@ -24,7 +24,8 @@
 # must be quoted to be interpreted as strings. For example:
 
 pt-BR:
-  app_name: 'Maxiambiental'
+  app:
+    name: 'Maxiambiental'
   errors:
     messages:
       email: 'não é um e-mail válido'
