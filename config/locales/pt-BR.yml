@@ -26,6 +26,8 @@
 pt-BR:
   app:
     name: 'Maxiambiental'
+    short_name: 'Maxiambiental'
+    description: 'Capacitação para profissionais e estudantes em áreas ambientais, com cursos práticos e atualizados.'
   errors:
     messages:
       email: 'não é um e-mail válido'
