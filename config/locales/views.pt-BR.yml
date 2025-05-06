@@ -151,6 +151,9 @@ pt-BR:
       partials:
         client:
           confirm: 'Tem certeza que deseja excluir este cliente?'
+      new:
+        title: 'Novo Cliente'
+        description: 'Preencha as informações do novo cliente.'
 
   courses:
     index:

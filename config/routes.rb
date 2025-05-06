@@ -43,8 +43,7 @@ Rails.application.routes.draw do
           to: 'courses#index',
           as: 'courses_search'
 
-      get 'clients' => 'clients#index', as: :clients
-      delete 'clients/:id', to: 'clients#destroy', as: :client
+      resources :clients
 
       get 'clients/search/(:term)/(page/:page)',
           constraints: { term: %r{[^/]+} },
