@@ -44,7 +44,7 @@ class Admin::ClientsControllerTest < ActionDispatch::IntegrationTest
       end
 
       assert_redirected_to admin_clients_path
-      assert_flash_created(Client)
+      assert_flash('created')
       assert_not_nil Client.last.encrypted_password
     end
 
@@ -62,7 +62,7 @@ class Admin::ClientsControllerTest < ActionDispatch::IntegrationTest
       patch admin_client_path(client), params: { client: { name: 'Updated Name' } }
 
       assert_redirected_to admin_clients_path
-      assert_flash_updated(Client)
+      assert_flash('updated')
       assert_equal 'Updated Name', client.reload.name
     end
 
@@ -83,7 +83,7 @@ class Admin::ClientsControllerTest < ActionDispatch::IntegrationTest
       assert_difference('Client.count', -1) { delete admin_client_path(client) }
 
       assert_redirected_to admin_clients_path
-      assert_flash_destroyed(Client)
+      assert_flash('destroyed')
     end
   end
 
@@ -97,15 +97,7 @@ class Admin::ClientsControllerTest < ActionDispatch::IntegrationTest
     { name: '', email: '' }
   end
 
-  def assert_flash_created(model)
-    assert_equal flash[:notice], I18n.t('flash_messages.created', model: model.model_name.human)
-  end
-
-  def assert_flash_updated(model)
-    assert_equal flash[:notice], I18n.t('flash_messages.updated', model: model.model_name.human)
-  end
-
-  def assert_flash_destroyed(model)
-    assert_equal flash[:notice], I18n.t('flash_messages.destroyed', model: model.model_name.human)
+  def assert_flash(action)
+    assert_equal flash[:notice], I18n.t("flash_messages.#{action}", model: Client.model_name.human)
   end
 end
