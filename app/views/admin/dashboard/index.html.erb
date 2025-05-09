@@ -1,99 +1,60 @@
 <% provide(:title, "Dashboard") %>
 
-<div class="grid grid-cols-3 gap-4 mb-4">
-   <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
+<!-- Component Start -->
+<div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6 w-full max-w-6xl">
+
+   <!-- Tile 1 -->
+   <div class="flex items-center p-4 bg-white rounded shadow-xl">
+      <div class="flex flex-shrink-0 items-center justify-center bg-green-200 h-16 w-16 rounded">
+         <%= icon('fa-solid', 'arrow-up', class: "fa-xl fill-current text-green-700") %>
+      </div>
+      <div class="flex-grow flex flex-col ml-4">
+         <span class="text-xl font-bold">20</span>
+         <div class="flex items-center justify-between">
+            <span class="text-gray-500">Cursos finalizados nos últimos 30 dias</span>
+            <span class="text-green-500 text-sm font-semibold ml-2">+12.6%</span>
+         </div>
+      </div>
    </div>
-   <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
+
+   <!-- Tile 2 -->
+   <div class="flex items-center p-4 bg-white rounded shadow-xl">
+      <div class="flex flex-shrink-0 items-center justify-center bg-red-200 h-16 w-16 rounded">
+         <%= icon('fa-solid', 'arrow-down', class: "fa-xl fill-current text-red-700") %>
+      </div>
+      <div class="flex-grow flex flex-col ml-4">
+         <span class="text-xl font-bold">211</span>
+         <div class="flex items-center justify-between">
+            <span class="text-gray-500">Inscrições nos últimos 30 dias</span>
+            <span class="text-red-500 text-sm font-semibold ml-2">-8.1%</span>
+         </div>
+      </div>
    </div>
-   <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
-   </div>
-</div>
-<div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-   <p class="text-2xl text-gray-400 dark:text-gray-500">
-      <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-      </svg>
-   </p>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-4">
-   <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
-   </div>
-   <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
-   </div>
-   <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
-   </div>
-   <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
+
+   <!-- Tile 3 -->
+   <div class="flex items-center p-4 bg-white rounded shadow-xl">
+      <div class="flex flex-shrink-0 items-center justify-center bg-green-200 h-16 w-16 rounded">
+         <%= icon('fa-solid', 'arrow-up', class: "fa-xl fill-current text-green-700") %>
+      </div>
+      <div class="flex-grow flex flex-col ml-4">
+         <span class="text-xl font-bold"><%= @clients_stats[:count] %></span>
+         <div class="flex items-center justify-between">
+            <span class="text-gray-500">Clientes nos últimos 30 dias</span>
+            <span class="text-green-500 text-sm font-semibold ml-2"><%= @clients_stats[:growth] %></span>
+         </div>
+      </div>
    </div>
 </div>
-<div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-   <p class="text-2xl text-gray-400 dark:text-gray-500">
-      <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-      </svg>
-   </p>
-</div>
-<div class="grid grid-cols-2 gap-4">
-   <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
-   </div>
-   <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
-   </div>
-   <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
-   </div>
-   <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-      <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-         </svg>
-      </p>
-   </div>
+<!-- Component End  -->
+
+<div class="grid lg:grid-cols-2 md:grid-cols-1 gap-6 w-full max-w-6xl">
+
+   <%= render 'admin/dashboard/partials/table', collection: @courses do %>
+      <%= render partial: 'admin/dashboard/partials/course', collection: @courses, as: :course %>
+   <% end %>
+
+   <%= render 'admin/dashboard/partials/table', collection: @clients do %>
+      <%= render partial: 'admin/dashboard/partials/client', collection: @clients, as: :client %>
+   <% end %>
+
 </div>
