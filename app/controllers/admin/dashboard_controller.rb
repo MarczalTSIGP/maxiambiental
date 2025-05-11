@@ -1,15 +1,19 @@
 class Admin::DashboardController < Admin::BaseController
-  before_action :set_admin_dashboard
+  before_action :initialize_admin_dashboard
 
   def index
-    @clients_stats = @admin_dashboard.last_30_days
-    @clients = @admin_dashboard.top_clients
-    @courses = @admin_dashboard.top_courses
+    load_dashboard_data
   end
 
   private
 
-  def set_admin_dashboard
+  def initialize_admin_dashboard
     @admin_dashboard = Dashboard::Admin.new
+  end
+
+  def load_dashboard_data
+    @clients_stats = @admin_dashboard.last_30_days
+    @clients   = @admin_dashboard.top_clients
+    @courses   = @admin_dashboard.top_courses
   end
 end
