@@ -1,8 +1,8 @@
 class Dashboard::Admin
-  def last_30_days
+  def clients_metrics
     {
-      count: last_30_days_count,
-      growth: customer_percentage_increase
+      count: clients_last_30_days_count,
+      growth: clients_percentage_increase
     }
   end
 
@@ -16,18 +16,19 @@ class Dashboard::Admin
 
   private
 
-  def last_30_days_count
+  def clients_last_30_days_count
     Client.where(created_at: 30.days.ago..).count
   end
 
-  def previous_30_days_count
-    Client.where(created_at: 60.days.ago..).where(created_at: ...30.days.ago).count
+  def clients_previous_30_days_count
+    Client.where(created_at: 60.days.ago..30.days.ago).count
   end
 
-  def customer_percentage_increase
-    return 0 if previous_30_days_count.zero?
+  def clients_percentage_increase
+    previous_count = clients_previous_30_days_count
+    return 0 if previous_count.zero?
 
-    increase = last_30_days_count - previous_30_days_count
-    ((increase.to_f / previous_30_days_count) * 100).round(1)
+    increase = clients_last_30_days_count - previous_count
+    ((increase.to_f / previous_count) * 100).round(1)
   end
 end

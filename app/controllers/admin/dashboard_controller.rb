@@ -12,7 +12,7 @@ class Admin::DashboardController < Admin::BaseController
   end
 
   def load_dashboard_data
-    @clients_stats = @admin_dashboard.last_30_days
+    @clients_metrics = @admin_dashboard.clients_metrics
     @clients   = @admin_dashboard.top_clients
     @courses   = @admin_dashboard.top_courses
   end

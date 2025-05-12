@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Dashboard::StatsComponent < ViewComponent::Base
-  def initialize(stats:, text: '', id: '')
+  def initialize(stats:, text: '', id: 'stats')
     super
     @stats = stats
     @text = text
