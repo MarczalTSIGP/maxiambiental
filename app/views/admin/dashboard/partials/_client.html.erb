@@ -1,5 +1,7 @@
 <tr class="hover:bg-green">
-   <td class="px-6 py-4 text-sm text-gray-800">
+
+   <td id="client-<%= client.id %>" class="px-6 py-4 text-sm text-gray-800">
+
       <div class="flex items-center">
          <%= image_tag client.avatar_url, class: "h-8 w-8 rounded-full object-cover"%>
          <div class="ml-4">
@@ -7,5 +9,7 @@
             <p class="text-sm text-gray-600"><%= client.email %></p>
          </div>
       </div>
+
    </td>
+
 </tr>

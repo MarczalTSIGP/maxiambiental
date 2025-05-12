@@ -1,22 +1,22 @@
 <% provide(:title, "Dashboard") %>
 
-<div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6 w-full max-w-6xl">
+<div id="stats" class="grid lg:grid-cols-3 md:grid-cols-2 gap-6 w-full max-w-6xl">
 
-   <%= rc 'dashboard/stats', stats: {count: 20, growth: 12.6}, text: 'Cursos finalizados nos últimos 30 dias' %>
+   <%= rc 'dashboard/stats', stats: {count: 20, growth: 12.6}, text: t('.stats.courses'), id: 'courses_stats' %>
 
-   <%= rc 'dashboard/stats', stats: {count: 211, growth: -8.1}, text: 'Inscrições nos últimos 30 dias' %>
+   <%= rc 'dashboard/stats', stats: {count: 211, growth: -8.1}, text: t('.stats.subscriptions'), id: 'subscriptions_stats' %>
 
-   <%= rc 'dashboard/stats', stats: @clients_stats, text: 'Clientes nos últimos 30 dias' %>
+   <%= rc 'dashboard/stats', stats: @clients_stats, text: t('.stats.clients'), id: 'clients_stats' %>
 
 </div>
 
-<div class="grid lg:grid-cols-2 md:grid-cols-1 gap-6 w-full max-w-6xl">
+<div id="tables" class="grid lg:grid-cols-2 md:grid-cols-1 gap-6 w-full max-w-6xl">
 
-   <%= render 'admin/dashboard/partials/table', collection: @courses do %>
+   <%= render 'admin/dashboard/partials/table', model: Course do %>
       <%= render partial: 'admin/dashboard/partials/course', collection: @courses, as: :course %>
    <% end %>
 
-   <%= render 'admin/dashboard/partials/table', collection: @clients do %>
+   <%= render 'admin/dashboard/partials/table', model: Client do %>
       <%= render partial: 'admin/dashboard/partials/client', collection: @clients, as: :client %>
    <% end %>
 
