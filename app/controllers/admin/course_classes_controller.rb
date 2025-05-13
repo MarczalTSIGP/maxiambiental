@@ -1,4 +1,11 @@
 class Admin::CourseClassesController < Admin::BaseController
+  def index
+    @course_classes = CourseClass.includes([:course, :instructor])
+                                 .order(:start_at)
+                                 .search(params[:term])
+                                 .page(params[:page])
+  end
+
   def new
     @course_class = CourseClass.new
   end

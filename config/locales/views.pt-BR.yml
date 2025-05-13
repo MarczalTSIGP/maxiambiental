@@ -169,6 +169,10 @@ pt-BR:
           confirm: 'Tem certeza que deseja excluir este cliente?'
           
     course_classes:
+      index:
+        title: 'Turmas'
+        description: 'Gerencie todas as turmas cadastradas na Maxiambiental.'
+        new: 'Nova Turma'
       new:
         title: 'Nova Turma'
         description: 'Preencha as informações da nova turma.'

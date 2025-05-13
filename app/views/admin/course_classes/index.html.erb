@@ -1,0 +1,16 @@
+<%= rc 'page/content_title', title: t('.title'), description: t('.description'), bt_path: new_admin_course_class_path, bt_label: t('.new') %>
+
+<%= rc 'search/form', base_url: admin_course_classes_path %>
+
+<% attributes = [
+   { text: CourseClass.model_name.human, class: 'text-left' },
+   { text: Course.model_name.human, class: 'text-left' },
+   { text: Instructor.model_name.human, class: 'text-center' },
+   { text: CourseClass.human_attribute_name(:period), class: 'text-center' },
+   { text: CourseClass.human_attribute_name(:active), class: 'text-center' }, 
+   { text: '', class: 'text-right' }
+] %>
+
+<%= rc 'data/table', attributes: attributes, 
+                     collection: @course_classes,
+                     partial: 'admin/course_classes/partials/course_class' %>

@@ -1,4 +1,16 @@
 class CourseClass < ApplicationRecord
+  include Searchable
+
+  searchable(
+    { name: { unaccent: true } },
+    {
+      relationships: {
+        instructor: { fields: ['name'] },
+        course: { fields: ['name'] }
+      }
+    }
+  )
+
   belongs_to :course
   belongs_to :instructor
 

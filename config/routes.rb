@@ -49,6 +49,13 @@ Rails.application.routes.draw do
           constraints: { term: %r{[^/]+} },
           to: 'clients#index',
           as: 'clients_search'
+
+      resources :course_classes
+
+      get 'course_classes/search/(:term)/(page/:page)',
+          constraints: { term: %r{[^/]+} },
+          to: 'course_classes#index',
+          as: 'course_classes_search'
     end
   end
 
