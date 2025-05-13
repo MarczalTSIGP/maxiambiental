@@ -22,6 +22,8 @@ pt-BR:
       age: 'Prefiro não dizer'
     prompts:
       age: 'Selecione sua idade'
+      instructor: 'Selecione o instrutor'
+      course: 'Selecione o curso'
     placeholders:
       defaults: &defaults
         name: 'Digite seu nome'
@@ -51,3 +53,8 @@ pt-BR:
         <<: *defaults
         name: 'Digite o nome do curso'
         description: 'Digite a descrição do curso'
+      course_class:
+        <<: *defaults
+        name: 'Digite o nome da turma'
+        address: 'Digite o endereço da turma'
+        city: 'Digite a cidade da turma'

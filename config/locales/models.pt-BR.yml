@@ -36,6 +36,10 @@ pt-BR:
         period: 'Período'
         address: 'Endereço'
         city: 'Cidade'
+        programming: 'Programação'
+        about: 'Sobre'
+        instructor: 'Instrutor'
+        course: 'Curso'
       admin:
         <<: *defaults
       client:

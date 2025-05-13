@@ -1,0 +1,42 @@
+<%= simple_form_for [:admin, @course_class], html: { class: "space-y-8" } do |f| %>
+   <div>
+      <h3 class="text-xl font-medium text-green-700 mb-4">Informações Básicas</h3>
+      <div class="space-y-4">
+         <%= f.input :name %>
+
+         <div class="grid md:grid-cols-2 gap-4">
+            <%= f.association :instructor, wrapper: :select, prompt: t('simple_form.prompts.instructor') %>
+            <%= f.association :course, wrapper: :select, prompt: t('simple_form.prompts.course') %>
+         </div>
+      </div>
+   </div>
+
+   <div>
+      <h3 class="text-xl font-medium text-green-700 mb-4">Localização</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+         <%= f.input :address %>
+         <%= f.input :city %>
+      </div>
+   </div>
+
+   <div>
+      <h3 class="text-xl font-medium text-green-700 mb-4">Data e Horário</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+         <%= f.input :start_at, as: :date, wrapper: :datetime %>
+         <%= f.input :end_at, as: :date, wrapper: :datetime %>
+      </div>
+   </div>
+
+   <div>
+      <h3 class="text-xl font-medium text-green-700 mb-4">Conteúdo</h3>
+      <div class="space-y-4">
+         <%= f.input :about, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
+         <%= f.input :programming, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
+      </div>
+   </div>
+
+   <div class="flex flex-col-reverse md:flex-row justify-between gap-4 pt-4">
+      <%= link_to t('buttons.cancel'), admin_course_classes_path, class: 'btn-outline w-full md:w-auto' %>
+      <%= f.button :submit, class: 'w-full md:w-auto' %>
+   </div>
+<% end %>
