@@ -13,6 +13,9 @@ pt-BR:
       course: 
         one: 'Curso'
         other: 'Cursos'
+      course_class: 
+        one: 'Turma'
+        other: 'Turmas'
     attributes:
       defaults: &defaults
         created_at: 'Criado em'
@@ -28,6 +31,11 @@ pt-BR:
         active: 'Ativo'
         description: 'Descrição'
         image: 'Imagem'
+        start_at: 'Data de inicio'
+        end_at: 'Data de fim'
+        period: 'Período'
+        address: 'Endereço'
+        city: 'Cidade'
       admin:
         <<: *defaults
       client:
@@ -35,4 +43,6 @@ pt-BR:
       instructor:
         <<: *defaults
       course:
+        <<: *defaults
+      course_class:
         <<: *defaults

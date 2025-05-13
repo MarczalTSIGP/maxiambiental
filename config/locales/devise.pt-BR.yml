@@ -91,4 +91,5 @@ pt-BR:
         other: "%{count} erros impediram que este %{resource} fosse salvo:"
       too_short: "%{attribute} deve ter pelo menos %{count} caracteres"
       too_long: "%{attribute} deve ter menos de %{count} caracteres"
+      greater_than: "%{attribute} deve ser maior que %{count}"
 
