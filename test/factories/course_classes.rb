@@ -10,5 +10,8 @@ FactoryBot.define do
 
     course
     instructor
+
+    about { Faker::Lorem.paragraph(sentence_count: 3) }
+    programming { Faker::Lorem.paragraph(sentence_count: 3) }
   end
 end
