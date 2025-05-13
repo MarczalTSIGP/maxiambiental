@@ -1,0 +1,5 @@
+<%= rc 'page/content_title', title: t('.title'), description: t('.description') %>
+
+<%= render 'admin/course_classes/partials/form' do |f| %>
+   <%= f.input :active, as: :toggle_switch %>
+<% end %>
