@@ -113,6 +113,14 @@ pt-BR:
       <<: *defaults
 
   admin:
+    dashboard:
+      index:
+        title: 'Dashboard'
+        description: 'Gerencie os cursos, instrutores e alunos cadastrados na Maxiambiental.'
+        stats:
+          courses: 'Cursos finalizados nos últimos 30 dias'
+          subscriptions: 'Inscrições nos últimos 30 dias'
+          clients: 'Clientes nos últimos 30 dias'
     instructors:
       new:
         title: 'Novo Instrutor'

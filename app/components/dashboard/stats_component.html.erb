@@ -1,0 +1,18 @@
+<div id="<%= @id %>" class="flex items-center p-4 bg-white rounded shadow-xl">
+
+   <div class="flex flex-shrink-0 items-center justify-center bg-<%= style_color %>-200 h-16 w-16 rounded">
+      <%= icon('fa-solid', style_icon, class: "fa-xl fill-current text-#{style_color}-700") %>
+   </div>
+
+   <div class="flex-grow flex flex-col ml-4">
+
+      <span id="count" class="text-xl font-bold"><%= count %></span>
+
+      <div class="flex items-center justify-between">
+         <span id="text" class="text-gray-500"><%= @text %></span>
+         <span id="growth" class="text-<%= style_color %>-500 text-sm font-semibold ml-2"><%= formatted_growth %></span>
+      </div>
+
+   </div>
+
+</div>

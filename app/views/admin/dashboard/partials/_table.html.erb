@@ -1,0 +1,20 @@
+<% model_name = model.model_name %>
+
+<div id="top-<%= model_name.to_s.pluralize.downcase %>" class="bg-white p-4 rounded-md mt-4 shadow-xl">
+
+   <table class="w-full table-auto text-sm">
+
+      <thead>
+         <tr class="text-sm text-left leading-normal">
+            <th class="py-2 px-4 font-bold uppercase text-sm text-gray-500 border-b border-green-500">
+               <h2 class="text-gray-500 text-lg font-semibold pb-4">Top <%= model_name.human.pluralize %></h2>
+            </th>
+         </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+         <%= yield %>
+      </tbody>
+
+   </table>
+</div>
