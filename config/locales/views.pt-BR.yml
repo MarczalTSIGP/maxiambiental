@@ -38,6 +38,7 @@ pt-BR:
     contact_us: 'Fale conosco'
     classes: 'Turmas'
     instructors: 'Instrutores'
+    clients: 'Clientes'
     students: 'Estudantes'
     settings: 'Configurações'
     messages: 'Mensagens'
@@ -108,6 +109,8 @@ pt-BR:
       <<: *defaults
     course:
       <<: *defaults
+    client:
+      <<: *defaults
 
   admin:
     dashboard:
@@ -149,6 +152,21 @@ pt-BR:
       partials:
         course:
           confirm: 'Tem certeza que deseja excluir este curso?'
+
+    clients:
+      new:
+        title: 'Novo Cliente'
+        description: 'Preencha as informações do novo cliente.'         
+      edit:
+        title: 'Editar Cliente'
+        description: 'Preencha as novas informações do cliente.'
+      index:
+        title: 'Clientes'
+        description: 'Gerencie todos os clientes cadastrados na Maxiambiental.'
+        new: 'Novo Cliente'
+      partials:
+        client:
+          confirm: 'Tem certeza que deseja excluir este cliente?'
 
   courses:
     index:

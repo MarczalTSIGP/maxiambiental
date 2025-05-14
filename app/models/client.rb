@@ -1,4 +1,8 @@
 class Client < ApplicationRecord
+  include Searchable
+
+  searchable :email, name: { unaccent: true }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable,
@@ -8,7 +12,7 @@ class Client < ApplicationRecord
             presence: true,
             uniqueness: { case_sensitive: true }
 
-  validates :name, presence: true, on: :update
+  validates :name, presence: true
 
   has_one_attached :avatar
 
@@ -32,5 +36,12 @@ class Client < ApplicationRecord
 
   def google_authenticated?
     uid.present?
+  end
+
+  def set_random_password
+    return if password.present?
+
+    self.password = Devise.friendly_token[0, 20]
+    self.password_confirmation = password
   end
 end
