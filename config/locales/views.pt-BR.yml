@@ -176,6 +176,12 @@ pt-BR:
       new:
         title: 'Nova Turma'
         description: 'Preencha as informações da nova turma.'
+      edit:
+        title: 'Editar Turma'
+        description: 'Preencha as novas informações da turma.'
+      show:
+        about: 'Sobre a Turma'
+        
 
   courses:
     index:

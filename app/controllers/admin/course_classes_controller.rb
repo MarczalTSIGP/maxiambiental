@@ -43,7 +43,7 @@ class Admin::CourseClassesController < Admin::BaseController
   end
 
   def course_class_params
-    params.expect(course_class: [:name, :address, :schedule, :about, :programming, :payments_info, :start_at, :end_at,
-                                 :course_id, :instructor_id])
+    params.expect(course_class: [:name, :address, :schedule, :about, :programming,
+                                 :payments_info, :start_at, :end_at, :active, :course_id, :instructor_id])
   end
 end
