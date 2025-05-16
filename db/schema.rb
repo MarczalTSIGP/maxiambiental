@@ -115,10 +115,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
     t.string "name", null: false
     t.datetime "start_at", null: false
     t.datetime "end_at", null: false
-    t.string "period"
+    t.string "schedule"
     t.boolean "active", default: true
     t.string "address"
-    t.string "city"
     t.bigint "course_id", null: false
     t.bigint "instructor_id", null: false
     t.datetime "created_at", null: false
@@ -127,7 +126,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
     t.index ["course_id"], name: "index_course_classes_on_course_id"
     t.index ["instructor_id", "start_at"], name: "index_course_classes_on_instructor_id_and_start_at"
     t.index ["instructor_id"], name: "index_course_classes_on_instructor_id"
-    t.check_constraint "end_at > start_at", name: "end_after_start_check"
   end
 
   create_table "courses", force: :cascade do |t|

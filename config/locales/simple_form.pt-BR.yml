@@ -24,6 +24,7 @@ pt-BR:
       age: 'Selecione sua idade'
       instructor: 'Selecione o instrutor'
       course: 'Selecione o curso'
+      payments_method: 'Selecione o meio de pagamento'
     placeholders:
       defaults: &defaults
         name: 'Digite seu nome'
@@ -57,4 +58,4 @@ pt-BR:
         <<: *defaults
         name: 'Digite o nome da turma'
         address: 'Digite o endereço da turma'
-        city: 'Digite a cidade da turma'
+        schedule: 'Digite os horários do curso'

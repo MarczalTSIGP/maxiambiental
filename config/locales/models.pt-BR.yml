@@ -50,3 +50,5 @@ pt-BR:
         <<: *defaults
       course_class:
         <<: *defaults
+        schedule: 'Horários do curso'
+        payments_info: 'Informações de pagamento'
