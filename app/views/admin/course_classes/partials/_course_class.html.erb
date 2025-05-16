@@ -28,8 +28,8 @@
    <td class="px-6 py-4 text-sm font-medium text-center">
       <div class="flex items-center gap-4">
 
-         <%= link_to admin_course_class_path(course_class), data: { turbo_method: :delete, turbo_confirm: t('.confirm') } do %>
-            <%= icon('fa-solid', 'trash', class: 'fa-lg text-red-700') %>
+         <%= link_to admin_course_class_path(course_class) do %>
+            <%= icon('fa-solid', 'eye', class: 'fa-lg text-blue-700') %>
          <% end %>
 
          <%= link_to edit_admin_course_class_path(course_class) do %>
