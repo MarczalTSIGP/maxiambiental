@@ -25,6 +25,12 @@ pt-BR:
       instructor: 'Selecione o instrutor'
       course: 'Selecione o curso'
       payments_method: 'Selecione o meio de pagamento'
+    options:
+      subscription_status:
+        coming_soon: 'Em breve'
+        open: 'Aberto'
+        closed: 'Fechado'
+        waiting: 'Aguardando'
     placeholders:
       defaults: &defaults
         name: 'Digite seu nome'

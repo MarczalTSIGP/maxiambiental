@@ -4,6 +4,7 @@ class CreateCourseClasses < ActiveRecord::Migration[8.0]
       t.string :name, null: false
       t.datetime :start_at, null: false
       t.datetime :end_at, null: false
+      t.integer :subscription_status, default: 0
       t.string :schedule
       t.boolean :active, default: true
       t.string :address

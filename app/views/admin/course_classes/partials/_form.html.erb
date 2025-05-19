@@ -8,6 +8,9 @@
             <%= f.input :name %>
             <%= f.association :instructor, wrapper: :select, prompt: t('simple_form.prompts.instructor') %>
             <%= f.association :course, wrapper: :select, prompt: t('simple_form.prompts.course') %>
+            <%= f.input :subscription_status, as: :select, wrapper: :select,
+                        collection: CourseClass.subscription_statuses.keys.map { |key| [t("simple_form.options.subscription_status.#{key}"), key] },
+                        prompt: t('simple_form.prompts.status') %>
             <%= f.input :active, as: :toggle_switch %>
          </div>
       </div>

@@ -1,4 +1,6 @@
 class CourseClass < ApplicationRecord
+  enum :subscription_status, { coming_soon: 0, open: 1, closed: 2, waiting: 3 }
+
   include Searchable
 
   belongs_to :course
