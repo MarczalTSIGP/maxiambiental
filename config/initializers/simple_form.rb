@@ -177,29 +177,6 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :select, tag: 'div', error_class: 'text-red-500' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :minlength
-    b.optional :pattern
-    b.optional :min_max
-    b.optional :readonly
-
-    b.wrapper :input_wrapper, tag: 'div' do |ba|
-      ba.use :label, class: 'block text-green-700 text-sm font-bold mb-2'
-      ba.use :input,
-            class: 'shadow border border-gray-300 rounded-md w-full p-2.5 
-                    text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700 
-                    disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-400 disabled:text-gray-600
-                    appearance-none bg-[url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=")] 
-                    bg-no-repeat bg-[center_right_1rem] bg-[length:1.5em_1.5em]'
-      
-      ba.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
-      ba.use :hint, wrap_with: { tag: :p, class: 'mt-2 text-sm text-gray-500' }
-    end
-  end
-
   config.wrappers :datetime, tag: 'div', class: 'mb-4 space-y-4 md:space-y-6', error_class: 'text-red-500' do |b|
     b.use :html5
     b.use :placeholder
@@ -212,7 +189,7 @@ SimpleForm.setup do |config|
     b.wrapper :input_wrapper, tag: 'div' do |ba|
       ba.use :label, class: 'block text-green-700 text-sm font-bold mb-2'
       ba.use :input,
-            class: 'shadow border border-gray-300 rounded-md w-fit p-2.5 
+            class: 'shadow border border-gray-300 rounded-md w-fit p-2 
                     text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700 
                     disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-400 disabled:text-gray-600
                     datetime-picker'

@@ -52,4 +52,4 @@ pt-BR:
         <<: *defaults
         schedule: 'Horários do curso'
         payments_info: 'Informações de pagamento'
-        subscription_status: 'Status da inscrição'
+        subscription_status: 'Status das inscrições'

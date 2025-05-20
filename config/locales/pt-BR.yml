@@ -32,3 +32,14 @@ pt-BR:
     messages:
       email: 'não é um e-mail válido'
       phone: 'não é um número de telefone válido'
+  enums:
+    subscription_status:
+      coming_soon: 'Em breve'
+      open: 'Abertas'
+      closed: 'Fechadas'
+      waiting: 'Em espera'
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %b"
+      long: "%d de %B de %Y"

@@ -113,8 +113,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
 
   create_table "course_classes", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "start_at", null: false
-    t.datetime "end_at", null: false
+    t.date "start_at", null: false
+    t.date "end_at", null: false
     t.integer "subscription_status", default: 0
     t.string "schedule"
     t.boolean "active", default: true

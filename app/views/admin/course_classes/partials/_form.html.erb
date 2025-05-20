@@ -2,52 +2,49 @@
 
    <div class="grid md:grid-cols-2 gap-8">
 
-      <div class="bg-white p-6 rounded-lg border border-gray-200">
-         <h3 class="text-xl font-medium text-green-700 mb-4">Informações Básicas</h3>
-         <div class="space-y-4">
-            <%= f.input :name %>
-            <%= f.association :instructor, wrapper: :select, prompt: t('simple_form.prompts.instructor') %>
-            <%= f.association :course, wrapper: :select, prompt: t('simple_form.prompts.course') %>
-            <%= f.input :subscription_status, as: :select, wrapper: :select,
-                        collection: CourseClass.subscription_statuses.keys.map { |key| [t("simple_form.options.subscription_status.#{key}"), key] },
-                        prompt: t('simple_form.prompts.status') %>
-            <%= f.input :active, as: :toggle_switch %>
-         </div>
-      </div>
+      <%= render 'admin/course_classes/partials/section', trans_key: 'basic_info'  do %>
 
-      <div class="bg-white p-6 rounded-lg border border-gray-200">
-         <h3 class="text-xl font-medium text-green-700 mb-4">Localização</h3>
+         <%= f.input :name %>
+         <%= f.association :instructor, prompt: t('simple_form.prompts.instructor') %>
+         <%= f.association :course, prompt: t('simple_form.prompts.course') %>
+         <%= f.input :subscription_status, 
+                     collection: CourseClass.subscription_statuses.keys.map { |k| [I18n.t("enums.subscription_status.#{k}"), k] },
+                     prompt: true %>
+         <%= f.input :active, as: :toggle_switch %>
+
+      <% end %>
+
+      <%= render 'admin/course_classes/partials/section', trans_key: 'location' do %>
          <%= f.input :address %>
-         <div class="invisible h-[84px]"></div>
-      </div>
+      <% end %>
+
    </div>
 
-   <div class="bg-white p-6 rounded-lg border border-gray-200">
-      <h3 class="text-xl font-medium text-green-700 mb-4">Informações do Curso</h3>
+   <%= render 'admin/course_classes/partials/section', trans_key: 'course_info' do %>
+
       <div class="grid md:grid-cols-2 gap-4">
-         <%= f.input :start_at, as: :datetime, wrapper: :datetime %>
-         <%= f.input :end_at, as: :datetime, wrapper: :datetime %>
+         <%= f.input :start_at, as: :date, wrapper: :datetime %>
+         <%= f.input :end_at, as: :date, wrapper: :datetime %>
       </div>
+
       <%= f.input :about, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
+
+   <% end %>
+
+   <%= render 'admin/course_classes/partials/section', trans_key: 'content' do %>
+
+      <%= f.input :schedule %>
+      <%= f.input :programming, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
+
+   <% end %>
+
+   <%= render 'admin/course_classes/partials/section', trans_key: 'payment_info' do %>
+      <%= f.input :payments_info, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
+   <% end %>
+
+   <div class="flex justify-between mt-7">
+      <%= link_to t('buttons.cancel'), admin_course_classes_path, class: 'btn-outline' %>
+      <%= f.button :submit %>
    </div>
 
-   <div class="bg-white p-6 rounded-lg border border-gray-200">
-      <h3 class="text-xl font-medium text-green-700 mb-4">Conteúdo</h3>
-      <div class="space-y-4">
-         <%= f.input :schedule %>
-         <%= f.input :programming, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
-      </div>
-   </div>
-
-   <div class="bg-white p-6 rounded-lg border border-gray-200">
-      <h3 class="text-xl font-medium text-green-700 mb-4">Informações Financeiras</h3>
-      <div class="space-y-4">
-         <%= f.input :payments_info, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
-      </div>
-   </div>
-
-   <div class="flex flex-col-reverse md:flex-row justify-between gap-4 pt-4">
-      <%= link_to t('buttons.cancel'), admin_course_classes_path, class: 'btn-outline w-full md:w-auto' %>
-      <%= f.button :submit, class: 'w-full md:w-auto' %>
-   </div>
 <% end %>

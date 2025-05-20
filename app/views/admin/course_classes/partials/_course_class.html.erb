@@ -1,24 +1,30 @@
 <tr>
    <td class="px-6 py-4 text-sm text-gray-800">
       <div class="text-left">
-         <h2 class="font-semibold"><%= course_class.name %></h2>
+         <%= link_to admin_course_class_path(course_class) do %>
+            <h2 class="font-semibold line-clamp-1"><%= course_class.name %></h2>
+         <% end %>
       </div>
    </td>
+
    <td class="px-6 py-4 text-sm text-gray-800">
       <div class="text-left">
-         <h2 class="font-semibold"><%= course_class.course.name %></h2>
+         <h2 class="font-semibold line-clamp-1"><%= course_class.course.name %></h2>
       </div>
    </td>
+
    <td class="px-6 py-4 text-sm text-gray-800">
       <div class="text-center">
          <h2 class="font-semibold"><%= course_class.instructor.name %></h2>
       </div>
    </td>
-   <td class="px-6 py-4 text-sm text-gray-800">
+
+   <td class="px-6 py-4 text-sm text-gray-800 truncate">
       <div class="text-center">
-         <h2 class="font-semibold"><%= course_class.start_at.strftime("%d/%m/%Y") %> - <%= course_class.end_at.strftime("%d/%m/%Y") %></h2>
+         <h2 class="font-semibold"><%= t("enums.subscription_status.#{course_class.subscription_status}") %></h2>
       </div>
    </td>
+
    <td class="px-6 py-4 text-sm text-center text-gray-800">
       <span class="<%= course_class.active ? 'badge-active' : 'badge-inactive' %>">
          <%= t("status.course.#{course_class.active}") %>
@@ -29,7 +35,7 @@
       <div class="flex items-center gap-4">
 
          <%= link_to admin_course_class_path(course_class) do %>
-            <%= icon('fa-solid', 'eye', class: 'fa-lg text-blue-700') %>
+            <%= icon('fa-solid', 'eye', class: 'fa-lg text-green-700') %>
          <% end %>
 
          <%= link_to edit_admin_course_class_path(course_class) do %>

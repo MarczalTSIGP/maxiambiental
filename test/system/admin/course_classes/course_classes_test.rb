@@ -25,8 +25,8 @@ class Admin::CourseClassesTest < ApplicationSystemTestCase
   end
 
   test 'creating a course class' do
-    instructors = FactoryBot.create_list(:instructor, 5)
-    course = FactoryBot.create_list(:course, 5)
+    instructors = FactoryBot.create_list(:instructor, 3)
+    course = FactoryBot.create_list(:course, 3)
 
     course_class = FactoryBot.build(:course_class)
 
@@ -92,16 +92,12 @@ class Admin::CourseClassesTest < ApplicationSystemTestCase
     find(selector).set(content)
   end
 
-  def select_date(attribute, date_time)
-    date, time = date_time.strftime('%Y-%m-%d %H:%M').split
-    year, month, day = date.split('-')
-    hour, min = time.split(':')
+  def select_date(attribute, date)
+    year, month, day = date.strftime('%Y-%m-%d').split('-')
 
     select year, from: "course_class[#{attribute}(1i)]"
     select I18n.t('date.month_names')[month.to_i], from: "course_class[#{attribute}(2i)]"
-    select day,   from: "course_class[#{attribute}(3i)]"
-    select hour,  from: "course_class[#{attribute}(4i)]"
-    select min,   from: "course_class[#{attribute}(5i)]"
+    select day, from: "course_class[#{attribute}(3i)]"
   end
 
   def sign_in_as_admin

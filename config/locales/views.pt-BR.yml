@@ -181,7 +181,13 @@ pt-BR:
         description: 'Preencha as novas informações da turma.'
       show:
         about: 'Sobre a Turma'
-        
+      partials:
+        section:
+          basic_info: 'Informações Básicas'
+          location: 'Localização'
+          course_info: 'Informações do Curso'
+          content: 'Conteúdo'
+          payment_info: 'Informações de Pagamento'
 
   courses:
     index:
