@@ -5,12 +5,12 @@ FactoryBot.define do
     end_at { start_at + 2.months }
     schedule { '08:00 - 10:00' }
     active { true }
-    address { Faker::Address.street_address }
 
     course
     instructor
 
     about { Faker::Lorem.paragraph(sentence_count: 3) }
+    address { "#{Faker::Address.street_address}, #{Faker::Address.city}" }
     programming { Faker::Lorem.paragraph(sentence_count: 3) }
     payments_info { Faker::Lorem.paragraph(sentence_count: 3) }
   end

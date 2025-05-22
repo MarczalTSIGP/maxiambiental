@@ -10,7 +10,6 @@ class CourseClassTest < ActiveSupport::TestCase
     should validate_presence_of(:start_at)
     should validate_presence_of(:end_at)
     should validate_presence_of(:schedule)
-    should validate_presence_of(:address)
   end
 
   context 'associations' do

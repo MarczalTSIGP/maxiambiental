@@ -1,24 +1,20 @@
 <%= simple_form_for [:admin, @course_class], html: { class: "space-y-8" } do |f| %>
 
-   <div class="grid md:grid-cols-2 gap-8">
+   <%= render 'admin/course_classes/partials/section', trans_key: 'basic_info'  do %>
 
-      <%= render 'admin/course_classes/partials/section', trans_key: 'basic_info'  do %>
-
-         <%= f.input :name %>
-         <%= f.association :instructor, prompt: t('simple_form.prompts.instructor') %>
-         <%= f.association :course, prompt: t('simple_form.prompts.course') %>
-         <%= f.input :subscription_status, 
+      <%= f.input :name %>
+      <%= f.association :instructor, prompt: t('simple_form.prompts.instructor') %>
+      <%= f.association :course, prompt: t('simple_form.prompts.course') %>
+      <%= f.input :subscription_status, 
                      collection: CourseClass.subscription_statuses.keys.map { |k| [I18n.t("enums.subscription_status.#{k}"), k] },
                      prompt: true %>
-         <%= f.input :active, as: :toggle_switch %>
+      <%= f.input :active, as: :toggle_switch %>
 
-      <% end %>
+   <% end %>
 
-      <%= render 'admin/course_classes/partials/section', trans_key: 'location' do %>
-         <%= f.input :address %>
-      <% end %>
-
-   </div>
+   <%= render 'admin/course_classes/partials/section', trans_key: 'location' do %>
+      <%= f.input :address, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
+   <% end %>
 
    <%= render 'admin/course_classes/partials/section', trans_key: 'course_info' do %>
 
