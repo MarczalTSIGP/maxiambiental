@@ -1,0 +1,13 @@
+<% provide(:title, t(".title")) %>
+
+<div class="container mx-auto px-4 py-10 mt-12">
+   <%= rc 'page/content_title', title: t('.title'), description: t('.description') %>
+   <div id="courses-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <% if @course_classes.any? %>
+         <%= render partial: 'course_classes/partials/card',
+                       collection: @course_classes, as: :course_class %>
+      <% else %>
+         <%= render partial: 'shared/no_results' %>
+      <% end %>
+   </div>
+</div>

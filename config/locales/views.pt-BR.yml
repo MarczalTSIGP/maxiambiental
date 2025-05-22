@@ -196,3 +196,8 @@ pt-BR:
     no_results:
       no_courses_title: 'Nenhum curso disponível'
       no_courses_description: 'Parece que ainda não temos cursos publicados nesta categoria. Volte em breve!'
+  
+  course_classes:
+    index:
+      title: 'Turmas'
+      description: 'Explore nossas turmas e descubra as oportunidades de aprendizado que oferecemos para o seu desenvolvimento profissional.'
