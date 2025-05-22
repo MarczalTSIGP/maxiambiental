@@ -33,6 +33,7 @@ class Admin::CourseClassesTest < ApplicationSystemTestCase
     visit new_admin_course_class_url
 
     fill_in 'course_class[name]', with: course_class.name
+    fill_in 'course_class[available_slots]', with: course_class.available_slots
 
     select course.first.name, from: 'course_class[course_id]'
     select instructors.first.name, from: 'course_class[instructor_id]'
@@ -40,12 +41,12 @@ class Admin::CourseClassesTest < ApplicationSystemTestCase
     select_date 'start_at', course_class.start_at
     select_date 'end_at', course_class.end_at
 
-    fill_in 'course_class[address]', with: course_class.address
     fill_in 'course_class[schedule]', with: course_class.schedule
 
+    fill_rich_text_area '#course_class_address', course_class.address
     fill_rich_text_area '#course_class_about', course_class.about
     fill_rich_text_area '#course_class_programming', course_class.programming
-    fill_rich_text_area '#course_class_payments_info', course_class.payments_info
+    fill_rich_text_area '#course_class_acceptance_terms', course_class.acceptance_terms
 
     click_on I18n.t('helpers.submit.create', model: CourseClass.model_name.human)
 
