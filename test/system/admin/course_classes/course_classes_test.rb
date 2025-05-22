@@ -93,7 +93,7 @@ class Admin::CourseClassesTest < ApplicationSystemTestCase
   end
 
   def select_date(attribute, date)
-    year, month, day = date.strftime('%Y-%m-%d').split('-')
+    year, month, day = l(date, format: '%Y-%m-%d').split('-')
 
     select year, from: "course_class[#{attribute}(1i)]"
     select I18n.t('date.month_names')[month.to_i], from: "course_class[#{attribute}(2i)]"

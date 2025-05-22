@@ -9,7 +9,7 @@
             </p>
          </div>
          <div class="mt-4 md:mt-0 bg-white text-green-700 px-4 py-2 rounded-md font-semibold">
-            <%= @course_class.start_at.strftime("%d/%m/%Y") %> à <%= @course_class.end_at.strftime("%d/%m/%Y") %>
+            <%= l(@course_class.start_at) %> à <%= l(@course_class.end_at) %>
          </div>
       </div>
    </div>
