@@ -22,15 +22,10 @@ pt-BR:
       age: 'Prefiro não dizer'
     prompts:
       age: 'Selecione sua idade'
-      instructor: 'Selecione o instrutor'
-      course: 'Selecione o curso'
-      payments_method: 'Selecione o meio de pagamento'
-    options:
-      subscription_status:
-        coming_soon: 'Em breve'
-        open: 'Aberto'
-        closed: 'Fechado'
-        waiting: 'Aguardando'
+      course_class:
+        instructor: 'Selecione o instrutor'
+        course: 'Selecione o curso'
+        payments_method: 'Selecione o meio de pagamento'
     placeholders:
       defaults: &defaults
         name: 'Digite seu nome'

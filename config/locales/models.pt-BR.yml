@@ -53,3 +53,9 @@ pt-BR:
         schedule: 'Horários do curso'
         payments_info: 'Informações de pagamento'
         subscription_status: 'Status das inscrições'
+        subscription_statuses:
+          coming_soon: Em breve
+          open: Inscrições abertas
+          in_progress: Em andamento
+          closed: Inscrições encerradas
+          waiting_list: Lista de espera

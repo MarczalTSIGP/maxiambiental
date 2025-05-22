@@ -1,5 +1,11 @@
 class CourseClass < ApplicationRecord
-  enum :subscription_status, { coming_soon: 0, open: 1, closed: 2, waiting: 3 }
+  enum :subscription_status, {
+    coming_soon: 0,
+    open: 1,
+    in_progress: 2,
+    closed: 3,
+    waiting_list: 4
+  }
 
   include Searchable
 
@@ -27,4 +33,14 @@ class CourseClass < ApplicationRecord
       }
     }
   )
+
+  def human_subscription_status
+    I18n.t("activerecord.attributes.course_class.subscription_statuses.#{subscription_status}")
+  end
+
+  def self.human_subscription_statuses
+    subscription_statuses.map do |key, _value|
+      [I18n.t("activerecord.attributes.course_class.subscription_statuses.#{key}"), key]
+    end
+  end
 end

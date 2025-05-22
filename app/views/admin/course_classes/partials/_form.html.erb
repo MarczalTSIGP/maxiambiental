@@ -3,11 +3,9 @@
    <%= render 'admin/course_classes/partials/section', trans_key: 'basic_info'  do %>
 
       <%= f.input :name %>
-      <%= f.association :instructor, prompt: t('simple_form.prompts.instructor') %>
-      <%= f.association :course, prompt: t('simple_form.prompts.course') %>
-      <%= f.input :subscription_status, 
-                     collection: CourseClass.subscription_statuses.keys.map { |k| [I18n.t("enums.subscription_status.#{k}"), k] },
-                     prompt: true %>
+      <%= f.association :instructor, prompt: :translate %>
+      <%= f.association :course, prompt: :translate %>
+      <%= f.input :subscription_status, collection: CourseClass.human_subscription_statuses, prompt: true %>
       <%= f.input :active, as: :toggle_switch %>
 
    <% end %>
