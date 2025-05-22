@@ -13,6 +13,9 @@ pt-BR:
       course: 
         one: 'Curso'
         other: 'Cursos'
+      course_class: 
+        one: 'Turma'
+        other: 'Turmas'
     attributes:
       defaults: &defaults
         created_at: 'Criado em'
@@ -28,6 +31,15 @@ pt-BR:
         active: 'Ativo'
         description: 'Descrição'
         image: 'Imagem'
+        start_at: 'Data de inicio'
+        end_at: 'Data de fim'
+        period: 'Período'
+        address: 'Endereço'
+        city: 'Cidade'
+        programming: 'Programação'
+        about: 'Sobre'
+        instructor: 'Instrutor'
+        course: 'Curso'
       admin:
         <<: *defaults
       client:
@@ -36,3 +48,15 @@ pt-BR:
         <<: *defaults
       course:
         <<: *defaults
+      course_class:
+        <<: *defaults
+        schedule: 'Horários do curso'
+        acceptance_terms: 'Termos de aceitação'
+        available_slots: 'Vagas disponíveis'
+        subscription_status: 'Status das inscrições'
+        subscription_statuses:
+          coming_soon: Em breve
+          open: Inscrições abertas
+          in_progress: Em andamento
+          closed: Inscrições encerradas
+          waiting_list: Lista de espera

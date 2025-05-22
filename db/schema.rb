@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_11_141511) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -111,6 +111,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_11_141511) do
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
+  create_table "course_classes", force: :cascade do |t|
+    t.string "name", null: false
+    t.date "start_at", null: false
+    t.date "end_at", null: false
+    t.integer "available_slots"
+    t.integer "subscription_status", default: 0
+    t.text "schedule"
+    t.boolean "active", default: true
+    t.bigint "course_id", null: false
+    t.bigint "instructor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id", "name"], name: "index_course_classes_on_course_id_and_name", unique: true
+    t.index ["course_id"], name: "index_course_classes_on_course_id"
+    t.index ["instructor_id", "start_at"], name: "index_course_classes_on_instructor_id_and_start_at"
+    t.index ["instructor_id"], name: "index_course_classes_on_instructor_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "active", default: true
@@ -133,4 +151,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_11_141511) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "course_classes", "courses", on_delete: :restrict
+  add_foreign_key "course_classes", "instructors", on_delete: :restrict
 end

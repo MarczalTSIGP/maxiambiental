@@ -177,5 +177,27 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :datetime, tag: 'div', class: 'mb-4 space-y-4 md:space-y-6', error_class: 'text-red-500' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.wrapper :input_wrapper, tag: 'div' do |ba|
+      ba.use :label, class: 'block text-green-700 text-sm font-bold mb-2'
+      ba.use :input,
+            class: 'shadow border border-gray-300 rounded-md w-fit p-2 
+                    text-gray-700 leading-tight focus:outline-none focus:border-green-700 focus:ring-green-700 
+                    disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-400 disabled:text-gray-600
+                    datetime-picker'
+      
+      ba.use :error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600' }
+      ba.use :hint, wrap_with: { tag: :p, class: 'mt-2 text-sm text-gray-500' }
+    end
+  end
+
   config.default_wrapper = :tailwind
 end

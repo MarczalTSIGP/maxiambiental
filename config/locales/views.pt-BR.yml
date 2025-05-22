@@ -167,6 +167,27 @@ pt-BR:
       partials:
         client:
           confirm: 'Tem certeza que deseja excluir este cliente?'
+          
+    course_classes:
+      index:
+        title: 'Turmas'
+        description: 'Gerencie todas as turmas cadastradas na Maxiambiental.'
+        new: 'Nova Turma'
+      new:
+        title: 'Nova Turma'
+        description: 'Preencha as informações da nova turma.'
+      edit:
+        title: 'Editar Turma'
+        description: 'Preencha as novas informações da turma.'
+      show:
+        about: 'Sobre a Turma'
+      partials:
+        section:
+          basic_info: 'Informações Básicas'
+          location: 'Localização'
+          course_info: 'Informações do Curso'
+          content: 'Conteúdo'
+          terms: 'Termos'
 
   courses:
     index:
