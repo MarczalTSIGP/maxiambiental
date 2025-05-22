@@ -116,7 +116,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
     t.date "start_at", null: false
     t.date "end_at", null: false
     t.integer "subscription_status", default: 0
-    t.string "schedule"
+    t.text "schedule"
     t.boolean "active", default: true
     t.bigint "course_id", null: false
     t.bigint "instructor_id", null: false

@@ -21,13 +21,14 @@
          <%= f.input :end_at, as: :date, wrapper: :datetime %>
       </div>
 
+      <%= f.input :schedule, as: :text %>
+
       <%= f.input :about, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
 
    <% end %>
 
    <%= render 'admin/course_classes/partials/section', trans_key: 'content' do %>
 
-      <%= f.input :schedule %>
       <%= f.input :programming, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
 
    <% end %>

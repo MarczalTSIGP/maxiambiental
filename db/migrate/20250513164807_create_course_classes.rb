@@ -5,7 +5,7 @@ class CreateCourseClasses < ActiveRecord::Migration[8.0]
       t.date :start_at, null: false
       t.date :end_at, null: false
       t.integer :subscription_status, default: 0
-      t.string :schedule
+      t.text :schedule
       t.boolean :active, default: true
       t.belongs_to :course, null: false, foreign_key: { on_delete: :restrict }
       t.belongs_to :instructor, null: false, foreign_key: { on_delete: :restrict }
