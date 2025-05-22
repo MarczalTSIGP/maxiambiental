@@ -44,6 +44,6 @@ class Admin::CourseClassesController < Admin::BaseController
 
   def course_class_params
     params.expect(course_class: [:name, :address, :schedule, :about, :programming, :subscription_status,
-                                 :payments_info, :start_at, :end_at, :active, :course_id, :instructor_id])
+                                 :acceptance_terms, :start_at, :end_at, :active, :course_id, :instructor_id])
   end
 end

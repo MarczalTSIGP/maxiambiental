@@ -33,8 +33,8 @@
 
    <% end %>
 
-   <%= render 'admin/course_classes/partials/section', trans_key: 'payment_info' do %>
-      <%= f.input :payments_info, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
+   <%= render 'admin/course_classes/partials/section', trans_key: 'terms' do %>
+      <%= f.input :acceptance_terms, as: :rich_text_area, input_html: { class: 'h-80 overflow-y-auto' } %>
    <% end %>
 
    <div class="flex justify-between mt-7">

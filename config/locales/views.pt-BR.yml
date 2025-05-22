@@ -187,7 +187,7 @@ pt-BR:
           location: 'Localização'
           course_info: 'Informações do Curso'
           content: 'Conteúdo'
-          payment_info: 'Informações de Pagamento'
+          terms: 'Termos'
 
   courses:
     index:

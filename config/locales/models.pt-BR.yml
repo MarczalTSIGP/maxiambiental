@@ -51,7 +51,7 @@ pt-BR:
       course_class:
         <<: *defaults
         schedule: 'Horários do curso'
-        payments_info: 'Informações de pagamento'
+        acceptance_terms: 'Termos de aceitação'
         subscription_status: 'Status das inscrições'
         subscription_statuses:
           coming_soon: Em breve

@@ -15,10 +15,10 @@ class CourseClass < ApplicationRecord
   has_rich_text :about
   has_rich_text :address
   has_rich_text :programming
-  has_rich_text :payments_info
+  has_rich_text :acceptance_terms
 
-  validates :name, :start_at, :end_at, :schedule, :location,
-            :about, :programming, :payments_info,
+  validates :name, :start_at, :end_at, :schedule, :address,
+            :about, :programming, :acceptance_terms,
             presence: true
 
   validates :end_at,
