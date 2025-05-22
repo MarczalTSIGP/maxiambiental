@@ -60,3 +60,4 @@ pt-BR:
         name: 'Digite o nome da turma'
         address: 'Digite o endereço da turma'
         schedule: 'Digite os horários do curso'
+        available_slots: 'Digite o número de vagas disponibilizadas'

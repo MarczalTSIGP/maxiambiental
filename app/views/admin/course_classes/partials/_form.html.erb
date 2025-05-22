@@ -3,6 +3,7 @@
    <%= render 'admin/course_classes/partials/section', trans_key: 'basic_info'  do %>
 
       <%= f.input :name %>
+      <%= f.input :available_slots, as: :integer, input_html: { min: 0 } %>
       <%= f.association :instructor, prompt: :translate %>
       <%= f.association :course, prompt: :translate %>
       <%= f.input :subscription_status, collection: CourseClass.human_subscription_statuses, prompt: true %>

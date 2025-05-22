@@ -10,6 +10,14 @@ class CourseClassTest < ActiveSupport::TestCase
     should validate_presence_of(:start_at)
     should validate_presence_of(:end_at)
     should validate_presence_of(:schedule)
+    should validate_presence_of(:acceptance_terms)
+    should validate_presence_of(:programming)
+    should validate_presence_of(:address)
+    should validate_presence_of(:about)
+    should validate_presence_of(:available_slots)
+
+    should validate_numericality_of(:available_slots).only_integer
+    should validate_numericality_of(:available_slots).is_greater_than(0)
   end
 
   context 'associations' do

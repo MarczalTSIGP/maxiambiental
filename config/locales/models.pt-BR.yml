@@ -52,6 +52,7 @@ pt-BR:
         <<: *defaults
         schedule: 'Horários do curso'
         acceptance_terms: 'Termos de aceitação'
+        available_slots: 'Vagas disponíveis'
         subscription_status: 'Status das inscrições'
         subscription_statuses:
           coming_soon: Em breve

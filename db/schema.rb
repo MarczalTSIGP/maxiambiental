@@ -115,6 +115,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
     t.string "name", null: false
     t.date "start_at", null: false
     t.date "end_at", null: false
+    t.integer "available_slots"
     t.integer "subscription_status", default: 0
     t.text "schedule"
     t.boolean "active", default: true

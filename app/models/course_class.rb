@@ -24,6 +24,9 @@ class CourseClass < ApplicationRecord
   validates :end_at,
             comparison: { greater_than: :start_at }
 
+  validates :available_slots, presence: true,
+                              numericality: { greater_than: 0, only_integer: true }
+
   searchable(
     { name: { unaccent: true } },
     {
