@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'courses', to: 'courses#index', as: :courses
   get 'courses/:id', to: 'courses#show', as: :course
 
+  get 'course_classes', to: 'course_classes#index', as: :course_classes
+  get 'course_classes/:id', to: 'course_classes#show', as: :course_class
+
   match '404', via: :all, to: 'errors#not_found'
   match '500', via: :all, to: 'errors#internal_server_error'
 
