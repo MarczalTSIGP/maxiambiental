@@ -28,6 +28,10 @@
   .input {
     @apply flex-auto rounded-md bg-white/5 px-3.5 py-2 text-white ring-1 ring-white/10 focus:ring-2 focus:ring-white sm:text-sm sm:leading-6;
   }
+
+  .tab {
+    @apply text-gray-500 py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200 font-medium;
+  }
 }
 
 @layer utilities {
