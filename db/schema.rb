@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_24_134331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -106,6 +106,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
     t.boolean "active", default: true, null: false
     t.string "provider"
     t.string "uid"
+    t.string "cpf"
+    t.string "phone"
+    t.string "cep"
+    t.string "city"
+    t.string "state"
+    t.string "formation"
+    t.string "current_company"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["name"], name: "index_clients_on_name"
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
