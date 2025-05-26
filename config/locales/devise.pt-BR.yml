@@ -93,4 +93,7 @@ pt-BR:
       too_long: "%{attribute} deve ter menos de %{count} caracteres"
       greater_than: "%{attribute} deve ser maior que %{count}"
       required: "%{attribute} é obrigatório(a)"
+      includes: "%{attribute} deve incluir %{value}"
+      accepted: "%{attribute} deve ser aceito"
+      already_enrolled: "Você já possui uma inscrição nesta turma"
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_24_134331) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_26_134750) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -145,6 +145,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_24_134331) do
     t.index ["name"], name: "index_courses_on_name"
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "course_class_id", null: false
+    t.text "notes"
+    t.string "category"
+    t.string "status", default: "pending"
+    t.text "referral_source"
+    t.boolean "previous_participation"
+    t.boolean "terms_accepted", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id", "course_class_id"], name: "index_enrollments_on_client_id_and_course_class_id", unique: true
+    t.index ["client_id"], name: "index_enrollments_on_client_id"
+    t.index ["course_class_id"], name: "index_enrollments_on_course_class_id"
+  end
+
   create_table "instructors", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -161,4 +177,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_24_134331) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "course_classes", "courses", on_delete: :restrict
   add_foreign_key "course_classes", "instructors", on_delete: :restrict
+  add_foreign_key "enrollments", "clients"
+  add_foreign_key "enrollments", "course_classes"
 end

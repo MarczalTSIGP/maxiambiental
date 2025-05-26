@@ -1,6 +1,9 @@
 class Client < ApplicationRecord
   include Searchable
 
+  has_many :enrollments, dependent: :destroy
+  has_many :course_classes, through: :enrollments
+
   searchable :email, name: { unaccent: true }
 
   devise :database_authenticatable, :registerable,

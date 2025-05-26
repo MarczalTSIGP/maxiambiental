@@ -1,0 +1,45 @@
+<%= render 'clients/enrollments/partials/steps' do %>
+   <%= rc 'flash/message' %>
+   <%= simple_form_for @enrollment, url: clients_create_enrollment_path do |f| %>
+
+      <% if f.object.errors[:base].any? || f.object.errors[:client_id].any? %>
+         <div class="bg-red-50 text-red-600 px-4 py-3 mb-4 rounded">
+            <% f.object.errors[:base].each do |error| %>
+               <p><%= error %></p>
+            <% end %>
+            <% f.object.errors[:client_id].each do |error| %>
+               <p><%= error %></p>
+            <% end %>
+         </div>
+      <% end %>
+
+      <%= f.input :client_id, as: :hidden, input_html: { value: current_client.id } %>
+      <%= f.input :course_class_id, as: :hidden, input_html: { value: @course_class.id } %>
+
+      <%= f.input :referral_source, collection: ["Redes Sociais", "Amigos", "E-mail", "Outros"], include_blank: "Selecione uma opção" %>
+
+      <%= f.input :previous_participation, as: :radio_buttons, wrapper: :horizontal_radio,
+                                           collection: [[ "Sim", true ], [ "Não", false ]]  %>
+
+      <%= f.input :category, collection: ["teacher", "student"], include_blank: "Selecione sua categoria" %>
+
+      <%= f.input :notes, as: :text %>
+
+      <div class="mt-4 mb-6 space-y-4">
+         <label class="block text-green-700 text-sm font-bold mb-2">
+            Termos e Condições
+         </label>
+
+         <div class="border border-gray-300 rounded-lg bg-gray-50 p-4 max-h-48 overflow-y-auto prose">
+            <%= @course_class.acceptance_terms %>
+         </div>
+
+         <%= f.input :terms_accepted, as: :boolean, wrapper: :checkbox %>
+      </div>
+
+      <div class="flex justify-between">
+         <%= link_to t('buttons.cancel'), root_path, class: 'btn-outline' %>
+         <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
+      </div>
+   <% end %>
+<% end %>

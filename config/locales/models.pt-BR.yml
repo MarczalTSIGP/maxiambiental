@@ -60,3 +60,9 @@ pt-BR:
           in_progress: Em andamento
           closed: Inscrições encerradas
           waiting_list: Lista de espera
+      enrollment:
+        referral_source: "Como ficou sabendo do curso?"
+        previous_participation: "Já participou de um curso/palestra da Maxiambiental?"
+        category: "Categoria"
+        notes: "Observações"
+        terms_accepted: "Li e aceito os termos e condições"

@@ -10,8 +10,8 @@ module ApplicationHelper
 
   def current_step
     case action_name
-    when 'client_info', 'process_client_info' then 1
-    when 'course_details', 'process_course_details' then 2
+    when 'edit_client', 'process_client_info' then 1
+    when 'new', 'process_course_details' then 2
     when 'payment', 'process_payment' then 3
     when 'confirmation' then 4
     end

@@ -12,6 +12,9 @@ class CourseClass < ApplicationRecord
   belongs_to :course
   belongs_to :instructor
 
+  has_many :enrollments, dependent: :destroy
+  has_many :clients, through: :enrollments
+
   has_rich_text :about
   has_rich_text :address
   has_rich_text :programming
