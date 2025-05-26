@@ -86,6 +86,14 @@ Rails.application.routes.draw do
       patch 'profile/update_password', to: 'profile#update_password', as: :update_password
 
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
+
+      scope 'course_classes/:course_class_id' do
+        get 'enrollments/new', to: 'enrollments#new', as: :new_enrollment
+        post 'enrollments', to: 'enrollments#create', as: :create_enrollment
+
+        get 'enrollments/edit_client', to: 'enrollments#edit_client', as: :edit_client
+        patch 'enrollments/update_client', to: 'enrollments#update_client', as: :update_client
+      end
     end
   end
 end

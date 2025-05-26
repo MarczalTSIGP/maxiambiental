@@ -111,6 +111,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_24_134331) do
     t.string "cep"
     t.string "city"
     t.string "state"
+    t.text "address"
     t.string "formation"
     t.string "current_company"
     t.index ["email"], name: "index_clients_on_email", unique: true

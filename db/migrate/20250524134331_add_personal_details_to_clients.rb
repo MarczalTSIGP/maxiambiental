@@ -5,6 +5,7 @@ class AddPersonalDetailsToClients < ActiveRecord::Migration[8.0]
     add_column :clients, :cep, :string
     add_column :clients, :city, :string
     add_column :clients, :state, :string
+    add_column :clients, :address, :text
     add_column :clients, :formation, :string
     add_column :clients, :current_company, :string
   end
