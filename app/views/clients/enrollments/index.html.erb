@@ -1,0 +1,12 @@
+<div class="container mx-auto md:px-10">
+   <%= rc 'page/content_title', title: 'Minhas inscrições', description: 'Todas as suas inscrições' %>
+
+   <% attributes = [ 
+    { text: 'Turma', class: 'w-full text-left' },
+    { text: 'Status', class: 'text-center' }
+] %>
+
+   <%= rc 'data/table', attributes: attributes, 
+                     collection: @enrollments, 
+                     partial: 'clients/enrollments/partials/enrollment' %>
+</div>

@@ -43,6 +43,7 @@ pt-BR:
     students: 'Estudantes'
     settings: 'Configurações'
     messages: 'Mensagens'
+    enrollments: 'Inscrições'
 
   flash_messages:
     profile_updated: 'Seu perfil foi atualizado com sucesso.'

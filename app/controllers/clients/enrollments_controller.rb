@@ -1,7 +1,15 @@
 class Clients::EnrollmentsController < ApplicationController
   layout 'layouts/clients/application'
 
-  before_action :set_course_class
+  before_action :set_course_class, except: :index
+
+  def index
+    @enrollments = current_client.enrollments
+                                 .includes(:course_class)
+                                 .order(created_at: :desc)
+                                 .search(params[:term])
+                                 .page(params[:page])
+  end
 
   def new
     @enrollment = @course_class.enrollments.new

@@ -87,6 +87,8 @@ Rails.application.routes.draw do
 
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
 
+      get 'enrollments', to: 'enrollments#index', as: :enrollments
+
       scope 'course_classes/:course_class_id' do
         get 'enrollments/new', to: 'enrollments#new', as: :new_enrollment
         post 'enrollments', to: 'enrollments#create', as: :create_enrollment

@@ -2,6 +2,10 @@ class Enrollment < ApplicationRecord
   enum :category, { teacher: 'teacher', student: 'student' }
   enum :status, { pending: 'pending', confirmed: 'confirmed', canceled: 'canceled' }
 
+  include Searchable
+
+  searchable :course_class
+
   belongs_to :client
   belongs_to :course_class
 
