@@ -19,7 +19,7 @@ class Clients::EnrollmentsController < ApplicationController
     @enrollment = @course_class.enrollments.new(enrollment_params)
 
     if @enrollment.save
-      redirect_to root_path
+      redirect_to clients_enrollment_payments_path(@enrollment)
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,6 +36,21 @@ class Clients::EnrollmentsController < ApplicationController
       redirect_to clients_new_enrollment_path
     else
       render :edit_client, status: :unprocessable_entity
+    end
+  end
+
+  def payment
+    @enrollment = @course_class.enrollments.find(params[:id])
+    @payment = Payment.new
+  end
+
+  def update_payment
+    @enrollment = @course_class.enrollments.find(params[:id])
+
+    if @enrollment.update(status: Enrollment.statuses[:confirmed])
+      redirect_to clients_enrollment_confirmation_path
+    else
+      render :payment, status: :unprocessable_entity
     end
   end
 

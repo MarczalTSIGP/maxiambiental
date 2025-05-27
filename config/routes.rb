@@ -95,6 +95,10 @@ Rails.application.routes.draw do
 
         get 'enrollments/edit_client', to: 'enrollments#edit_client', as: :edit_client
         patch 'enrollments/update_client', to: 'enrollments#update_client', as: :update_client
+
+        get 'enrollments/:id/payments', to: 'enrollments#payment', as: :enrollment_payments
+        patch 'enrollments/:id/payments', to: 'enrollments#update_payment', as: :update_enrollment_payments
+        get 'enrollments/:id/confirmation', to: 'enrollments#confirmation', as: :enrollment_confirmation
       end
     end
   end

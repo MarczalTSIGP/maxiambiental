@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_26_134750) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -173,10 +173,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_134750) do
     t.index ["name"], name: "index_instructors_on_name"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.decimal "amount"
+    t.string "status"
+    t.string "payment_method"
+    t.string "last4"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_payments_on_client_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "course_classes", "courses", on_delete: :restrict
   add_foreign_key "course_classes", "instructors", on_delete: :restrict
   add_foreign_key "enrollments", "clients"
   add_foreign_key "enrollments", "course_classes"
+  add_foreign_key "payments", "clients"
 end
