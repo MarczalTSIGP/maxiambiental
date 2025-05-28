@@ -11,20 +11,6 @@ class Clients::EnrollmentsController < ApplicationController
                                  .page(params[:page])
   end
 
-  def new
-    @enrollment = @course_class.enrollments.new
-  end
-
-  def create
-    @enrollment = @course_class.enrollments.new(enrollment_params)
-
-    if @enrollment.save
-      redirect_to clients_enrollment_payments_path(@enrollment)
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
   def edit_client
     @client = current_client
   end
@@ -36,6 +22,20 @@ class Clients::EnrollmentsController < ApplicationController
       redirect_to clients_new_enrollment_path
     else
       render :edit_client, status: :unprocessable_entity
+    end
+  end
+
+  def new
+    @enrollment = @course_class.enrollments.new
+  end
+
+  def create
+    @enrollment = @course_class.enrollments.new(enrollment_params)
+
+    if @enrollment.save
+      redirect_to clients_enrollment_payments_path(@enrollment)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -51,6 +51,16 @@ class Clients::EnrollmentsController < ApplicationController
       redirect_to clients_enrollment_confirmation_path
     else
       render :payment, status: :unprocessable_entity
+    end
+  end
+
+  def confirmation
+    @enrollment = @course_class.enrollments.find(params[:id])
+
+    if @enrollment.confirmed?
+      render :confirmation
+    else
+      redirect_to clients_update_enrollment_payments_path(@enrollment)
     end
   end
 
