@@ -1,17 +1,31 @@
-class Clients::EnrollmentsController < ApplicationController
-  layout 'layouts/clients/application'
-
+class Clients::EnrollmentsController < Clients::BaseController
   before_action :set_course_class, except: :index
+  before_action :prevent_duplicate_enrollment, only: :new
 
   def index
     @enrollments = current_client.enrollments
-                                 .includes(:course_class)
+                                 .includes(course_class: [course: [:image_attachment]])
                                  .order(created_at: :desc)
                                  .search(params[:term])
                                  .page(params[:page])
   end
 
-  # step 1 - client information
+  def new
+    @enrollment = @course_class.enrollments.new
+  end
+
+  def create
+    @enrollment = current_client.enrollments.new(
+      enrollment_params.merge(course_class_id: @course_class.id)
+    )
+
+    if @enrollment.save
+      redirect_to clients_enrollment_payments_path(@enrollment)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit_client; end
 
   def update_client
@@ -22,57 +36,27 @@ class Clients::EnrollmentsController < ApplicationController
     end
   end
 
-  def new
-    @enrollment = @course_class.enrollments.new
-  end
-
-  def create
-    @enrollment = @course_class.enrollments.new(enrollment_params)
-
-    if @enrollment.save
-      redirect_to clients_enrollment_payments_path(@enrollment)
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
-  def payment
-    @enrollment = @course_class.enrollments.find(params[:id])
-    @payment = Payment.new
-  end
-
-  def update_payment
-    @enrollment = @course_class.enrollments.find(params[:id])
-
-    if @enrollment.update(status: Enrollment.statuses[:confirmed])
-      redirect_to clients_enrollment_confirmation_path
-    else
-      render :payment, status: :unprocessable_entity
-    end
-  end
-
-  def confirmation
-    @enrollment = @course_class.enrollments.find(params[:id])
-
-    if @enrollment.confirmed?
-      render :confirmation
-    else
-      redirect_to clients_update_enrollment_payments_path(@enrollment)
-    end
-  end
-
   private
 
   def set_course_class
     @course_class = CourseClass.find(params[:course_class_id])
   end
 
+  def prevent_duplicate_enrollment
+    redirect_to clients_enrollments_path if current_client.enrolled_in?(@course_class)
+  end
+
   def client_params
-    params.expect(client: [:name, :cpf, :email, :phone, :cep, :city, :state, :address, :formation, :current_company])
+    params.expect(client: [
+                    :name, :cpf, :phone, :formation,
+                    :cep, :city, :state, :address, :current_company
+                  ])
   end
 
   def enrollment_params
-    params.expect(enrollment: [:client_id, :course_class_id, :referral_source, :previous_participation, :category,
-                               :notes, :terms_accepted])
+    params.expect(enrollment: [
+                    :referral_source, :category,
+                    :notes, :terms_accepted, :previous_participation
+                  ])
   end
 end

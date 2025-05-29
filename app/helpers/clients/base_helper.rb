@@ -1,0 +1,2 @@
+module Clients::BaseHelper
+end

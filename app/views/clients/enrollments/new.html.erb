@@ -13,9 +13,6 @@
          </div>
       <% end %>
 
-      <%= f.input :client_id, as: :hidden, input_html: { value: current_client.id } %>
-      <%= f.input :course_class_id, as: :hidden, input_html: { value: @course_class.id } %>
-
       <%= f.input :referral_source, collection: ["Redes Sociais", "Amigos", "E-mail", "Outros"], include_blank: "Selecione uma opção" %>
 
       <%= f.input :previous_participation, as: :radio_buttons, wrapper: :horizontal_radio,

@@ -62,4 +62,8 @@ class Client < ApplicationRecord
     self.password = Devise.friendly_token[0, 20]
     self.password_confirmation = password
   end
+
+  def enrolled_in?(course_class)
+    enrollments.exists?(course_class: course_class)
+  end
 end
