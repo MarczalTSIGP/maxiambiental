@@ -11,14 +11,11 @@ class Clients::EnrollmentsController < ApplicationController
                                  .page(params[:page])
   end
 
-  def edit_client
-    @client = current_client
-  end
+  # step 1 - client information
+  def edit_client; end
 
   def update_client
-    @client = current_client
-
-    if @client.update(client_params)
+    if current_client.update(client_params)
       redirect_to clients_new_enrollment_path
     else
       render :edit_client, status: :unprocessable_entity
@@ -71,7 +68,7 @@ class Clients::EnrollmentsController < ApplicationController
   end
 
   def client_params
-    params.expect(client: [:name, :email, :phone, :cep, :city, :state, :address, :formation, :current_company])
+    params.expect(client: [:name, :cpf, :email, :phone, :cep, :city, :state, :address, :formation, :current_company])
   end
 
   def enrollment_params

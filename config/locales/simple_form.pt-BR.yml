@@ -37,9 +37,14 @@ pt-BR:
         new_password_confirmation: 'Confirme sua nova senha'
         bio: 'Fale sobre você'
         resume: 'Currículo'
-        phone: 'Celular'
+        phone: 'Digite seu celular'
         avatar: 'Foto'
         term: 'Pesquisar...'
+        cpf: 'Digite seu CPF'
+        cep: 'Digite seu CEP'
+        state: 'Digite seu Estado'
+        city: 'Digite sua cidade'
+        address: 'Digite seu endereço'
       admin:
         <<: *defaults
       client:

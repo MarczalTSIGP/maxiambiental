@@ -45,6 +45,12 @@ pt-BR:
     messages: 'Mensagens'
     enrollments: 'Inscrições'
 
+  steps:
+    personal_data: 'Dados pessoais'
+    course_data: 'Dados do curso'
+    payment: 'Pagamento'
+    confirmation: 'Confirmação'
+
   flash_messages:
     profile_updated: 'Seu perfil foi atualizado com sucesso.'
     avatar_updated: 'Seu avatar foi atualizado com sucesso.'

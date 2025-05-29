@@ -2,7 +2,7 @@ class CourseClassesController < ApplicationController
   before_action :set_course_class, except: [:index]
 
   def index
-    @course_classes = CourseClass.includes([:course]).order(:start_at)
+    @course_classes = CourseClass.includes([course: [:image_attachment, :rich_text_description]]).order(:start_at)
   end
 
   def show; end

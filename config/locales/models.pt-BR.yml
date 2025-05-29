@@ -40,6 +40,9 @@ pt-BR:
         about: 'Sobre'
         instructor: 'Instrutor'
         course: 'Curso'
+        cpf: 'CPF'
+        cep: 'CEP'
+        state: 'Estado'
       admin:
         <<: *defaults
       client:

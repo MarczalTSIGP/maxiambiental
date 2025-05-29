@@ -1,15 +1,16 @@
 class Client < ApplicationRecord
   include Searchable
 
-  has_many :enrollments, dependent: :destroy
-  has_many :course_classes, through: :enrollments
-
-  searchable :email, name: { unaccent: true }
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable,
-         :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :omniauthable, omniauth_providers: [:google_oauth2]
+
+  has_many :enrollments, dependent: :destroy
+  has_many :course_classes, through: :enrollments
+  has_one_attached :avatar
+
+  searchable :email, name: { unaccent: true }
 
   validates :email,
             presence: true,
@@ -17,7 +18,21 @@ class Client < ApplicationRecord
 
   validates :name, presence: true
 
-  has_one_attached :avatar
+  with_options on: :update do
+    validates :cpf,
+              presence: true,
+              uniqueness: true,
+              cpf: true
+
+    validates :phone,
+              presence: true,
+              phone: true
+
+    validates :cep, presence: true
+    validates :city, presence: true
+    validates :state, presence: true
+    validates :address, presence: true
+  end
 
   def self.from_google(user)
     client = create_with(

@@ -1,49 +1,50 @@
-<div class="container mx-auto px-4 sm:px-10">
+<div class="container mx-auto sm:px-10">
    <%= rc 'page/content_title', title: 'Formulário de inscrição', description: @course_class.name %>
 
-   <div class="max-w-4xl mx-auto p-4">
-      <!-- Stepper único responsivo -->
+   <div class="max-w-4xl mx-auto sm:p-4">
+
       <div class="mb-8 overflow-x-auto sm:overflow-visible">
-         <ol class="flex w-max min-w-full sm:w-full items-center p-2 space-x-4 sm:space-x-2 md:space-x-4 text-sm font-medium text-gray-500 sm:bg-white sm:text-base sm:p-4 sm:justify-center">
-            <% [
-               { number: 1, label: 'Dados Pessoais' },
-               { number: 2, label: 'Dados do curso' },
-               { number: 3, label: 'Pagamento' },
-               { number: 4, label: 'Confirmação' }
-            ].each do |step| %>
+
+         <ol class="flex w-max min-w-full items-center p-2 space-x-4 sm:space-x-2 md:space-x-4 text-sm font-medium text-gray-500 sm:bg-white sm:text-base sm:p-4 justify-center">
+
+            <% steps = [
+               { number: 1, label: t('steps.personal_data') },
+               { number: 2, label: t('steps.course_data') },
+               { number: 3, label: t('steps.payment') },
+               { number: 4, label: t('steps.confirmation') }
+            ] %>
+
+            <% steps.each do |step| %>
                <li class="flex items-center shrink-0 <%= 'text-green-700' if current_step == step[:number] %>">
-                  <!-- Número do step -->
+
                   <span class="flex items-center justify-center w-6 h-6 sm:w-5 sm:h-5 text-xs border <%= current_step == step[:number] ? 'border-green-700' : 'border-gray-500' %> rounded-full">
                      <%= step[:number] %>
                   </span>
 
-                  <!-- Label (visível apenas em telas maiores) -->
                   <% if step[:number] != 4 %>
-                     <span class="hidden sm:inline ml-2 sm:ml-4 whitespace-nowrap">
+                     <span class="hidden lg:inline ml-2 lg:ml-4 whitespace-nowrap">
                         <%= step[:label] %>
                      </span>
                   <% else %>
-                     <span class="hidden sm:inline ml-2 sm:ml-4">
+                     <span class="hidden lg:inline ml-2 lg:ml-4">
                         <%= step[:label] %>
                      </span>
                   <% end %>
 
-                  <!-- Separador (visível apenas em telas maiores) -->
                   <% if step[:number] != 4 %>
-                     <svg class="hidden sm:block w-3 h-3 mx-2 sm:mx-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
-                     </svg>
+                     <%= icon('fa-solid', 'angles-right', class: 'block w-3 h-3 mx-3') %>
                   <% end %>
+
                </li>
             <% end %>
          </ol>
       </div>
 
-      <!-- Container do Formulário -->
       <div class="bg-white rounded-lg shadow-lg p-6 sm:p-8">
          <div class="max-w-2xl mx-auto">
             <%= yield %>
          </div>
       </div>
+
    </div>
 </div>
