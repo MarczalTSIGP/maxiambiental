@@ -114,6 +114,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
     t.text "address"
     t.string "formation"
     t.string "current_company"
+    t.index ["cpf"], name: "index_clients_on_cpf", unique: true
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["name"], name: "index_clients_on_name"
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
@@ -126,6 +127,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
     t.integer "available_slots"
     t.integer "subscription_status", default: 0
     t.text "schedule"
+    t.float "price"
     t.boolean "active", default: true
     t.bigint "course_id", null: false
     t.bigint "instructor_id", null: false
@@ -176,9 +178,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
   create_table "payments", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.decimal "amount"
-    t.string "status"
+    t.string "status", default: "pending"
     t.string "payment_method"
-    t.string "last4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_payments_on_client_id"

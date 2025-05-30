@@ -1,4 +1,4 @@
-class Clients::EnrollmentsController < Clients::BaseController
+class Clients::CourseClasses::EnrollmentsController < Clients::BaseController
   before_action :set_course_class, except: :index
   before_action :prevent_duplicate_enrollment, only: :new
 
@@ -11,7 +11,7 @@ class Clients::EnrollmentsController < Clients::BaseController
   end
 
   def new
-    @enrollment = @course_class.enrollments.new
+    @enrollment = current_client.enrollments.new
   end
 
   def create
@@ -26,15 +26,15 @@ class Clients::EnrollmentsController < Clients::BaseController
     end
   end
 
-  def edit_client; end
+  # def edit_client; end
 
-  def update_client
-    if current_client.update(client_params)
-      redirect_to new_clients_course_class_enrollment_path
-    else
-      render :edit_client, status: :unprocessable_entity
-    end
-  end
+  # def update_client
+  #   if current_client.update(client_params)
+  #     redirect_to new_clients_course_class_enrollment_path
+  #   else
+  #     render :edit_client, status: :unprocessable_entity
+  #   end
+  # end
 
   private
 
@@ -46,12 +46,12 @@ class Clients::EnrollmentsController < Clients::BaseController
     redirect_to clients_enrollments_path if current_client.enrolled_in?(@course_class)
   end
 
-  def client_params
-    params.expect(client: [
-                    :name, :cpf, :phone, :formation,
-                    :cep, :city, :state, :address, :current_company
-                  ])
-  end
+  # def client_params
+  #   params.expect(client: [
+  #                   :name, :cpf, :phone, :formation,
+  #                   :cep, :city, :state, :address, :current_company
+  #                 ])
+  # end
 
   def enrollment_params
     params.expect(enrollment: [

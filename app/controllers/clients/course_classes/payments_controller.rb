@@ -1,4 +1,4 @@
-class Clients::PaymentsController < Clients::BaseController
+class Clients::CourseClasses::PaymentsController < Clients::BaseController
   before_action :set_enrollment
   before_action :validate_enrollment_status
 
@@ -29,6 +29,6 @@ class Clients::PaymentsController < Clients::BaseController
   end
 
   def validate_enrollment_status
-    redirect_to clients_enrollments_path if @enrollment.confirmed?
+    redirect_to clients_course_classes_enrollments_path if @enrollment.confirmed?
   end
 end

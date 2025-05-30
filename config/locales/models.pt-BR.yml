@@ -46,6 +46,7 @@ pt-BR:
         cpf: 'CPF'
         cep: 'CEP'
         state: 'Estado'
+        price: 'Preço'
       admin:
         <<: *defaults
       client:
@@ -72,3 +73,28 @@ pt-BR:
         category: "Categoria"
         notes: "Observações"
         terms_accepted: "Li e aceito os termos e condições"
+        categories:
+          student: "Estudante"
+          teacher: "Instrutor"
+        statuses:
+          pending: "Pendente"
+          confirmed: "Confirmado"
+          finished: "Finalizado"
+          canceled: "Cancelado"
+        referral_sources:
+          social_media: "Rede social"
+          friends: "Amigos"
+          email: "E-mail"
+          website: "Site"
+          other: "Outro"
+      payment:
+        payment_method: 'Forma de Pagamento'
+        card_number: 'Número do Cartão'
+        card_expiry_date: 'Validade do Cartão'
+        card_cvv: 'CVV'
+        card_holder_name: 'Nome no Cartão'
+        card_holder_document: 'CPF'
+        statuses:
+          pending: 'Pendente'
+          confirmed: 'Confirmado'
+          canceled: 'Cancelado'

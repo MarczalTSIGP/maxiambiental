@@ -45,6 +45,8 @@ pt-BR:
         state: 'Digite seu Estado'
         city: 'Digite sua cidade'
         address: 'Digite seu endereço'
+        notes: 'Digite suas observações'
+        price: 'Digite o valor do curso'
       admin:
         <<: *defaults
       client:
@@ -66,3 +68,5 @@ pt-BR:
         address: 'Digite o endereço da turma'
         schedule: 'Digite os horários do curso'
         available_slots: 'Digite o número de vagas disponibilizadas'
+      enrollment:
+        <<: *defaults

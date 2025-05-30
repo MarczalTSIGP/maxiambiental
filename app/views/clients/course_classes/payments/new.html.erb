@@ -1,5 +1,5 @@
 <div data-controller="payment-method" class="space-y-4">
-   <%= render 'clients/enrollments/partials/steps' do %>
+   <%= render 'clients/enrollments/enrollments/partials/steps' do %>
       <%= simple_form_for @payment, url: clients_update_enrollment_payments_path, method: :patch do |f| %>
 
          <%= f.input :payment_method,
@@ -13,19 +13,19 @@
          %>
 
          <div data-payment-method-target="boleto" class="hidden mt-4">
-            <%= render 'clients/payments/partials/bank_slip_fields', f: f %>
+            <%= render 'clients/enrollments/payments/partials/bank_slip_fields', f: f %>
          </div>
 
          <div data-payment-method-target="creditCard" class="hidden mt-4">
-            <%= render 'clients/payments/partials/credit_card_fields', f: f %>
+            <%= render 'clients/enrollments/payments/partials/credit_card_fields', f: f %>
          </div>
 
          <div data-payment-method-target="debitCard" class="hidden mt-4">
-            <%= render 'clients/payments/partials/credit_card_fields', f: f %>
+            <%= render 'clients/enrollments/payments/partials/credit_card_fields', f: f %>
          </div>
 
          <div data-payment-method-target="pix" class="hidden mt-4">
-            <%= render 'clients/payments/partials/pix', f: f %>
+            <%= render 'clients/enrollments/payments/partials/pix', f: f %>
          </div>
 
       <% end %>

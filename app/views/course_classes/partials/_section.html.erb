@@ -18,27 +18,30 @@
             <%= @course_class.name %>
          </h1>
 
-         <!-- Detalhes da Turma - Desktop -->
          <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 space-y-3">
             <h3 class="font-semibold text-lg text-gray-800 mb-2">Detalhes</h3>
 
             <div class="grid grid-cols-1 gap-3 text-sm text-gray-600">
+
                <div class="flex items-start">
                   <span class="font-medium text-gray-700 w-32 flex-shrink-0">Datas:</span>
                   <span><%= l(@course_class.start_at) %> - <%= l(@course_class.end_at) %></span>
                </div>
+
                <div class="flex items-start">
                   <span class="font-medium text-gray-700 w-32 flex-shrink-0">Horários:</span>
                   <span><%= @course_class.schedule %></span>
                </div>
+
                <div class="flex items-start">
                   <span class="font-medium text-gray-700 w-32 flex-shrink-0">Local:</span>
                   <span class="prose"><%= @course_class.address %></span>
                </div>
+
             </div>
          </div>
 
-         <%= link_to t('buttons.registration_form'), clients_course_class_edit_client_path(@course_class), class: 'btn-primary text-center w-full inline-block' %>
+         <%= link_to t('buttons.registration_form'), clients_edit_course_class_client_path(@course_class), class: 'btn-primary text-center w-full inline-block' %>
       </div>
 
       <div class="md:hidden space-y-4">

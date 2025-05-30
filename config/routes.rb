@@ -87,19 +87,21 @@ Rails.application.routes.draw do
 
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
 
-      get 'enrollments', to: 'enrollments#index', as: :enrollments
+      get 'course_classes/enrollments', to: 'course_classes/enrollments#index', as: :course_classes_enrollments
 
-      resources :course_classes, only: [] do
-        resources :enrollments, only: [:new, :create]
+      scope 'course_classes/:course_class_id' do
+        get 'edit_client', to: 'course_classes/client#edit', as: :edit_course_class_client
+        patch 'update_client', to: 'course_classes/client#update', as: :update_course_class_client
 
-        controller :enrollments do
-          get 'enrollments/edit_client', action: :edit_client, as: :edit_client
-          patch 'enrollments/update_client', action: :update_client, as: :update_client
-        end
+        get 'enrollments/new', to: 'course_classes/enrollments#new', as: :new_course_class_enrollment
+        post 'enrollments', to: 'course_classes/enrollments#create', as: :create_course_class_enrollment
 
-        resources :enrollments, only: [] do
-          resources :payments, only: [:new, :create]
-          get 'confirmation', to: 'payments#confirmation', as: :enrollment_confirmation
+        scope 'enrollments/:enrollment_id' do
+          get 'payments/new', to: 'course_classes/payments#new', as: :new_course_class_enrollment_payment
+          post 'payments', to: 'course_classes/payments#create', as: :create_course_class_enrollment_payment
+
+          get 'payments/confirmation', to: 'course_classes/payments#confirmation',
+                                       as: :course_class_enrollment_payment_confirmation
         end
       end
     end
