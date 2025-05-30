@@ -30,5 +30,6 @@ pt-BR:
     description: 'Capacitação para profissionais e estudantes em áreas ambientais, com cursos práticos e atualizados.'
   errors:
     messages:
-      email: 'não é um e-mail válido'
-      phone: 'não é um número de telefone válido'
+      email: "%{attribute} não é um e-mail válido"
+      phone: "%{attribute} não é um número de telefone válido"
+      cpf: 'CPF inválido'

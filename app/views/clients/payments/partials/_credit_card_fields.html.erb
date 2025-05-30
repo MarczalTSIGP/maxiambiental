@@ -1,0 +1,10 @@
+<%= f.input :card_number, label: "Número do cartão" %>
+<%= f.input :card_expiry_date, label: "Data de expiração" %>
+<%= f.input :card_cvv, label: "CVV" %>
+<%= f.input :card_holder_name, label: "Nome impresso no cartão" %>
+<%= f.input :card_holder_document, label: "CPF do titular" %>
+
+<div class="flex justify-between">
+   <%= link_to 'Voltar', clients_new_enrollment_path, class: 'btn-outline' %>
+   <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
+</div>

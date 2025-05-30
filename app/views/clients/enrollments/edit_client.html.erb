@@ -1,5 +1,5 @@
 <%= render 'clients/enrollments/partials/steps' do %>
-   <%= simple_form_for current_client, url: clients_update_client_path do |f| %>
+   <%= simple_form_for current_client, url: clients_course_class_update_client_path do |f| %>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
          <%= f.input :name %>
@@ -18,7 +18,7 @@
             <%= f.input :state, input_html: { data: { cep_target: "state" }, readonly: true } %>
          </div>
 
-         <%= f.input :address, input_html: { data: { cep_target: "address" }, readonly: true } %>
+         <%= f.input :address, input_html: { data: { cep_target: "address" } } %>
       </div>
 
       <div class="flex justify-between gap-4 mt-7">

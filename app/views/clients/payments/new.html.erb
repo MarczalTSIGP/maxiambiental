@@ -2,31 +2,30 @@
    <%= render 'clients/enrollments/partials/steps' do %>
       <%= simple_form_for @payment, url: clients_update_enrollment_payments_path, method: :patch do |f| %>
 
-         <%= f.input :payment_method, 
-            as: :select,
+         <%= f.input :payment_method,
             collection: ['Boleto', 'Cartão de Crédito', 'Cartão de Débito', 'Pix'],
             input_html: {
                 data: { 
                     action: "change->payment-method#toggleFields",
-                    payment_method_target: "radio" 
+                    payment_method_target: "radio"
                 }
             }
          %>
 
          <div data-payment-method-target="boleto" class="hidden mt-4">
-            <%= render 'clients/enrollments/partials/bank_slip_fields', f: f %>
+            <%= render 'clients/payments/partials/bank_slip_fields', f: f %>
          </div>
 
          <div data-payment-method-target="creditCard" class="hidden mt-4">
-            <%= render 'clients/enrollments/partials/credit_card_fields', f: f %>
+            <%= render 'clients/payments/partials/credit_card_fields', f: f %>
          </div>
 
          <div data-payment-method-target="debitCard" class="hidden mt-4">
-            <%= render 'clients/enrollments/partials/credit_card_fields', f: f %>
+            <%= render 'clients/payments/partials/credit_card_fields', f: f %>
          </div>
 
          <div data-payment-method-target="pix" class="hidden mt-4">
-            <%= render 'clients/enrollments/partials/pix', f: f %>
+            <%= render 'clients/payments/partials/pix', f: f %>
          </div>
 
       <% end %>

@@ -30,7 +30,7 @@ class Clients::EnrollmentsController < Clients::BaseController
 
   def update_client
     if current_client.update(client_params)
-      redirect_to clients_new_enrollment_path
+      redirect_to new_clients_course_class_enrollment_path
     else
       render :edit_client, status: :unprocessable_entity
     end

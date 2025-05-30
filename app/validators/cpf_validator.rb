@@ -8,7 +8,7 @@ class CpfValidator < ActiveModel::EachValidator
 
     return if valid_cpf?(cpf)
 
-    record.errors.add(attribute, :invalid_cpf, **options.slice(:message), value: value)
+    record.errors.add(attribute, :invalid_cpf, message: I18n.t('errors.messages.cpf'))
   end
 
   private

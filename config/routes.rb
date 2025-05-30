@@ -89,16 +89,18 @@ Rails.application.routes.draw do
 
       get 'enrollments', to: 'enrollments#index', as: :enrollments
 
-      scope 'course_classes/:course_class_id' do
-        get 'enrollments/new', to: 'enrollments#new', as: :new_enrollment
-        post 'enrollments', to: 'enrollments#create', as: :create_enrollment
+      resources :course_classes, only: [] do
+        resources :enrollments, only: [:new, :create]
 
-        get 'enrollments/edit_client', to: 'enrollments#edit_client', as: :edit_client
-        patch 'enrollments/update_client', to: 'enrollments#update_client', as: :update_client
+        controller :enrollments do
+          get 'enrollments/edit_client', action: :edit_client, as: :edit_client
+          patch 'enrollments/update_client', action: :update_client, as: :update_client
+        end
 
-        get 'enrollments/:id/payments', to: 'enrollments#payment', as: :enrollment_payments
-        patch 'enrollments/:id/payments', to: 'enrollments#update_payment', as: :update_enrollment_payments
-        get 'enrollments/:id/confirmation', to: 'enrollments#confirmation', as: :enrollment_confirmation
+        resources :enrollments, only: [] do
+          resources :payments, only: [:new, :create]
+          get 'confirmation', to: 'payments#confirmation', as: :enrollment_confirmation
+        end
       end
     end
   end

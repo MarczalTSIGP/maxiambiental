@@ -16,6 +16,9 @@ pt-BR:
       course_class: 
         one: 'Turma'
         other: 'Turmas'
+      enrollment: 
+        one: 'Inscrição'
+        other: 'Inscrições'
     attributes:
       defaults: &defaults
         created_at: 'Criado em'
