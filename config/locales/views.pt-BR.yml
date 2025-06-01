@@ -47,10 +47,11 @@ pt-BR:
 
   steps:
     enrollment_form: 'Formulário de inscrição'
-    personal_data: 'Dados pessoais'
-    course_data: 'Dados do curso'
-    payment: 'Pagamento'
-    confirmation: 'Confirmação'
+    enrollment:
+      personal_data: 'Dados pessoais'
+      course_data: 'Dados do curso'
+      payment: 'Pagamento'
+      confirmation: 'Confirmação'
 
   flash_messages:
     profile_updated: 'Seu perfil foi atualizado com sucesso.'

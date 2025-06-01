@@ -1,0 +1,23 @@
+<div class="container mx-auto sm:px-10">
+   <%= rc 'page/content_title', title: t('steps.enrollment_form'), description: @course_class.name %>
+
+   <% steps = [
+      { number: 1, label: t('steps.enrollment.personal_data') },
+      { number: 2, label: t('steps.enrollment.course_data') },
+      { number: 3, label: t('steps.enrollment.payment') },
+      { number: 4, label: t('steps.enrollment.confirmation') }
+   ] %>
+
+   <div class="max-w-4xl mx-auto sm:p-4">
+
+      <%= rc 'multi_step/form', current_step: current_step, steps: steps %>
+
+      <div class="bg-white rounded-lg shadow-lg p-6 sm:p-8">
+         <div class="max-w-2xl mx-auto">
+            <%= yield %>
+         </div>
+      </div>
+
+   </div>
+
+</div>

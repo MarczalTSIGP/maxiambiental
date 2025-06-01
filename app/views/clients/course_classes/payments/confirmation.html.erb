@@ -1,9 +1,9 @@
-<%= render 'clients/course_classes/enrollments/partials/steps' do %>
+<%= render 'shared/enrollment_steps', current_step: 4 do %>
    <div class="min-h-screen flex items-center justify-center p-4">
       <div class="w-full max-w-md">
-         <!-- Cartão de confirmação -->
+
          <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-            <!-- Cabeçalho verde -->
+
             <div class="bg-green-500 p-6 text-center">
                <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <%= icon('fa-solid', 'check', class: 'fa-3x text-green-700    ') %>
@@ -11,14 +11,12 @@
                <h1 class="text-2xl font-bold text-white">Pagamento Aprovado!</h1>
             </div>
 
-            <!-- Corpo -->
             <div class="p-6">
                <div class="text-center mb-6">
                   <p class="text-gray-600 mb-1">Obrigado por sua compra!</p>
                   <p class="text-sm text-gray-500">Um e-mail de confirmação foi enviado para você</p>
                </div>
 
-               <!-- Detalhes do pagamento -->
                <div class="border border-gray-200 rounded-lg p-4 mb-6">
                   <h3 class="font-semibold text-gray-800 mb-3">Detalhes do Pagamento</h3>
 
@@ -26,7 +24,7 @@
                      <div class="flex justify-between">
                         <span class="text-gray-600">Método:</span>
                         <span class="font-medium">
-                           <i class="fas fa-qrcode text-purple-500 mr-1"></i> PIX
+                           <%= icon('fa-brands', 'pix', class: 'mr-1') %> PIX
                         </span>
                      </div>
                      <div class="flex justify-between">
@@ -35,7 +33,7 @@
                      </div>
                      <div class="flex justify-between">
                         <span class="text-gray-600">Data:</span>
-                        <span><%= Time.current.strftime("%d/%m/%Y %H:%M") %></span>
+                        <span><%= l(@payment.created_at, format: :short) %></span>
                      </div>
                      <div class="flex justify-between">
                         <span class="text-gray-600">Código:</span>
@@ -44,12 +42,10 @@
                   </div>
                </div>
 
-               <!-- Aviso de simulação -->
                <div class="bg-blue-50 border border-blue-200 text-blue-800 text-sm p-3 rounded-lg mb-6">
                   <i class="fas fa-info-circle mr-1"></i> Esta é uma <strong>simulação</strong> para fins de desenvolvimento.
                </div>
 
-               <!-- Botões de ação -->
                <div class="space-y-3">
                   <a href="#" class="block bg-green-600 hover:bg-green-700 text-white text-center py-3 px-4 rounded-lg font-medium transition duration-200">
                      <i class="fas fa-receipt mr-2"></i> Ver Comprovante
@@ -60,7 +56,6 @@
             </div>
          </div>
 
-         <!-- Rodapé adicional -->
          <div class="mt-6 text-center text-xs text-gray-500">
             <p>Em caso de dúvidas, entre em contato com nosso suporte:</p>
             <p class="mt-1">suporte@empresafake.com.br | (11) 98765-4321</p>

@@ -1,4 +1,4 @@
-<%= render 'clients/course_classes/enrollments/partials/steps' do %>
+<%= render 'shared/enrollment_steps', current_step: 2 do %>
 
    <%= simple_form_for @enrollment, url: clients_create_course_class_enrollment_path do |f| %>
 
