@@ -1,6 +1,10 @@
 FactoryBot.define do
   factory :enrollment do
-    client { nil }
-    course_class { nil }
+    category { Enrollment.categories.keys.sample }
+    terms_accepted { true }
+    referral_source { Enrollment.referral_sources.keys.sample }
+
+    client
+    course_class
   end
 end

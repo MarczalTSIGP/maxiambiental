@@ -1,0 +1,73 @@
+require 'application_system_test_case'
+
+class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
+  setup do
+    @client = FactoryBot.create(:client)
+    @course_class = FactoryBot.create(:course_class)
+    sign_in @client
+  end
+
+  test 'visiting the edit page' do
+    visit clients_edit_course_class_client_path(@course_class)
+
+    assert_selector 'h1', text: I18n.t('steps.enrollment_form')
+    assert_field 'client[name]', with: @client.name
+    assert_field 'client[cpf]', with: @client.cpf
+  end
+
+  test 'successfully update client information' do
+    visit clients_edit_course_class_client_path(@course_class)
+
+    fill_in 'client[name]', with: 'Jane Doe'
+    fill_in 'client[cpf]', with: '323.733.119-84'
+    fill_in 'client[phone]', with: '(11) 98888-8888'
+    click_on I18n.t('buttons.confirm')
+
+    assert_current_path clients_new_course_class_enrollment_path(@course_class)
+  end
+
+  test 'show errors when submitting invalid data' do
+    visit clients_edit_course_class_client_path(@course_class)
+
+    fill_in 'client[name]', with: ''
+    fill_in 'client[cpf]', with: '123'
+    fill_in 'client[phone]', with: '429842'
+    click_on I18n.t('buttons.confirm')
+
+    assert_text I18n.t('errors.messages.cpf')
+    assert_text I18n.t('errors.messages.blank', attribute: Client.human_attribute_name(:name))
+    assert_text I18n.t('errors.messages.phone', attribute: Client.human_attribute_name(:phone))
+  end
+
+  test 'cancel button redirects to course classes page' do
+    visit clients_edit_course_class_client_path(@course_class)
+    click_link I18n.t('buttons.cancel')
+
+    assert_current_path course_classes_path
+  end
+
+  test 'email field should be disabled' do
+    visit clients_edit_course_class_client_path(@course_class)
+    email_field = find_by_id('client_email')
+
+    assert_predicate email_field, :disabled?
+  end
+
+  test 'CPF mask works correctly' do
+    visit clients_edit_course_class_client_path(@course_class)
+    cpf_field = find_field('client[cpf]')
+
+    cpf_field.fill_in with: '12345678909'
+
+    assert_equal '123.456.789-09', cpf_field.value
+  end
+
+  test 'phone mask works correctly' do
+    visit clients_edit_course_class_client_path(@course_class)
+    phone_field = find_field('client[phone]')
+
+    phone_field.fill_in with: '11999999999'
+
+    assert_equal '(11) 99999-9999', phone_field.value
+  end
+end

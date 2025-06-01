@@ -46,6 +46,7 @@ pt-BR:
     enrollments: 'Inscrições'
 
   steps:
+    enrollment_form: 'Formulário de inscrição'
     personal_data: 'Dados pessoais'
     course_data: 'Dados do curso'
     payment: 'Pagamento'
