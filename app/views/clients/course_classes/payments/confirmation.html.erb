@@ -33,7 +33,7 @@
                      </div>
                      <div class="flex justify-between">
                         <span class="text-gray-600">Data:</span>
-                        <span><%= l(@payment.created_at, format: :short) %></span>
+                        <span><%= l(Time.zone.now, format: :short) %></span>
                      </div>
                      <div class="flex justify-between">
                         <span class="text-gray-600">Código:</span>

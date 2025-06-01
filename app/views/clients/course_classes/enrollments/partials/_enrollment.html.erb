@@ -1,6 +1,6 @@
 <tr id='<%= "course_#{enrollment.course_class.id}" %>'>
    <td class="px-6 py-4 text-sm text-gray-800">
-      <div class="flex items-center">
+      <div class="flex items-center justify-center">
          <%= image_tag enrollment.course_class.course.image_url, class: "h-8 w-8 aspect-square rounded-md object-cover"%>
          <div class="ml-4">
             <h2 class="font-semibold"><%= enrollment.course_class.name %></h2>
@@ -10,7 +10,29 @@
 
    <td class="px-6 py-4 text-sm text-center text-gray-800">
       <span>
-         <%= enrollment.status %>
+         <%= "#{l(enrollment.course_class.start_at)} - #{l(enrollment.course_class.end_at)}" %>
+      </span>
+   </td>
+
+   <td class="px-6 py-4 text-sm text-center text-gray-800">
+      <span>
+         <%= l(enrollment.created_at, format: :short) %>
+      </span>
+   </td>
+
+   <td class="px-6 py-4 text-sm text-center text-gray-800">
+      <span>
+         <%= enrollment.human_enum(:status) %>
+      </span>
+   </td>
+
+   <td class="px-6 py-4 text-sm text-center text-gray-800">
+      <span>
+         <% if enrollment.payment_pending? %>
+            <%= link_to 'Rever o pagamento', clients_new_payment_path(enrollment.course_class, enrollment), class: 'font-medium text-red-700 hover:underline' %>
+         <% else %>
+            <%= link_to enrollment.payment.human_status, clients_payment_confirmation_path(enrollment.course_class, enrollment), class: 'font-medium text-green-700 hover:underline' %>
+         <% end %>
       </span>
    </td>
 </tr>

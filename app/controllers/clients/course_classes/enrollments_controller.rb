@@ -4,7 +4,7 @@ class Clients::CourseClasses::EnrollmentsController < Clients::BaseController
 
   def index
     @enrollments = current_client.enrollments
-                                 .includes(course_class: [course: [:image_attachment]])
+                                 .includes([:payments, { course_class: [course: [:image_attachment]] }])
                                  .order(created_at: :desc)
                                  .search(params[:term])
                                  .page(params[:page])

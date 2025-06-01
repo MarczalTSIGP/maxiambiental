@@ -2,13 +2,16 @@
    <%= rc 'page/content_title', title: 'Minhas inscrições', description: 'Todas as suas inscrições' %>
 
    <% attributes = [ 
-    { text: 'Turma', class: 'w-full text-left' },
-    { text: 'Status', class: 'text-center' }
+    { text: 'Turma', class: 'text-center' },
+    { text: 'Período', class: 'text-center' },
+    { text: 'Inscrição', class: 'text-center' },
+    { text: 'Status', class: 'text-center' },
+    { text: 'Pagamento', class: 'text-center' }
    ] %>
 
    <%= rc 'flash/message' %>
 
    <%= rc 'data/table', attributes: attributes, 
-                     collection: @enrollments, 
-                     partial: 'clients/course_classes/enrollments/partials/enrollment' %>
+                        collection: @enrollments, 
+                        partial: 'clients/course_classes/enrollments/partials/enrollment' %>
 </div>

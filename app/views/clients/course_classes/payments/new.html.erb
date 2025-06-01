@@ -1,6 +1,6 @@
 <div data-controller="payment-method" class="space-y-4">
    <%= render 'shared/enrollment_steps', current_step: 3 do %>
-      <%= simple_form_for @payment, url: clients_payments_path do |f| %>
+      <%= simple_form_for @payment, url: clients_payment_path do |f| %>
 
          <%= f.input :payment_method,
             collection: ['Boleto', 'Cartão de Crédito', 'Cartão de Débito', 'Pix'],

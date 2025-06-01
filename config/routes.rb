@@ -100,8 +100,8 @@ Rails.application.routes.draw do
           get 'payments/new', to: 'course_classes/payments#new', as: :new_payment
           post 'payments', to: 'course_classes/payments#create', as: :payment
 
-          get 'payments/:payment_id/confirmation', to: 'course_classes/payments#confirmation',
-                                                   as: :payment_confirmation
+          get 'payments/confirmation', to: 'course_classes/payments#confirmation',
+                                       as: :payment_confirmation
         end
       end
     end

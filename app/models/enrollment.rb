@@ -27,12 +27,20 @@ class Enrollment < ApplicationRecord
   validates :client_id, uniqueness: { scope: :course_class_id }
 
   def human_enum(enum_name)
-    I18n.t("activerecord.attributes.enrollment.#{enum_name}")
+    I18n.t("activerecord.attributes.enrollment.#{enum_name.to_s.pluralize}.#{self[enum_name]}")
   end
 
   def human_enums(enum_name)
     self.class.defined_enums[enum_name.to_s].map do |key, _|
-      [human_enum("#{enum_name.to_s.pluralize}.#{key}"), key]
+      [I18n.t("activerecord.attributes.enrollment.#{enum_name.to_s.pluralize}.#{key}"), key]
     end
+  end
+
+  def payment_pending?
+    payments.empty? || payment.pending?
+  end
+
+  def payment
+    payments.last
   end
 end
