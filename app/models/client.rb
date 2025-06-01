@@ -64,6 +64,6 @@ class Client < ApplicationRecord
   end
 
   def enrolled_in?(course_class)
-    enrollments.exists?(course_class: course_class)
+    enrollments.exists?(course_class: course_class, status: Enrollment.statuses.except(:canceled).keys)
   end
 end

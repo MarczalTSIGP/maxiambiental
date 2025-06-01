@@ -20,21 +20,11 @@ class Clients::CourseClasses::EnrollmentsController < Clients::BaseController
     )
 
     if @enrollment.save
-      redirect_to clients_enrollment_payments_path(@enrollment)
+      redirect_to clients_new_course_class_enrollment_payment_path(@course_class, @enrollment)
     else
       render :new, status: :unprocessable_entity
     end
   end
-
-  # def edit_client; end
-
-  # def update_client
-  #   if current_client.update(client_params)
-  #     redirect_to new_clients_course_class_enrollment_path
-  #   else
-  #     render :edit_client, status: :unprocessable_entity
-  #   end
-  # end
 
   private
 
@@ -43,20 +33,13 @@ class Clients::CourseClasses::EnrollmentsController < Clients::BaseController
   end
 
   def prevent_duplicate_enrollment
-    redirect_to clients_enrollments_path if current_client.enrolled_in?(@course_class)
+    return unless current_client.enrolled_in?(@course_class)
+
+    redirect_to clients_course_classes_enrollments_path, notice: t('errors.messages.already_enrolled')
   end
 
-  # def client_params
-  #   params.expect(client: [
-  #                   :name, :cpf, :phone, :formation,
-  #                   :cep, :city, :state, :address, :current_company
-  #                 ])
-  # end
-
   def enrollment_params
-    params.expect(enrollment: [
-                    :referral_source, :category,
-                    :notes, :terms_accepted, :previous_participation
-                  ])
+    params.expect(enrollment: [:referral_source, :category,
+                               :notes, :terms_accepted, :previous_participation])
   end
 end

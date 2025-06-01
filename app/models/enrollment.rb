@@ -19,21 +19,20 @@ class Enrollment < ApplicationRecord
   belongs_to :client
   belongs_to :course_class
 
-  validates :category, inclusion: { in: categories }
+  has_many :payments, dependent: :destroy
+
+  validates :category, presence: true, inclusion: { in: categories }
   validates :terms_accepted, acceptance: true
-  validates :referral_source, inclusion: { in: referral_sources }
+  validates :referral_source, presence: true, inclusion: { in: referral_sources }
   validates :client_id, uniqueness: { scope: :course_class_id }
 
   def human_enum(enum_name)
-    enum_value = send(enum_name)
-    return unless enum_value
-
-    I18n.t("activerecord.attributes.enrollment.#{enum_name.to_s.pluralize}.#{enum_value}")
+    I18n.t("activerecord.attributes.enrollment.#{enum_name}")
   end
 
   def human_enums(enum_name)
-    send(enum_name.to_s.pluralize).map do |key, _value|
-      [human_enum(enum_name.to_s.singularize + "_#{key}"), key]
+    self.class.defined_enums[enum_name.to_s].map do |key, _|
+      [human_enum("#{enum_name.to_s.pluralize}.#{key}"), key]
     end
   end
 end

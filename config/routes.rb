@@ -101,7 +101,7 @@ Rails.application.routes.draw do
           post 'payments', to: 'course_classes/payments#create', as: :create_course_class_enrollment_payment
 
           get 'payments/confirmation', to: 'course_classes/payments#confirmation',
-                                       as: :course_class_enrollment_payment_confirmation
+                                       as: :course_class_enrollment_confirmation
         end
       end
     end

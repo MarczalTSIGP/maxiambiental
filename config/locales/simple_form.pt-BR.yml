@@ -70,3 +70,10 @@ pt-BR:
         available_slots: 'Digite o número de vagas disponibilizadas'
       enrollment:
         <<: *defaults
+      payment:
+        <<: *defaults
+        card_number: 'Digite o número do cartão'
+        card_expiry_date: 'Digite a validade do cartão'
+        card_cvv: 'Digite o CVV'
+        card_holder_name: 'Digite o nome impresso no cartão'
+        card_holder_document: 'Digite o CPF do titular'

@@ -127,7 +127,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
     t.integer "available_slots"
     t.integer "subscription_status", default: 0
     t.text "schedule"
-    t.float "price"
     t.boolean "active", default: true
     t.bigint "course_id", null: false
     t.bigint "instructor_id", null: false
@@ -177,12 +176,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
 
   create_table "payments", force: :cascade do |t|
     t.bigint "client_id", null: false
+    t.bigint "enrollment_id", null: false
     t.decimal "amount"
     t.string "status", default: "pending"
     t.string "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_payments_on_client_id"
+    t.index ["enrollment_id"], name: "index_payments_on_enrollment_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -192,4 +193,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
   add_foreign_key "enrollments", "clients"
   add_foreign_key "enrollments", "course_classes"
   add_foreign_key "payments", "clients"
+  add_foreign_key "payments", "enrollments"
 end

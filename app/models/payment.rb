@@ -12,16 +12,10 @@ class Payment < ApplicationRecord
     canceled: 'canceled'
   }
 
-  belongs_to :course_class
+  belongs_to :enrollment
   belongs_to :client
 
-  validates :amount, presence: true
   validates :payment_method, presence: true
-  validates :card_number, presence: true
-  validates :card_holder_name, presence: true
-  validates :card_cvv, presence: true
-  validates :card_expiry_date, presence: true
-  validates :card_holder_document, presence: true
 
   after_create_commit :confirm_payment
 
@@ -39,5 +33,6 @@ class Payment < ApplicationRecord
 
   def confirm_payment
     update(status: :confirmed)
+    enrollment.update(status: :confirmed)
   end
 end

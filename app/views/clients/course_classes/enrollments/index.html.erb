@@ -4,7 +4,9 @@
    <% attributes = [ 
     { text: 'Turma', class: 'w-full text-left' },
     { text: 'Status', class: 'text-center' }
-] %>
+   ] %>
+
+   <%= rc 'flash/message' %>
 
    <%= rc 'data/table', attributes: attributes, 
                      collection: @enrollments, 

@@ -1,11 +1,10 @@
-<div class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-   <!-- Cabeçalho -->
+<div class="max-w-md mt-8 mx-auto p-6 bg-white rounded-lg shadow-md">
+
    <div class="text-center mb-6">
       <h2 class="text-2xl font-bold text-gray-800">Pagamento via Boleto</h2>
       <p class="text-gray-600">Pague em qualquer agência bancária ou internet banking</p>
    </div>
 
-   <!-- Boleto Fake -->
    <div class="border-2 border-dashed border-gray-300 p-4 mb-6 rounded-lg bg-gray-50">
       <div class="flex justify-between items-center mb-3">
          <span class="font-semibold">Banco Fake:</span>
@@ -31,7 +30,7 @@
    </div>
 </div>
 
-<div class="flex justify-between">
-   <%= link_to 'Voltar', clients_new_enrollment_path, class: 'btn-outline' %>
+<div class="flex justify-between mt-8">
+   <%= link_to t('buttons.cancel'), clients_course_classes_enrollments_path, class: 'btn-outline' %>
    <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
 </div>

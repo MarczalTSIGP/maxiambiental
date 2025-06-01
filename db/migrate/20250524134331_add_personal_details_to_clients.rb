@@ -9,6 +9,6 @@ class AddPersonalDetailsToClients < ActiveRecord::Migration[8.0]
     add_column :clients, :formation, :string
     add_column :clients, :current_company, :string
 
-    add_index :clients, :cpf, unique: true
+    add_index :clients, :cpf, unique: true, length: { cpf: 11 }
   end
 end

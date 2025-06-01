@@ -2,12 +2,12 @@
 
    <%= simple_form_for @enrollment, url: clients_create_course_class_enrollment_path do |f| %>
 
-      <%= f.input :referral_source, collection: ["Redes Sociais", "Amigos", "E-mail", "Outros"], include_blank: "Selecione uma opção" %>
+      <%= f.input :referral_source, collection: @enrollment.human_enums(:referral_source), prompt: :translate %>
 
       <%= f.input :previous_participation, as: :radio_buttons, wrapper: :horizontal_radio,
                                            collection: [[ "Sim", true ], [ "Não", false ]]  %>
 
-      <%= f.input :category, collection: ["teacher", "student"], include_blank: "Selecione sua categoria" %>
+      <%= f.input :category, collection: @enrollment.human_enums(:category), prompt: :translate %>
 
       <%= f.input :notes, as: :text %>
 

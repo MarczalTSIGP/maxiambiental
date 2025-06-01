@@ -86,7 +86,7 @@ pt-BR:
           friends: "Amigos"
           email: "E-mail"
           website: "Site"
-          other: "Outro"
+          others: "Outros"
       payment:
         payment_method: 'Forma de Pagamento'
         card_number: 'Número do Cartão'
