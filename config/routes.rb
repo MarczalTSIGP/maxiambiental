@@ -87,14 +87,14 @@ Rails.application.routes.draw do
 
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
 
-      get 'course_classes/enrollments', to: 'course_classes/enrollments#index', as: :course_classes_enrollments
+      get 'course_classes/enrollments', to: 'course_classes/enrollments#index', as: :enrollments
 
       scope 'course_classes/:course_class_id' do
         get 'edit_client', to: 'course_classes/client#edit', as: :edit_client
         patch 'update_client', to: 'course_classes/client#update', as: :update_client
 
         get 'enrollments/new', to: 'course_classes/enrollments#new', as: :new_enrollment
-        post 'enrollments', to: 'course_classes/enrollments#create', as: :enrollment
+        post 'enrollments', to: 'course_classes/enrollments#create', as: :create_enrollment
 
         scope 'enrollments/:enrollment_id' do
           get 'payments/new', to: 'course_classes/payments#new', as: :new_payment

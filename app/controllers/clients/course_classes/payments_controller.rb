@@ -35,7 +35,7 @@ class Clients::CourseClasses::PaymentsController < Clients::BaseController
   end
 
   def validate_enrollment_status
-    redirect_to clients_course_classes_enrollments_path unless @enrollment.payment_pending?
+    redirect_to clients_enrollments_path unless @enrollment.payment_pending?
   end
 
   def validate_payment_status

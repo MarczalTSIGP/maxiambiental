@@ -8,13 +8,13 @@ class Clients::CourseClasses::ClientControllerTest < ActionDispatch::Integration
   end
 
   test 'should get edit' do
-    get clients_edit_course_class_client_path(@course_class)
+    get clients_edit_client_path(@course_class)
 
     assert_response :success
   end
 
   test 'should update client with valid parameters' do
-    patch clients_update_course_class_client_path(@course_class), params: {
+    patch clients_update_client_path(@course_class), params: {
       client: {
         name: 'Novo Nome',
         cpf: '323.733.119-84',
@@ -22,12 +22,12 @@ class Clients::CourseClasses::ClientControllerTest < ActionDispatch::Integration
       }
     }
 
-    assert_redirected_to clients_new_course_class_enrollment_path
+    assert_redirected_to clients_new_enrollment_path
     assert_equal 'Novo Nome', @client.reload.name
   end
 
   test 'should not update client with invalid parameters' do
-    patch clients_update_course_class_client_path(@course_class), params: {
+    patch clients_update_client_path(@course_class), params: {
       client: {
         name: '',
         cpf: '123'
@@ -41,7 +41,7 @@ class Clients::CourseClasses::ClientControllerTest < ActionDispatch::Integration
 
   test 'should not get edit if not signed in' do
     sign_out @client
-    get clients_edit_course_class_client_path(@course_class)
+    get clients_edit_client_path(@course_class)
 
     assert_response :redirect
     assert_redirected_to new_client_session_path

@@ -1,6 +1,6 @@
 <%= render 'shared/enrollment_steps', current_step: 2 do %>
 
-   <%= simple_form_for @enrollment, url: clients_enrollment_path do |f| %>
+   <%= simple_form_for @enrollment, url: clients_create_enrollment_path do |f| %>
 
       <%= f.input :referral_source, collection: @enrollment.human_enums(:referral_source), prompt: :translate %>
 

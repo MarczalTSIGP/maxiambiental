@@ -20,7 +20,7 @@ class Clients::CourseClasses::EnrollmentsController < Clients::BaseController
     )
 
     if @enrollment.save
-      redirect_to new_clients_payment_path(@enrollment)
+      redirect_to clients_new_payment_path(@course_class, @enrollment)
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class Clients::CourseClasses::EnrollmentsController < Clients::BaseController
   def prevent_duplicate_enrollment
     return unless current_client.enrolled_in?(@course_class)
 
-    redirect_to clients_course_classes_enrollments_path, notice: t('errors.messages.already_enrolled')
+    redirect_to clients_enrollments_path, notice: t('errors.messages.already_enrolled')
   end
 
   def enrollment_params
