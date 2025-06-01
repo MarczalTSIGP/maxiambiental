@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   get 'course_classes/:id/instructor', to: 'course_classes#instructor', as: :course_class_instructor
   get 'course_classes/:id/terms', to: 'course_classes#terms', as: :course_class_terms
 
-  match '404', via: :all, to: 'errors#not_found'
-  match '500', via: :all, to: 'errors#internal_server_error'
+  match '404', via: :all, to: 'errors#not_found', as: :not_found
+  match '500', via: :all, to: 'errors#internal_server_error', as: :internal_server_error
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 
@@ -90,15 +90,15 @@ Rails.application.routes.draw do
       get 'course_classes/enrollments', to: 'course_classes/enrollments#index', as: :course_classes_enrollments
 
       scope 'course_classes/:course_class_id' do
-        get 'edit_client', to: 'course_classes/client#edit', as: :edit_course_class_client
-        patch 'update_client', to: 'course_classes/client#update', as: :update_course_class_client
+        get 'edit_client', to: 'course_classes/client#edit', as: :edit_client
+        patch 'update_client', to: 'course_classes/client#update', as: :update_client
 
-        get 'enrollments/new', to: 'course_classes/enrollments#new', as: :new_course_class_enrollment
-        post 'enrollments', to: 'course_classes/enrollments#create', as: :create_course_class_enrollment
+        get 'enrollments/new', to: 'course_classes/enrollments#new', as: :new_enrollment
+        post 'enrollments', to: 'course_classes/enrollments#create', as: :enrollment
 
         scope 'enrollments/:enrollment_id' do
-          get 'payments/new', to: 'course_classes/payments#new', as: :new_course_class_enrollment_payment
-          post 'payments', to: 'course_classes/payments#create', as: :create_course_class_enrollment_payment
+          get 'payments/new', to: 'course_classes/payments#new', as: :new_payment
+          post 'payments', to: 'course_classes/payments#create', as: :payment
 
           get 'payments/:payment_id/confirmation', to: 'course_classes/payments#confirmation',
                                                    as: :payment_confirmation

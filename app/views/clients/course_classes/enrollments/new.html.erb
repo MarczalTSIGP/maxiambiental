@@ -1,6 +1,6 @@
 <%= render 'shared/enrollment_steps', current_step: 2 do %>
 
-   <%= simple_form_for @enrollment, url: clients_create_course_class_enrollment_path do |f| %>
+   <%= simple_form_for @enrollment, url: clients_enrollment_path do |f| %>
 
       <%= f.input :referral_source, collection: @enrollment.human_enums(:referral_source), prompt: :translate %>
 
@@ -13,7 +13,7 @@
 
       <div class="mt-4 mb-6 space-y-4">
          <label class="block text-green-700 text-sm font-bold mb-2">
-            Termos e Condições
+            <%= CourseClass.human_attribute_name(:acceptance_terms) %>
          </label>
 
          <div class="border border-gray-300 rounded-lg bg-gray-50 p-4 max-h-48 overflow-y-auto prose">

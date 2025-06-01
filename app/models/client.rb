@@ -8,6 +8,7 @@ class Client < ApplicationRecord
 
   has_many :enrollments, dependent: :destroy
   has_many :course_classes, through: :enrollments
+  has_many :payments, dependent: :destroy
   has_one_attached :avatar
 
   searchable :email, name: { unaccent: true }

@@ -1,5 +1,5 @@
 <%= render 'shared/enrollment_steps', current_step: 1 do %>
-   <%= simple_form_for current_client, url: clients_update_course_class_client_path do |f| %>
+   <%= simple_form_for current_client, url: clients_update_client_path do |f| %>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
          <%= f.input :name %>

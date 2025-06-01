@@ -20,7 +20,7 @@ class Clients::CourseClasses::EnrollmentsController < Clients::BaseController
     )
 
     if @enrollment.save
-      redirect_to clients_new_course_class_enrollment_payment_path(@course_class, @enrollment)
+      redirect_to new_clients_payment_path(@enrollment)
     else
       render :new, status: :unprocessable_entity
     end

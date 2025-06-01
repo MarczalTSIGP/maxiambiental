@@ -1,6 +1,6 @@
 class Clients::CourseClasses::PaymentsController < Clients::BaseController
-  before_action :set_enrollment
   before_action :set_course_class
+  before_action :set_enrollment
   before_action :set_payment, only: :confirmation
   before_action :validate_enrollment_status, only: :new
   before_action :validate_payment_status, only: :confirmation
@@ -10,7 +10,7 @@ class Clients::CourseClasses::PaymentsController < Clients::BaseController
   end
 
   def create
-    @payment = @enrollment.payments.new(client: current_client, **payment_params)
+    @payment = current_client.payments.new(enrollment: @enrollment, **payment_params)
 
     if @payment.save
       redirect_to clients_payment_confirmation_path(@payment)
@@ -23,16 +23,16 @@ class Clients::CourseClasses::PaymentsController < Clients::BaseController
 
   private
 
+  def set_course_class
+    @course_class = CourseClass.find(params[:course_class_id])
+  end
+
   def set_payment
-    @payment = Payment.find(params[:payment_id])
+    @payment = @enrollment.payments.find(params[:payment_id])
   end
 
   def set_enrollment
-    @enrollment = Enrollment.find(params[:enrollment_id])
-  end
-
-  def set_course_class
-    @course_class = @enrollment.course_class
+    @enrollment = @course_class.enrollments.find(params[:enrollment_id])
   end
 
   def payment_params
@@ -44,8 +44,6 @@ class Clients::CourseClasses::PaymentsController < Clients::BaseController
   end
 
   def validate_payment_status
-    return if @enrollment.confirmed?
-
-    redirect_to clients_new_course_class_enrollment_payment_path(@course_class, @enrollment)
+    redirect_to new_clients_payment_path(@enrollment) unless @payment.confirmed?
   end
 end
