@@ -41,7 +41,7 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
 
   test 'canceling the client enrollment' do
     visit clients_edit_client_path(@course_class)
-    click_link I18n.t('buttons.cancel')
+    click_on I18n.t('buttons.cancel')
 
     assert_current_path course_classes_path
   end
