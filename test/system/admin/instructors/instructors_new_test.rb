@@ -45,6 +45,6 @@ class InstructorsNewTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.submit.create', model: Instructor.model_name.human)
 
     assert_current_path new_admin_instructor_path
-    assert_validation_error I18n.t('errors.messages.email', attribute: 'e-mail')
+    assert_validation_error I18n.t('errors.messages.email', attribute: 'E-mail')
   end
 end

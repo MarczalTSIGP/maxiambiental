@@ -12,6 +12,9 @@ class CourseClass < ApplicationRecord
   belongs_to :course
   belongs_to :instructor
 
+  has_many :enrollments, dependent: :destroy
+  has_many :clients, through: :enrollments
+
   has_rich_text :about
   has_rich_text :address
   has_rich_text :programming
@@ -24,8 +27,12 @@ class CourseClass < ApplicationRecord
   validates :end_at,
             comparison: { greater_than: :start_at }
 
-  validates :available_slots, presence: true,
-                              numericality: { greater_than: 0, only_integer: true }
+  validates :available_slots,
+            presence: true,
+            numericality: {
+              greater_than: 0,
+              only_integer: true
+            }
 
   searchable(
     { name: { unaccent: true } },

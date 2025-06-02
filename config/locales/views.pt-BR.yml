@@ -35,6 +35,7 @@ pt-BR:
     professionals: 'Profissionais'
     schedule: 'Programação'
     payments: 'Pagamentos'
+    terms: 'Termos e condições'
     contact_us: 'Fale conosco'
     classes: 'Turmas'
     instructors: 'Instrutores'
@@ -42,6 +43,15 @@ pt-BR:
     students: 'Estudantes'
     settings: 'Configurações'
     messages: 'Mensagens'
+    enrollments: 'Inscrições'
+
+  steps:
+    enrollment_form: 'Formulário de inscrição'
+    enrollment:
+      personal_data: 'Dados pessoais'
+      course_data: 'Dados do curso'
+      payment: 'Pagamento'
+      confirmation: 'Confirmação'
 
   flash_messages:
     profile_updated: 'Seu perfil foi atualizado com sucesso.'
@@ -189,6 +199,17 @@ pt-BR:
           content: 'Conteúdo'
           terms: 'Termos'
 
+  clients:
+    course_classes:
+      enrollments:
+        index:
+          title: 'Minhas Inscrições'
+          description: 'Gerencie todas as inscrições cadastradas na Maxiambiental.'
+        partials:
+          enrollment:
+            confirm: 'Tem certeza que deseja excluir essa inscrição?'
+            payment_review: 'Rever pagamento'
+
   courses:
     index:
       title: 'Cursos'
@@ -196,3 +217,8 @@ pt-BR:
     no_results:
       no_courses_title: 'Nenhum curso disponível'
       no_courses_description: 'Parece que ainda não temos cursos publicados nesta categoria. Volte em breve!'
+  
+  course_classes:
+    index:
+      title: 'Turmas'
+      description: 'Explore nossas turmas e descubra as oportunidades de aprendizado que oferecemos para o seu desenvolvimento profissional.'

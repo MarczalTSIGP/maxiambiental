@@ -28,6 +28,10 @@
                      class: "block px-4 py-2 text-sm hover:bg-green-200 text-green-800" %>
       </li>
       <li>
+         <%= link_to t('links.enrollments'), clients_enrollments_path,
+                     class: "block px-4 py-2 text-sm hover:bg-green-200 text-green-800" %>
+      </li>
+      <li>
          <%= link_to t('devise.sessions.sign_out'), destroy_client_session_path,
                      data: { turbo_method: :delete }, class: "block px-4 py-2 text-sm hover:bg-red-100 text-red-700" %>
       </li>

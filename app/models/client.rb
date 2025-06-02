@@ -1,20 +1,29 @@
 class Client < ApplicationRecord
   include Searchable
 
-  searchable :email, name: { unaccent: true }
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable,
-         :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :email,
-            presence: true,
-            uniqueness: { case_sensitive: true }
+  has_many :enrollments, dependent: :destroy
+  has_many :course_classes, through: :enrollments
+  has_many :payments, dependent: :destroy
+  has_one_attached :avatar
+
+  searchable :email, name: { unaccent: true }
 
   validates :name, presence: true
+  validates :email, presence: true, uniqueness: { case_sensitive: true }
+  validates :cpf, presence: true, uniqueness: true, cpf: true, if: :cpf_present?
+  validates :phone, presence: true, phone: true, if: :phone_present?
+  validates :cep, presence: true, cep: true, if: :address_attributes_present?
 
-  has_one_attached :avatar
+  with_options if: :address_attributes_present? do
+    validates :city, presence: true
+    validates :state, presence: true
+    validates :address, presence: true
+  end
 
   def self.from_google(user)
     client = create_with(
@@ -43,5 +52,23 @@ class Client < ApplicationRecord
 
     self.password = Devise.friendly_token[0, 20]
     self.password_confirmation = password
+  end
+
+  def enrolled_in?(course_class)
+    enrollments.exists?(course_class: course_class, status: Enrollment.statuses.except(:canceled).keys)
+  end
+
+  private
+
+  def cpf_present?
+    cpf.present?
+  end
+
+  def phone_present?
+    phone.present?
+  end
+
+  def address_attributes_present?
+    cep.present? || city.present? || state.present? || address.present?
   end
 end

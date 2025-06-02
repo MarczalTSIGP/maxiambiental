@@ -144,17 +144,37 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :checkbox, tag: 'div', class: 'flex items-center justify-end', error_class: 'text-red-500' do |b|
+  config.wrappers :checkbox, tag: 'div', class: 'flex flex-col items-start', error_class: 'text-red-500' do |b|
     b.use :html5
     b.use :placeholder
-    b.use :label, class: 'ml-2 text-md text-gray-500 dark:text-gray-300 order-1'
+
+    b.wrapper :checkbox_container, tag: 'div', class: 'flex items-center' do |ba|
+      ba.use :input,
+             class: 'text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500',
+             error_class: 'text-red-500'
+      
+      ba.use :label, class: 'ml-2 text-md text-gray-500'
+    end
+
+    b.use :error, wrap_with: { tag: :p, class: 'mt-1 text-sm text-red-600' }
+    b.use :hint, wrap_with: { tag: :p, class: 'mt-1 text-sm text-gray-500' }
+  end
+
+  config.wrappers :horizontal_radio, tag: 'div', class: 'mb-3', error_class: 'border-red-500' do |b|
+    b.use :html5
     b.optional :readonly
 
-    b.wrapper :input_wrapper, tag: 'div' do |ba|
-      ba.use :input,
-             class: 'w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 order-2'
+    b.wrapper tag: 'div' do |ba|
+      ba.use :label, class: 'block text-green-700 text-sm font-bold mb-2'
+      ba.wrapper tag: 'div', class: 'flex items-center gap-4 text-sm text-green-700' do |bb|
+        bb.use :input, 
+          class: 'mr-2 text-green-700 border-gray-300 focus:ring-green-600 align-baseline',
+          error_class: 'border-red-500'
+        bb.use :error, wrap_with: { tag: 'p', class: 'mt-2 text-sm text-red-600' }
+      end
     end
   end
+
 
   config.button_class = 'text-white py-2 px-4 rounded-md bg-green-700 hover:bg-green-800 cursor-pointer'
 
