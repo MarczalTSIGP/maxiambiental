@@ -98,7 +98,7 @@ Rails.application.routes.draw do
 
         scope 'enrollments/:enrollment_id' do
           get 'payments/new', to: 'course_classes/payments#new', as: :new_payment
-          post 'payments', to: 'course_classes/payments#create', as: :payment
+          post 'payments', to: 'course_classes/payments#create', as: :create_payment
 
           get 'payments/confirmation', to: 'course_classes/payments#confirmation',
                                        as: :payment_confirmation
