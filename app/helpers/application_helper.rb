@@ -7,13 +7,4 @@ module ApplicationHelper
   def full_title(page_title = '', base_title = t('app.name'))
     page_title.blank? ? base_title : "#{page_title} | #{base_title}"
   end
-
-  def current_step
-    case action_name
-    when 'edit_client', 'process_client_info' then 1
-    when 'new', 'process_course_details' then 2
-    when 'payment', 'process_payment' then 3
-    when 'confirmation' then 4
-    end
-  end
 end
