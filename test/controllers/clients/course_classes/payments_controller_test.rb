@@ -3,7 +3,7 @@ require 'test_helper'
 class Clients::CourseClasses::PaymentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @client = FactoryBot.create(:client)
-    @course_class = FactoryBot.create(:course_class)
+    @course_class = FactoryBot.create(:course_class, subscription_status: :open)
     @enrollment = FactoryBot.create(:enrollment, client: @client, course_class: @course_class)
 
     sign_in @client

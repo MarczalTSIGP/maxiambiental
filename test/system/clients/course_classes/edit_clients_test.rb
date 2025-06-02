@@ -8,15 +8,15 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
   end
 
   test 'visiting the edit page' do
-    visit clients_edit_course_class_client_path(@course_class)
+    visit clients_edit_client_path(@course_class)
 
     assert_selector 'h1', text: I18n.t('steps.enrollment_form')
     assert_field 'client[name]', with: @client.name
     assert_field 'client[cpf]', with: @client.cpf
   end
 
-  test 'successfully update client information' do
-    visit clients_edit_course_class_client_path(@course_class)
+  test 'updating client information' do
+    visit clients_edit_client_path(@course_class)
 
     fill_in 'client[name]', with: 'Jane Doe'
     fill_in 'client[cpf]', with: '323.733.119-84'
@@ -26,8 +26,8 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
     assert_current_path clients_new_course_class_enrollment_path(@course_class)
   end
 
-  test 'show errors when submitting invalid data' do
-    visit clients_edit_course_class_client_path(@course_class)
+  test 'showing errors when submitting invalid data' do
+    visit clients_edit_client_path(@course_class)
 
     fill_in 'client[name]', with: ''
     fill_in 'client[cpf]', with: '123'
@@ -39,22 +39,22 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
     assert_text I18n.t('errors.messages.phone', attribute: Client.human_attribute_name(:phone))
   end
 
-  test 'cancel button redirects to course classes page' do
-    visit clients_edit_course_class_client_path(@course_class)
+  test 'canceling the client enrollment' do
+    visit clients_edit_client_path(@course_class)
     click_link I18n.t('buttons.cancel')
 
     assert_current_path course_classes_path
   end
 
-  test 'email field should be disabled' do
-    visit clients_edit_course_class_client_path(@course_class)
+  test 'checking email field disabled' do
+    visit clients_edit_client_path(@course_class)
     email_field = find_by_id('client_email')
 
     assert_predicate email_field, :disabled?
   end
 
-  test 'CPF mask works correctly' do
-    visit clients_edit_course_class_client_path(@course_class)
+  test 'checking cpf mask' do
+    visit clients_edit_client_path(@course_class)
     cpf_field = find_field('client[cpf]')
 
     cpf_field.fill_in with: '12345678909'
@@ -62,8 +62,8 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
     assert_equal '123.456.789-09', cpf_field.value
   end
 
-  test 'phone mask works correctly' do
-    visit clients_edit_course_class_client_path(@course_class)
+  test 'checking phone mask' do
+    visit clients_edit_client_path(@course_class)
     phone_field = find_field('client[phone]')
 
     phone_field.fill_in with: '11999999999'

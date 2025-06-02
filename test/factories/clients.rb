@@ -4,7 +4,7 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { 'password' }
     bio { Faker::Quote.fortune_cookie }
-    cpf { Faker::Number.numerify('###.###.###-##') }
+    cpf { CpfGenerator.generate }
     phone { Faker::PhoneNumber.numerify('(##) 9####-####') }
     cep { Faker::Address.zip_code }
     city { Faker::Address.city }

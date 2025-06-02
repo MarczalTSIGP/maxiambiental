@@ -1,44 +1,72 @@
 require 'test_helper'
 
 class ClientTest < ActiveSupport::TestCase
-  setup do
-    @client = Client.new(email: 'new_client@example.com', password: 'password')
+  should validate_presence_of(:email)
+  should validate_presence_of(:name)
+  should validate_presence_of(:password).on(:create)
+
+  test 'active attribute defaults to true' do
+    assert FactoryBot.build(:client).active
   end
 
-  context 'validations' do
-    should validate_presence_of(:email)
-    should validate_presence_of(:password)
+  test 'rejects duplicate email' do
+    existing = FactoryBot.create(:client)
+    new_client = FactoryBot.build(:client, email: existing.email)
+
+    assert_not new_client.valid?
+    assert_includes new_client.errors[:email], I18n.t('errors.messages.taken')
   end
 
-  context 'validations on update' do
-    should validate_presence_of(:email).on(:update)
-    should validate_presence_of(:cpf).on(:update)
-    should validate_uniqueness_of(:cpf).on(:update)
-    should validate_presence_of(:phone).on(:update)
-    should validate_presence_of(:cep).on(:update)
-    should validate_presence_of(:city).on(:update)
-    should validate_presence_of(:state).on(:update)
-    should validate_presence_of(:address).on(:update)
-  end
-
-  test 'client active attribute defaults to true' do
-    assert @client.active
-  end
-
-  test 'validates CPF format' do
-    client = FactoryBot.create(:client)
-    client.update(cpf: '111.111.111-11')
+  test 'validates CPF format when present' do
+    client = FactoryBot.build(:client, cpf: '111.111.111-11')
 
     assert_not client.valid?
     assert_includes client.errors[:cpf], I18n.t('errors.messages.cpf')
   end
 
-  test 'validates phone format' do
-    client = FactoryBot.create(:client)
-    client.update(phone: '123456789')
+  test 'requires unique CPF' do
+    existing = FactoryBot.create(:client)
+    client = FactoryBot.build(:client, cpf: existing.cpf)
+
+    assert_not client.valid?
+    assert_includes client.errors[:cpf], I18n.t('errors.messages.taken')
+  end
+
+  test 'validates phone format when present' do
+    client = FactoryBot.build(:client, phone: '123456')
 
     assert_not client.valid?
     assert_includes client.errors[:phone],
                     I18n.t('errors.messages.phone', attribute: Client.human_attribute_name(:phone))
+  end
+
+  test 'requires address fields when the attributes are present' do
+    client = FactoryBot.build(:client, city: nil, state: nil)
+
+    assert_not client.valid?
+
+    assert_includes client.errors[:city], blank_message_for(:city)
+    assert_includes client.errors[:state], blank_message_for(:state)
+  end
+
+  test 'validates CEP format' do
+    client = FactoryBot.build(:client, cep: '123456')
+
+    assert_not client.valid?
+    assert_includes client.errors[:cep], I18n.t('errors.messages.invalid', attribute: 'CEP')
+  end
+
+  test 'set_random_password sets password when blank' do
+    client = FactoryBot.build(:client, password: nil)
+    client.set_random_password
+
+    assert_predicate client.password, :present?
+    assert_equal client.password, client.password_confirmation
+  end
+
+  private
+
+  def blank_message_for(attribute)
+    I18n.t('errors.messages.blank', attribute: Client.human_attribute_name(attribute))
   end
 end

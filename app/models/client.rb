@@ -19,17 +19,23 @@ class Client < ApplicationRecord
 
   validates :name, presence: true
 
-  with_options on: :update do
-    validates :cpf,
-              presence: true,
-              uniqueness: true,
-              cpf: true
+  validates :cpf,
+            presence: true,
+            uniqueness: true,
+            cpf: true,
+            if: :cpf_present?
 
-    validates :phone,
-              presence: true,
-              phone: true
+  validates :phone,
+            presence: true,
+            phone: true,
+            if: :phone_present?
 
-    validates :cep, presence: true
+  validates :cep,
+            presence: true,
+            cep: true,
+            if: :address_attributes_present?
+
+  with_options if: :address_attributes_present? do
     validates :city, presence: true
     validates :state, presence: true
     validates :address, presence: true
@@ -66,5 +72,19 @@ class Client < ApplicationRecord
 
   def enrolled_in?(course_class)
     enrollments.exists?(course_class: course_class, status: Enrollment.statuses.except(:canceled).keys)
+  end
+
+  private
+
+  def cpf_present?
+    cpf.present?
+  end
+
+  def phone_present?
+    phone.present?
+  end
+
+  def address_attributes_present?
+    cep.present? || city.present? || state.present? || address.present?
   end
 end
