@@ -1,7 +1,7 @@
 <%= f.input :card_number, required: true %>
 <%= f.input :card_holder_name, required: true %>
 
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-4">
    <%= f.input :card_expiry_date, required: true %>
    <%= f.input :card_cvv, required: true %>
    <%= f.input :card_holder_document, required: true %>
