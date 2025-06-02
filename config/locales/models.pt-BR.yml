@@ -19,6 +19,9 @@ pt-BR:
       enrollment: 
         one: 'Inscrição'
         other: 'Inscrições'
+      payment: 
+        one: 'Pagamento'
+        other: 'Pagamentos'
     attributes:
       defaults: &defaults
         created_at: 'Criado em'

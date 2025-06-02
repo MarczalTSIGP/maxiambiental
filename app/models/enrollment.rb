@@ -14,7 +14,12 @@ class Enrollment < ApplicationRecord
 
   include Searchable
 
-  searchable :course_class
+  searchable :status,
+             {
+               relationships: {
+                 course_class: { fields: ['name'] }
+               }
+             }
 
   belongs_to :client
   belongs_to :course_class

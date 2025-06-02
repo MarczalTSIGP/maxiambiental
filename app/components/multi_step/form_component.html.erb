@@ -1,7 +1,7 @@
 <div class="mb-8 overflow-x-auto sm:overflow-visible">
    <ol class="flex w-max min-w-full items-center p-2 space-x-4 sm:space-x-2 md:space-x-4 text-sm font-medium text-gray-500 sm:bg-white sm:text-base sm:p-4 justify-center">
       <% steps.each do |step| %>
-         <li class="flex items-center shrink-0 <%= 'text-green-700' if current_step == step[:number] %>">
+         <li id="step-<%= step[:number] %>" class="flex items-center shrink-0 <%= 'text-green-700' if current_step == step[:number] %>">
             <span class="flex items-center justify-center w-6 h-6 sm:w-5 sm:h-5 text-xs border <%= current_step == step[:number] ? 'border-green-700' : 'border-gray-500' %> rounded-full">
                <%= step[:number] %>
             </span>

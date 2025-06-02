@@ -1,4 +1,4 @@
-<tr id='<%= "course_#{enrollment.course_class.id}" %>'>
+<tr id='<%= "enrollment_#{enrollment.id}" %>'>
    <td class="px-6 py-4 text-sm text-gray-800">
       <div class="flex items-center justify-center">
          <%= image_tag enrollment.course_class.course.image_url, class: "h-8 w-8 aspect-square rounded-md object-cover"%>
@@ -21,7 +21,7 @@
    </td>
 
    <td class="px-6 py-4 text-sm text-center text-gray-800">
-      <span>
+      <span class="<%= enrollment.confirmed? ? 'badge-active' : 'badge-inactive' %>">
          <%= enrollment.human_enum(:status) %>
       </span>
    </td>
@@ -29,7 +29,7 @@
    <td class="px-6 py-4 text-sm text-center text-gray-800">
       <span>
          <% if enrollment.payment_pending? %>
-            <%= link_to 'Rever o pagamento', clients_new_payment_path(enrollment.course_class, enrollment), class: 'font-medium text-red-700 hover:underline' %>
+            <%= link_to t('.payment_review'), clients_new_payment_path(enrollment.course_class, enrollment), class: 'font-medium text-red-700 hover:underline' %>
          <% else %>
             <%= link_to enrollment.payment.human_status, clients_payment_confirmation_path(enrollment.course_class, enrollment), class: 'font-medium text-green-700 hover:underline' %>
          <% end %>

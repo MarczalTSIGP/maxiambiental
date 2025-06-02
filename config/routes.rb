@@ -87,7 +87,12 @@ Rails.application.routes.draw do
 
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
 
-      get 'course_classes/enrollments', to: 'course_classes/enrollments#index', as: :enrollments
+      get 'enrollments', to: 'course_classes/enrollments#index', as: :enrollments
+
+      get 'enrollments/search/(:term)/(page/:page)',
+          constraints: { term: %r{[^/]+} },
+          to: 'course_classes/enrollments#index',
+          as: 'course_classes_search'
 
       scope 'course_classes/:course_class_id' do
         get 'edit_client', to: 'course_classes/client#edit', as: :edit_client

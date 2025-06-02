@@ -199,6 +199,17 @@ pt-BR:
           content: 'Conteúdo'
           terms: 'Termos'
 
+  clients:
+    course_classes:
+      enrollments:
+        index:
+          title: 'Minhas Inscrições'
+          description: 'Gerencie todas as inscrições cadastradas na Maxiambiental.'
+        partials:
+          enrollment:
+            confirm: 'Tem certeza que deseja excluir essa inscrição?'
+            payment_review: 'Rever pagamento'
+
   courses:
     index:
       title: 'Cursos'
