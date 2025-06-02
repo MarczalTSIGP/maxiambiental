@@ -23,7 +23,7 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
     fill_in 'client[phone]', with: '(11) 98888-8888'
     click_on I18n.t('buttons.confirm')
 
-    assert_current_path clients_new_course_class_enrollment_path(@course_class)
+    assert_current_path clients_new_enrollment_path(@course_class)
   end
 
   test 'showing errors when submitting invalid data' do
