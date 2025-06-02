@@ -13,27 +13,11 @@ class Client < ApplicationRecord
 
   searchable :email, name: { unaccent: true }
 
-  validates :email,
-            presence: true,
-            uniqueness: { case_sensitive: true }
-
   validates :name, presence: true
-
-  validates :cpf,
-            presence: true,
-            uniqueness: true,
-            cpf: true,
-            if: :cpf_present?
-
-  validates :phone,
-            presence: true,
-            phone: true,
-            if: :phone_present?
-
-  validates :cep,
-            presence: true,
-            cep: true,
-            if: :address_attributes_present?
+  validates :email, presence: true, uniqueness: { case_sensitive: true }
+  validates :cpf, presence: true, uniqueness: true, cpf: true, if: :cpf_present?
+  validates :phone, presence: true, phone: true, if: :phone_present?
+  validates :cep, presence: true, cep: true, if: :address_attributes_present?
 
   with_options if: :address_attributes_present? do
     validates :city, presence: true

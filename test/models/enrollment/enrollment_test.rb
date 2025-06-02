@@ -14,8 +14,6 @@ class EnrollmentTest < ActiveSupport::TestCase
 
   context 'validations' do
     should validate_acceptance_of(:terms_accepted)
-    # should validate_inclusion_of(:category).in_array(Enrollment.categories.values)
-    # should validate_inclusion_of(:referral_source).in_array(Enrollment.referral_sources.values)
   end
 
   should 'the course class subscription status be open' do
