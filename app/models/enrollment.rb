@@ -26,6 +26,8 @@ class Enrollment < ApplicationRecord
   validates :referral_source, presence: true, inclusion: { in: referral_sources }
   validates :client_id, uniqueness: { scope: :course_class_id }
 
+  validate :course_class_subscription_must_be_open, on: :create
+
   def human_enum(enum_name)
     I18n.t("activerecord.attributes.enrollment.#{enum_name.to_s.pluralize}.#{self[enum_name]}")
   end
@@ -42,5 +44,14 @@ class Enrollment < ApplicationRecord
 
   def payment
     payments.last
+  end
+
+  private
+
+  def course_class_subscription_must_be_open
+    return if course_class.nil? || course_class.open?
+
+    errors.add(:course_class,
+               I18n.t('errors.messages.must_be_in_progress', attribute: CourseClass.model_name.human))
   end
 end
