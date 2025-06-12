@@ -87,28 +87,33 @@ Rails.application.routes.draw do
 
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
 
+      scope 'course_classes/:course_class_id' do
+        get 'enrollments/new', to: 'enrollments#new', as: :new_enrollment
+        post 'enrollments', to: 'enrollments#create', as: :create_enrollment
+      end
+
       get 'enrollments', to: 'course_classes/enrollments#index', as: :enrollments
 
-      get 'enrollments/search/(:term)/(page/:page)',
-          constraints: { term: %r{[^/]+} },
-          to: 'course_classes/enrollments#index',
-          as: 'course_classes_search'
+      # get 'enrollments/search/(:term)/(page/:page)',
+      #     constraints: { term: %r{[^/]+} },
+      #     to: 'course_classes/enrollments#index',
+      #     as: 'course_classes_search'
 
-      scope 'course_classes/:course_class_id' do
-        get 'edit_client', to: 'course_classes/client#edit', as: :edit_client
-        patch 'update_client', to: 'course_classes/client#update', as: :update_client
+      # scope 'course_classes/:course_class_id' do
+      #   get 'edit_client', to: 'course_classes/client#edit', as: :edit_client
+      #   patch 'update_client', to: 'course_classes/client#update', as: :update_client
 
-        get 'enrollments/new', to: 'course_classes/enrollments#new', as: :new_enrollment
-        post 'enrollments', to: 'course_classes/enrollments#create', as: :create_enrollment
+      #   get 'enrollments/new', to: 'course_classes/enrollments#new', as: :new_enrollment
+      #   post 'enrollments', to: 'course_classes/enrollments#create', as: :create_enrollment
 
-        scope 'enrollments/:enrollment_id' do
-          get 'payments/new', to: 'course_classes/payments#new', as: :new_payment
-          post 'payments', to: 'course_classes/payments#create', as: :create_payment
+      #   scope 'enrollments/:enrollment_id' do
+      #     get 'payments/new', to: 'course_classes/payments#new', as: :new_payment
+      #     post 'payments', to: 'course_classes/payments#create', as: :create_payment
 
-          get 'payments/confirmation', to: 'course_classes/payments#confirmation',
-                                       as: :payment_confirmation
-        end
-      end
+      #     get 'payments/confirmation', to: 'course_classes/payments#confirmation',
+      #                                  as: :payment_confirmation
+      #   end
+      # end
     end
   end
 end

@@ -1,0 +1,31 @@
+<%= simple_form_for form, url: clients_create_enrollment_path do |f| %>
+   <%= hidden_field_tag :step, @form.current_step %>
+
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <%= f.input :name %>
+      <%= f.input :cpf, input_html: { data: { controller: "cpf-mask" }, maxlength: 14 } %>
+   </div>
+
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+      <%= f.input :email, disabled: true %>
+      <%= f.input :phone, input_html: { data: { controller: "phone-mask", action: "input->phone-mask#apply" } } %>
+   </div>
+
+   <div data-controller="cep">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+         <%= f.input :cep, input_html: { data: { cep_target: "cep", action: "blur->cep#fetchAddress" } } %>
+         <%= f.input :city, input_html: { data: { cep_target: "city" }, readonly: true } %>
+         <%= f.input :state, input_html: { data: { cep_target: "state" }, readonly: true } %>
+      </div>
+
+      <%= f.input :address, input_html: { data: { cep_target: "address" } } %>
+   </div>
+
+   <div class="form-actions">
+      <% if @form.current_step != :client %>
+         <%= submit_tag "Voltar", name: "commit" %>
+      <% end %>
+
+      <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
+   </div>
+<% end %>

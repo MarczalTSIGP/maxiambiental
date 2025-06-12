@@ -1,0 +1,70 @@
+class Enrollments::ClientForm
+  include ActiveModel::Model
+  include ActiveModel::Attributes
+  include ActiveModel::Validations
+  include ActiveModel::Translation
+
+  attr_accessor :name, :email, :cpf, :phone, :address, :city, :state, :cep
+
+  validates :name, presence: true, length: { minimum: 3, maximum: 100 }
+  validates :email, presence: true, email: true
+  validates :cpf, presence: true, cpf: true
+  validates :phone, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :state, presence: true, length: { is: 2 }
+  validates :cep, presence: true, cep: true
+
+  def initialize(client, attributes = {})
+    @client = client
+
+    attributes = default_attributes.merge(attributes)
+    super(attributes)
+  end
+
+  def self.human_attribute_name(attribute, _options = {})
+    Client.human_attribute_name(attribute)
+  end
+
+  def update!
+    raise ActiveRecord::RecordInvalid unless valid?
+
+    @client.update(client_attributes)
+  end
+
+  def self.model_name
+    ActiveModel::Name.new(self, nil, 'Client')
+  end
+
+  def attributes
+    {
+      name: name,
+      email: email,
+      cpf: cpf,
+      phone: phone,
+      address: address,
+      city: city,
+      state: state,
+      cep: cep
+    }
+  end
+
+  private
+
+  def default_attributes
+    {
+      name: @client.name,
+      email: @client.email,
+      cpf: @client.cpf,
+      phone: @client.phone,
+      address: @client.address,
+      city: @client.city,
+      state: @client.state,
+      cep: @client.cep
+    }
+  end
+
+  def client_attributes
+    attributes.symbolize_keys
+  end
+end

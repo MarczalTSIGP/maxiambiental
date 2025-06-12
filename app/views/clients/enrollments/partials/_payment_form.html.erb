@@ -1,0 +1,32 @@
+<div data-controller="payment-method" class="space-y-4">
+   <%= simple_form_for form, url: clients_create_enrollment_path do |f| %>
+
+      <%= f.input :payment_method,
+            collection: ['Boleto', 'Cartão de Crédito', 'Cartão de Débito', 'Pix'],
+            prompt: :translate,
+            input_html: {
+                data: { 
+                    action: "change->payment-method#toggleFields",
+                    payment_method_target: "radio"
+                }
+            }
+         %>
+
+      <div data-payment-method-target="boleto" class="hidden mt-4">
+         <%= render 'clients/course_classes/payments/partials/bank_slip_fields', f: f %>
+      </div>
+
+      <div data-payment-method-target="creditCard" class="hidden mt-4">
+         <%= render 'clients/course_classes/payments/partials/credit_card_fields', f: f %>
+      </div>
+
+      <div data-payment-method-target="debitCard" class="hidden mt-4">
+         <%= render 'clients/course_classes/payments/partials/credit_card_fields', f: f %>
+      </div>
+
+      <div data-payment-method-target="pix" class="hidden mt-4">
+         <%= render 'clients/course_classes/payments/partials/pix', f: f %>
+      </div>
+
+   <% end %>
+</div>

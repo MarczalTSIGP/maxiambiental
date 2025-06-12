@@ -29,9 +29,9 @@
    <td class="px-6 py-4 text-sm text-center text-gray-800">
       <span>
          <% if enrollment.payment_pending? %>
-            <%= link_to t('.payment_review'), clients_new_payment_path(enrollment.course_class, enrollment), class: 'font-medium text-red-700 hover:underline' %>
+            <%= link_to t('.payment_review'), '#', class: 'font-medium text-red-700 hover:underline' %>
          <% else %>
-            <%= link_to enrollment.payment.human_status, clients_payment_confirmation_path(enrollment.course_class, enrollment), class: 'font-medium text-green-700 hover:underline' %>
+            <%= link_to enrollment.payment.human_status, '#', class: 'font-medium text-green-700 hover:underline' %>
          <% end %>
       </span>
    </td>
