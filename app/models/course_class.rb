@@ -44,6 +44,10 @@ class CourseClass < ApplicationRecord
     }
   )
 
+  def enrolled_count
+    enrollments.where(status: :confirmed).count
+  end
+
   def human_subscription_status
     I18n.t("activerecord.attributes.course_class.subscription_statuses.#{subscription_status}")
   end

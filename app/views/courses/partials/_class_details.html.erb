@@ -1,10 +1,35 @@
-<% tabs = [
-            { name: t('links.about'), path: "#about" },
-            { name: t('links.schedule'), path: "#schedule" },
-            { name: t('links.professionals'), path: "#professionals" },
-            { name: t('links.payments'), path: "#payments" },
-          ] %>
+<li class="shrink-0 w-[calc(100vw-100px)] sm:w-80 md:w-96 bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+   <div class="p-6">
+      <div class="flex h-14 justify-between items-start">
+         <%= link_to course_class.name, course_class_path(course_class), class: "text-xl font-semibold line-clamp-2" %>
+         <span class="badge text-center bg-green-100 text-green-700">
+            <%= course_class.human_subscription_status %>
+         </span>
+      </div>
 
-<%= rc 'navigation/tabs', tabs: tabs %>
+      <div class="my-6 space-y-3">
+         <div class="flex items-center text-gray-600">
+            <%= icon('fa-solid', 'calendar', class: 'w-5 h-5 mr-2') %>
+            <span><%= l(course_class.start_at) %> - <%= l(course_class.end_at) %></span>
+         </div>
 
-<%= render 'shared/no_results' %>
+         <div class="flex items-center text-gray-600 truncate">
+            <%= icon('fa-solid', 'clock', class: 'w-5 h-5 mr-2') %>
+            <span><%= course_class.schedule %></span>
+         </div>
+
+         <div class="flex items-center text-gray-600">
+            <%= icon('fa-solid', 'users', class: 'w-5 h-5 mr-2') %>
+            <span><%= course_class.enrolled_count %>/<%= course_class.available_slots %> vagas</span>
+         </div>
+      </div>
+
+      <% if course_class.open? %>
+         <%= link_to t('buttons.registration_form'), clients_new_enrollment_path(course_class), class: ' w-full block btn-primary' %>
+      <% else %>
+         <span class="btn-disabled w-full block">
+            <%= t('buttons.registration_form') %>
+         </span>
+      <% end %>
+   </div>
+</li>
