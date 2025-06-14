@@ -21,11 +21,8 @@
       <%= f.input :address, input_html: { data: { cep_target: "address" } } %>
    </div>
 
-   <div class="form-actions">
-      <% if @form.current_step != :client %>
-         <%= submit_tag "Voltar", name: "commit" %>
-      <% end %>
-
+   <div class="flex justify-between">
+      <%= link_to t('buttons.cancel'), course_classes_path(@course_class), class: 'btn-outline' %>
       <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
    </div>
 <% end %>

@@ -2,12 +2,8 @@ class Enrollments::PaymentForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  attr_accessor :payment_method,
-                :card_number,
-                :card_holder_name,
-                :card_cvv,
-                :card_expiry_date,
-                :card_holder_document
+  attr_accessor :payment_method, :card_number, :card_holder_name,
+                :card_cvv, :card_expiry_date, :card_holder_document
 
   validates :payment_method, presence: true
 
@@ -15,7 +11,7 @@ class Enrollments::PaymentForm
     ActiveModel::Name.new(self, nil, 'Payment')
   end
 
-  def save!(enrollment)
+  def create(enrollment)
     enrollment.payments.create!(attributes.merge(client: enrollment.client))
   end
 
@@ -23,5 +19,9 @@ class Enrollments::PaymentForm
     {
       payment_method: payment_method
     }
+  end
+
+  def params
+    [:payment_method]
   end
 end

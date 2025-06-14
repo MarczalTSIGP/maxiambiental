@@ -34,3 +34,4 @@ pt-BR:
       phone: "%{attribute} não é um número de telefone válido"
       cpf: 'CPF inválido'
       must_be_in_progress: '%{attribute} devem estar em andamento'
+      enrollment_failed: 'Ocorreu um erro ao inscrever-se!'

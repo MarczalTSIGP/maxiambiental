@@ -4,18 +4,19 @@ class Enrollments::EnrollmentForm
   include ActiveModel::Validations
 
   delegate :categories, to: :Enrollment
-
   delegate :referral_sources, to: :Enrollment
 
   attr_accessor :category, :referral_source, :notes, :terms_accepted, :previous_participation
 
-  validates :category, presence: true
-  validates :referral_source, presence: true
-  validates :terms_accepted, presence: true
+  validates :category,
+            presence: true,
+            inclusion: { in: ->(form) { form.categories.keys.map(&:to_s) } }
 
-  # validates :category, presence: true, inclusion: { in: :categories }
+  validates :referral_source,
+            presence: true,
+            inclusion: { in: ->(form) { form.referral_sources.keys.map(&:to_s) } }
+
   validates :terms_accepted, acceptance: true
-  # validates :referral_source, presence: true, inclusion: { in: :referral_sources }
 
   delegate :model_name, to: :Enrollment
 
@@ -23,7 +24,7 @@ class Enrollments::EnrollmentForm
     Enrollment.human_attribute_name(attribute)
   end
 
-  def save!(client, course_class)
+  def create(client, course_class)
     client.enrollments.create!(attributes.merge(course_class: course_class))
   end
 
@@ -34,5 +35,21 @@ class Enrollments::EnrollmentForm
       notes: notes,
       terms_accepted: terms_accepted
     }
+  end
+
+  def params
+    [:category, :referral_source, :notes, :terms_accepted]
+  end
+
+  def category_options
+    categories.keys.map do |key|
+      [I18n.t("activerecord.attributes.enrollment.categories.#{key}"), key.to_s]
+    end
+  end
+
+  def referral_source_options
+    referral_sources.keys.map do |key|
+      [I18n.t("activerecord.attributes.enrollment.referral_sources.#{key}"), key.to_s]
+    end
   end
 end

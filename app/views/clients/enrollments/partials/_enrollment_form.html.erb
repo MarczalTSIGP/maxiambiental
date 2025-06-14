@@ -1,11 +1,11 @@
 <%= simple_form_for form, as: :enrollment, url: clients_create_enrollment_path do |f| %>
 
-   <%= f.input :referral_source, collection: Enrollment.referral_sources, prompt: :translate %>
+   <%= f.input :referral_source, collection: form.referral_source_options, prompt: :translate %>
 
    <%= f.input :previous_participation, as: :radio_buttons, wrapper: :horizontal_radio,
                                            collection: [[ "Sim", true ], [ "Não", false ]]  %>
 
-   <%= f.input :category, collection: Enrollment.categories, prompt: :translate %>
+   <%= f.input :category, collection: form.category_options, prompt: :translate %>
 
    <%= f.input :notes, as: :text %>
 
@@ -21,11 +21,8 @@
       <%= f.input :terms_accepted, as: :boolean, wrapper: :checkbox %>
    </div>
 
-   <div class="form-actions">
-      <% if @form.current_step != :client %>
-         <%= submit_tag "Voltar", name: "commit" %>
-      <% end %>
-
+   <div class="flex justify-between">
+      <%= link_to t('buttons.back'), clients_previous_enrollment_path, class: 'btn-outline' %>
       <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
    </div>
 

@@ -7,7 +7,7 @@
    <%= f.input :card_holder_document, required: true %>
 </div>
 
-<div class="flex justify-between mt-4">
-   <%= link_to t('buttons.cancel'), '', class: 'btn-outline' %>
+<div class="flex justify-between">
+   <%= link_to t('buttons.back'), clients_previous_enrollment_path, class: 'btn-outline' %>
    <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
 </div>

@@ -13,19 +13,19 @@
          %>
 
       <div data-payment-method-target="boleto" class="hidden mt-4">
-         <%= render 'clients/course_classes/payments/partials/bank_slip_fields', f: f %>
+         <%= render 'clients/enrollments/partials/payment_methods/bank_slip_fields', f: f %>
       </div>
 
       <div data-payment-method-target="creditCard" class="hidden mt-4">
-         <%= render 'clients/course_classes/payments/partials/credit_card_fields', f: f %>
+         <%= render 'clients/enrollments/partials/payment_methods/credit_card_fields', f: f %>
       </div>
 
       <div data-payment-method-target="debitCard" class="hidden mt-4">
-         <%= render 'clients/course_classes/payments/partials/credit_card_fields', f: f %>
+         <%= render 'clients/enrollments/partials/payment_methods/credit_card_fields', f: f %>
       </div>
 
       <div data-payment-method-target="pix" class="hidden mt-4">
-         <%= render 'clients/course_classes/payments/partials/pix', f: f %>
+         <%= render 'clients/enrollments/partials/payment_methods/pix', f: f %>
       </div>
 
    <% end %>

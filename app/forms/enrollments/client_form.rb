@@ -9,7 +9,7 @@ class Enrollments::ClientForm
   validates :name, presence: true, length: { minimum: 3, maximum: 100 }
   validates :email, presence: true, email: true
   validates :cpf, presence: true, cpf: true
-  validates :phone, presence: true
+  validates :phone, presence: true, phone: true
   validates :address, presence: true
   validates :city, presence: true
   validates :state, presence: true, length: { is: 2 }
@@ -26,9 +26,7 @@ class Enrollments::ClientForm
     Client.human_attribute_name(attribute)
   end
 
-  def update!
-    raise ActiveRecord::RecordInvalid unless valid?
-
+  def update
     @client.update(client_attributes)
   end
 
@@ -47,6 +45,10 @@ class Enrollments::ClientForm
       state: state,
       cep: cep
     }
+  end
+
+  def params
+    [:name, :email, :cpf, :phone, :address, :city, :state, :cep]
   end
 
   private

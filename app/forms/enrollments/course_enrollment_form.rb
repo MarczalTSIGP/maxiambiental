@@ -12,7 +12,6 @@ class Enrollments::CourseEnrollmentForm
     initialize_forms(attributes)
   end
 
-  # Métodos de navegação
   def completed? = current_step == :confirmation
   def final_step? = current_step == :payment
 
@@ -47,7 +46,7 @@ class Enrollments::CourseEnrollmentForm
     persist_data
     true
   rescue StandardError => e
-    errors.add(:base, "Erro ao salvar: #{e.message}")
+    errors.add(:base, "Error saving data: #{e.message}")
     false
   end
 
@@ -88,9 +87,9 @@ class Enrollments::CourseEnrollmentForm
 
   def persist_data
     ActiveRecord::Base.transaction do
-      client_form.update!
-      enrollment = enrollment_form.save!(client, course_class)
-      payment_form.save!(enrollment)
+      client_form.update
+      enrollment = enrollment_form.create(client, course_class)
+      payment_form.create(enrollment)
     end
   end
 end
