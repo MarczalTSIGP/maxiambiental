@@ -40,7 +40,7 @@ class Clients::EnrollmentsController < ApplicationController
   end
 
   def load_form_from_session
-    session_data = (session[:enrollment_form] || {}).with_indifferent_access
+    session_data = (session[session_name] || {}).with_indifferent_access
 
     Enrollments::CourseEnrollmentForm.new(
       client: current_client,
@@ -65,17 +65,21 @@ class Clients::EnrollmentsController < ApplicationController
   end
 
   def save_form_to_session
-    session[:enrollment_form] = @form.session_attributes
+    session[session_name] = @form.session_attributes
   end
 
   def finalize_enrollment
     if @form.save
-      session.delete(:enrollment_form)
+      session.delete(session_name)
       redirect_to clients_enrollments_confirmation_path,
                   notice: t('flash_messages.created', model: Enrollment.model_name.human)
     else
       redirect_to clients_previous_enrollment_path,
                   notice: t('errors.messages.enrollment_failed')
     end
+  end
+
+  def session_name
+    "enrollment_form_#{@course_class.id}"
   end
 end

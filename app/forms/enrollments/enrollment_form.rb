@@ -1,8 +1,4 @@
-class Enrollments::EnrollmentForm
-  include ActiveModel::Model
-  include ActiveModel::Attributes
-  include ActiveModel::Validations
-
+class Enrollments::EnrollmentForm < BaseForm
   delegate :categories, to: :Enrollment
   delegate :referral_sources, to: :Enrollment
 

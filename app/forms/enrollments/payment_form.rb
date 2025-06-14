@@ -1,7 +1,4 @@
-class Enrollments::PaymentForm
-  include ActiveModel::Model
-  include ActiveModel::Attributes
-
+class Enrollments::PaymentForm < BaseForm
   attr_accessor :payment_method, :card_number, :card_holder_name,
                 :card_cvv, :card_expiry_date, :card_holder_document
 

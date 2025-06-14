@@ -1,9 +1,4 @@
-class Enrollments::ClientForm
-  include ActiveModel::Model
-  include ActiveModel::Attributes
-  include ActiveModel::Validations
-  include ActiveModel::Translation
-
+class Enrollments::ClientForm < BaseForm
   attr_accessor :name, :email, :cpf, :phone, :address, :city, :state, :cep
 
   validates :name, presence: true, length: { minimum: 3, maximum: 100 }

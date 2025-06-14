@@ -1,5 +1,6 @@
 class Enrollments::CourseEnrollmentForm
   include ActiveModel::Model
+
   STEPS = [:client, :enrollment, :payment, :confirmation].freeze
 
   attr_reader :current_step
