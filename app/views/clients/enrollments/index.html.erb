@@ -2,7 +2,7 @@
    <%= rc 'page/content_title', title: t('.title'), description: t('.description') %>
 
    <% attributes = [ 
-    { text: CourseClass.model_name.human, class: 'text-center' },
+    { text: CourseClass.model_name.human, class: 'text-left' },
     { text: CourseClass.human_attribute_name(:period), class: 'text-center' },
     { text: Enrollment.model_name.human, class: 'text-center' },
     { text: Enrollment.human_attribute_name(:status), class: 'text-center' },
@@ -15,5 +15,5 @@
 
    <%= rc 'data/table', attributes: attributes, 
                         collection: @enrollments, 
-                        partial: 'clients/course_classes/enrollments/partials/enrollment' %>
+                        partial: 'clients/enrollments/partials/enrollment' %>
 </div>

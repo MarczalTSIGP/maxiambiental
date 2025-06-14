@@ -1,7 +1,15 @@
-class Clients::EnrollmentsController < ApplicationController
-  before_action :set_course_class
-  before_action :validate_enrollment, only: [:new, :create]
+class Clients::EnrollmentsController < Clients::BaseController
+  before_action :set_course_class, only: [:new, :create, :previous]
+  before_action :validate_enrollment, only: [:new, :create, :previous]
   before_action :load_form, only: [:new, :create]
+
+  def index
+    @enrollments = current_client.enrollments
+                                 .includes([:payments, { course_class: [course: [:image_attachment]] }])
+                                 .order(created_at: :desc)
+                                 .search(params[:term])
+                                 .page(params[:page])
+  end
 
   def new; end
 

@@ -94,7 +94,7 @@ Rails.application.routes.draw do
         get 'enrollments/confirmation', to: 'enrollments#confirmation', as: :enrollments_confirmation
       end
 
-      get 'enrollments', to: 'course_classes/enrollments#index', as: :enrollments
+      get 'enrollments', to: 'enrollments#index', as: :enrollments
     end
   end
 end

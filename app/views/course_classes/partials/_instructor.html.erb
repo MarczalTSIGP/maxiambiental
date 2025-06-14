@@ -1,13 +1,12 @@
-<div class="mt-10">
+<div class="mt-10 max-w-none p-6">
    <div class="flex flex-col sm:flex-row gap-6 items-start">
-      <!-- Avatar do Instrutor -->
+
       <div class="w-full sm:w-auto flex justify-center">
          <%= image_tag @course_class.instructor.avatar_url, 
                     alt: @course_class.instructor.name,
                     class: "w-32 h-32 rounded-full object-cover border border-gray-200 shadow-md" %>
       </div>
 
-      <!-- Informações do Instrutor -->
       <div class="flex-1">
          <h2 class="text-2xl font-semibold text-gray-700 mb-2">
             <%= @course_class.instructor.name %>

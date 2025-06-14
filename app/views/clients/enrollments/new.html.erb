@@ -1,4 +1,4 @@
-<div class="container mt-24">
+<div class="container">
    <%= render 'shared/enrollment_steps', current_step: @form.form_index do %>
       <%= render "clients/enrollments/partials/#{@form.current_step}_form", form: @form.current_form %>
    <% end %>

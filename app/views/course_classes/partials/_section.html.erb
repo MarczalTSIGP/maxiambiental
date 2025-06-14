@@ -41,7 +41,13 @@
             </div>
          </div>
 
-         <%= link_to t('buttons.registration_form'), clients_new_enrollment_path(@course_class), class: 'btn-primary text-center w-full inline-block' %>
+         <% if @course_class.open? %>
+            <%= link_to t('buttons.registration_form'), clients_new_enrollment_path(@course_class), class: 'btn-primary text-center w-full inline-block' %>
+         <% else %>
+            <span class="btn-outline btn-disabled text-center w-full inline-block cursor-not-allowed opacity-50">
+               <%= t('buttons.registration_form') %>
+            </span>
+         <% end %>
       </div>
 
       <div class="md:hidden space-y-4">
@@ -73,16 +79,19 @@
                   <p>Hotel Nacional Inn - Rua Lourenço Pinto, 458, Centro</p>
                </div>
             </div>
-            <%= link_to t('buttons.registration_form'), clients_new_enrollment_path(@course_class), class: 'btn-primary text-center w-full inline-block' %>
+            <%= link_to t('buttons.registration_form'), 
+                     clients_new_enrollment_path(@course_class),
+                     data: { turbo: "false" },
+                     class: 'btn-primary text-center w-full inline-block' %>
          </div>
       </div>
    </div>
 
-   <div class="mx-auto mt-8 px-10">
+   <div class="mx-auto mt-8 sm:px-10">
       <% tabs = [
             { name: t('links.about'), path: course_class_path(@course_class) },
             { name: t('links.schedule'), path: course_class_programming_path(@course_class) },
-            { name: t('links.professionals'), path: course_class_instructor_path(@course_class) },
+            { name: t('links.instructors'), path: course_class_instructor_path(@course_class) },
             { name: t('links.terms'), path: course_class_terms_path(@course_class) },
           ] %>
 
