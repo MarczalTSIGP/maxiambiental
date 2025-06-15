@@ -1,5 +1,5 @@
 class Clients::EnrollmentsController < Clients::BaseController
-  before_action :set_course_class, only: [:new, :create, :previous]
+  before_action :set_course_class, except: [:index]
   before_action :validate_enrollment, only: [:new, :create, :previous]
   before_action :load_form, only: [:new, :create]
 
@@ -79,7 +79,7 @@ class Clients::EnrollmentsController < Clients::BaseController
   def finalize_enrollment
     if @form.save
       session.delete(session_name)
-      redirect_to clients_enrollments_confirmation_path,
+      redirect_to clients_enrollments_confirmation_path(@course_class),
                   notice: t('flash_messages.created', model: Enrollment.model_name.human)
     else
       redirect_to clients_previous_enrollment_path,

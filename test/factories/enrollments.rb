@@ -6,5 +6,9 @@ FactoryBot.define do
 
     client
     course_class
+
+    after(:create) do |enrollment|
+      create(:payment, enrollment: enrollment, client: enrollment.client)
+    end
   end
 end

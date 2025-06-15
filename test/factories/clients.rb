@@ -8,7 +8,7 @@ FactoryBot.define do
     phone { Faker::PhoneNumber.numerify('(##) 9####-####') }
     cep { Faker::Address.zip_code }
     city { Faker::Address.city }
-    state { Faker::Address.state }
+    state { Faker::Address.state_abbr }
     address { Faker::Address.street_address }
     active { true }
     confirmed_at { Time.zone.now }
