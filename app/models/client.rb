@@ -14,16 +14,9 @@ class Client < ApplicationRecord
   searchable :email, name: { unaccent: true }
 
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: { case_sensitive: true }
-  validates :cpf, presence: true, uniqueness: true, cpf: true, if: :cpf_present?
-  validates :phone, presence: true, phone: true, if: :phone_present?
-  validates :cep, presence: true, cep: true, if: :address_attributes_present?
-
-  with_options if: :address_attributes_present? do
-    validates :city, presence: true
-    validates :state, presence: true
-    validates :address, presence: true
-  end
+  validates :email,
+            presence: true,
+            uniqueness: { case_sensitive: true }
 
   def self.from_google(user)
     client = create_with(
@@ -55,20 +48,9 @@ class Client < ApplicationRecord
   end
 
   def enrolled_in?(course_class)
-    enrollments.exists?(course_class: course_class, status: Enrollment.statuses.except(:canceled).keys)
-  end
-
-  private
-
-  def cpf_present?
-    cpf.present?
-  end
-
-  def phone_present?
-    phone.present?
-  end
-
-  def address_attributes_present?
-    cep.present? || city.present? || state.present? || address.present?
+    enrollments.exists?(
+      course_class: course_class,
+      status: Enrollment.statuses.except(:canceled).keys
+    )
   end
 end
