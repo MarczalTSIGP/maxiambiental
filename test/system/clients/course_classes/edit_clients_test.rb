@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
+class Clients::EditClientsTest < ApplicationSystemTestCase
   setup do
     @client = FactoryBot.create(:client)
     @course_class = FactoryBot.create(:course_class)
@@ -8,7 +8,7 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
   end
 
   test 'visiting the edit page' do
-    visit clients_edit_client_path(@course_class)
+    visit clients_new_enrollment_path(@course_class)
 
     assert_selector 'h1', text: I18n.t('steps.enrollment_form')
     assert_field 'client[name]', with: @client.name
@@ -16,7 +16,7 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
   end
 
   test 'updating client information' do
-    visit clients_edit_client_path(@course_class)
+    visit clients_new_enrollment_path(@course_class)
 
     fill_in 'client[name]', with: 'Jane Doe'
     fill_in 'client[cpf]', with: '323.733.119-84'
@@ -27,7 +27,7 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
   end
 
   test 'showing errors when submitting invalid data' do
-    visit clients_edit_client_path(@course_class)
+    visit clients_new_enrollment_path(@course_class)
 
     fill_in 'client[name]', with: ''
     fill_in 'client[cpf]', with: '123'
@@ -40,21 +40,21 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
   end
 
   test 'canceling the client enrollment' do
-    visit clients_edit_client_path(@course_class)
+    visit clients_new_enrollment_path(@course_class)
     click_on I18n.t('buttons.cancel')
 
-    assert_current_path course_classes_path
+    assert_current_path course_class_path(@course_class)
   end
 
   test 'checking email field disabled' do
-    visit clients_edit_client_path(@course_class)
+    visit clients_new_enrollment_path(@course_class)
     email_field = find_by_id('client_email')
 
     assert_predicate email_field, :disabled?
   end
 
   test 'checking cpf mask' do
-    visit clients_edit_client_path(@course_class)
+    visit clients_new_enrollment_path(@course_class)
     cpf_field = find_field('client[cpf]')
 
     cpf_field.fill_in with: '12345678909'
@@ -63,7 +63,7 @@ class Clients::CourseClasses::EditClientsTest < ApplicationSystemTestCase
   end
 
   test 'checking phone mask' do
-    visit clients_edit_client_path(@course_class)
+    visit clients_new_enrollment_path(@course_class)
     phone_field = find_field('client[phone]')
 
     phone_field.fill_in with: '11999999999'
