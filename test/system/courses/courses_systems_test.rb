@@ -3,6 +3,7 @@ require 'application_system_test_case'
 class CoursesSystemTest < ApplicationSystemTestCase
   setup do
     @courses = FactoryBot.create_list(:course, 3)
+    @course_classes = FactoryBot.create_list(:course_class, 3, course: @courses.first)
     @course = @courses.first
   end
 
@@ -59,15 +60,17 @@ class CoursesSystemTest < ApplicationSystemTestCase
     assert_selector '.trix-content', text: @course.description.to_plain_text
   end
 
-  test 'displays the links to more information about the course' do
+  test 'displays the classes related to the course' do
     visit course_path(@course)
 
-    assert_selector 'button', text: I18n.t('buttons.registration_form')
-
-    within '#tabs' do
-      expected_tabs = %w[schedule professionals payments about]
-
-      assert_tabs expected_tabs
+    within '#carousel-classes' do
+      @course_classes.each do |course_class|
+        within "#class-#{course_class.id}" do
+          assert_text course_class.name
+          assert_text course_class.schedule
+          assert_text "#{l(course_class.start_at)} - #{l(course_class.end_at)}"
+        end
+      end
     end
   end
 

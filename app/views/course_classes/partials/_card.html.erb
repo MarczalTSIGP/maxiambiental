@@ -1,0 +1,21 @@
+<div class="max-w-sm rounded overflow-hidden shadow-lg group relative" id="course-class-<%= course_class.id %>-card">
+   <%= link_to course_class_path(course_class) do %>
+      <div class="relative">
+
+         <div class="aspect-square bg-gray-100">
+            <%= image_tag course_class.course.image_url, alt: course_class.name, class: 'w-full h-full object-cover' %>
+         </div>
+
+         <!-- Overlay hover -->
+         <div class="absolute inset-0 bg-black/80 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col p-4 overflow-y-auto scrollbar-hide scroll-smooth">
+            <div class="prose prose-invert text-sm leading-snug [&_p]:my-1 pb-6 relative flex-1">
+               <%= course_class.course.description %>
+            </div>
+         </div>
+      </div>
+
+      <div class="px-6 py-4">
+         <h1 class="font-bold text-xl mb-2 line-clamp-2"><%= course_class.name %></h1>
+      </div>
+   <% end %>
+</div>

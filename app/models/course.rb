@@ -9,6 +9,8 @@ class Course < ApplicationRecord
   has_one_attached :image
   has_rich_text :description
 
+  has_many :course_classes, dependent: :destroy
+
   def image_url
     return ActionController::Base.helpers.asset_path('card-default.png') unless image.attached?
 
