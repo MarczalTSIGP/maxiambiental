@@ -152,7 +152,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
     t.text "notes"
     t.string "category"
     t.string "status", default: "pending"
-    t.text "referral_source"
+    t.string "referral_source"
     t.boolean "previous_participation"
     t.boolean "terms_accepted", null: false
     t.datetime "created_at", null: false

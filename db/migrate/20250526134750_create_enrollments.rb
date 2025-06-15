@@ -7,7 +7,7 @@ class CreateEnrollments < ActiveRecord::Migration[8.0]
       t.text :notes
       t.string :category
       t.string :status, default: 'pending'
-      t.text :referral_source
+      t.string :referral_source
       t.boolean :previous_participation
       t.boolean :terms_accepted, null: false
       
