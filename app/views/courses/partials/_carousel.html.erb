@@ -8,13 +8,13 @@
       <!-- Card Carousel -->
       <div class="card-wrapper relative w-full max-w-7xl" id="carousel-classes">
 
-         <button class="carousel-prev absolute -left-1 md:-left-4 top-1/2 -translate-y-1/2 z-20 btn-rounded"
+         <button class="carousel-prev absolute -left-1 md:-left-4 top-1/2 -translate-y-1/2 z-20 btn-rounded bg-green-700 text-white"
               data-carousel-target="prevButton"
               data-action="click->carousel#prev">
             <%= icon('fa-solid', 'arrow-left')%>
          </button>
 
-         <button class="carousel-next absolute -right-1 md:-right-4 top-1/2 -translate-y-1/2 z-20 btn-rounded"
+         <button class="carousel-next absolute -right-1 md:-right-4 top-1/2 -translate-y-1/2 z-20 btn-rounded bg-green-700 text-white"
               data-carousel-target="nextButton"
               data-action="click->carousel#next">
             <%= icon('fa-solid', 'arrow-right')%>
@@ -24,7 +24,7 @@
             class="card-list scrollbar-hide flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 md:gap-6 pb-4 scrollbar-hide">
 
             <% if @course.course_classes.present? %>
-               <%= render partial: 'courses/partials/class_details', collection: @course.course_classes, as: :course_class %>
+               <%= render partial: 'courses/partials/course_class', collection: @course.course_classes, as: :course_class %>
             <% else %>
                <div class="flex items-center justify-center w-full">
                   <%= render partial: 'shared/no_results' %>

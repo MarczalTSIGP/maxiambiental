@@ -21,14 +21,14 @@
             </div>
 
             <div class="mt-6 pt-6 border-t border-gray-100">
-               <h3 class="text-lg font-semibold text-gray-800 mb-3">Detalhes do Curso</h3>
+               <h3 class="text-lg font-semibold text-gray-800 mb-3"><%= t('.course_details') %></h3>
                <div class="grid grid-cols-2 gap-4">
                   <div class="flex items-start">
                      <div class="bg-green-50 p-2 rounded-lg mr-3">
                         <%= icon('fa-solid', 'school', class: 'fa-lg text-green-700') %>
                      </div>
                      <div>
-                        <p class="text-sm text-gray-500">Turmas</p>
+                        <p class="text-sm text-gray-500"><%= t('.classes') %></p>
                         <p class="font-medium"><%= @course.course_classes.count %></p>
                      </div>
                   </div>
@@ -38,7 +38,7 @@
                         <%= icon('fa-solid', 'certificate', class: 'fa-lg text-green-700') %>
                      </div>
                      <div>
-                        <p class="text-sm text-gray-500">Certificado</p>
+                        <p class="text-sm text-gray-500"><%= t('.certificate') %></p>
                         <p class="font-medium">Incluso</p>
                      </div>
                   </div>
