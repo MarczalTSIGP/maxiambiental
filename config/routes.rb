@@ -62,6 +62,13 @@ Rails.application.routes.draw do
           constraints: { term: %r{[^/]+} },
           to: 'course_classes#index',
           as: 'course_classes_search'
+
+      resources :enrollments, only: [:index, :show]
+
+      get 'enrollments/search/(:term)/(page/:page)',
+          constraints: { term: %r{[^/]+} },
+          to: 'enrollments#index',
+          as: 'enrollments_search'
     end
   end
 

@@ -19,7 +19,8 @@ class Enrollment < ApplicationRecord
   }
 
   searchable :status, relationships: {
-    course_class: { fields: ['name'] }
+    course_class: { fields: ['name'], unaccent: true },
+    client: { fields: ['name'], unaccent: true }
   }
 
   belongs_to :client

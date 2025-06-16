@@ -76,6 +76,7 @@ pt-BR:
         category: "Categoria"
         notes: "Observações"
         terms_accepted: "Li e aceito os termos e condições"
+        created_at: "Matriculado em"
         categories:
           student: "Estudante"
           teacher: "Instrutor"

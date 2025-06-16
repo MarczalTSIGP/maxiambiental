@@ -1,0 +1,19 @@
+<tr>
+   <td class="px-6 py-4 text-sm text-gray-800">
+      <%= enrollment.course_class.name %>
+   </td>
+
+   <td class="px-6 py-4 text-sm text-gray-800">
+      <%= enrollment.client.name %>
+   </td>
+
+   <td class="px-6 py-4 text-sm text-center text-gray-800">
+      <%= l(enrollment.created_at, format: :short) %>
+   </td>
+
+   <td class="px-6 py-4 text-sm text-center text-gray-800">
+      <span class="<%= enrollment.confirmed? ? 'badge-active' : 'badge-inactive' %>">
+         <%= enrollment.human_enum(:status) %>
+      </span>
+   </td>
+</tr>

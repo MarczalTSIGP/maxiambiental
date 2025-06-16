@@ -1,0 +1,37 @@
+<div>
+
+   <h2 class="text-lg font-semibold text-gray-700 mb-3"><%= t('.payment_info') %></h2>
+
+   <% if @enrollment.payments.any? %>
+
+      <div class="bg-gray-50 rounded-lg p-4">
+
+         <% last_payment = @enrollment.payment %>
+
+         <div class="flex justify-between items-center">
+
+            <div>
+               <p class="font-medium"><%= number_to_currency(last_payment.amount) %></p>
+               <p class="text-sm text-gray-600"><%= l(last_payment.created_at, format: :short) %></p>
+            </div>
+
+            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+               <%= last_payment.human_status %>
+            </span>
+
+         </div>
+
+         <div class="mt-4">
+            <%= link_to t('.view_all_payments'), '#', 
+                    class: "text-sm text-blue-600 hover:text-blue-800 flex items-center" %>
+         </div>
+      </div>
+
+   <% else %>
+
+      <div class="bg-yellow-50 text-yellow-700 p-4 rounded-lg">
+         <p><%= t('.no_payments') %></p>
+      </div>
+
+   <% end %>
+</div>
