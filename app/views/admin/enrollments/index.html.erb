@@ -10,7 +10,8 @@
    { text: CourseClass.model_name.human, class: 'text-left' },
    { text: Client.model_name.human, class: 'text-left' },
    { text: Enrollment.human_attribute_name(:created_at), class: 'text-center' },
-   { text: Enrollment.human_attribute_name(:status), class: 'text-center' }
+   { text: Enrollment.human_attribute_name(:status), class: 'text-center' },
+   { text: '', class: 'text-center' }
 ] %>
 
 <%= rc 'data/table', attributes: attributes, 

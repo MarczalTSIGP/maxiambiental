@@ -16,4 +16,12 @@
          <%= enrollment.human_enum(:status) %>
       </span>
    </td>
+
+   <td class="px-6 py-4 text-sm font-medium text-center">
+      <div class="flex items-center gap-4">
+         <%= link_to admin_enrollment_path(enrollment) do %>
+            <%= icon('fa-solid', 'eye', class: 'fa-lg text-green-700') %>
+         <% end %>
+      </div>
+   </td>
 </tr>
