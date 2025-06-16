@@ -8,12 +8,11 @@ class Admin::DashboardController < Admin::BaseController
   private
 
   def initialize_admin_dashboard
-    @admin_dashboard = Dashboard::Admin.new
+    @dashboard = Dashboard::Admin.new
   end
 
   def load_dashboard_data
-    @clients_metrics = @admin_dashboard.clients_metrics
-    @clients   = @admin_dashboard.top_clients
-    @courses   = @admin_dashboard.top_courses
+    @clients   = @dashboard.top_clients
+    @courses   = @dashboard.top_courses
   end
 end
