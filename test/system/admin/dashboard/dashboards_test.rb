@@ -3,7 +3,6 @@ require 'application_system_test_case'
 class Dashboard::DashboardsTest < ApplicationSystemTestCase
   setup do
     @clients = FactoryBot.create_list(:client, 5)
-    @courses = FactoryBot.create_list(:course, 5)
 
     @admin = FactoryBot.create(:admin)
     sign_in @admin
@@ -51,6 +50,8 @@ class Dashboard::DashboardsTest < ApplicationSystemTestCase
   test 'displaying top clients table' do
     visit admin_root_path
 
+    create_enrollments
+
     within '#top-clients tbody' do
       @clients.each do |client|
         assert_selector "#client-#{client.id}", text: client.name
@@ -62,10 +63,20 @@ class Dashboard::DashboardsTest < ApplicationSystemTestCase
   test 'displaying top courses table' do
     visit admin_root_path
 
+    create_enrollments
+
     within '#top-courses tbody' do
-      @courses.each do |course|
+      Course.each do |course|
         assert_selector "#course-#{course.id}", text: course.name
       end
+    end
+  end
+
+  private
+
+  def create_enrollments
+    @clients.each do |client|
+      FactoryBot.create_list(:enrollment, 2, client: client)
     end
   end
 end
