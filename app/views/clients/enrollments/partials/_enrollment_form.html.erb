@@ -3,7 +3,7 @@
    <%= f.input :referral_source, collection: form.referral_source_options, prompt: :translate %>
 
    <%= f.input :previous_participation, as: :radio_buttons, wrapper: :horizontal_radio,
-                                           collection: [[ "Sim", true ], [ "Não", false ]]  %>
+                                           collection: [[ t('simple_form.yes'), true ], [ t('simple_form.no'), false ]]  %>
 
    <%= f.input :category, collection: form.category_options, prompt: :translate %>
 
@@ -22,7 +22,9 @@
    </div>
 
    <div class="flex justify-between">
-      <%= link_to t('buttons.back'), clients_previous_enrollment_path, class: 'btn-outline' %>
+      <%= link_to t('buttons.back'), clients_previous_enrollment_path,
+                  data: { turbo_prefetch: false }, class: 'btn-outline' %>
+
       <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
    </div>
 

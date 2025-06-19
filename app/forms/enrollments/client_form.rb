@@ -17,16 +17,8 @@ class Enrollments::ClientForm < BaseForm
     super(attributes)
   end
 
-  def self.human_attribute_name(attribute, _options = {})
-    Client.human_attribute_name(attribute)
-  end
-
   def update
     @client.update(client_attributes)
-  end
-
-  def self.model_name
-    ActiveModel::Name.new(self, nil, 'Client')
   end
 
   def attributes
@@ -43,7 +35,7 @@ class Enrollments::ClientForm < BaseForm
   end
 
   def params
-    [:name, :email, :cpf, :phone, :address, :city, :state, :cep]
+    [:name, :cpf, :phone, :address, :city, :state, :cep]
   end
 
   private

@@ -32,9 +32,7 @@ class Enrollments::CourseEnrollmentForm
     STEPS.index(current_step) + 1
   end
 
-  def valid?
-    current_form.valid?.tap { propagate_errors(current_form) }
-  end
+  delegate :valid?, to: :current_form
 
   def update(attributes)
     current_form.assign_attributes(attributes)
@@ -75,15 +73,7 @@ class Enrollments::CourseEnrollmentForm
   def first_step? = current_step == STEPS.first
 
   def all_steps_valid?
-    [client_form, enrollment_form, payment_form].all? do |form|
-      form.valid?.tap { propagate_errors(form) }
-    end
-  end
-
-  def propagate_errors(form)
-    form.errors.each do |error|
-      errors.add(error.attribute, error.message) unless errors.added?(error.attribute, error.message)
-    end
+    [client_form, enrollment_form, payment_form].all? | form | form.valid?
   end
 
   def persist_data

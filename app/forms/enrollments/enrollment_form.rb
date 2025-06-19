@@ -4,6 +4,8 @@ class Enrollments::EnrollmentForm < BaseForm
 
   attr_accessor :category, :referral_source, :notes, :terms_accepted, :previous_participation
 
+  validates :terms_accepted, acceptance: true
+
   validates :category,
             presence: true,
             inclusion: { in: ->(form) { form.categories.keys.map(&:to_s) } }
@@ -11,14 +13,6 @@ class Enrollments::EnrollmentForm < BaseForm
   validates :referral_source,
             presence: true,
             inclusion: { in: ->(form) { form.referral_sources.keys.map(&:to_s) } }
-
-  validates :terms_accepted, acceptance: true
-
-  delegate :model_name, to: :Enrollment
-
-  def self.human_attribute_name(attribute, _options = {})
-    Enrollment.human_attribute_name(attribute)
-  end
 
   def create(client, course_class)
     client.enrollments.create!(attributes.merge(course_class: course_class))

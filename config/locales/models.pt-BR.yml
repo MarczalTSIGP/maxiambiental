@@ -101,3 +101,8 @@ pt-BR:
           pending: 'Pendente'
           confirmed: 'Confirmado'
           canceled: 'Cancelado'
+        methods:
+          bank_slip: 'Boleto'
+          creditCard: 'Cartão de Crédito'
+          debitCard: 'Cartão de Débito'
+          pix: 'Pix'

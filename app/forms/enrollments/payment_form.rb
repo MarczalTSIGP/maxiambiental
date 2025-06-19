@@ -4,10 +4,6 @@ class Enrollments::PaymentForm < BaseForm
 
   validates :payment_method, presence: true
 
-  def self.model_name
-    ActiveModel::Name.new(self, nil, 'Payment')
-  end
-
   def create(enrollment)
     enrollment.payments.create!(attributes.merge(client: enrollment.client))
   end
@@ -20,5 +16,15 @@ class Enrollments::PaymentForm < BaseForm
 
   def params
     [:payment_method]
+  end
+
+  def human_payment_methods
+    payment_methods.map do |key|
+      [I18n.t("activerecord.attributes.payment.methods.#{key}"), key]
+    end
+  end
+
+  def payment_methods
+    %w[bank_slip creditCard debitCard pix]
   end
 end
