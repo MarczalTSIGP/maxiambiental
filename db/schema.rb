@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_19_191919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -144,6 +144,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_140448) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_courses_on_name"
+  end
+
+  create_table "enrollment_drafts", force: :cascade do |t|
+    t.string "current_step", default: "client"
+    t.jsonb "client"
+    t.jsonb "enrollment"
+    t.jsonb "payment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "enrollments", force: :cascade do |t|
