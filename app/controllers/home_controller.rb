@@ -2,6 +2,6 @@ class HomeController < ApplicationController
   layout 'layouts/home/application'
 
   def index
-    @courses = Course.includes([:image_attachment]).limit(6).order(:name)
+    @course_classes = CourseClass.includes([course: :image_attachment]).open.limit(6).order(:start_at)
   end
 end

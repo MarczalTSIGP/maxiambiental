@@ -20,6 +20,8 @@ class CourseClass < ApplicationRecord
   has_rich_text :programming
   has_rich_text :acceptance_terms
 
+  scope :open, -> { where(subscription_status: :open) }
+
   validates :name, :start_at, :end_at, :schedule, :address,
             :about, :programming, :acceptance_terms,
             presence: true
