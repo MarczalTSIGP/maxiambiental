@@ -3,7 +3,7 @@ require 'application_system_test_case'
 class Clients::EditClientsTest < ApplicationSystemTestCase
   setup do
     @client = FactoryBot.create(:client)
-    @course_class = FactoryBot.create(:course_class)
+    @course_class = FactoryBot.create(:course_class, subscription_status: :open)
     sign_in @client
   end
 

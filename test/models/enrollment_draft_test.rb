@@ -1,9 +1,16 @@
 require 'test_helper'
 
 class EnrollmentDraftTest < ActiveSupport::TestCase
-  test 'should client be a json' do
-    enrollment_draft = FactoryBot.create(:enrollment_draft, :enrollment_step)
+  context 'associations' do
+    should belong_to(:client)
+    should belong_to(:course_class)
+  end
 
-    assert_kind_of Hash, enrollment_draft.client
+  test 'should the enrollment information be a json' do
+    enrollment_draft = FactoryBot.create(:enrollment_draft, :confirmation_step)
+
+    assert_kind_of Hash, enrollment_draft.client_data
+    assert_kind_of Hash, enrollment_draft.enrollment_data
+    assert_kind_of Hash, enrollment_draft.payment_data
   end
 end

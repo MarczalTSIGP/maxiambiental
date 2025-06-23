@@ -4,6 +4,7 @@ class Clients::EnrollmentsTest < ApplicationSystemTestCase
   setup do
     @client = FactoryBot.create(:client)
     @course_class = FactoryBot.create(:course_class, subscription_status: 'open')
+    FactoryBot.create(:enrollment_draft, :enrollment_step, client: @client, course_class: @course_class)
 
     sign_in @client
   end
@@ -29,14 +30,14 @@ class Clients::EnrollmentsTest < ApplicationSystemTestCase
   end
 
   test 'visiting the new enrollment page' do
-    complete_client_edit
+    visit clients_new_enrollment_path(@course_class)
 
     assert_selector 'h1', text: I18n.t('steps.enrollment_form')
     assert_selector '#step-2.text-green-700', text: I18n.t('steps.enrollment.course_data')
   end
 
   test 'creating a new enrollment' do
-    complete_client_edit
+    visit clients_new_enrollment_path(@course_class)
 
     select human_enum(:referral_source, 'others'), from: 'enrollment_referral_source'
     select human_enum(:category, 'student'), from: 'enrollment_category'
@@ -47,7 +48,7 @@ class Clients::EnrollmentsTest < ApplicationSystemTestCase
   end
 
   test 'creating a new enrollment with invalid data' do
-    complete_client_edit
+    visit clients_new_enrollment_path(@course_class)
 
     select human_enum(:referral_source, 'others'), from: 'enrollment_referral_source'
     select human_enum(:category, 'student'), from: 'enrollment_category'
@@ -59,12 +60,6 @@ class Clients::EnrollmentsTest < ApplicationSystemTestCase
   end
 
   private
-
-  def complete_client_edit
-    visit clients_new_enrollment_path(@course_class)
-
-    click_on I18n.t('buttons.confirm')
-  end
 
   def human_enum(enum_name, value)
     I18n.t("activerecord.attributes.enrollment.#{enum_name.to_s.pluralize}.#{value}")
