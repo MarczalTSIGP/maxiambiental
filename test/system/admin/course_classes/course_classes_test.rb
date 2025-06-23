@@ -98,7 +98,7 @@ class Admin::CourseClassesTest < ApplicationSystemTestCase
 
     select year, from: "course_class[#{attribute}(1i)]"
     select I18n.t('date.month_names')[month.to_i], from: "course_class[#{attribute}(2i)]"
-    select day, from: "course_class[#{attribute}(3i)]"
+    select day.to_i.to_s, from: "course_class[#{attribute}(3i)]"
   end
 
   def sign_in_as_admin

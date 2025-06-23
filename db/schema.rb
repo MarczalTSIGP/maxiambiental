@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_19_191919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -106,6 +106,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
     t.boolean "active", default: true, null: false
     t.string "provider"
     t.string "uid"
+    t.string "cpf"
+    t.string "phone"
+    t.string "cep"
+    t.string "city"
+    t.string "state"
+    t.text "address"
+    t.string "formation"
+    t.string "current_company"
+    t.index ["cpf"], name: "index_clients_on_cpf", unique: true
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["name"], name: "index_clients_on_name"
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
@@ -137,6 +146,36 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
     t.index ["name"], name: "index_courses_on_name"
   end
 
+  create_table "enrollment_drafts", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "course_class_id", null: false
+    t.string "current_step", default: "client"
+    t.jsonb "client_data"
+    t.jsonb "enrollment_data"
+    t.jsonb "payment_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id", "course_class_id"], name: "index_enrollment_drafts_on_client_id_and_course_class_id", unique: true
+    t.index ["client_id"], name: "index_enrollment_drafts_on_client_id"
+    t.index ["course_class_id"], name: "index_enrollment_drafts_on_course_class_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "course_class_id", null: false
+    t.text "notes"
+    t.string "category"
+    t.string "status", default: "pending"
+    t.string "referral_source"
+    t.boolean "previous_participation"
+    t.boolean "terms_accepted", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id", "course_class_id"], name: "index_enrollments_on_client_id_and_course_class_id", unique: true
+    t.index ["client_id"], name: "index_enrollments_on_client_id"
+    t.index ["course_class_id"], name: "index_enrollments_on_course_class_id"
+  end
+
   create_table "instructors", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -149,8 +188,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_164807) do
     t.index ["name"], name: "index_instructors_on_name"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "enrollment_id", null: false
+    t.decimal "amount"
+    t.string "status", default: "pending"
+    t.string "payment_method"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_payments_on_client_id"
+    t.index ["enrollment_id"], name: "index_payments_on_enrollment_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "course_classes", "courses", on_delete: :restrict
   add_foreign_key "course_classes", "instructors", on_delete: :restrict
+  add_foreign_key "enrollment_drafts", "clients"
+  add_foreign_key "enrollment_drafts", "course_classes"
+  add_foreign_key "enrollments", "clients"
+  add_foreign_key "enrollments", "course_classes"
+  add_foreign_key "payments", "clients"
+  add_foreign_key "payments", "enrollments"
 end

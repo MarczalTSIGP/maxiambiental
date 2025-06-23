@@ -1,20 +1,23 @@
 class Client < ApplicationRecord
   include Searchable
 
-  searchable :email, name: { unaccent: true }
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable,
-         :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
+  has_many :enrollment_drafts, dependent: :destroy
+  has_many :enrollments, dependent: :destroy
+  has_many :course_classes, through: :enrollments
+  has_many :payments, dependent: :destroy
+  has_one_attached :avatar
+
+  searchable :email, name: { unaccent: true }
+
+  validates :name, presence: true
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: true }
-
-  validates :name, presence: true
-
-  has_one_attached :avatar
 
   def self.from_google(user)
     client = create_with(
@@ -43,5 +46,12 @@ class Client < ApplicationRecord
 
     self.password = Devise.friendly_token[0, 20]
     self.password_confirmation = password
+  end
+
+  def enrolled_in?(course_class)
+    enrollments.exists?(
+      course_class: course_class,
+      status: Enrollment.statuses.except(:canceled).keys
+    )
   end
 end

@@ -1,0 +1,31 @@
+<%= simple_form_for form, as: :enrollment, url: clients_create_enrollment_path do |f| %>
+
+   <%= f.input :referral_source, collection: form.referral_source_options, prompt: :translate %>
+
+   <%= f.input :previous_participation, as: :radio_buttons, wrapper: :horizontal_radio,
+                                           collection: [[ t('simple_form.yes'), true ], [ t('simple_form.no'), false ]]  %>
+
+   <%= f.input :category, collection: form.category_options, prompt: :translate %>
+
+   <%= f.input :notes, as: :text %>
+
+   <div class="mt-4 mb-6 space-y-4">
+      <label class="block text-green-700 text-sm font-bold mb-2">
+         <%= CourseClass.human_attribute_name(:acceptance_terms) %>
+      </label>
+
+      <div class="border border-gray-300 rounded-lg bg-gray-50 p-4 max-h-48 overflow-y-auto prose">
+         <%= @course_class.acceptance_terms %>
+      </div>
+
+      <%= f.input :terms_accepted, as: :boolean, wrapper: :checkbox %>
+   </div>
+
+   <div class="flex justify-between">
+      <%= link_to t('buttons.back'), clients_previous_enrollment_path,
+                  data: { turbo_prefetch: false }, class: 'btn-outline' %>
+
+      <%= f.button :submit, t('buttons.confirm'), class: "btn-primary" %>
+   </div>
+
+<% end %>

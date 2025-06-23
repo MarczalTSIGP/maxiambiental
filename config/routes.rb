@@ -7,8 +7,14 @@ Rails.application.routes.draw do
   get 'courses', to: 'courses#index', as: :courses
   get 'courses/:id', to: 'courses#show', as: :course
 
-  match '404', via: :all, to: 'errors#not_found'
-  match '500', via: :all, to: 'errors#internal_server_error'
+  get 'course_classes', to: 'course_classes#index', as: :course_classes
+  get 'course_classes/:id', to: 'course_classes#show', as: :course_class
+  get 'course_classes/:id/programming', to: 'course_classes#programming', as: :course_class_programming
+  get 'course_classes/:id/instructor', to: 'course_classes#instructor', as: :course_class_instructor
+  get 'course_classes/:id/terms', to: 'course_classes#terms', as: :course_class_terms
+
+  match '404', via: :all, to: 'errors#not_found', as: :not_found
+  match '500', via: :all, to: 'errors#internal_server_error', as: :internal_server_error
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 
@@ -80,6 +86,15 @@ Rails.application.routes.draw do
       patch 'profile/update_password', to: 'profile#update_password', as: :update_password
 
       delete 'profile/delete_avatar', to: 'profile#delete_avatar', as: :delete_avatar
+
+      scope 'course_classes/:course_class_id' do
+        get 'enrollments/new', to: 'enrollments#new', as: :new_enrollment
+        post 'enrollments', to: 'enrollments#create', as: :create_enrollment
+        get 'enrollments/previous', to: 'enrollments#previous', as: :previous_enrollment
+        get 'enrollments/confirmation', to: 'enrollments#confirmation', as: :enrollments_confirmation
+      end
+
+      get 'enrollments', to: 'enrollments#index', as: :enrollments
     end
   end
 end

@@ -16,6 +16,12 @@ pt-BR:
       course_class: 
         one: 'Turma'
         other: 'Turmas'
+      enrollment: 
+        one: 'Inscrição'
+        other: 'Inscrições'
+      payment: 
+        one: 'Pagamento'
+        other: 'Pagamentos'
     attributes:
       defaults: &defaults
         created_at: 'Criado em'
@@ -40,6 +46,10 @@ pt-BR:
         about: 'Sobre'
         instructor: 'Instrutor'
         course: 'Curso'
+        cpf: 'CPF'
+        cep: 'CEP'
+        state: 'Estado'
+        price: 'Preço'
       admin:
         <<: *defaults
       client:
@@ -60,3 +70,39 @@ pt-BR:
           in_progress: Em andamento
           closed: Inscrições encerradas
           waiting_list: Lista de espera
+      enrollment:
+        referral_source: "Como ficou sabendo do curso?"
+        previous_participation: "Já participou de um curso/palestra da Maxiambiental?"
+        category: "Categoria"
+        notes: "Observações"
+        terms_accepted: "Li e aceito os termos e condições"
+        categories:
+          student: "Estudante"
+          teacher: "Instrutor"
+        statuses:
+          pending: "Pendente"
+          confirmed: "Confirmado"
+          finished: "Finalizado"
+          canceled: "Cancelado"
+        referral_sources:
+          social_media: "Rede social"
+          friends: "Amigos"
+          email: "E-mail"
+          website: "Site"
+          others: "Outros"
+      payment:
+        payment_method: 'Forma de Pagamento'
+        card_number: 'Número do Cartão'
+        card_expiry_date: 'Validade do Cartão'
+        card_cvv: 'CVV'
+        card_holder_name: 'Nome no Cartão'
+        card_holder_document: 'CPF'
+        statuses:
+          pending: 'Pendente'
+          confirmed: 'Confirmado'
+          canceled: 'Cancelado'
+        methods:
+          bank_slip: 'Boleto'
+          creditCard: 'Cartão de Crédito'
+          debitCard: 'Cartão de Débito'
+          pix: 'Pix'
