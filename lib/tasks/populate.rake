@@ -12,6 +12,7 @@ namespace :db do
     ClientPopulate.populate(30)
     InstructorPopulate.populate(20)
     CoursesPopulate.populate(9)
+    CourseClassesPopulate.populate(6)
 
     Rake::Task['db:seed'].invoke
   end
