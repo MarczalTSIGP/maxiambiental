@@ -46,7 +46,7 @@ class Clients::EnrollmentsController < Clients::BaseController
     return if @course_class.open?
 
     redirect_to clients_enrollments_path,
-                notice: t('errors.messages.must_be_in_open', attribute: Enrollment.model_name.human)
+                notice: t('errors.messages.must_be_open', attribute: Enrollment.model_name.human)
   end
 
   def load_form

@@ -6,6 +6,7 @@ class Client < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
+  has_many :enrollment_drafts, dependent: :destroy
   has_many :enrollments, dependent: :destroy
   has_many :course_classes, through: :enrollments
   has_many :payments, dependent: :destroy

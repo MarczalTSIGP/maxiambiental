@@ -41,35 +41,24 @@ class Clients::EnrollmentsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to clients_new_enrollment_path
-    assert_predicate session["enrollment_form_#{@course_class.id}"], :present?
+    assert_equal :enrollment, @client.enrollment_drafts.last.current_step.to_sym
   end
 
-  # test 'should create enrollment on final step' do
-  #   enrollment = FactoryBot.build(:enrollment, client: @client, course_class: @course_class)
+  test 'should create enrollment on final step' do
+    FactoryBot.create(:enrollment_draft, :payment_step, client: @client, course_class: @course_class)
 
-  #   get clients_new_enrollment_path(@course_class)
+    assert_difference('Enrollment.count', 1) do
+      post clients_create_enrollment_path(@course_class), params: {
+        'payment' => { 'payment_method' => 'credit_card' }
+      }
+    end
 
-  #   session["enrollment_form_#{@course_class.id}"] = {
-  #     current_step: :payment,
-  #     client_data: @client.attributes.slice('name', 'email', 'cpf', 'phone', 'address', 'city', 'state', 'cep'),
-  #     enrollment_data: enrollment.attributes.slice('category', 'terms_accepted', 'referral_source'),
-  #     payment_data: {}
-  #   }
-
-  #   assert_difference('Enrollment.count', 1) do
-  #     post clients_create_enrollment_path(@course_class), params: {
-  #       'payment' => { 'payment_method' => 'credit_card' }
-  #     }
-  #   end
-
-  #   assert_redirected_to clients_enrollments_confirmation_path
-  #   assert_equal flash[:notice], I18n.t('flash_messages.created', model: Enrollment.model_name.human)
-  # end
+    assert_redirected_to clients_enrollments_confirmation_path
+    assert_equal flash[:notice], I18n.t('flash_messages.created', model: Enrollment.model_name.human)
+  end
 
   test 'should handle invalid submission' do
-    invalid_params = {
-      'client' => { 'name' => '' }
-    }
+    invalid_params = { 'client' => { 'name' => '' } }
 
     post clients_create_enrollment_path(@course_class), params: invalid_params
 
@@ -78,12 +67,23 @@ class Clients::EnrollmentsControllerTest < ActionDispatch::IntegrationTest
                                                  attribute: Client.human_attribute_name(:name))
   end
 
-  # test 'should go back to previous step' do
-  #   get clients_new_enrollment_path(@course_class)
+  test 'should go back to previous step' do
+    FactoryBot.create(:enrollment_draft, :enrollment_step, client: @client, course_class: @course_class)
 
-  #   get clients_previous_enrollment_path(@course_class)
+    get clients_previous_enrollment_path(@course_class)
 
-  #   assert_redirected_to clients_new_enrollment_path
-  #   assert_equal 'client', session["enrollment_form_#{course_class.id}"]['current_step']
-  # end
+    assert_redirected_to clients_new_enrollment_path
+    assert_equal :client, @client.enrollment_drafts.last.current_step.to_sym
+  end
+
+  test 'should not access the form when the class has not open enrollments' do
+    @course_class.update!(subscription_status: :coming_soon)
+
+    get clients_new_enrollment_path(@course_class)
+
+    assert_redirected_to clients_enrollments_path
+
+    assert_equal flash[:notice],
+                 I18n.t('errors.messages.must_be_open', attribute: Enrollment.model_name.human)
+  end
 end

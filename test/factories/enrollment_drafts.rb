@@ -1,17 +1,25 @@
 FactoryBot.define do
   factory :enrollment_draft do
     current_step { :client }
-
-    client { nil }
-    enrollment { nil }
-    payment { nil }
+    client
+    course_class
 
     trait :enrollment_step do
       current_step { :enrollment }
-      client do
-        FactoryBot.create(:client)
-                  .attributes.slice(:name, :cpf, :phone, :address, :city, :state, :cep)
-      end
+      client_data { client.attributes.slice(:name, :email, :cpf, :phone, :cep, :address, :city, :state) }
+    end
+
+    trait :payment_step do
+      current_step { :payment }
+      client_data { client.attributes.slice(:name, :email, :cpf, :phone, :cep, :address, :city, :state) }
+      enrollment_data { attributes_for(:enrollment) }
+    end
+
+    trait :confirmation_step do
+      current_step { :confirmation }
+      client_data { client.attributes.slice(:name, :email, :cpf, :phone, :cep, :address, :city, :state) }
+      enrollment_data { attributes_for(:enrollment) }
+      payment_data { { payment_method: 'credit_card' } }
     end
   end
 end
