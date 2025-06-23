@@ -1,7 +1,8 @@
 class Clients::EnrollmentsController < Clients::BaseController
   before_action :set_course_class, except: [:index]
+  before_action :validate_class, only: [:new, :create, :previous]
   before_action :validate_enrollment, only: [:new, :create, :previous]
-  before_action :load_form, only: [:new, :create]
+  before_action :load_form, only: [:new, :create, :previous]
 
   def index
     @enrollments = current_client.enrollments
@@ -22,9 +23,7 @@ class Clients::EnrollmentsController < Clients::BaseController
   end
 
   def previous
-    @form = load_form_from_session
     @form.move_to_previous_step
-    save_form_to_session
     redirect_to clients_new_enrollment_path
   end
 
@@ -43,17 +42,17 @@ class Clients::EnrollmentsController < Clients::BaseController
                 notice: t('errors.messages.already_enrolled')
   end
 
-  def load_form
-    @form = load_form_from_session
+  def validate_class
+    return if @course_class.open?
+
+    redirect_to clients_enrollments_path,
+                notice: t('errors.messages.must_be_in_open', attribute: Enrollment.model_name.human)
   end
 
-  def load_form_from_session
-    session_data = (session[session_name] || {}).with_indifferent_access
-
-    Enrollments::CourseEnrollmentForm.new(
+  def load_form
+    @form = Enrollments::CourseEnrollmentForm.new(
       client: current_client,
-      course_class: @course_class,
-      attributes: session_data
+      course_class: @course_class
     )
   end
 
@@ -63,7 +62,6 @@ class Clients::EnrollmentsController < Clients::BaseController
 
   def handle_form_success
     @form.move_to_next_step
-    save_form_to_session
 
     if @form.completed?
       finalize_enrollment
@@ -72,22 +70,13 @@ class Clients::EnrollmentsController < Clients::BaseController
     end
   end
 
-  def save_form_to_session
-    session[session_name] = @form.session_attributes
-  end
-
   def finalize_enrollment
     if @form.save
-      session.delete(session_name)
       redirect_to clients_enrollments_confirmation_path(@course_class),
                   notice: t('flash_messages.created', model: Enrollment.model_name.human)
     else
       redirect_to clients_previous_enrollment_path,
                   notice: t('errors.messages.enrollment_failed')
     end
-  end
-
-  def session_name
-    "enrollment_form_#{@course_class.id}"
   end
 end

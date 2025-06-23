@@ -147,12 +147,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_19_191919) do
   end
 
   create_table "enrollment_drafts", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "course_class_id", null: false
     t.string "current_step", default: "client"
-    t.jsonb "client"
-    t.jsonb "enrollment"
-    t.jsonb "payment"
+    t.jsonb "client_data"
+    t.jsonb "enrollment_data"
+    t.jsonb "payment_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id", "course_class_id"], name: "index_enrollment_drafts_on_client_id_and_course_class_id", unique: true
+    t.index ["client_id"], name: "index_enrollment_drafts_on_client_id"
+    t.index ["course_class_id"], name: "index_enrollment_drafts_on_course_class_id"
   end
 
   create_table "enrollments", force: :cascade do |t|
@@ -199,6 +204,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_19_191919) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "course_classes", "courses", on_delete: :restrict
   add_foreign_key "course_classes", "instructors", on_delete: :restrict
+  add_foreign_key "enrollment_drafts", "clients"
+  add_foreign_key "enrollment_drafts", "course_classes"
   add_foreign_key "enrollments", "clients"
   add_foreign_key "enrollments", "course_classes"
   add_foreign_key "payments", "clients"

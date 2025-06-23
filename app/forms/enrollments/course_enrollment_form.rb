@@ -4,37 +4,37 @@ class Enrollments::CourseEnrollmentForm
   STEPS = [:client, :enrollment, :payment, :confirmation].freeze
 
   attr_reader :current_step
-  attr_accessor :client, :course_class
+  attr_accessor :client, :course_class, :enrollment_draft
 
   def initialize(course_class:, client: nil, attributes: {})
-    @current_step = (attributes[:current_step] || :client).to_sym
     @client = client
     @course_class = course_class
-    initialize_forms(attributes)
+    @attributes = attributes
+    @enrollment_draft = find_or_create_draft
+    @current_step = (@enrollment_draft.current_step || :client).to_sym
   end
 
   def completed? = current_step == :confirmation
   def final_step? = current_step == :payment
 
   def move_to_next_step
-    @current_step = next_step unless completed?
+    return if completed?
+
+    @current_step = STEPS[STEPS.index(current_step) + 1]
+    save_draft
   end
 
   def move_to_previous_step
-    @current_step = previous_step unless first_step?
-  end
+    return if current_step == STEPS.first
 
-  def current_form
-    @current_form ||= send("#{current_step}_form")
-  end
-
-  def form_index
-    STEPS.index(current_step) + 1
+    @current_step = STEPS[STEPS.index(current_step) - 1]
+    save_draft
   end
 
   delegate :valid?, to: :current_form
 
   def update(attributes)
+    @attributes = { current_step => attributes }
     current_form.assign_attributes(attributes)
     valid?
   end
@@ -43,44 +43,68 @@ class Enrollments::CourseEnrollmentForm
     return false unless all_steps_valid?
 
     persist_data
+    destroy_draft
     true
   rescue StandardError => e
+    Rails.logger.info "Error saving data: #{e.message}"
     errors.add(:base, "Error saving data: #{e.message}")
     false
   end
 
-  def session_attributes
-    {
-      current_step: current_step,
-      client_data: client_form.attributes,
-      enrollment_data: enrollment_form.attributes,
-      payment_data: payment_form.attributes
-    }
+  def current_form
+    @current_form ||= build_form(current_step, @attributes)
   end
+
+  def form_index = STEPS.index(current_step) + 1
 
   private
 
-  attr_reader :client_form, :enrollment_form, :payment_form
+  def build_form(step, attributes)
+    return if step == :confirmation
 
-  def initialize_forms(attributes)
-    @client_form = Enrollments::ClientForm.new(@client, attributes[:client_data] || {})
-    @enrollment_form = Enrollments::EnrollmentForm.new(attributes[:enrollment_data] || {})
-    @payment_form = Enrollments::PaymentForm.new(attributes[:payment_data] || {})
+    data = attributes[step] || @enrollment_draft.send("#{step}_data") || {}
+
+    case step
+    when :client then Enrollments::ClientForm.new(@client, data)
+    when :enrollment then Enrollments::EnrollmentForm.new(data)
+    when :payment then Enrollments::PaymentForm.new(data)
+    else raise "Invalid step: #{step}"
+    end
   end
 
-  def next_step = STEPS[STEPS.index(current_step) + 1]
-  def previous_step = STEPS[STEPS.index(current_step) - 1]
-  def first_step? = current_step == STEPS.first
-
   def all_steps_valid?
-    [client_form, enrollment_form, payment_form].all? | form | form.valid?
+    STEPS.none? { |step| step != :confirmation && !build_form(step, {}).valid? }
+  end
+
+  def save_draft
+    @enrollment_draft.update(
+      current_step: current_step,
+      **forms_attributes
+    )
+  end
+
+  def forms_attributes
+    STEPS.each_with_object({}) do |step, hash|
+      next if step == :confirmation
+
+      form = build_form(step, @attributes)
+      hash["#{step}_data"] = form.attributes if form
+    end
+  end
+
+  def find_or_create_draft
+    EnrollmentDraft.find_or_initialize_by(client: @client, course_class: @course_class)
+  end
+
+  def destroy_draft
+    @enrollment_draft.destroy if @enrollment_draft.persisted?
   end
 
   def persist_data
     ActiveRecord::Base.transaction do
-      client_form.update
-      enrollment = enrollment_form.create(client, course_class)
-      payment_form.create(enrollment)
+      build_form(:client, {}).update
+      enrollment = build_form(:enrollment, {}).create(client, course_class)
+      build_form(:payment, {}).create(enrollment)
     end
   end
 end

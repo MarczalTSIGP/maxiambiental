@@ -33,5 +33,5 @@ pt-BR:
       email: "%{attribute} não é um e-mail válido"
       phone: "%{attribute} não é um número de telefone válido"
       cpf: 'CPF inválido'
-      must_be_in_progress: '%{attribute} devem estar em andamento'
+      must_be_in_open: '%{attribute} devem estar em andamento'
       enrollment_failed: 'Ocorreu um erro ao inscrever-se!'
