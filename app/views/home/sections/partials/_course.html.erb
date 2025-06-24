@@ -1,4 +1,4 @@
-<li class="shrink-0 w-[calc(100vw-100px)] sm:w-80 md:w-96 snap-center block bg-white p-4 md:p-5 rounded-lg space-y-3 md:space-y-4 transition duration-200 mx-2">
+<li id="class-<%= course_class.id %>" class="shrink-0 w-[calc(100vw-100px)] sm:w-80 md:w-96 snap-center block bg-white p-4 md:p-5 rounded-lg space-y-3 md:space-y-4 transition duration-200 mx-2">
 
    <%= link_to image_tag(course_class.course.image_url, alt: course_class.name, class: "aspect-video object-cover rounded-lg h-52 w-full"), 
                course_class_path(course_class), class: "card-link" %>

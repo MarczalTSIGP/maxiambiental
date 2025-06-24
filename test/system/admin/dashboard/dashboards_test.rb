@@ -38,21 +38,24 @@ class Dashboard::DashboardsTest < ApplicationSystemTestCase
   end
 
   test 'displaying subscriptions stats' do
+    FactoryBot.create_list(:enrollment, 2, created_at: 40.days.ago)
+    FactoryBot.create_list(:enrollment, 4)
+
     visit admin_root_path
 
     within '#subscriptions_stats' do
-      assert_selector '#count', text: '211'
-      assert_selector '#growth', text: '-8.1%'
+      assert_selector '#count', text: '4'
+      assert_selector '#growth', text: '+100.0%'
       assert_selector '#text', text: I18n.t('admin.dashboard.index.stats.subscriptions')
     end
   end
 
   test 'displaying top clients table' do
-    visit admin_root_path
-
     create_enrollments
 
-    within '#top-clients tbody' do
+    visit admin_root_path
+
+    within '#top-clients' do
       @clients.each do |client|
         assert_selector "#client-#{client.id}", text: client.name
         assert_selector "#client-#{client.id}", text: client.email
@@ -61,12 +64,12 @@ class Dashboard::DashboardsTest < ApplicationSystemTestCase
   end
 
   test 'displaying top courses table' do
-    visit admin_root_path
-
     create_enrollments
 
+    visit admin_root_path
+
     within '#top-courses tbody' do
-      Course.each do |course|
+      Course.find_each do |course|
         assert_selector "#course-#{course.id}", text: course.name
       end
     end
@@ -76,7 +79,7 @@ class Dashboard::DashboardsTest < ApplicationSystemTestCase
 
   def create_enrollments
     @clients.each do |client|
-      FactoryBot.create_list(:enrollment, 2, client: client)
+      FactoryBot.create(:enrollment, client: client)
     end
   end
 end
