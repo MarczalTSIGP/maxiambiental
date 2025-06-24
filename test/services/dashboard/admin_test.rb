@@ -80,7 +80,7 @@ class Dashboard::AdminTest < ActiveSupport::TestCase
   end
 
   test 'should the top clients limits to 5 results' do
-    6.times do |i|
+    6.times do |_i|
       client = FactoryBot.create(:client)
       course_class = FactoryBot.create(:course_class, subscription_status: :open)
       FactoryBot.create(:enrollment, client: client, course_class: course_class)
