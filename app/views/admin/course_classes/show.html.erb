@@ -1,17 +1,19 @@
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
    <div class="bg-green-700 rounded-lg shadow-md p-6 mb-8">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
          <div>
             <h1 class="text-3xl font-bold text-white"><%= @course_class.name %></h1>
             <p class="text-green-100 mt-2">
+               <%= Course.model_name.human %> -
                <%= @course_class.course.name %>
             </p>
             <p class="text-green-100 mt-2">
+               <%= Instructor.model_name.human %> -
                <%= link_to @course_class.instructor.name, admin_instructor_path(@course_class.instructor) %>
             </p>
          </div>
-         <div class="mt-4 md:mt-0 bg-white text-green-700 px-4 py-2 rounded-md font-semibold">
+         <div class="mt-4 md:mt-0 bg-white text-green-700 text-center px-4 py-2 rounded-md font-semibold">
             <%= l(@course_class.start_at) %> à <%= l(@course_class.end_at) %>
          </div>
       </div>

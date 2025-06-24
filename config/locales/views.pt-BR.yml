@@ -239,3 +239,9 @@ pt-BR:
     index:
       title: 'Turmas'
       description: 'Explore nossas turmas e descubra as oportunidades de aprendizado que oferecemos para o seu desenvolvimento profissional.'
+    partials:
+      section:
+        details: 'Detalhes'
+        schedule: 'Horários'
+        local: 'Local'
+        dates: 'Datas'
