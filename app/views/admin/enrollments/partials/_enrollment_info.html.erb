@@ -1,0 +1,26 @@
+<div id="enrollment-info" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+   <div>
+      <p class="text-sm text-gray-500"><%= Enrollment.human_attribute_name(:category) %></p>
+      <p class="font-medium"><%= @enrollment.human_enum(:category) %></p>
+   </div>
+
+   <div>
+      <p class="text-sm text-gray-500"><%= Enrollment.human_attribute_name(:referral_source) %></p>
+      <p class="font-medium"><%= @enrollment.human_enum(:referral_source) %></p>
+   </div>
+
+   <div>
+      <p class="text-sm text-gray-500"><%= Enrollment.human_attribute_name(:created_at) %></p>
+      <p class="font-medium"><%= l(@enrollment.created_at, format: :long) %></p>
+   </div>
+
+   <div>
+      <p class="text-sm text-gray-500"><%= Enrollment.human_attribute_name(:terms_accepted) %></p>
+      <p class="font-medium">
+         <%= @enrollment.terms_accepted? ? t('simple_form.yes') : t('simple_form.no') %>
+         <% if @enrollment.terms_accepted? %>
+            <%= icon('fa-solid', 'check', class: 'text-green-500') %>
+         <% end %>
+      </p>
+   </div>
+</div>

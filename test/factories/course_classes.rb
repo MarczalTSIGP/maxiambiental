@@ -10,9 +10,9 @@ FactoryBot.define do
     course
     instructor
 
-    about { Faker::Lorem.paragraph(sentence_count: 3) }
+    about { Faker::Quote.famous_last_words }
     address { "#{Faker::Address.street_address}, #{Faker::Address.city}" }
-    programming { Faker::Lorem.paragraph(sentence_count: 3) }
-    acceptance_terms { Faker::Lorem.paragraph(sentence_count: 3) }
+    programming { Faker::Quote.famous_last_words }
+    acceptance_terms { Faker::Quote.famous_last_words }
   end
 end

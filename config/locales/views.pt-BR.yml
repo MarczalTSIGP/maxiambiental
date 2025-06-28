@@ -200,6 +200,19 @@ pt-BR:
           content: 'Conteúdo'
           terms: 'Termos'
 
+    enrollments:
+      index:
+        title: 'Inscrições'
+        description: 'Gerencie todas as inscrições cadastradas na Maxiambiental.'
+      show:
+        title: 'Inscrição'
+        description: 'Visualizar detalhes da inscrição'
+      partials:
+          payment_info:
+            payment_info: "Informações de Pagamento"
+            no_payments: "Nenhum pagamento registrado"
+            view_all_payments: "Ver todos os pagamentos"
+
   clients:
     enrollments:
       index:
@@ -226,3 +239,9 @@ pt-BR:
     index:
       title: 'Turmas'
       description: 'Explore nossas turmas e descubra as oportunidades de aprendizado que oferecemos para o seu desenvolvimento profissional.'
+    partials:
+      section:
+        details: 'Detalhes'
+        schedule: 'Horários'
+        local: 'Local'
+        dates: 'Datas'

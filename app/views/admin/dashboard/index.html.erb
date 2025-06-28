@@ -4,9 +4,9 @@
 
    <%= rc 'dashboard/stats', stats: {count: 20, growth: 12.6}, text: t('.stats.courses'), id: 'courses_stats' %>
 
-   <%= rc 'dashboard/stats', stats: {count: 211, growth: -8.1}, text: t('.stats.subscriptions'), id: 'subscriptions_stats' %>
+   <%= rc 'dashboard/stats', stats: @dashboard.enrollments_metrics, text: t('.stats.subscriptions'), id: 'subscriptions_stats' %>
 
-   <%= rc 'dashboard/stats', stats: @clients_metrics, text: t('.stats.clients'), id: 'clients_stats' %>
+   <%= rc 'dashboard/stats', stats: @dashboard.clients_metrics, text: t('.stats.clients'), id: 'clients_stats' %>
 
 </div>
 

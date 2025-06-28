@@ -1,4 +1,4 @@
-<div class="container mx-auto px-4 py-10 mt-10">
+<div class="container mx-auto px-4 py-10">
    <div class="grid md:grid-cols-2 gap-6 md:items-start items-center my-12" id="course-class-main">
 
       <div class="max-w-[500px] md:aspect-square mx-auto relative group overflow-hidden">
@@ -19,22 +19,22 @@
          </h1>
 
          <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 space-y-3">
-            <h3 class="font-semibold text-lg text-gray-800 mb-2">Detalhes</h3>
+            <h3 class="font-semibold text-lg text-gray-800 mb-2"><%= t('.details') %></h3>
 
             <div class="grid grid-cols-1 gap-3 text-sm text-gray-600">
 
                <div class="flex items-start">
-                  <span class="font-medium text-gray-700 w-32 flex-shrink-0">Datas:</span>
+                  <span class="font-medium text-gray-700 w-32 flex-shrink-0"><%= t('.dates') %>:</span>
                   <span><%= l(@course_class.start_at) %> - <%= l(@course_class.end_at) %></span>
                </div>
 
                <div class="flex items-start">
-                  <span class="font-medium text-gray-700 w-32 flex-shrink-0">Horários:</span>
+                  <span class="font-medium text-gray-700 w-32 flex-shrink-0"><%= t('.schedule') %>:</span>
                   <span><%= @course_class.schedule %></span>
                </div>
 
                <div class="flex items-start">
-                  <span class="font-medium text-gray-700 w-32 flex-shrink-0">Local:</span>
+                  <span class="font-medium text-gray-700 w-32 flex-shrink-0"><%= t('.local') %>:</span>
                   <span class="prose"><%= @course_class.address %></span>
                </div>
 
@@ -59,24 +59,20 @@
 
          <!-- Mobile -->
          <div class="bg-white p-4 rounded-lg shadow border border-gray-100">
-            <h3 class="font-semibold text-lg text-gray-800 mb-3">Detalhes da Turma</h3>
+            <h3 class="font-semibold text-lg text-gray-800 mb-3"><%= t('.details') %></h3>
 
-            <div class="space-y-3 text-sm text-gray-600">
+            <div class="space-y-3 text-sm text-gray-600 mb-4">
                <div>
-                  <p class="font-medium text-gray-700">Datas:</p>
-                  <p>Em breve</p>
+                  <span class="font-medium text-gray-700 w-32 flex-shrink-0"><%= t('.dates') %>:</span>
+                  <span><%= l(@course_class.start_at) %> - <%= l(@course_class.end_at) %></span>
                </div>
                <div>
-                  <p class="font-medium text-gray-700">Horários:</p>
-                  <p>08:00 h às 12:00 h e 13:30 h às 18:00 h</p>
+                  <span class="font-medium text-gray-700 w-32 flex-shrink-0"><%= t('.schedule') %>:</span>
+                  <span><%= @course_class.schedule %></span>
                </div>
                <div>
-                  <p class="font-medium text-gray-700">Cidade:</p>
-                  <p>Curitiba/PR</p>
-               </div>
-               <div>
-                  <p class="font-medium text-gray-700">Local:</p>
-                  <p>Hotel Nacional Inn - Rua Lourenço Pinto, 458, Centro</p>
+                  <span class="font-medium text-gray-700 w-32 flex-shrink-0"><%= t('.local') %>:</span>
+                  <span class="prose"><%= @course_class.address %></span>
                </div>
             </div>
             <%= link_to t('buttons.registration_form'), 

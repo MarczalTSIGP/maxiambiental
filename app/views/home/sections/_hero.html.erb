@@ -1,4 +1,4 @@
-<div class="relative w-full bg-gradient-to-r text-white overflow-hidden h-screen">
+<div id="hero-section" class="relative w-full bg-gradient-to-r text-white overflow-hidden h-screen">
 
    <div class="absolute inset-0">
       <%= image_tag 'hero.png', alt: 'Background Image', class: "object-cover object-center w-full h-full" %>
@@ -17,7 +17,7 @@
 
       <div class="flex text-center">
          <%= link_to t('links.discover_more'), "#", class: "bg-green-700 max-w-36 text-center text-white hover:bg-green-300 py-2 px-6 rounded-md text-md" %>
-         <%= link_to t('links.explore_our_courses'), "#", class: "text-center text-white py-2 px-6 text-md" %>
+         <%= link_to t('links.explore_our_courses'), courses_path, class: "text-center text-white py-2 px-6 text-md" %>
       </div>
 
    </div>

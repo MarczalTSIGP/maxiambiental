@@ -5,10 +5,10 @@ FactoryBot.define do
     referral_source { Enrollment.referral_sources.values.sample }
 
     client
-    course_class
+    course_class { FactoryBot.create(:course_class, subscription_status: :open) }
 
     after(:create) do |enrollment|
-      create(:payment, enrollment: enrollment, client: enrollment.client)
+      FactoryBot.create(:payment, enrollment: enrollment, client: enrollment.client)
     end
   end
 end

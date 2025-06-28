@@ -16,6 +16,7 @@ class Instructor < ApplicationRecord
 
   validates :resume, presence: true
 
+  has_many :course_classes, dependent: :destroy
   has_one_attached :avatar
   has_rich_text :resume
 

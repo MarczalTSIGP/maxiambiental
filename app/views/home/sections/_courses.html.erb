@@ -10,7 +10,7 @@
    </div>
 
    <!-- Card Carousel -->
-   <div class="card-wrapper relative w-full max-w-7xl">
+   <div id="new-classes" class="card-wrapper relative w-full max-w-7xl">
 
       <button class="carousel-prev absolute -left-1 md:-left-4 top-1/2 -translate-y-1/2 z-20 btn-rounded"
               data-carousel-target="prevButton"
@@ -27,8 +27,8 @@
       <ul data-carousel-target="carousel" data-action="touchstart->carousel#handleTouchStart touchend->carousel#handleTouchEnd"
          class="card-list scrollbar-hide flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 md:gap-6 pb-4 scrollbar-hide">
 
-         <% if @courses.present? %>
-            <%= render partial: 'home/sections/partials/course', collection: @courses, as: :course %>
+         <% if @course_classes.present? %>
+            <%= render partial: 'home/sections/partials/course', collection: @course_classes, as: :course_class %>
          <% else %>
             <div class="flex items-center justify-center w-full">
                <%= render partial: 'shared/no_results' %>
