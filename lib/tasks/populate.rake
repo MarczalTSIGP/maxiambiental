@@ -9,10 +9,10 @@ namespace :db do
 
     puts 'Running populate'
 
-    ClientPopulate.populate(30)
-    InstructorPopulate.populate(20)
-    CoursesPopulate.populate(9)
-    CourseClassesPopulate.populate(6)
+    Populators::ClientPopulate.populate(30)
+    Populators::InstructorPopulate.populate(20)
+    Populators::CoursePopulate.populate(9)
+    Populators::CourseClassPopulate.populate(6)
 
     Rake::Task['db:seed'].invoke
   end
